@@ -22,7 +22,9 @@ import {
   RefreshCw,
   Terminal,
   FileCode,
-  HardDrive
+  HardDrive,
+  Mic,
+  Radio
 } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";

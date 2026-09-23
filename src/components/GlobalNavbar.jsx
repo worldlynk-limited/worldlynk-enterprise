@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ChevronDown, ExternalLink } from 'lucide-react';
+import { Search, ChevronDown, ExternalLink, ArrowRight } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
@@ -43,11 +43,8 @@ export default function GlobalNavbar({ onOpenSearch }) {
       <div className="main-container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         {/* Brand & Cluster Indicator */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-            <div style={{ width: '10px', height: '10px', background: '#ff6b00', borderRadius: '2px', boxShadow: '0 0 10px rgba(255, 107, 0, 0.5)' }} />
-            <span style={{ fontSize: '14px', fontWeight: '800', letterSpacing: '-0.02em', color: '#ffffff', fontFamily: 'var(--font-heading)' }}>
-              WORLDLYNK
-            </span>
+          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <img src="/worldlynk-logo.svg" alt="WorldLynk" style={{ height: '17px', width: 'auto', display: 'block' }} />
             <span style={{ fontSize: '10px', color: '#ff6b00', background: 'rgba(255, 107, 0, 0.12)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 107, 0, 0.25)', fontFamily: 'var(--font-mono)' }}>
               ENTERPRISE
             </span>
@@ -210,8 +207,9 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   UKVI Compliance Officers
                 </Link>
                 <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', margin: '4px 0' }} />
-                <Link to="/outcomes" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ff6b00', fontWeight: '600', textDecoration: 'none' }}>
-                  Institutional ROI & Outcomes ➔
+                <Link to="/outcomes" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ff6b00', fontWeight: '600', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span>Institutional ROI &amp; Outcomes</span>
+                  <ArrowRight size={12} />
                 </Link>
               </div>
             )}
@@ -291,7 +289,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
           >
             <Search size={12} color="#9494a0" />
             <span style={{ fontSize: '11.5px', color: '#9494a0' }}>Find</span>
-            <kbd style={{ fontSize: '9px', padding: '1px 4px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '2px', color: '#ffffff' }}>⌘K</kbd>
+            <kbd style={{ fontSize: '9px', padding: '1px 4px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '2px', color: '#ffffff' }}>Ctrl+K</kbd>
           </button>
 
           <Link

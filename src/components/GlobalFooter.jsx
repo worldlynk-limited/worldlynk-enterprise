@@ -106,9 +106,9 @@ export default function GlobalFooter() {
         <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '28px', marginTop: '40px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div style={{ width: '10px', height: '10px', background: '#ff6b00', borderRadius: '2px', boxShadow: '0 0 10px rgba(255, 107, 0, 0.6)' }} />
-              <span style={{ fontWeight: '800', color: '#ffffff', fontSize: '13.5px', letterSpacing: '-0.02em', fontFamily: 'var(--font-heading)' }}>
-                WORLDLYNK CAMPUS OS
+              <img src="/worldlynk-logo.svg" alt="WorldLynk" style={{ height: '16px', width: 'auto', display: 'block' }} />
+              <span style={{ fontSize: '10px', color: '#ff6b00', background: 'rgba(255, 107, 0, 0.12)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 107, 0, 0.25)', fontFamily: 'var(--font-mono)' }}>
+                ENTERPRISE CAMPUS OS
               </span>
               <span style={{ fontSize: '10px', color: '#9494a0', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 255, 255, 0.1)', fontFamily: 'var(--font-mono)' }}>
                 SITS · BANNER · MOODLE · ARBITER

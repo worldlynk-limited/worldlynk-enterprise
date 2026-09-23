@@ -20,7 +20,8 @@ import {
   RefreshCw,
   Zap,
   Terminal,
-  FileCode
+  FileCode,
+  X
 } from 'lucide-react';
 
 const ALL_CONNECTORS = [
@@ -354,32 +355,33 @@ export default function IntegrationsPage() {
 
                   <div className="flex-between mt-sm" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '12px' }}>
                     <div className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-cyan)' }}>
-                      Latency: {c.latency} · {c.type}
-                    </div>
-                    <span className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-orange)' }}>
-                      Inspect Specs ➔
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                       Latency: {c.latency} · {c.type}
+                     </div>
+                     <span className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-orange)', display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                       Inspect Specs <ArrowRight size={11} />
+                     </span>
+                   </div>
+                 </div>
+               );
+             })}
+           </div>
 
-          {/* Bespoke Campus Connector Callout */}
-          <div className="card-dark flex-between flex-wrap gap-md" style={{ padding: '32px 36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
-            <div>
-              <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; LEGACY CAMPUS DATABASES</span>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '4px' }}>
-                Need a bespoke campus connector for a legacy database?
-              </h3>
-              <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px' }}>
-                Our systems engineering team builds certified bi-directional adaptors for custom on-premises SQL databases, legacy Oracle campus installations, and proprietary student housing backends within 3 weeks.
-              </p>
-            </div>
-            <button onClick={() => setShowCustomModal(true)} className="btn-primary" style={{ flexShrink: 0 }}>
-              Request Custom Connector ➔
-            </button>
-          </div>
+           {/* Bespoke Campus Connector Callout */}
+           <div className="card-dark flex-between flex-wrap gap-md" style={{ padding: '32px 36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
+             <div>
+               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; LEGACY CAMPUS DATABASES</span>
+               <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '4px' }}>
+                 Need a bespoke campus connector for a legacy database?
+               </h3>
+               <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px' }}>
+                 Our systems engineering team builds certified bi-directional adaptors for custom on-premises SQL databases, legacy Oracle campus installations, and proprietary student housing backends within 3 weeks.
+               </p>
+             </div>
+             <button onClick={() => setShowCustomModal(true)} className="btn-primary" style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+               <span>Request Custom Connector</span>
+               <ArrowRight size={13} />
+             </button>
+           </div>
 
         </div>
       </section>
@@ -414,7 +416,9 @@ export default function IntegrationsPage() {
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CONNECTOR TECHNICAL SPECIFICATION</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>{activeConnector.name}</h3>
               </div>
-              <button onClick={() => setActiveConnector(null)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+              <button onClick={() => setActiveConnector(null)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                <X size={18} />
+              </button>
             </div>
 
             <div style={{ backgroundColor: '#0d0d12', padding: '16px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
@@ -438,8 +442,9 @@ export default function IntegrationsPage() {
               <button onClick={() => setActiveConnector(null)} className="btn-secondary btn-sm">
                 Close
               </button>
-              <Link to="/contact" className="btn-primary btn-sm">
-                Inquire for Campus Pilot ➔
+              <Link to="/contact" className="btn-primary btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <span>Inquire for Campus Pilot</span>
+                <ArrowRight size={12} />
               </Link>
             </div>
           </div>
@@ -476,7 +481,9 @@ export default function IntegrationsPage() {
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTEGRATION ENGINEERING</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>Request Bespoke Campus Adaptor</h3>
               </div>
-              <button onClick={() => setShowCustomModal(false)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+              <button onClick={() => setShowCustomModal(false)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                <X size={18} />
+              </button>
             </div>
 
             <p className="body-sm text-secondary mb-md">
@@ -500,8 +507,9 @@ export default function IntegrationsPage() {
                 <button type="button" onClick={() => setShowCustomModal(false)} className="btn-secondary btn-sm">
                   Cancel
                 </button>
-                <button type="submit" className="btn-primary btn-sm">
-                  Submit Feasibility Request ➔
+                <button type="submit" className="btn-primary btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <span>Submit Feasibility Request</span>
+                  <ArrowRight size={12} />
                 </button>
               </div>
             </form>

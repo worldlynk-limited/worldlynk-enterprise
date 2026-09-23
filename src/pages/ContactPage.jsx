@@ -240,8 +240,9 @@ export default function ContactPage() {
                     <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>
                       Encrypted dispatch · Zero spam policy
                     </span>
-                    <button type="submit" className="btn-primary">
-                      Route Message to {selectedDept.lead} ➔
+                    <button type="submit" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <span>Route Message to {selectedDept.lead}</span>
+                      <ArrowRight size={13} />
                     </button>
                   </div>
                 </form>
@@ -264,8 +265,9 @@ export default function ContactPage() {
                       <div className="mono-sm text-secondary" style={{ fontSize: '11px', lineHeight: 1.4 }}>
                         {off.address}
                       </div>
-                      <div className="mono-sm text-muted mt-xs" style={{ fontSize: '10px' }}>
-                        📞 {off.phone}
+                      <div className="mono-sm text-muted mt-xs" style={{ fontSize: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <Phone size={11} color="var(--text-muted)" />
+                        <span>{off.phone}</span>
                       </div>
                     </div>
                   ))}

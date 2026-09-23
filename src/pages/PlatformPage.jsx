@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AgentGraphVisualizer from '../components/AgentGraphVisualizer';
 import {
   Database,
   Layers,
@@ -419,6 +420,24 @@ export default function PlatformPage() {
             </div>
           </div>
 
+          {/* ── AGENT GRAPH // LIVING OPERATIONAL MAP ──────────────── */}
+          <div id="agent-graph" className="mb-3xl" style={{ scrollMarginTop: '100px' }}>
+            <div className="section-header-left mb-xl">
+              <div className="flex gap-xs alignItems-center mb-xs">
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>LAYER 02 // AGENT GRAPH</span>
+                <span className="pill pill-approved" style={{ fontSize: '9px' }}>LIVING TOPOLOGY · ZERO-HALLUCINATION MAP</span>
+              </div>
+              <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+                The Institutional Operational Graph
+              </h2>
+              <p className="section-desc">
+                Existing campus architectures leave each office trapped in isolated records. WorldLynk constructs a live relational topology connecting students, degree milestones, LMS engagement, Tier-4 work margins, and accommodation contracts into one operational graph.
+              </p>
+            </div>
+
+            <AgentGraphVisualizer />
+          </div>
+
           {/* ── DEDICATED NOVA AI INFRASTRUCTURE SPECIFICATION ─────── */}
           <div id="nova" className="mb-3xl" style={{ scrollMarginTop: '100px' }}>
             <div className="section-header-left mb-xl">
@@ -502,23 +521,23 @@ export default function PlatformPage() {
                   High-stakes university rules cannot be left to probabilistic next-token generation. Critical sequences execute through compiled directed acyclic graphs with strictly typed inputs, branch validation, and immutable logging.
                 </p>
                 <div className="grid-2 gap-xs">
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>student-onboarding</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>student-onboarding</code>
                   </div>
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>accommodation-match</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>accommodation-match</code>
                   </div>
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>job-match-workflow</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>job-match-workflow</code>
                   </div>
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>cv-analysis-workflow</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>cv-analysis-workflow</code>
                   </div>
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>tailored-resume-workflow</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>tailored-resume-workflow</code>
                   </div>
-                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
-                    ✓ <code>interview-prep-workflow</code>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Check size={12} color="var(--accent-cyan)" /> <code>interview-prep-workflow</code>
                   </div>
                 </div>
               </div>

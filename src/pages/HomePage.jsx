@@ -389,7 +389,7 @@ export default function HomePage() {
                   boxShadow: activePillarId === pillar.id ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none'
                 }}
               >
-                <div className="mono-sm mb-sm" style={{ color: activePillarId === pillar.id ? pillar.activeColor : '#71717a', fontWeight: 600 }}>◆ {pillar.num}</div>
+                <div className="mono-sm mb-sm" style={{ color: activePillarId === pillar.id ? pillar.activeColor : '#71717a', fontWeight: 600 }}>LAYER {pillar.num}</div>
                 <h3 className="headline-md" style={{ color: '#0c0c0f', marginBottom: '0.5rem' }}>{pillar.name}</h3>
                 <p className="body-sm" style={{ color: '#52525b', marginBottom: '1rem' }}>{pillar.desc}</p>
                 <div className="flex flex-col gap-xs">

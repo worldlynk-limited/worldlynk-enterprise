@@ -10,7 +10,8 @@ import {
   Eye,
   Keyboard,
   Cpu,
-  Download
+  Download,
+  Check
 } from 'lucide-react';
 
 const VPAT_CRITERIA = [
@@ -102,7 +103,9 @@ export default function AccessibilityPage() {
                     <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#13131c' : '#101016' }}>
                       <td style={{ padding: '14px 20px', fontWeight: '700', color: '#ffffff' }}>{c.rule}</td>
                       <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{c.level}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--status-pass)', fontWeight: '600' }}>✓ {c.support}</td>
+                      <td style={{ padding: '14px 20px', color: 'var(--status-pass)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <Check size={13} /> {c.support}
+                      </td>
                       <td style={{ padding: '14px 20px', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{c.notes}</td>
                     </tr>
                   ))}
@@ -165,8 +168,9 @@ export default function AccessibilityPage() {
                 Email: accessibility@worldlynk.com · Phone: +44 20 7946 0912
               </div>
             </div>
-            <Link to="/contact" className="btn-primary" style={{ flexShrink: 0 }}>
-              Contact Accessibility Lead ➔
+            <Link to="/contact" className="btn-primary" style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <span>Contact Accessibility Lead</span>
+              <ArrowRight size={13} />
             </Link>
           </div>
 

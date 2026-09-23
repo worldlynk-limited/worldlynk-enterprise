@@ -227,8 +227,16 @@ export default function HowItWorksPage() {
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>THE 5-STAGE EVENT LIFECYCLE</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Read ➔ Understand ➔ Draft ➔ Approve ➔ Act &amp; Log
+            <h2 className="headline-lg" style={{ marginTop: '4px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+              <span>Read</span>
+              <ArrowRight size={20} color="var(--accent-orange)" />
+              <span>Understand</span>
+              <ArrowRight size={20} color="var(--accent-orange)" />
+              <span>Draft</span>
+              <ArrowRight size={20} color="var(--accent-orange)" />
+              <span>Approve</span>
+              <ArrowRight size={20} color="var(--accent-orange)" />
+              <span>Act &amp; Log</span>
             </h2>
             <p className="section-desc">
               Every single signal—whether an attendance check-in, an LMS quiz submission, or a shift offer—flows through this rigorous, deterministic governance loop.

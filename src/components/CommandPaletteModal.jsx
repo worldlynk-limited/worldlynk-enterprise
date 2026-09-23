@@ -103,7 +103,9 @@ export default function CommandPaletteModal({ isOpen, onClose }) {
                     <div style={{ fontWeight: '600', color: 'var(--ink-primary)' }}>{item.title}</div>
                     <div className="mono-sm" style={{ fontSize: '10px', color: 'var(--ink-muted)' }}>{item.category} · {item.route}</div>
                   </div>
-                  <span className="mono-sm" style={{ fontSize: '11px', color: 'var(--accent-primary)' }}>Open ➔</span>
+                  <span className="mono-sm" style={{ fontSize: '11px', color: 'var(--accent-primary)', display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                    Open <ArrowRight size={11} />
+                  </span>
                 </div>
               );
             })
@@ -111,7 +113,7 @@ export default function CommandPaletteModal({ isOpen, onClose }) {
         </div>
 
         <div className="cmd-footer">
-          <span>Navigate with <kbd>↑</kbd> <kbd>↓</kbd> · Select with <kbd>↵</kbd></span>
+          <span>Navigate with <kbd>Up</kbd> <kbd>Down</kbd> · Select with <kbd>Enter</kbd></span>
           <span>Close with <kbd>ESC</kbd></span>
         </div>
       </div>

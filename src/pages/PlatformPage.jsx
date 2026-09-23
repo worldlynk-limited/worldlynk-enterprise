@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
+const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 
 const STUDENTS = [
   {
@@ -181,15 +182,21 @@ export default function PlatformPage() {
                 <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>12ms Event Bus</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>100% Deterministic Resolution</div>
               </div>
-              <div className="flex gap-sm">
-                <Link to="/how-it-works" className="btn-primary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
-                  <span>Operating Loop</span>
+              <div className="flex flex-col gap-xs">
+                <div className="flex gap-xs">
+                  <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
+                    <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Console</span>
+                    <ExternalLink size={11} color="#ff8833" />
+                  </a>
+                  <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
+                    <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span>
+                    <ExternalLink size={11} color="#38bdf8" />
+                  </a>
+                </div>
+                <Link to="/how-it-works" className="btn-primary btn-sm" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
+                  <span>Explore Operating Loop</span>
                   <ArrowRight size={12} />
                 </Link>
-                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
-                  <span>Compass</span>
-                  <ExternalLink size={12} />
-                </a>
               </div>
             </div>
           </div>

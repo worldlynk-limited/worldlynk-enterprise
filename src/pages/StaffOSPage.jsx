@@ -588,6 +588,30 @@ export default function StaffOSPage() {
         </div>
       </section>
 
+      {/* ── LIVE LAUNCH CALL TO ACTION ──────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '16px', paddingBottom: '64px' }}>
+        <div className="main-container">
+          <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
+            <div>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS OPERATIONS BENCH</div>
+              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Deploy Uniportal Compass for Your Faculty &amp; Registry.</h2>
+              <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
+                Clear peak-period transcript backlogs, monitor UKVI Tier-4 sponsor risk in real-time, and empower tutors with automated evidence synthesis while maintaining human authority.
+              </p>
+            </div>
+            <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
+              <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.85rem 1.6rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <span>Launch Staff Console</span>
+                <ExternalLink size={15} />
+              </a>
+              <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
+                Request Architecture Briefing
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── MODAL: SHA-256 AUDIT LEDGER ───────────────────────────── */}
       {showLedgerModal && (
         <div style={{

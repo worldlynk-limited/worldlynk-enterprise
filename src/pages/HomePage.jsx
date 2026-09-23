@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
+const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 
 const GridOverlay = ({ variant = 'dark' }) => (
   <div className={`wl-grid-overlay wl-grid-overlay--${variant}`}>
@@ -89,10 +90,13 @@ export default function HomePage() {
               <p className="body-lg text-secondary" style={{ marginBottom: '2.5rem', maxWidth: '540px' }}>
                 Unify SITS:Vision, Moodle, dynamic QR attendance, and campus housing into a single deterministic nervous system. Empower leadership with real-time telemetry and automated governance.
               </p>
-              <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
-                <Link to="/demo" className="btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Request Executive Briefing</Link>
-                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Launch Staff Console <ExternalLink size={18} />
+              <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
+                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Request Executive Briefing</Link>
+                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
+                  <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Console</span> <ExternalLink size={15} color="#ff8833" />
+                </a>
+                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
+                  <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span> <ExternalLink size={15} color="#38bdf8" />
                 </a>
               </div>
             </div>
@@ -573,10 +577,13 @@ export default function HomePage() {
                   <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Checklists and visa prep for international students before they arrive.</p>
                 </div>
               </div>
-              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
                 <Link to="/student-os" className="btn-secondary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>
                   Explore Student OS <ArrowRight size={16} />
                 </Link>
+                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                  Launch Student App <ExternalLink size={16} />
+                </a>
               </div>
             </div>
           )}

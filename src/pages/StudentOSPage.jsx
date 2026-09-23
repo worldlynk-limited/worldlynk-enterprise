@@ -817,6 +817,30 @@ export default function StudentOSPage() {
         </div>
       </section>
 
+      {/* ── LIVE LAUNCH CALL TO ACTION ──────────────────────────────── */}
+      <section className="section" style={{ paddingTop: '16px', paddingBottom: '64px' }}>
+        <div className="main-container">
+          <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
+            <div>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>READY FOR DEPLOYMENT</div>
+              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Experience the Sovereign Student Super-App Live.</h2>
+              <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
+                Join thousands of UK students using WorldLynk daily to manage timetable conflicts, avoid 20-hour work cap breaches, and secure verified campus accommodation.
+              </p>
+            </div>
+            <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
+              <a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '0.85rem 1.6rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <span>Launch Student App</span>
+                <ExternalLink size={15} />
+              </a>
+              <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
+                Book Campus Walkthrough
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── MODAL: EXPORT CAS AUDIT DOSSIER ───────────────────────── */}
       {showCertificateModal && (
         <div style={{

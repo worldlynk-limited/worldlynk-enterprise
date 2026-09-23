@@ -57,12 +57,9 @@ export default function GlobalNavbar({ onOpenSearch }) {
       <div className="main-container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         {/* Brand */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
-            <img src="/worldlynk-logo.svg" alt="WorldLynk" style={{ height: '17px', width: 'auto', display: 'block' }} />
-            <span style={{ fontSize: '10px', color: '#ff6b00', background: 'rgba(255, 107, 0, 0.12)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 107, 0, 0.25)', fontFamily: 'var(--font-mono)' }}>
-              ENTERPRISE
-            </span>
-          </Link>
+          <a href="/" className="wl-navbar__logo">
+            WorldLynk
+          </a>
         </div>
 
         {/* Desktop Nav */}

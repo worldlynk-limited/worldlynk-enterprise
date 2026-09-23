@@ -84,7 +84,7 @@ export default function HomePage() {
       <section className="section" style={{ position: 'relative', overflow: 'hidden', paddingTop: '120px' }}>
         <GridOverlay variant="dark" />
         <div className="main-container" style={{ position: 'relative', zIndex: 10 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+          <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
             {/* Left Content */}
             <div>
               <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AUTONOMOUS CAMPUS OPERATING LAYER</div>
@@ -147,7 +147,7 @@ export default function HomePage() {
           </div>
           
           {/* Telemetry bar */}
-          <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
             <div className="mono-sm text-muted">FABRIC_UPTIME: 99.998%</div>
             <div className="mono-sm text-muted">LAST_AUDIT: {new Date().toISOString().split('T')[1].substring(0,8)}Z</div>
             <div className="mono-sm text-muted">PENDING_QUEUES: 0</div>
@@ -167,7 +167,7 @@ export default function HomePage() {
             </p>
           </div>
           
-          <div className="grid-2 gap-lg" style={{ gridTemplateColumns: '1fr 1.5fr' }}>
+          <div className="responsive-grid-cortex">
             {/* Left Sidebar: Agent List */}
             <div className="flex flex-col gap-md">
               <div className="form-group" style={{ marginBottom: '1rem' }}>
@@ -248,10 +248,10 @@ export default function HomePage() {
 
                   <div className="divider" style={{ borderTop: '1px solid #2a2a35', margin: '2rem 0' }}></div>
 
-                  <div className="flex flex-between alignItems-center">
+                  <div className="flex flex-between alignItems-center flex-wrap gap-md">
                     <div>
                       <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DELIVERY CHANNELS</div>
-                      <div className="flex gap-sm">
+                      <div className="flex gap-sm flex-wrap">
                         {selectedAgent.channels.map((c, i) => <span key={i} className="mono-sm" style={{ color: '#e4e4e7' }}>[{c}]</span>)}
                       </div>
                     </div>
@@ -504,40 +504,42 @@ export default function HomePage() {
                   <div className="mono-sm text-muted">COMPASS_STAFF_PORTAL</div>
                 </div>
                 <div className="mockup-body" style={{ backgroundColor: '#0c0c0f', padding: '0' }}>
-                  <table className="queue-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
-                    <thead style={{ backgroundColor: '#131318', borderBottom: '1px solid #2a2a35' }}>
-                      <tr>
-                        <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Student</th>
-                        <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Dept</th>
-                        <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Signal</th>
-                        <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Status</th>
-                        <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr style={{ borderBottom: '1px solid #1a1a24' }}>
-                        <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>James Thorne</div><div className="mono-sm text-muted">ID: 847291</div></td>
-                        <td style={{ padding: '1rem', color: '#e4e4e7' }}>Engineering</td>
-                        <td style={{ padding: '1rem' }}><span className="source-badge source-badge-attendance" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>QR Miss (3x)</span></td>
-                        <td style={{ padding: '1rem' }}><span className="pill pill-held">Held by Arbiter</span></td>
-                        <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: '#2a2a35', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', color: 'white', cursor: 'pointer' }}>Review</button></td>
-                      </tr>
-                      <tr style={{ borderBottom: '1px solid #1a1a24' }}>
-                        <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Sarah Jenkins</div><div className="mono-sm text-muted">ID: 921104</div></td>
-                        <td style={{ padding: '1rem', color: '#e4e4e7' }}>Business</td>
-                        <td style={{ padding: '1rem' }}><span className="source-badge source-badge-lms" style={{ color: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>LMS Inactive (72h)</span></td>
-                        <td style={{ padding: '1rem' }}><span className="pill pill-active">Agent Nudging</span></td>
-                        <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>View Log</button></td>
-                      </tr>
-                      <tr>
-                        <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Aisha Patel</div><div className="mono-sm text-muted">ID: 773829</div></td>
-                        <td style={{ padding: '1rem', color: '#e4e4e7' }}>Law</td>
-                        <td style={{ padding: '1rem' }}><span className="source-badge source-badge-sis" style={{ color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Visa Doc Uploaded</span></td>
-                        <td style={{ padding: '1rem' }}><span className="pill pill-approved">Auto-Verified</span></td>
-                        <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>Audit Trail</button></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="table-scroll-container">
+                    <table className="queue-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
+                      <thead style={{ backgroundColor: '#131318', borderBottom: '1px solid #2a2a35' }}>
+                        <tr>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Student</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Dept</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Signal</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Status</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style={{ borderBottom: '1px solid #1a1a24' }}>
+                          <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>James Thorne</div><div className="mono-sm text-muted">ID: 847291</div></td>
+                          <td style={{ padding: '1rem', color: '#e4e4e7' }}>Engineering</td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-attendance" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>QR Miss (3x)</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-held">Held by Arbiter</span></td>
+                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: '#2a2a35', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', color: 'white', cursor: 'pointer' }}>Review</button></td>
+                        </tr>
+                        <tr style={{ borderBottom: '1px solid #1a1a24' }}>
+                          <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Sarah Jenkins</div><div className="mono-sm text-muted">ID: 921104</div></td>
+                          <td style={{ padding: '1rem', color: '#e4e4e7' }}>Business</td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-lms" style={{ color: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>LMS Inactive (72h)</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-active">Agent Nudging</span></td>
+                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>View Log</button></td>
+                        </tr>
+                        <tr>
+                          <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Aisha Patel</div><div className="mono-sm text-muted">ID: 773829</div></td>
+                          <td style={{ padding: '1rem', color: '#e4e4e7' }}>Law</td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-sis" style={{ color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Visa Doc Uploaded</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-approved">Auto-Verified</span></td>
+                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>Audit Trail</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
               <div style={{ textAlign: 'center', marginTop: '2rem' }}>

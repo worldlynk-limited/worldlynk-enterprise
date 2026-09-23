@@ -238,7 +238,7 @@ export default function SolutionsPage() {
 
           {/* Detailed Sector Spotlight Card */}
           <div className="card-dark mb-3xl" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '40px', alignItems: 'start' }}>
+            <div className="responsive-grid-split">
               
               {/* Left Column: Challenges & Resolution */}
               <div>

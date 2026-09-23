@@ -87,7 +87,7 @@ export default function FoundersPage() {
                 JT
               </div>
               
-              <div style={{ flex: 1, minWidth: '300px' }}>
+              <div style={{ flex: 1, minWidth: '240px' }}>
                 <div className="flex-between flex-wrap gap-xs mb-sm">
                   <div>
                     <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>Jaswanth Thummala</h2>

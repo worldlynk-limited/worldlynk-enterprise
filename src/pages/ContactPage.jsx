@@ -142,7 +142,7 @@ export default function ContactPage() {
           </div>
 
           {/* Two-Column Grid: Form + Office Locations */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '32px', alignItems: 'start' }}>
+          <div className="responsive-grid-split">
             
             {/* Form Column */}
             <div className="card-dark" style={{ padding: '32px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>

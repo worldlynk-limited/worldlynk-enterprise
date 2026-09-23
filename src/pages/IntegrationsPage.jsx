@@ -263,7 +263,7 @@ export default function IntegrationsPage() {
           
           <div className="flex-between flex-wrap gap-md mb-xl" style={{ backgroundColor: '#13131c', padding: '14px 20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
             {/* Search Box */}
-            <div style={{ position: 'relative', width: '300px' }}>
+            <div style={{ position: 'relative', width: '300px', maxWidth: '100%' }}>
               <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="text"

@@ -70,7 +70,7 @@ export default function TermsPage() {
       {/* ── LEGAL DUAL-COLUMN LAYOUT ────────────────────────────── */}
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
         <div className="main-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: '40px', alignItems: 'start' }}>
+          <div className="responsive-grid-legal">
             
             {/* Sticky Sidebar Navigation */}
             <div style={{ position: 'sticky', top: '100px', backgroundColor: '#13131c', padding: '18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>

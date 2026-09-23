@@ -284,7 +284,7 @@ export default function AgentGraphVisualizer() {
         </div>
 
         {/* Student Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
           <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Inspect Subject:</span>
           {Object.keys(STUDENTS_GRAPH_DATA).map(key => {
             const s = STUDENTS_GRAPH_DATA[key];
@@ -316,7 +316,7 @@ export default function AgentGraphVisualizer() {
       </div>
 
       {/* Main Interactive Workspace */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', minHeight: '520px' }}>
+      <div className="responsive-grid-visualizer">
         
         {/* SVG Graph Canvas */}
         <div style={{ position: 'relative', backgroundColor: '#07070b', overflow: 'hidden', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -490,6 +490,7 @@ export default function AgentGraphVisualizer() {
               position: 'absolute',
               bottom: '12px',
               left: '16px',
+              maxWidth: 'calc(100% - 32px)',
               backgroundColor: 'rgba(13, 13, 18, 0.88)',
               backdropFilter: 'blur(8px)',
               padding: '6px 12px',
@@ -505,7 +506,7 @@ export default function AgentGraphVisualizer() {
         </div>
 
         {/* Node Inspector & Office Activation Slider */}
-        <div style={{ padding: '20px', borderLeft: '1px solid rgba(255, 255, 255, 0.08)', backgroundColor: '#0f0f17', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div style={{ padding: '20px', borderLeft: '1px solid rgba(255, 255, 255, 0.08)', borderTop: '1px solid rgba(255, 255, 255, 0.08)', backgroundColor: '#0f0f17', display: 'flex', flexDirection: 'column', gap: '16px' }}>
           
           {/* Node Selected Card */}
           <div>

@@ -309,7 +309,7 @@ export default function HowItWorksPage() {
           </div>
 
           {/* Master Step-by-Step Execution Workbench */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '24px', alignItems: 'start' }}>
+          <div className="responsive-grid-split">
             
             {/* Timeline Stepper */}
             <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>

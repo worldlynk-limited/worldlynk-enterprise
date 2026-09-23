@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import GlobalNavbar from './components/GlobalNavbar';
 import GlobalFooter from './components/GlobalFooter';
 import CommandPaletteModal from './components/CommandPaletteModal';
+import NovaChatWidget from './components/NovaChatWidget';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -87,6 +88,7 @@ export default function App() {
 
       {/* Global Interactive Tools */}
       <CommandPaletteModal isOpen={cmdOpen} onClose={setCmdOpen} />
+      <NovaChatWidget />
     </div>
   );
 }

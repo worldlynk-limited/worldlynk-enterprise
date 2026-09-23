@@ -127,7 +127,7 @@ export default function SecurityPage() {
               </button>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+            <div className="responsive-grid-split-equal">
               {/* Raw View */}
               <div style={{ backgroundColor: '#0d0d14', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
                 <div className="flex-between mb-sm">
@@ -238,6 +238,7 @@ export default function SecurityPage() {
                   fontSize: '11.5px',
                   color: '#ffffff',
                   width: '320px',
+                  maxWidth: '100%',
                   outline: 'none'
                 }}
               />

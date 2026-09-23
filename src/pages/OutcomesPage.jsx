@@ -173,7 +173,7 @@ export default function OutcomesPage() {
           </div>
 
           <div className="card-dark mb-3xl" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '48px', alignItems: 'center' }}>
+            <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
               
               {/* Sliders Input Column */}
               <div className="flex flex-col gap-lg">

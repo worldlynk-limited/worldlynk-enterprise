@@ -163,10 +163,10 @@ export default function StudentOSPage() {
       {/* ── MAIN INTERACTIVE WORKSPACE ─────────────────────────────── */}
       <section className="section" style={{ paddingTop: '40px' }}>
         <div className="main-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '420px 1fr', gap: '32px', alignItems: 'start' }}>
+          <div className="responsive-grid-student-os">
             
             {/* ── LEFT: INTERACTIVE SMARTPHONE WORKSTATION ── */}
-            <div style={{ position: 'sticky', top: '100px' }}>
+            <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
               <div className="flex-between mb-sm">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE LIVE SMARTPHONE</span>
                 <span className="mono-sm text-muted" style={{ fontSize: '11px' }}>Click dock icons to switch screens</span>
@@ -761,7 +761,7 @@ export default function StudentOSPage() {
                   <span className="pill pill-approved"><ShieldCheck size={12} style={{ marginRight: '4px' }} /> HMAC CRYPTOGRAPHICALLY SIGNED</span>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 140px', gap: '20px', alignItems: 'center' }}>
+                <div className="grid-2 gap-md" style={{ alignItems: 'center' }}>
                   <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
                     <div><strong>STUDENT:</strong> Maya Chen (ID: 0091-2847)</div>
                     <div><strong>INSTITUTION:</strong> Royal Holloway, University of London</div>

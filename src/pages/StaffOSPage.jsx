@@ -230,7 +230,7 @@ export default function StaffOSPage() {
           {/* Queue Controls Bar */}
           <div className="flex-between flex-wrap gap-md mb-md" style={{ backgroundColor: '#13131a', padding: '12px 18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
             <div className="flex gap-sm alignItems-center flex-wrap">
-              <div style={{ position: 'relative', width: '260px' }}>
+              <div style={{ position: 'relative', width: '260px', maxWidth: '100%' }}>
                 <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
                 <input
                   type="text"
@@ -251,7 +251,7 @@ export default function StaffOSPage() {
               </div>
 
               {/* Filter Tabs */}
-              <div className="flex gap-xs">
+              <div className="flex gap-xs flex-wrap">
                 {[
                   { id: 'all', label: `All (${allQueue.length})` },
                   { id: 'held', label: `Held for Review (${heldCount})` },
@@ -277,7 +277,7 @@ export default function StaffOSPage() {
               </div>
             </div>
 
-            <div className="flex gap-xs">
+            <div className="flex gap-xs flex-wrap">
               <button
                 onClick={handleBatchApproveHeld}
                 disabled={heldCount === 0}
@@ -299,7 +299,7 @@ export default function StaffOSPage() {
           </div>
 
           {/* Master-Detail Split Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '24px', alignItems: 'start' }}>
+          <div className="responsive-grid-split">
             
             {/* ── LEFT: INTERACTIVE HIGH-DENSITY QUEUE TABLE ── */}
             <div className="card-dark" style={{ padding: '0', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
@@ -436,7 +436,7 @@ export default function StaffOSPage() {
                 {dossierTab === 'overview' && (
                   <div className="flex flex-col gap-md">
                     {/* Key Attributes Grid */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px', backgroundColor: '#0d0d12', padding: '12px', borderRadius: '8px' }}>
+                    <div className="grid-2 gap-sm" style={{ backgroundColor: '#0d0d12', padding: '12px', borderRadius: '8px' }}>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>SITS ID:</strong> {selectedStudent.sitsId}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CAS NUMBER:</strong> {selectedStudent.cas}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CUMULATIVE GPA:</strong> {selectedStudent.gpa}</div>

@@ -133,7 +133,7 @@ export default function StudentOSPage() {
                 One mobile workstation. Zero portal fragmentation.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '720px' }}>
-                International students typically juggle 11 disconnected portals — Moodle, SITS, bank statements, CAS PDFs, and PBSA housing emails. Student OS unifies academic timetables, UKVI 20-hour work tracking, Stripe-verified housing escrows, and pre-departure checklists into a single, responsive smartphone OS.
+                International students typically juggle 11 disconnected portals — Moodle, SITS, bank statements, CAS PDFs, and PBSA housing emails. Student OS unifies academic timetables, UKVI 20-hour work tracking, Stripe-verified housing escrows, and pre-departure checklists into a single, responsive smartphone OS powered by <strong>Nova AI</strong>, connecting seamlessly into your university's <strong>Compass</strong> portal.
               </p>
             </div>
 

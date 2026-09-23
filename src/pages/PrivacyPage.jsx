@@ -147,7 +147,7 @@ export default function PrivacyPage() {
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 04</span>
                 <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>4. Cryptographic PII Tokenization</h2>
                 <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
-                  Raw student PII never exits the university's virtual private cloud boundary. Student names, passport numbers, and contact details are tokenized into cryptographic HMAC hashes before prompt submission to the Mastra Cortex. Full student re-identification occurs strictly in-memory inside the authenticated staff terminal.
+                  Raw student PII never exits the university's virtual private cloud boundary. Student names, passport numbers, and contact details are tokenized into cryptographic HMAC hashes before prompt submission to the Nova AI Engine. Full student re-identification occurs strictly in-memory inside the authenticated Compass staff terminal.
                 </p>
               </section>
 

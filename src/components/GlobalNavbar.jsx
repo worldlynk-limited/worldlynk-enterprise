@@ -53,12 +53,12 @@ export default function GlobalNavbar({ onOpenSearch }) {
             </span>
           </Link>
 
-          <div style={{ height: '14px', width: '1px', background: 'rgba(255, 255, 255, 0.12)' }} />
+          {/* <div style={{ height: '14px', width: '1px', background: 'rgba(255, 255, 255, 0.12)' }} />
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', color: '#9494a0', fontFamily: 'var(--font-mono)' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', display: 'inline-block', boxShadow: '0 0 8px #10b981' }} />
             <span>LON-01 · CLUSTER NORMAL</span>
-          </div>
+          </div> */}
         </div>
 
         {/* Desktop Nav */}
@@ -104,23 +104,27 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 }}
               >
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
-                  ARCHITECTURE
+                  CAMPUS ARCHITECTURE
                 </div>
                 <Link to="/platform" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Platform Overview</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Living Agent Graph & 4 core layers</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Living Agent Graph &amp; 4 core layers</div>
+                </Link>
+                <Link to="/platform#nova" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Nova AI Infrastructure</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>30 Agents, 12 DAGs &amp; Realtime Voice</div>
                 </Link>
                 <Link to="/how-it-works" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Event Continuous Loop</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Deterministic cascade & multi-system sync</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Deterministic cascade &amp; multi-system sync</div>
                 </Link>
                 <Link to="/integrations" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Connectors Matrix</div>
                   <div style={{ fontSize: '11px', color: '#9494a0' }}>SITS, Banner, Moodle, Stripe, Wires</div>
                 </Link>
                 <Link to="/security" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Security & Governance</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>FERPA, UK GDPR & cryptographic ledger</div>
+                  <div style={{ fontWeight: '500' }}>Security &amp; Governance</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>FERPA, UK GDPR &amp; cryptographic ledger</div>
                 </Link>
               </div>
             )}
@@ -135,7 +139,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               textDecoration: 'none'
             }}
           >
-            Staff OS
+            Compass Portal
           </Link>
 
           <Link
@@ -346,7 +350,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               gap: '4px'
             }}
           >
-            <span>Staff Console</span>
+            <span>Compass Portal</span>
             <ExternalLink size={10} color="#0c0c0f" />
           </a>
         </div>

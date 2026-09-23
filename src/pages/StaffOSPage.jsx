@@ -153,13 +153,13 @@ export default function StaffOSPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                STAFF OS // UNIPORTAL COMPASS OPERATIONS BENCH
+                COMPASS // UNIVERSITY OPERATIONS &amp; GOVERNANCE PORTAL
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
                 High-throughput campus operations. Consequential decisions held for staff review.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Compass turns disjointed registrar, tutoring, and compliance emails into an unified operational queue. 22 Mastra agents monitor continuous telemetry, cross-reference institutional regulations, and assemble evidence briefs. Crucially, the Arbiter gate guarantees no consequential change occurs without named human authority.
+                Compass turns disjointed registrar, tutoring, and compliance emails into an unified operational queue. 30 Nova AI specialist agents monitor continuous campus telemetry, cross-reference institutional regulations, and assemble evidence briefs. Crucially, the Arbiter gate guarantees no consequential change occurs without named human authority.
               </p>
             </div>
 
@@ -176,7 +176,7 @@ export default function StaffOSPage() {
                 className="btn-primary btn-sm"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
               >
-                <span>Launch Live Terminal</span>
+                <span>Launch Compass Portal</span>
                 <ExternalLink size={13} />
               </a>
             </div>
@@ -453,7 +453,7 @@ export default function StaffOSPage() {
                         {selectedStudent.notes}
                       </p>
                       <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9.5px' }}>
-                        Source: {selectedStudent.evidence} · Verified by Cortex Risk Engine
+                        Source: {selectedStudent.evidence} · Verified by Nova AI Risk Engine
                       </div>
                     </div>
 
@@ -594,14 +594,14 @@ export default function StaffOSPage() {
           <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS OPERATIONS BENCH</div>
-              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Deploy Uniportal Compass for Your Faculty &amp; Registry.</h2>
+              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Deploy Compass for Your Faculty &amp; Registry.</h2>
               <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
                 Clear peak-period transcript backlogs, monitor UKVI Tier-4 sponsor risk in real-time, and empower tutors with automated evidence synthesis while maintaining human authority.
               </p>
             </div>
             <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
               <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.85rem 1.6rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <span>Launch Staff Console</span>
+                <span>Launch Compass Portal</span>
                 <ExternalLink size={15} />
               </a>
               <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>

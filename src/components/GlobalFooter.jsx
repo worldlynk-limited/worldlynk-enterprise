@@ -33,12 +33,12 @@ export default function GlobalFooter() {
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Campus OS</h3>
             <ul className="wl-footer__list">
-              <li><Link to="/platform">Agentic Campus Graph</Link></li>
-              <li><Link to="/staff-os">Staff OS Console</Link></li>
+              <li><Link to="/platform#nova">Nova AI Infrastructure</Link></li>
+              <li><Link to="/staff-os">Compass Operations Console</Link></li>
               <li><Link to="/student-os">Student Mobile Super-App</Link></li>
               <li><Link to="/how-it-works">Continuous Event Engine</Link></li>
               <li><a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer">WorldLynk Student Portal ↗</a></li>
-              <li><a href="https://uniportal-uq1p.onrender.com" target="_blank" rel="noopener noreferrer">Uniportal Staff Console ↗</a></li>
+              <li><a href="https://uniportal-uq1p.onrender.com" target="_blank" rel="noopener noreferrer">Compass University Portal ↗</a></li>
             </ul>
           </div>
           

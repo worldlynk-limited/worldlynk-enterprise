@@ -75,7 +75,7 @@ const CASE_STUDIES = [
     institution: 'Ancient Scottish University',
     cohort: '14,500 Students · Edinburgh',
     challenge: 'A 6-week registrar backlog during international credential evaluations (NARIC equivalents) leading to delayed CAS issuance and summer melt.',
-    solution: 'Cortex Mastra agents deployed to pre-evaluate transcripts, calculate GPA equivalents, and verify 28-day maintenance funds for registrar seal.',
+    solution: 'Nova AI Mastra agents deployed to pre-evaluate transcripts, calculate GPA equivalents, and verify 28-day maintenance funds for registrar seal on Compass.',
     results: [
       'CAS issuance turnaround reduced from 14 business days to under 4 hours.',
       '68% reduction in routine manual enrollment and prerequisite override tickets.',

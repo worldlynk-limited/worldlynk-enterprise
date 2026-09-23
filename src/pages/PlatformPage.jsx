@@ -98,34 +98,34 @@ const LAYERS = [
     desc: 'A unified operational data plane that maps every student, course, lecture hall, Tier-4 CAS record, and PBSA housing contract into a connected, real-time relational model with zero schema alteration on legacy databases.',
     benchmarks: '18ms Data Plane Queries · 100% Deterministic Resolution · Strict Multi-Tenancy',
     features: [
-      'Single canonical users/{uid} identity stitched across Uniportal backend and WorldLynk student apps.',
+      'Single canonical users/{uid} identity stitched across Compass university portal and WorldLynk student apps.',
       'UKVI Tier-4 work margin monitor: real-time term-time employment tracking against 20h cap.',
       'Degree prerequisite topology mapping for automated module exception checks.',
       'Per-tenant cryptographic database partitioning and Firestore security rules scoped by universityId.'
     ]
   },
   {
-    id: 'cortex',
+    id: 'nova',
     num: '03',
-    name: 'Cortex // Autonomous Multi-Agent Brain',
-    tag: '30-AGENT MASTRA ORCHESTRATION',
-    tech: 'Mastra Engine · 12 Deterministic DAG Workflows · LibSQL Vector Memory · Tool Calling Envelopes',
-    desc: 'The autonomous cognitive engine of the modern campus. 30 specialized Mastra agents operating under a central Supervisor agent to evaluate signals, draft CAS summaries, recommend housing, and prepare interventions.',
-    benchmarks: '250ms Tokenized Inference · 12 Deterministic DAG Workflows · Zero PII Leakage',
+    name: 'Nova // Autonomous AI Infrastructure & Multi-Agent Engine',
+    tag: 'NOVA AI INFRASTRUCTURE · 30 AGENTS · 12 WORKFLOWS · REALTIME VOICE',
+    tech: 'Nova AI Engine (Mastra) · 30 Specialist Agents · 12 Deterministic DAGs · OpenAI Realtime WebRTC · LibSQL Vector Store',
+    desc: 'The autonomous multi-agent brain of higher education. 30 specialized Mastra agents operating under a central Nova Supervisor agent to evaluate signals, draft CAS summaries, calculate UKVI work margins, and prepare evidence briefs.',
+    benchmarks: '180ms Tokenized Inference · 12 Deterministic DAG Workflows · Zero PII Leakage',
     features: [
-      'Central Supervisor Agent orchestrates sub-agents including Accommodation, JobMatch, Moodle, and CVAnalysis.',
+      'Central worldlynk-supervisor-agent orchestrates sub-agents including Accommodation, JobMatch, Moodle, and CVAnalysis.',
       '12 deterministic DAG workflows for student onboarding, visa checks, accommodation matching, and journey gaps.',
       'Cryptographic PII tokenization envelope strips student identities before external LLM prompts.',
-      'Native multi-channel adapters for WhatsApp Business (Baileys WebSocket) and Telegram Bot API.'
+      'Native multi-channel adapters for WhatsApp Business (Baileys WebSocket), Telegram Bot, and Apple iMessage.'
     ]
   },
   {
     id: 'arbiter',
     num: '04',
-    name: 'Arbiter // Consequential Governance Gate',
+    name: 'Arbiter // Consequential Governance Gate on Compass',
     tag: 'HUMAN AUTHORITY AS CODE',
-    tech: 'Deterministic Policy Engine · SHA-256 Event Signatures · Role-Based Access · Immutable Audit Lineage',
-    desc: 'The governance compass of the autonomous university. Enforces the golden rule: AI agents prepare, named university staff decide. Consequential academic, visa, or financial actions cannot auto-commit.',
+    tech: 'Compass Portal Engine · Deterministic Policy Engine · SHA-256 Signatures · Immutable Audit Lineage',
+    desc: 'The governance engine of the Compass portal. Enforces the golden rule: Nova AI agents prepare, named university staff decide. Consequential academic, visa, or financial actions cannot auto-commit.',
     benchmarks: '5ms Rule Evaluation · 100% Audit Lineage · Tamper-Evident SHA-256 Signatures',
     features: [
       'Held-state interception halts any action that alters grades, visas, or financial status.',
@@ -413,6 +413,158 @@ export default function PlatformPage() {
                   {payloadView === 'stripe' && JSON.stringify(student.stripePayload, null, 2)}
                   {payloadView === 'attendance' && JSON.stringify(student.attendancePayload, null, 2)}
                 </pre>
+              </div>
+            </div>
+          </div>
+
+          {/* ── DEDICATED NOVA AI INFRASTRUCTURE SPECIFICATION ─────── */}
+          <div id="nova" className="mb-3xl" style={{ scrollMarginTop: '100px' }}>
+            <div className="section-header-left mb-xl">
+              <div className="flex gap-xs alignItems-center mb-xs">
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>NOVA AI INFRASTRUCTURE // THE AUTONOMOUS CAMPUS ENGINE</span>
+                <span className="pill pill-approved" style={{ fontSize: '9px' }}>MASTRA RUNTIME · GPT-4O</span>
+              </div>
+              <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+                Nova: 30 Specialized Agents. 12 Deterministic DAGs. Realtime Voice.
+              </h2>
+              <p className="section-desc">
+                Nova is the autonomous AI infrastructure powering both the WorldLynk student ecosystem and the Compass institutional console. Built on the Mastra TypeScript framework, Nova combines LLM-driven multi-agent reasoning with auditable, non-stochastic workflow pipelines.
+              </p>
+            </div>
+
+            {/* Quick Specs Ribbon */}
+            <div className="grid-4 gap-md mb-xl">
+              <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(255,107,0,0.3)', backgroundColor: 'rgba(255,107,0,0.04)', borderRadius: '12px' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>SWARM SCALE</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>30 Agents</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Domain-specialized Mastra agents</div>
+              </div>
+              <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(56,189,248,0.3)', backgroundColor: 'rgba(56,189,248,0.04)', borderRadius: '12px' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>DETERMINISTIC PIPELINES</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>12 Workflows</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Zero-hallucination DAG state machines</div>
+              </div>
+              <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(16,185,129,0.3)', backgroundColor: 'rgba(16,185,129,0.04)', borderRadius: '12px' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VOICE LATENCY</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>&lt; 180ms</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>WebRTC session token minting</div>
+              </div>
+              <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(192,132,252,0.3)', backgroundColor: 'rgba(192,132,252,0.04)', borderRadius: '12px' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>OMNI-CHANNEL SURFACES</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>5 Surfaces</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Web · WhatsApp · Telegram · iMessage · MCP</div>
+              </div>
+            </div>
+
+            {/* 4 Architectural Pillars of Nova */}
+            <div className="grid-2 gap-lg mb-xl">
+              {/* Card 1: Supervisor & Agent Topology */}
+              <div className="card-dark" style={{ padding: '28px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+                <div className="flex gap-sm alignItems-center mb-sm">
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(255,107,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-orange)' }}>
+                    <Bot size={20} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Supervisor Orchestrator &amp; Context Isolation</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>worldlynk-supervisor-agent · Mastra Engine</div>
+                  </div>
+                </div>
+                <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                  The central supervisor parses natural-language user intent, binds request context, and isolates identity by injecting verified Firebase UIDs (<code style={{ color: 'var(--accent-cyan)' }}>[USER_ID: &lt;uid&gt;]</code>). Sub-agents operate strictly on authenticated records.
+                </p>
+                <div className="flex flex-col gap-xs">
+                  <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
+                    <strong>Admissions &amp; Academics:</strong> <span className="text-secondary">universityRecommender · consultantCopilot · moodle</span>
+                  </div>
+                  <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
+                    <strong>Careers &amp; Compliance:</strong> <span className="text-secondary">jobMatch · cvAnalysis · tailoredResume · interviewPrep</span>
+                  </div>
+                  <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
+                    <strong>Living &amp; Community:</strong> <span className="text-secondary">accommodation · cafeRestaurant · planYourDay · eventMatch</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 2: 12 Deterministic DAG Workflows */}
+              <div className="card-dark" style={{ padding: '28px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+                <div className="flex gap-sm alignItems-center mb-sm">
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(56,189,248,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-cyan)' }}>
+                    <GitBranch size={20} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>12 Deterministic Mastra Workflows (DAGs)</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Zero-Hallucination Pipeline Guarantees</div>
+                  </div>
+                </div>
+                <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                  High-stakes university rules cannot be left to probabilistic next-token generation. Critical sequences execute through compiled directed acyclic graphs with strictly typed inputs, branch validation, and immutable logging.
+                </p>
+                <div className="grid-2 gap-xs">
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>student-onboarding</code>
+                  </div>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>accommodation-match</code>
+                  </div>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>job-match-workflow</code>
+                  </div>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>cv-analysis-workflow</code>
+                  </div>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>tailored-resume-workflow</code>
+                  </div>
+                  <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)' }}>
+                    ✓ <code>interview-prep-workflow</code>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Nova Voice AI Engine */}
+              <div className="card-dark" style={{ padding: '28px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+                <div className="flex gap-sm alignItems-center mb-sm">
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(16,185,129,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-emerald)' }}>
+                    <Mic size={20} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Nova Realtime Voice AI</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>OpenAI Realtime WebRTC · Whisper STT · Neural TTS</div>
+                  </div>
+                </div>
+                <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                  Direct, ultra-low-latency voice streaming. The serverless gateway mints ephemeral WebRTC session tokens (<code style={{ color: 'var(--accent-emerald)' }}>voice-realtime-session.js</code>) allowing students to practice mock interviews and consult Nova with natural spoken dialogue.
+                </p>
+                <div style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                  <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
+                    <div><strong>AUDIO PROTOCOL:</strong> <span style={{ color: '#ffffff' }}>WebRTC direct peer connection (sub-200ms)</span></div>
+                    <div><strong>TRANSCRIPTION:</strong> <span style={{ color: '#ffffff' }}>OpenAI Whisper high-accuracy stream</span></div>
+                    <div><strong>SYNTHESIS:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Neural adaptive conversational speech</span></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 4: Omni-Channel Bridges & Standard MCP */}
+              <div className="card-dark" style={{ padding: '28px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+                <div className="flex gap-sm alignItems-center mb-sm">
+                  <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: 'rgba(192,132,252,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)' }}>
+                    <Radio size={20} />
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Omni-Channel Bridges &amp; Standard MCP Server</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>WhatsApp · Telegram · iMessage · Model Context Protocol</div>
+                  </div>
+                </div>
+                <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                  Nova meets students where they already live. Stateless messaging adapters connect via 6-digit OTP pairing. Developers and external tools interface directly through Nova's standard Model Context Protocol (MCP) server over JSON-RPC.
+                </p>
+                <div style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                  <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
+                    <div><strong>MESSAGING GATEWAYS:</strong> <span style={{ color: '#ffffff' }}>WhatsApp (Baileys) · Telegram (@chat-adapter) · iMessage</span></div>
+                    <div><strong>SECURITY CHALLENGE:</strong> <span style={{ color: 'var(--accent-purple)' }}>6-digit OTP + verified .ac.uk university email whitelist</span></div>
+                    <div><strong>MCP SERVER:</strong> <span style={{ color: '#ffffff' }}>worldlynkMCPServer (StdIO / JSON-RPC)</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

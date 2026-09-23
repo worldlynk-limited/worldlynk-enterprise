@@ -22,12 +22,12 @@ const ROLES = [
   {
     id: 'lead-multi-agent',
     title: 'Lead Multi-Agent Systems Engineer',
-    dept: 'Cortex & Mastra',
+    dept: 'Nova AI & Multi-Agent',
     location: 'London, UK / Remote',
     type: 'Full-time',
     salary: '£110,000 - £140,000 + Equity',
     visa: 'UK Skilled Worker Visa Sponsorship Available',
-    desc: 'Scale our 30-agent Mastra graph orchestration and 12 deterministic DAG workflows. Build deterministic delegation pipelines, tool limiters, and cryptographic PII anonymization envelopes for millions of student interactions.',
+    desc: 'Scale our 30-agent Nova Mastra graph orchestration and 12 deterministic DAG workflows. Build deterministic delegation pipelines, tool limiters, and cryptographic PII anonymization envelopes for millions of student interactions.',
     requirements: [
       '5+ years experience in distributed systems and Node.js/TypeScript or Python.',
       'Deep architectural knowledge of LLM tool calling, vector databases, and multi-agent coordination.',
@@ -170,7 +170,7 @@ export default function CareersPage() {
         <div className="main-container">
           
           <div className="flex gap-xs mb-xl flex-wrap">
-            {['All', 'Cortex & Mastra', 'Fabric & Data', 'Design & Ops', 'Compliance & Governance'].map((dept) => (
+            {['All', 'Nova AI & Multi-Agent', 'Fabric & Data', 'Design & Ops', 'Compliance & Governance'].map((dept) => (
               <button
                 key={dept}
                 onClick={() => setSelectedDept(dept)}

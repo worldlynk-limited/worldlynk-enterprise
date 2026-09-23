@@ -262,7 +262,7 @@ export default function DemoPage() {
                     </div>
 
                     <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '8px' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>CORTEX PRE-DRAFTED ACTION</div>
+                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>NOVA PRE-DRAFTED ACTION (MASTRA)</div>
                       <div style={{ fontSize: '12px', color: '#ffffff', marginTop: '2px', lineHeight: 1.4 }}>
                         "Makeup Lab reserved for Thursday 14:00 (EB-04). WhatsApp wellness nudge prepared for student."
                       </div>

@@ -46,27 +46,27 @@ const SCENARIOS = [
       },
       {
         time: '09:12:07',
-        office: 'Supervisor Agent (Cortex)',
+        office: 'Nova Supervisor Agent (worldlynk-bot)',
         action: 'Workload Cross-Reference & Risk Assessment',
-        desc: 'Cross-referencing campus barista rota reveals a 16h shift schedule. Cortex assesses fatigue-induced dropout risk at 78%.',
-        actor: 'supervisor.ts & planYourDayAgent',
+        desc: 'Cross-referencing campus barista rota reveals a 16h shift schedule. Nova assesses fatigue-induced dropout risk at 78%.',
+        actor: 'worldlynk-supervisor-agent & planYourDayAgent',
         status: 'EVALUATED',
-        payload: { "agent": "supervisor_cortex", "risk_score": 0.78, "fatigue_index": "high", "work_hours": 16.0, "ukvi_cap": 20.0 }
+        payload: { "agent": "worldlynk-supervisor-agent", "runtime": "nova_mastra_v4", "risk_score": 0.78, "fatigue_index": "high", "work_hours": 16.0, "ukvi_cap": 20.0 }
       },
       {
         time: '09:12:08',
-        office: 'Arbiter Governance Gate',
+        office: 'Compass Arbiter Governance Gate',
         action: 'Consequential Gate Interception',
-        desc: 'Direct automated academic warning blocked. Consequential policy #74 holds intervention for human approval by Senior Tutor Dr. Jenkins.',
-        actor: 'Arbiter Policy Engine',
+        desc: 'Direct automated academic warning blocked. Consequential policy #74 holds intervention for human approval by Senior Tutor Dr. Jenkins on Compass.',
+        actor: 'Compass Arbiter Policy Engine',
         status: 'HELD FOR REVIEW',
         payload: { "gate": "consequential_hold", "rule": "pol_74_attendance", "target_approver": "Dr. R. Jenkins", "action": "makeup_lab_offer" }
       },
       {
         time: '09:14:22',
-        office: 'Senior Tutor & SITS:Vision',
+        office: 'Senior Tutor on Compass & SITS:Vision',
         action: 'One-Click Staff Approval & Cryptographic Seal',
-        desc: 'Dr. Jenkins approves makeup lab slot. WhatsApp dispatch sent to student; SITS updated with immutable SHA-256 hash.',
+        desc: 'Dr. Jenkins reviews Nova brief on Compass and approves makeup lab slot. WhatsApp dispatch sent to student; SITS updated with immutable SHA-256 hash.',
         actor: 'Dr. Jenkins & SITS Sync Engine',
         status: 'SEALED & WRITTEN',
         payload: { "approval": "confirmed", "approver": "Dr. R. Jenkins", "sits_sync": "success", "hash": "sha256:8b4f...d1a9" }

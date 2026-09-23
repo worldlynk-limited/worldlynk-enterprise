@@ -31,8 +31,8 @@ const TIMELINE = [
   {
     year: '2025',
     phase: 'The Architecture',
-    title: 'Mastra Cortex & The Arbiter Gate',
-    desc: 'Formalized the 30-agent Mastra swarm topology governed by the Arbiter consequential gate, proving that autonomous AI can assemble evidence while named human staff retain absolute institutional authority.'
+    title: 'Nova AI Engine & The Arbiter Gate',
+    desc: 'Formalized the 30-agent Nova multi-agent swarm governed by the Arbiter consequential gate, proving that autonomous AI can assemble evidence while named human staff retain absolute institutional authority on Compass.'
   },
   {
     year: '2026',

@@ -40,35 +40,37 @@ export default function HomePage() {
   // --- Data structures ---
 
   const agents = [
-    { id: 'supervisor', name: 'Supervisor Agent', role: 'Governance & Routing', desc: 'The orchestrator that oversees all sub-agents, enforcing institutional policy and tier-4 compliance thresholds before executing multi-system updates.', channels: ['Fabric Event Bus'], read: ['All Agent Outputs', 'Risk Models'], action: ['SITS Commit', 'Tutor Escalation'], owner: 'Registry & Compliance', icon: ShieldCheck },
-    { id: 'jobMatch', name: 'Career Matcher', role: 'Placement Engine', desc: 'Deterministically matches student skills with employer requirements using LLM-backed embedding spaces, syncing directly with the university career portal.', channels: ['Web', 'App'], read: ['Student CV', 'Employer DB'], action: ['Job Referral'], owner: 'Careers Service', icon: Users },
-    { id: 'accommodation', name: 'Housing Allocator', role: 'Resource Optimizer', desc: 'Manages dynamic housing queues, swap requests, and maintenance logging across all campus residential halls.', channels: ['App', 'WhatsApp'], read: ['Housing Roster', 'Maintenance Log'], action: ['Room Allocation', 'Ticket Creation'], owner: 'Estate Management', icon: Building },
-    { id: 'eventMatch', name: 'Event Curator', role: 'Engagement Specialist', desc: 'Analyzes student interests and past attendance to recommend society events and academic workshops, driving campus engagement.', channels: ['App', 'Telegram'], read: ['Student Profile', 'Union Events'], action: ['Event RSVP', 'Calendar Sync'], owner: 'Student Union', icon: Calendar },
-    { id: 'planYourDay', name: 'Daily Scheduler', role: 'Time Optimizer', desc: 'Combines academic timetables, part-time work shifts, and study goals into an optimal daily itinerary for the student.', channels: ['App'], read: ['Moodle Calendar', 'Work Schedule'], action: ['Timeline Generation'], owner: 'Academic Support', icon: Clock },
-    { id: 'universityRecommender', name: 'Pathway Guide', role: 'Pre-Arrival Advisor', desc: 'Assists prospective students in selecting courses and understanding entry requirements before they even enroll.', channels: ['Web'], read: ['Course Catalog', 'Entry Criteria'], action: ['Lead Generation'], owner: 'Admissions', icon: Globe },
-    { id: 'knowledgeChecklist', name: 'Audit Tracker', role: 'Compliance Monitor', desc: 'Continuously audits student files for required documentation (visas, health records, disclosures) to maintain UKVI compliance.', channels: ['Background'], read: ['Student Records', 'UKVI Rules'], action: ['Flag Non-Compliance'], owner: 'Registry', icon: FileText },
-    { id: 'cvAnalysis', name: 'CV Parser', role: 'Data Extraction', desc: 'Extracts structured skills, experiences, and education history from uploaded student CVs into the graph database.', channels: ['Web', 'App'], read: ['PDF/Word CVs'], action: ['Graph DB Update'], owner: 'Careers Service', icon: Database },
+    { id: 'supervisor', name: 'worldlynk-supervisor-agent', role: 'Nova Master Orchestrator', desc: 'Central intent router & context binder. Injects authenticated UID, enforces institutional boundaries, evaluates risk, and orchestrates 29 sub-agents.', channels: ['Fabric Event Bus', 'Omnichannel Gateway'], read: ['Student Records', 'LibSQL Memory', 'Moodle Signals'], action: ['SITS Commit Staging', 'Tutor Escalation'], owner: 'Registry & Compliance', icon: ShieldCheck },
+    { id: 'tailoredResume', name: 'worldlynk-tailored-resume-agent', role: 'Career & ATS Optimization', desc: 'Rewrites student CVs aligned to specific UK graduate schemes and visa-compliant vacancies using deterministic 3-step DAG execution.', channels: ['Student App', 'Web'], read: ['Student CV', 'Target Job Description'], action: ['Optimized CV Generation', 'ATS Scorecard'], owner: 'Careers Service', icon: FileText },
+    { id: 'accommodation', name: 'worldlynk-accommodation-agent', role: 'PBSA Housing Allocator', desc: 'Conversational housing match with verified tenancy escrows, room inventory check, and 51-week lease contract lock via Stripe Connect.', channels: ['Student App', 'WhatsApp'], read: ['PBSA Hall Roster', 'Maintenance Database'], action: ['Room Allocation', 'Stripe Escrow Lock'], owner: 'Estate Management', icon: Building },
+    { id: 'moodle', name: 'worldlynk-moodle-agent', role: 'Academic LMS Synchronizer', desc: 'Queries enrolled courses, assignment schedules, lecture timetables, and campus LMS FAQs with zero schema modification to on-prem databases.', channels: ['Student App', 'Web'], read: ['Moodle REST API', 'Course Catalog'], action: ['Timetable Sync', 'Assignment Alert'], owner: 'Faculty Administration', icon: Cpu },
+    { id: 'interviewPrep', name: 'worldlynk-interview-prep-agent', role: 'AI Mock Interview Coach', desc: 'Generates role-specific behavioral, technical, and situational mock packs with real-time audio playback using Nova Voice AI streaming.', channels: ['Student App', 'Voice API'], read: ['Job Context', 'Student Profile'], action: ['Mock Pack Composition', 'Audio Streaming'], owner: 'Careers Service', icon: Bot },
+    { id: 'jobMatch', name: 'worldlynk-job-match-agent', role: 'Tier-4 Work Cap Shield', desc: 'Algolia-indexed job discovery enforcing the strict UKVI 20-hour weekly term-time ceiling before applications can be lodged.', channels: ['Student App', 'Telegram'], read: ['Weekly Rota Log', 'Algolia Job DB'], action: ['Work Cap Verification', 'Job Application'], owner: 'UKVI Compliance', icon: Users },
+    { id: 'eventMatch', name: 'worldlynk-event-match-agent', role: 'Campus Engagement Curator', desc: 'Matches students to verified academic symposiums and society events; sends calendar invites and manages QR live gate check-in tickets.', channels: ['Student App', 'Telegram'], read: ['Student Interests', 'Union Events DB'], action: ['Calendar Invite', 'QR Ticket Minting'], owner: 'Student Union', icon: Calendar },
+    { id: 'planYourDay', name: 'worldlynk-plan-your-day-agent', role: 'Itinerary & Route Engine', desc: 'Assembles dynamic daily itineraries combining lecture slots, transit routes, and study sessions with shareable public URLs.', channels: ['Student App', 'Reliv'], read: ['Campus Timetable', 'Google Maps API'], action: ['Itinerary Compilation', 'Public Slug Minting'], owner: 'Academic Support', icon: Clock },
+    { id: 'searchAgent', name: 'worldlynk-search-agent', role: 'Live Immigration & Web Research', desc: 'Conducts real-time live web research via Exa Search API for up-to-date Home Office UKVI policy guidance and currency exchange updates.', channels: ['Nova Copilot', 'MCP Server'], read: ['Exa Web Index', 'UKVI Gazettes'], action: ['Live Citation Dossier'], owner: 'Immigration Services', icon: Globe },
+    { id: 'consultantCopilot', name: 'worldlynk-consultant-copilot', role: 'Admissions Caseload Manager', desc: 'Manages CAS document preparation timelines, international credential translation, and student-advisor collaboration queues.', channels: ['Compass Console', 'Web'], read: ['CAS Checklist', 'NARIC DB'], action: ['CAS Brief Generation', 'Advisor Alert'], owner: 'International Admissions', icon: Database }
   ];
 
   const filteredAgents = agents.filter(a => a.name.toLowerCase().includes(agentSearch.toLowerCase()) || a.role.toLowerCase().includes(agentSearch.toLowerCase()));
-  const selectedAgent = agents.find(a => a.id === selectedAgentId);
+  const selectedAgent = agents.find(a => a.id === selectedAgentId) || agents[0];
 
   const cascadeSteps = [
-    { id: 0, title: 'Ingest (Dynamic QR)', time: '09:12:04', loc: 'Classroom EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'A dynamically rotating QR code for lecture attendance expires. Maya Chen fails to register attendance for the 3rd consecutive seminar.', ledger: '{"event_type": "attendance_miss", "student_id": "84729", "location": "EB-02", "timestamp": "2024-10-12T09:12:04Z", "signature": "hmac_sha256:7f8b...88e1"}' },
-    { id: 1, title: 'Fabric Sync (LMS)', time: '09:12:05', loc: 'Moodle Gateway', status: 'SYNCED', pillClass: 'pill-active', narrative: 'The event bus pulls contextual data from Moodle LMS, revealing 114 hours of inactivity on coursework modules for the same module.', ledger: '{"action": "data_fetch", "source": "moodle_lms", "query": "course_activity", "result": {"inactivity_hrs": 114, "last_login": "2024-10-07T14:22:00Z"}, "status": "success"}' },
-    { id: 2, title: 'Cortex Eval (Risk Model)', time: '09:12:07', loc: 'Supervisor Agent', status: 'EVALUATED', pillClass: 'pill-active', narrative: 'The Supervisor Agent ingests the attendance flag and LMS inactivity. Cross-referencing her work profile, it notes a 16-hour weekend barista shift. Burnout probability assessed at 87%.', ledger: '{"agent": "supervisor_01", "model": "burnout_risk_v3", "inputs": ["attendance_miss_3", "lms_inactive_114h", "work_shift_16h"], "output": {"risk_score": 0.87, "reason": "fatigue_indicator"}}' },
-    { id: 3, title: 'Arbiter Gate (Governance)', time: '09:12:08', loc: 'Arbiter', status: 'HELD', pillClass: 'pill-held', narrative: 'Tier-4 UKVI compliance threshold breached. Autonomous remediation is HELD. Policy dictates human-in-the-loop approval by Senior Tutor for visa-sponsored students.', ledger: '{"governance_check": "tier_4_policy", "rule_id": "pol_742", "action_required": "human_approval", "assigned_to": "tutor_jenkins", "state": "pending"}' },
-    { id: 4, title: 'Audit Seal & Execution', time: '09:14:22', loc: 'Senior Tutor & SITS', status: 'SEALED', pillClass: 'pill-approved', narrative: 'Dr. Jenkins reviews the summarized context via Compass OS and approves a wellbeing intervention. SITS:Vision is updated with an immutable SHA-256 audit log.', ledger: '{"approval": "granted", "approver": "tutor_jenkins", "timestamp": "2024-10-12T09:14:22Z", "downstream_sync": ["sits_vision", "wellbeing_crm"], "hash": "sha256:8b4f...d1a9"}' }
+    { id: 0, title: 'Ingest (Dynamic QR)', time: '09:12:04', loc: 'Classroom EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'A dynamically rotating QR code for lecture attendance expires. Maya Chen fails to register attendance for the 3rd consecutive seminar.', ledger: '{"event_type": "attendance_miss", "student_id": "84729", "location": "EB-02", "timestamp": "2026-09-23T09:12:04Z", "signature": "hmac_sha256:7f8b...88e1"}' },
+    { id: 1, title: 'Fabric Sync (LMS)', time: '09:12:05', loc: 'Moodle Gateway', status: 'SYNCED', pillClass: 'pill-active', narrative: 'The event bus pulls contextual data from Moodle LMS, revealing 114 hours of inactivity on coursework modules for the same module.', ledger: '{"action": "data_fetch", "source": "moodle_lms", "query": "course_activity", "result": {"inactivity_hrs": 114, "last_login": "2026-09-17T14:22:00Z"}, "status": "success"}' },
+    { id: 2, title: 'Nova AI Eval (Risk Model)', time: '09:12:07', loc: 'Nova Supervisor Agent', status: 'EVALUATED', pillClass: 'pill-active', narrative: 'The Nova Supervisor Agent ingests the attendance flag and LMS inactivity. Cross-referencing her work profile, it notes a 16-hour weekend barista shift. Burnout probability assessed at 87%.', ledger: '{"agent": "worldlynk-supervisor-agent", "runtime": "nova_mastra_v4", "inputs": ["attendance_miss_3", "lms_inactive_114h", "work_shift_16h"], "output": {"risk_score": 0.87, "reason": "fatigue_indicator"}}' },
+    { id: 3, title: 'Arbiter Gate (Compass Governance)', time: '09:12:08', loc: 'Compass Arbiter', status: 'HELD', pillClass: 'pill-held', narrative: 'Tier-4 UKVI compliance threshold breached. Autonomous remediation is HELD. Policy dictates human-in-the-loop approval by Senior Tutor on Compass before changes commit.', ledger: '{"governance_check": "tier_4_policy", "rule_id": "pol_742", "action_required": "human_approval", "assigned_to": "tutor_jenkins", "state": "pending"}' },
+    { id: 4, title: 'Audit Seal & Execution', time: '09:14:22', loc: 'Senior Tutor & SITS', status: 'SEALED', pillClass: 'pill-approved', narrative: 'Dr. Jenkins reviews the summarized context via the Compass Portal and approves a wellbeing intervention. SITS:Vision is updated with an immutable SHA-256 audit log.', ledger: '{"approval": "granted", "approver": "tutor_jenkins", "timestamp": "2026-09-23T09:14:22Z", "downstream_sync": ["sits_vision", "wellbeing_crm"], "hash": "sha256:8b4f...d1a9"}' }
   ];
 
   const architecturePillars = [
     { id: 'fabric', num: '01', name: 'Fabric', desc: 'The nervous system. High-throughput event bus connecting legacy on-prem systems with modern cloud infrastructure.', tech: ['Redis Pub/Sub', 'BullMQ Workers', 'WebSockets', 'GraphQL API'], activeColor: '#ff6b00', metrics: { coverage: 98, latency: 12, uptime: 99.99 } },
-    { id: 'graph', num: '02', name: 'Data Plane', desc: 'The memory. Unified identity resolution mapping students to their academic, pastoral, and operational lifecycles.', tech: ['Firestore Data Plane', 'users/{uid} Identity', 'Redis Graph Cache', 'LibSQL Vector'], activeColor: '#3b82f6', metrics: { coverage: 100, latency: 18, uptime: 99.95 } },
-    { id: 'cortex', num: '03', name: 'Cortex', desc: 'The brain. Multi-agent deterministic routing evaluating thousands of micro-decisions against institutional policy.', tech: ['30 Mastra Agents', '12 DAG Workflows', 'Deterministic Routing', 'Tool Envelopes'], activeColor: '#8b5cf6', metrics: { coverage: 85, latency: 250, uptime: 99.9 } },
-    { id: 'arbiter', num: '04', name: 'Arbiter', desc: 'The conscience. Immutable governance layer ensuring no automated action breaches compliance, ethics, or UKVI rules.', tech: ['Policy Engine', 'Audit Ledger', 'Human-in-the-loop UI', 'SHA-256 Signatures'], activeColor: '#10b981', metrics: { coverage: 100, latency: 5, uptime: 100 } },
+    { id: 'graph', num: '02', name: 'Data Plane', desc: 'The memory. Unified identity resolution mapping students across Compass and WorldLynk apps into a shared schema.', tech: ['Firestore Data Plane', 'users/{uid} Identity', 'Redis Graph Cache', 'LibSQL Vector'], activeColor: '#3b82f6', metrics: { coverage: 100, latency: 18, uptime: 99.95 } },
+    { id: 'nova', num: '03', name: 'Nova AI Engine', desc: 'The autonomous AI brain. 30 specialized agents and 12 deterministic Mastra DAG workflows evaluating thousands of institutional signals.', tech: ['30 Nova Agents', '12 Deterministic DAGs', 'Realtime Voice WebRTC', 'LibSQL Vector Memory', 'Omni-Channel Gateways'], activeColor: '#8b5cf6', metrics: { coverage: 94, latency: 180, uptime: 99.99 } },
+    { id: 'arbiter', num: '04', name: 'Arbiter & Compass', desc: 'The conscience & console. Immutable governance layer ensuring no automated action breaches compliance, ethics, or UKVI rules.', tech: ['Compass Portal', 'Policy Engine', 'Audit Ledger', 'Human-in-the-loop UI', 'SHA-256 Signatures'], activeColor: '#10b981', metrics: { coverage: 100, latency: 5, uptime: 100 } },
   ];
 
-  const activePillar = architecturePillars.find(p => p.id === activePillarId);
+  const activePillar = architecturePillars.find(p => p.id === activePillarId) || architecturePillars[0];
 
   // Derived ROI calculations
   const savedStudents = Math.round(cohortSize * (0.082 - 0.024));
@@ -154,12 +156,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: LIVING AGENT CORTEX (DARK) */}
+      {/* SECTION 2: NOVA AI MULTI-AGENT ENGINE (DARK) */}
       <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>CORTEX · 30 SPECIALIZED AGENTS</div>
-            <h2 className="headline-lg">Every decision routed through deterministic specialists.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>NOVA AI INFRASTRUCTURE · 30 SPECIALIST AGENTS &amp; 12 WORKFLOWS</div>
+            <h2 className="headline-lg">Every campus decision routed through Nova's deterministic multi-agent brain.</h2>
+            <p className="body-md text-secondary" style={{ maxWidth: '780px', marginTop: '8px' }}>
+              Built on the Mastra TypeScript framework with LibSQL vector memory and Exa live web search, Nova coordinates 30 specialized AI agents across admissions, student persistence, accommodation, and careers.
+            </p>
           </div>
           
           <div className="grid-2 gap-lg" style={{ gridTemplateColumns: '1fr 1.5fr' }}>
@@ -435,7 +440,7 @@ export default function HomePage() {
                    {/* Abstract visualization of the layer */}
                    {activePillar.id === 'fabric' && <Network size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
                    {activePillar.id === 'graph' && <Database size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
-                   {activePillar.id === 'cortex' && <Cpu size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
+                   {activePillar.id === 'nova' && <Bot size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
                    {activePillar.id === 'arbiter' && <Shield size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
                 </div>
               </div>
@@ -537,7 +542,7 @@ export default function HomePage() {
               </div>
               <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Explore Staff OS <ArrowRight size={16} />
+                  Explore Compass Portal <ArrowRight size={16} />
                 </a>
               </div>
             </div>
@@ -700,7 +705,7 @@ export default function HomePage() {
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid #e4e4e7' }}>
                 <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>ADMIN HOURS SAVED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>{(adminHours / 1000).toFixed(1)}k</div>
-                <div className="body-sm text-secondary">Automated via Cortex</div>
+                <div className="body-sm text-secondary">Automated via Nova AI Engine</div>
               </div>
               
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--status-pass)' }}>

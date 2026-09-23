@@ -33,7 +33,7 @@ const SECTORS = [
       'Staff burnout and strikes across personal tutoring networks unable to keep up with cohort size.',
       'Data fragmentation between SITS, Moodle, and housing preventing board-level proactive interventions.'
     ],
-    worldlynkSol: 'WorldLynk unifies your legacy databases into an autonomous living graph. Cortex agents predict dropouts 14 days earlier and pre-draft interventions, while Arbiter ensures faculty maintain total authority.',
+    worldlynkSol: 'WorldLynk unifies your legacy databases into an autonomous living graph. Nova AI agents predict dropouts 14 days earlier and pre-draft interventions, while Arbiter ensures faculty maintain total authority on Compass.',
     kpis: [
       { label: 'Net Tuition Protection', val: '£3.8M/yr' },
       { label: 'Staff Admin Reduction', val: '-62%' },

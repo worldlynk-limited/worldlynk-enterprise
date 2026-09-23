@@ -87,11 +87,25 @@ export default function HomePage() {
           <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
             {/* Left Content */}
             <div>
-              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AUTONOMOUS CAMPUS OPERATING LAYER</div>
-              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>The living multi-agent fabric for sovereign higher education.</h1>
-              <p className="body-lg text-secondary" style={{ marginBottom: '2.5rem', maxWidth: '540px' }}>
-                Unify SITS:Vision, Moodle, dynamic QR attendance, and campus housing into a single deterministic nervous system. Empower leadership with real-time telemetry and automated governance.
+              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AI-POWERED CAMPUS OPERATIONS</div>
+              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>Your university, powered by AI.</h1>
+              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '540px' }}>
+                WorldLynk connects your university systems and uses AI to automate everyday work, support students, and help staff make better decisions.
               </p>
+              <div className="hero-keywords-container">
+                {[
+                  { label: 'Admissions', icon: GraduationCap },
+                  { label: 'Attendance', icon: Clock },
+                  { label: 'Student Support', icon: Users },
+                  { label: 'Housing', icon: Building },
+                  { label: 'Engagement', icon: Zap },
+                ].map(({ label, icon: Icon }) => (
+                  <span key={label} className="hero-keyword-pill">
+                    <Icon size={12} className="hero-keyword-icon" />
+                    <span>{label}</span>
+                  </span>
+                ))}
+              </div>
               <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
                 <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Request Executive Briefing</Link>
                 <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>

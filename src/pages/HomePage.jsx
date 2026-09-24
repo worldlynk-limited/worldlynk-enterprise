@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Activity, ShieldCheck, CheckCircle2, AlertTriangle, Clock, 
   ArrowRight, ExternalLink, Bot, Zap, Layers, Search, 
   Users, Database, Calendar, Building, GraduationCap, 
   FileText, Lock, GitCommit, Check, Cpu, Network, Globe, MessageSquare,
-  Server, Shield, MessageCircle, BarChart, HardDrive
+  Server, Shield, MessageCircle, BarChart, HardDrive, Sparkles,
+  Play, Pause, RotateCcw, ChevronRight
 } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
@@ -20,6 +21,12 @@ const GridOverlay = ({ variant = 'dark' }) => (
 );
 
 export default function HomePage() {
+  // --- Hero Interactive Autonomous Execution Engine ---
+  const [activeScenarioIdx, setActiveScenarioIdx] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [scenarioProgress, setScenarioProgress] = useState(0);
+  const [actionsResolvedCount, setActionsResolvedCount] = useState(4184);
+
   // State for Section 2: Cortex
   const [selectedAgentId, setSelectedAgentId] = useState('supervisor');
   const [agentSearch, setAgentSearch] = useState('');
@@ -36,6 +43,131 @@ export default function HomePage() {
   // State for Section 7: ROI Simulator
   const [cohortSize, setCohortSize] = useState(15000);
   const [tuitionFee, setTuitionFee] = useState(25000);
+
+  const heroScenarios = [
+    {
+      id: 'retention',
+      tabLabel: 'Student Welfare',
+      tabCode: '01',
+      category: 'STUDENT PERSISTENCE',
+      title: 'Supportive Welfare Intervention',
+      student: 'Maya Chen',
+      studentMeta: 'MSc Data Science (ID: 0091-2847)',
+      avatar: 'MC',
+      avatarBg: '#ffedd5',
+      avatarColor: '#c2410c',
+      themeColor: '#10b981',
+      themeBg: 'rgba(16, 185, 129, 0.12)',
+      speedBadge: '0.34s Auto-Resolved',
+      triggerText: '3rd consecutive seminar miss (EB-02) · 114h Moodle inactivity detected',
+      actionTitle: 'Autonomous WhatsApp Welfare Outreach',
+      actionBadge: 'Delivered 09:14 AM',
+      actionIcon: MessageSquare,
+      actionBody: '"Hi Maya, Dr. Jenkins from Student Welfare here. Noticed you couldn\'t make CS-5100 this morning. Everything okay? Let\'s grab 10 mins this afternoon to catch up."',
+      actionOutcome: 'Maya replied: "Yes please, could we do 2:30pm?"',
+      verifications: [
+        'SITS:Vision Synced',
+        'UKVI 20h Cap Safe',
+        'Tutor 1:1 Booked'
+      ]
+    },
+    {
+      id: 'compliance',
+      tabLabel: 'Visa & Work Cap',
+      tabCode: '02',
+      category: 'UKVI TIER-4 COMPLIANCE',
+      title: 'Term-Time Work Cap Verification',
+      student: 'Tariq Hassan',
+      studentMeta: 'BSc Finance & Economics (ID: 0074-9912)',
+      avatar: 'TH',
+      avatarBg: '#dbeafe',
+      avatarColor: '#1d4ed8',
+      themeColor: '#38bdf8',
+      themeBg: 'rgba(56, 189, 248, 0.12)',
+      speedBadge: '0.18s Deterministic',
+      triggerText: '18h campus shift logged · Checked against Home Office 20h/wk statutory cap',
+      actionTitle: 'Compliant Work Permit Minted & Issued',
+      actionBadge: 'Permit Active',
+      actionIcon: ShieldCheck,
+      actionBody: 'Electronic verification letter signed with university compliance key. Shift logged as authorized under Tier-4 sponsor license.',
+      actionOutcome: 'Guild Union Rota approved · Employer packet sent',
+      verifications: [
+        'Home Office 20h Pass',
+        'SITS Record Appended',
+        'SHA-256 Audit Sealed'
+      ]
+    },
+    {
+      id: 'housing',
+      tabLabel: 'PBSA Housing',
+      tabCode: '03',
+      category: 'ACCOMMODATION & ARRIVALS',
+      title: 'Tenancy Lock & Digital Keycard',
+      student: 'Elena Rostova',
+      studentMeta: 'MSc Business Analytics · Arrival Sept 28',
+      avatar: 'ER',
+      avatarBg: '#f3e8ff',
+      avatarColor: '#7e22ce',
+      themeColor: '#a855f7',
+      themeBg: 'rgba(168, 85, 247, 0.12)',
+      speedBadge: '0.42s Escrow Lock',
+      triggerText: 'International CAS cleared · Heathrow flight landing confirmed for Sept 28',
+      actionTitle: 'Crown House En-Suite Room #402 Allocated',
+      actionBadge: 'Tenancy Locked',
+      actionIcon: Building,
+      actionBody: '51-week tenancy lease executed digitally. £1,200 maintenance deposit secured via Stripe Escrow. Smartphone NFC keycard dispatched with door PIN.',
+      actionOutcome: 'Elena acknowledged keycard in Student App',
+      verifications: [
+        'Stripe Escrow Secured',
+        'PMS Room Reserved',
+        'Welcome Shuttle Booked'
+      ]
+    },
+    {
+      id: 'logistics',
+      tabLabel: 'Campus Logistics',
+      tabCode: '04',
+      category: 'ESTATES & TIMETABLES',
+      title: 'Lecture Outage Instant Re-Route',
+      student: '240 Students',
+      studentMeta: 'CS-4010 Advanced Algorithms Cohort',
+      avatar: '240',
+      avatarBg: '#ffedd5',
+      avatarColor: '#ea580c',
+      themeColor: '#f97316',
+      themeBg: 'rgba(249, 115, 22, 0.12)',
+      speedBadge: '0.22s Sync Speed',
+      triggerText: 'Lecture Hall EB-02 HVAC failure logged 45m before scheduled lecture',
+      actionTitle: 'Instant Re-Route to Great Hall West Wing',
+      actionBadge: 'Broadcast 08:32 AM',
+      actionIcon: Zap,
+      actionBody: 'Spatial inventory matched vacant Great Hall (cap 260) with zero conflicts. Mobile push notification dispatched with live indoor campus walking route.',
+      actionOutcome: '240 timetables updated · Zero lost lecture minutes',
+      verifications: [
+        'Dynamic QR Rotated',
+        'Lecturer App Confirmed',
+        'Estates Work Order Logged'
+      ]
+    }
+  ];
+
+  // Auto-play timer effect
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const timer = setInterval(() => {
+      setScenarioProgress(prev => {
+        if (prev >= 100) {
+          setActiveScenarioIdx(current => (current + 1) % 4);
+          setActionsResolvedCount(count => count + 1);
+          return 0;
+        }
+        return prev + 1.25; // ~4 second cycle
+      });
+    }, 50);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying]);
+
+  const activeScenario = heroScenarios[activeScenarioIdx];
 
   // --- Data structures ---
 
@@ -117,55 +249,400 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* Right Mockup */}
-            <div style={{ perspective: '1000px' }}>
-              <div className="mockup-window" style={{ transform: 'rotateY(-5deg) rotateX(2deg)', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 0, 0.2)' }}>
-                <div className="mockup-chrome flex flex-between" style={{ padding: '0.75rem 1rem', borderBottom: '1px solid #2a2a35' }}>
-                  <div className="flex gap-sm">
-                    <div style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-                    <div style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-                    <div style={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: '#27c93f' }} />
+            {/* Right Hero Visual — Interactive Animated Autonomous Campus Execution Engine */}
+            <div style={{ position: 'relative' }}>
+              {/* Dynamic Ambient Backlight Glow that adapts to the active scenario theme color */}
+              <div 
+                style={{ 
+                  position: 'absolute', 
+                  top: '-40px', 
+                  right: '-30px', 
+                  width: '450px', 
+                  height: '450px', 
+                  background: `radial-gradient(circle, ${activeScenario.themeColor}28 0%, rgba(248, 245, 238, 0.04) 50%, transparent 70%)`, 
+                  filter: 'blur(70px)', 
+                  pointerEvents: 'none',
+                  zIndex: 0,
+                  transition: 'background 0.8s ease'
+                }} 
+              />
+
+              {/* Main Window Casing with FIXED Height (never expands or jitters) */}
+              <div 
+                style={{ 
+                  position: 'relative', 
+                  zIndex: 1, 
+                  backgroundColor: '#12131a', 
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.25)',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 25px 65px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 50px -10px rgba(0, 0, 0, 0.5)',
+                  fontFamily: 'var(--wl-font-sans)',
+                  height: '465px',
+                  display: 'flex',
+                  flexDirection: 'column'
+                }}
+              >
+                {/* 1. Window Chrome / Titlebar (Dark Titanium Chassis) */}
+                <div 
+                  style={{ 
+                    height: '42px',
+                    padding: '0 1rem', 
+                    backgroundColor: '#161720', 
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'space-between',
+                    flexShrink: 0
+                  }}
+                >
+                  {/* Traffic Light Buttons */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ff5f56' }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#27c93f' }} />
+                    <span className="mono-sm" style={{ color: '#71717a', fontSize: '0.66rem', marginLeft: '0.4rem', letterSpacing: '0.04em' }}>
+                      CAMPUS_EXECUTION_ENGINE // LIVE
+                    </span>
                   </div>
-                  <div className="mono-sm text-muted">COMPASS_OS :: SYSTEM_TELEMETRY</div>
-                </div>
-                <div className="mockup-body" style={{ padding: '1.5rem', backgroundColor: '#0c0c0f' }}>
-                  <div className="flex flex-col gap-md">
-                    <div className="flex flex-between" style={{ paddingBottom: '0.75rem', borderBottom: '1px dashed #2a2a35' }}>
-                      <div className="flex gap-sm alignItems-center"><Network size={16} className="text-secondary"/> <span className="mono-sm">API Gateway</span></div>
-                      <div className="flex gap-sm alignItems-center"><span className="mono-sm">12ms</span> <div style={{width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--status-pass)'}}/></div>
-                    </div>
-                    <div className="flex flex-between" style={{ paddingBottom: '0.75rem', borderBottom: '1px dashed #2a2a35' }}>
-                      <div className="flex gap-sm alignItems-center"><Server size={16} className="text-secondary"/> <span className="mono-sm">Redis PubSub</span></div>
-                      <div className="flex gap-sm alignItems-center"><span className="mono-sm text-secondary">Healthy</span> <div style={{width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--status-pass)'}}/></div>
-                    </div>
-                    <div className="flex flex-between" style={{ paddingBottom: '0.75rem', borderBottom: '1px dashed #2a2a35' }}>
-                      <div className="flex gap-sm alignItems-center"><Shield size={16} className="text-secondary"/> <span className="mono-sm">Arbiter Gate</span></div>
-                      <div className="flex gap-sm alignItems-center"><span className="mono-sm" style={{color: '#f59e0b'}}>Enforcing</span> <div style={{width: 8, height: 8, borderRadius: '50%', backgroundColor: '#f59e0b'}}/></div>
-                    </div>
-                    <div className="flex flex-between" style={{ paddingBottom: '0.75rem', borderBottom: '1px dashed #2a2a35' }}>
-                      <div className="flex gap-sm alignItems-center"><Users size={16} className="text-secondary"/> <span className="mono-sm">Active Rosters</span></div>
-                      <span className="mono-sm">14,892</span>
-                    </div>
-                    <div className="flex flex-between" style={{ paddingBottom: '0.75rem', borderBottom: '1px dashed #2a2a35' }}>
-                      <div className="flex gap-sm alignItems-center"><Bot size={16} className="text-secondary"/> <span className="mono-sm">Nova Agents</span></div>
-                      <div className="flex gap-sm alignItems-center"><span className="mono-sm">30 Online</span> <div style={{width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--status-pass)'}}/></div>
-                    </div>
-                    <div className="flex flex-between">
-                      <div className="flex gap-sm alignItems-center"><GitCommit size={16} className="text-secondary"/> <span className="mono-sm">SITS Sync</span></div>
-                      <span className="mono-sm" style={{color: 'var(--status-pass)'}}>Real-time</span>
+
+                  {/* Play / Pause Toggle Control & Live Metric */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <button
+                      type="button"
+                      onClick={() => setIsAutoPlaying(prev => !prev)}
+                      title={isAutoPlaying ? "Pause Animation" : "Resume Auto-Play"}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        padding: '0.2rem 0.55rem',
+                        borderRadius: '6px',
+                        color: '#d4d4d8',
+                        fontSize: '0.65rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease'
+                      }}
+                    >
+                      {isAutoPlaying ? <Pause size={10} color="#10b981" /> : <Play size={10} color="#ff8833" />}
+                      <span>{isAutoPlaying ? 'Auto-Cycle' : 'Paused'}</span>
+                    </button>
+
+                    <div 
+                      style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '6px', 
+                        backgroundColor: 'rgba(16, 185, 129, 0.12)', 
+                        border: '1px solid rgba(16, 185, 129, 0.25)', 
+                        padding: '0.2rem 0.6rem', 
+                        borderRadius: '12px' 
+                      }}
+                    >
+                      <span className="hero-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#10b981', display: 'inline-block', boxShadow: '0 0 6px #10b981' }} />
+                      <span style={{ color: '#10b981', fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.02em' }}>
+                        {actionsResolvedCount.toLocaleString()} ACTIONS RESOLVED
+                      </span>
                     </div>
                   </div>
                 </div>
+
+                {/* 2. THE INNER SCREEN: Clean, Uncluttered Warm Cream Canvas */}
+                <div 
+                  style={{ 
+                    backgroundColor: '#f8f5ee', 
+                    color: '#18181b', 
+                    padding: '0.85rem 1rem', 
+                    flex: 1,
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    justifyContent: 'space-between',
+                    overflow: 'hidden'
+                  }}
+                >
+                  
+                  {/* Scenario Interactive Navigation Tabs */}
+                  <div 
+                    style={{ 
+                      display: 'grid', 
+                      gridTemplateColumns: 'repeat(4, 1fr)', 
+                      gap: '6px',
+                      flexShrink: 0
+                    }}
+                  >
+                    {heroScenarios.map((sc, idx) => {
+                      const isActive = activeScenarioIdx === idx;
+                      return (
+                        <div
+                          key={sc.id}
+                          onClick={() => {
+                            setActiveScenarioIdx(idx);
+                            setScenarioProgress(0);
+                          }}
+                          style={{
+                            position: 'relative',
+                            padding: '0.35rem 0.5rem',
+                            borderRadius: '6px',
+                            backgroundColor: isActive ? '#ffffff' : 'rgba(0, 0, 0, 0.03)',
+                            border: isActive ? '1px solid #dcd3c4' : '1px solid transparent',
+                            boxShadow: isActive ? '0 2px 5px rgba(0,0,0,0.04)' : 'none',
+                            cursor: 'pointer',
+                            overflow: 'hidden',
+                            transition: 'all 0.2s ease'
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2px' }}>
+                            <span style={{ fontSize: '0.62rem', fontWeight: 800, color: isActive ? sc.themeColor : '#a1a1aa' }}>
+                              {sc.tabCode}
+                            </span>
+                            {isActive && (
+                              <span style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: sc.themeColor }} />
+                            )}
+                          </div>
+                          <div style={{ fontSize: '0.68rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#18181b' : '#71717a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {sc.tabLabel}
+                          </div>
+
+                          {/* Animated Progress Bar under active tab */}
+                          {isActive && (
+                            <div 
+                              style={{ 
+                                position: 'absolute', 
+                                bottom: 0, 
+                                left: 0, 
+                                height: '2.5px', 
+                                backgroundColor: sc.themeColor, 
+                                width: `${scenarioProgress}%`,
+                                transition: 'width 0.05s linear'
+                              }} 
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+
+                  {/* ACTIVE SCENARIO STAGE: Single, Clean, Elevated Card */}
+                  <div 
+                    key={activeScenario.id}
+                    className="hero-scenario-transition"
+                    style={{ 
+                      backgroundColor: '#ffffff', 
+                      borderRadius: '10px', 
+                      border: '1px solid #e5dfd3', 
+                      padding: '0.9rem',
+                      boxShadow: '0 4px 14px rgba(28, 25, 23, 0.05)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      flex: 1,
+                      margin: '0.55rem 0',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    {/* Header: Student Profile + Resolution Badge */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div 
+                          style={{ 
+                            width: 32, 
+                            height: 32, 
+                            borderRadius: '50%', 
+                            backgroundColor: activeScenario.avatarBg, 
+                            color: activeScenario.avatarColor, 
+                            fontWeight: 800, 
+                            fontSize: '0.74rem', 
+                            display: 'flex', 
+                            alignItems: 'center', 
+                            justifyContent: 'center',
+                            border: `1px solid ${activeScenario.avatarColor}33`,
+                            flexShrink: 0
+                          }}
+                        >
+                          {activeScenario.avatar}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#18181b' }}>
+                            {activeScenario.student}
+                          </div>
+                          <div style={{ fontSize: '0.68rem', color: '#71717a' }}>
+                            {activeScenario.studentMeta}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Speed Badge */}
+                      <div 
+                        style={{ 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          gap: '5px', 
+                          backgroundColor: activeScenario.themeBg, 
+                          border: `1px solid ${activeScenario.themeColor}44`, 
+                          padding: '0.2rem 0.55rem', 
+                          borderRadius: '6px',
+                          color: activeScenario.themeColor,
+                          fontSize: '0.68rem',
+                          fontWeight: 700
+                        }}
+                      >
+                        <Zap size={11} />
+                        <span>{activeScenario.speedBadge}</span>
+                      </div>
+                    </div>
+
+                    {/* Clean Incident Signal Banner */}
+                    <div 
+                      style={{ 
+                        backgroundColor: '#faf8f5', 
+                        border: '1px solid #e8e2d8', 
+                        borderRadius: '6px', 
+                        padding: '0.45rem 0.65rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '0.71rem',
+                        color: '#44403c',
+                        flexShrink: 0
+                      }}
+                    >
+                      <AlertTriangle size={13} style={{ color: activeScenario.themeColor, flexShrink: 0 }} />
+                      <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        <strong>Trigger:</strong> {activeScenario.triggerText}
+                      </div>
+                    </div>
+
+                    {/* Clean Action Display (Prominent & Readable) */}
+                    <div 
+                      style={{ 
+                        backgroundColor: '#fbfaf8', 
+                        borderRadius: '8px', 
+                        border: '1px solid #e7e2d7', 
+                        padding: '0.65rem 0.8rem',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '5px'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <span style={{ fontSize: '0.68rem', fontWeight: 700, color: '#18181b', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                          {React.createElement(activeScenario.actionIcon, { 
+                            size: 13, 
+                            style: { color: activeScenario.themeColor } 
+                          })}
+                          {activeScenario.actionTitle}
+                        </span>
+                        <span 
+                          style={{ 
+                            fontSize: '0.62rem', 
+                            color: activeScenario.themeColor, 
+                            backgroundColor: activeScenario.themeBg,
+                            padding: '0.1rem 0.4rem',
+                            borderRadius: '4px',
+                            fontWeight: 600 
+                          }}
+                        >
+                          {activeScenario.actionBadge}
+                        </span>
+                      </div>
+
+                      <div 
+                        style={{ 
+                          fontSize: '0.74rem', 
+                          lineHeight: 1.4, 
+                          color: '#27272a',
+                          padding: '0.2rem 0'
+                        }}
+                      >
+                        {activeScenario.actionBody}
+                      </div>
+
+                      <div style={{ fontSize: '0.68rem', color: '#15803d', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <Check size={12} /> {activeScenario.actionOutcome}
+                      </div>
+                    </div>
+
+                    {/* Single Clean Row of System Verifications */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                      {activeScenario.verifications.map((v, i) => (
+                        <span 
+                          key={i} 
+                          style={{ 
+                            fontSize: '0.64rem', 
+                            color: '#166534', 
+                            backgroundColor: '#f0fdf4', 
+                            border: '1px solid #bbf7d0', 
+                            padding: '0.2rem 0.5rem', 
+                            borderRadius: '4px', 
+                            fontWeight: 600,
+                            whiteSpace: 'nowrap'
+                          }}
+                        >
+                          ✓ {v}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom Navigation & Live Execution Footer */}
+                  <div 
+                    style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'space-between', 
+                      paddingTop: '0.25rem', 
+                      borderTop: '1px solid #e7e0d3',
+                      fontSize: '0.66rem',
+                      color: '#71717a',
+                      flexShrink: 0
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <Sparkles size={12} style={{ color: 'var(--wl-accent)' }} />
+                      <span>Nova Multi-Agent Engine: <strong>30 agents active</strong></span>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setActiveScenarioIdx((activeScenarioIdx + 1) % heroScenarios.length);
+                        setScenarioProgress(0);
+                      }}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        color: activeScenario.themeColor,
+                        fontWeight: 700,
+                        fontSize: '0.66rem',
+                        cursor: 'pointer',
+                        padding: '0.15rem 0.45rem',
+                        borderRadius: '4px',
+                        backgroundColor: '#ffffff',
+                        border: '1px solid #e0d8cc',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
+                      }}
+                    >
+                      <span>Next Scenario</span>
+                      <ChevronRight size={11} />
+                    </button>
+                  </div>
+
+                </div>
+
               </div>
             </div>
           </div>
           
           {/* Telemetry bar */}
           <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-            <div className="mono-sm text-muted">FABRIC_UPTIME: 99.998%</div>
-            <div className="mono-sm text-muted">LAST_AUDIT: {new Date().toISOString().split('T')[1].substring(0,8)}Z</div>
-            <div className="mono-sm text-muted">PENDING_QUEUES: 0</div>
-            <div className="mono-sm text-muted">SEC_PROTOCOL: TLS 1.3 / AES-256</div>
+            <div className="mono-sm text-muted">CAMPUS_AUTOMATION_RATE: 99.4%</div>
+            <div className="mono-sm text-muted">TOTAL_STUDENTS_COVERED: 14,892</div>
+            <div className="mono-sm text-muted">ACTIVE_AI_WORKFLOWS: 12 RUNNING</div>
+            <div className="mono-sm text-muted">UKVI_TIER4_COMPLIANCE: 100% DETERMINISTIC</div>
           </div>
         </div>
       </section>

@@ -80,61 +80,61 @@ const LAYERS = [
   {
     id: 'fabric',
     num: '01',
-    name: 'Fabric // Nervous System',
-    tag: 'HIGH-THROUGHPUT EVENT BUS',
-    tech: 'Redis Pub/Sub · BullMQ Workers · WebSockets · Event Emitter',
-    desc: 'The connective nervous system of the university. Ingests real-time events from legacy SIS, Moodle LMS, and dynamic QR scanners behind institutional firewalls without database duplication.',
-    benchmarks: '12ms Average Event Latency · 10,000+ Events/sec · 99.99% Uptime',
+    name: 'Connect // Campus System Links',
+    tag: 'PLUGS INTO YOUR TOOLS',
+    tech: 'Works with SITS:Vision, Banner, Moodle, Canvas, and campus databases',
+    desc: 'Connects directly to your university databases and learning portals without requiring database changes or technical headaches.',
+    benchmarks: 'Instant live sync · 10,000+ updates/sec · 99.99% uptime',
     features: [
-      'Bi-directional transactional connectors for Tribal SITS:Vision and Ellucian Banner.',
-      'AES-256 token proxy for Moodle and Canvas LMS course activity polling.',
-      'Sub-180ms rotating cryptographic HMAC QR validation engine with anti-replay defenses.',
-      '14 dedicated BullMQ queue workers running deterministic reconciliation and alert jobs.'
+      'Direct two-way links for Tribal SITS:Vision and Ellucian Banner.',
+      'Secure connections for Moodle and Canvas course portals.',
+      'Fast, spoof-proof dynamic QR attendance check-in.',
+      'Automated background workers that keep records in sync.'
     ]
   },
   {
     id: 'graph',
     num: '02',
-    name: 'Data Plane // Unified Identity & Living Graph',
-    tag: 'SHARED CLOUD FIRESTORE DATA PLANE',
-    tech: 'Multi-Tenant Firestore · users/{uid} Canonical Key · In-Memory Graph Index · LibSQL Vector Store',
-    desc: 'A unified operational data plane that maps every student, course, lecture hall, Tier-4 CAS record, and PBSA housing contract into a connected, real-time relational model with zero schema alteration on legacy databases.',
-    benchmarks: '18ms Data Plane Queries · 100% Deterministic Resolution · Strict Multi-Tenancy',
+    name: 'Understand // One Unified Student View',
+    tag: 'A SINGLE PROFILE FOR EVERY STUDENT',
+    tech: 'Unified student profile · Real-time search · Privacy-first permissions',
+    desc: 'Brings student records, course timetables, visa status, and housing into one clear, connected view so your staff don\'t have to check multiple systems.',
+    benchmarks: 'Sub-second search · Clean data model · Full privacy isolation',
     features: [
-      'Single canonical users/{uid} identity stitched across Compass university portal and WorldLynk student apps.',
-      'UKVI Tier-4 work margin monitor: real-time term-time employment tracking against 20h cap.',
-      'Degree prerequisite topology mapping for automated module exception checks.',
-      'Per-tenant cryptographic database partitioning and Firestore security rules scoped by universityId.'
+      'One student profile shared smoothly between the staff portal and student mobile app.',
+      'Real-time visa work tracking against the 20-hour weekly term-time limit.',
+      'Automated checks for prerequisite classes and course conflicts.',
+      'Strict data separation with institutional privacy controls.'
     ]
   },
   {
     id: 'nova',
     num: '03',
-    name: 'Nova // Autonomous AI Infrastructure & Multi-Agent Engine',
-    tag: 'NOVA AI INFRASTRUCTURE · 30 AGENTS · 12 WORKFLOWS · REALTIME VOICE',
-    tech: 'Nova AI Engine (Mastra) · 30 Specialist Agents · 12 Deterministic DAGs · OpenAI Realtime WebRTC · LibSQL Vector Store',
-    desc: 'The autonomous multi-agent brain of higher education. 30 specialized Mastra agents operating under a central Nova Supervisor agent to evaluate signals, draft CAS summaries, calculate UKVI work margins, and prepare evidence briefs.',
-    benchmarks: '180ms Tokenized Inference · 12 Deterministic DAG Workflows · Zero PII Leakage',
+    name: 'Assist // 30 Specialized AI Assistants',
+    tag: '24/7 SUPPORT FOR STUDENTS & STAFF',
+    tech: '30 Focused campus assistants · 24/7 Student chat · Real-time mock interview voice',
+    desc: 'Specialized AI assistants trained on university workflows. They answer student questions 24/7, check visa work hours, spot dropout risks early, and prepare routine paperwork for staff.',
+    benchmarks: 'Fast, friendly answers · 30 Specialized assistants · Zero data leaks',
     features: [
-      'Central worldlynk-supervisor-agent orchestrates sub-agents including Accommodation, JobMatch, Moodle, and CVAnalysis.',
-      '12 deterministic DAG workflows for student onboarding, visa checks, accommodation matching, and journey gaps.',
-      'Cryptographic PII tokenization envelope strips student identities before external LLM prompts.',
-      'Native multi-channel adapters for WhatsApp Business (Baileys WebSocket), Telegram Bot, and Apple iMessage.'
+      'Campus coordinator directs student inquiries to the right specialized assistant.',
+      'Automated workflows for onboarding, visa tracking, and housing matching.',
+      'Private and compliant: student data is never used to train public models.',
+      'Works across WhatsApp, web portals, and mobile apps.'
     ]
   },
   {
     id: 'arbiter',
     num: '04',
-    name: 'Arbiter // Consequential Governance Gate on Compass',
-    tag: 'HUMAN AUTHORITY AS CODE',
-    tech: 'Compass Portal Engine · Deterministic Policy Engine · SHA-256 Signatures · Immutable Audit Lineage',
-    desc: 'The governance engine of the Compass portal. Enforces the golden rule: Nova AI agents prepare, named university staff decide. Consequential academic, visa, or financial actions cannot auto-commit.',
-    benchmarks: '5ms Rule Evaluation · 100% Audit Lineage · Tamper-Evident SHA-256 Signatures',
+    name: 'Control // Staff Review & Governance',
+    tag: 'STAFF ALWAYS IN CONTROL',
+    tech: 'Staff review dashboard (Compass) · One-click approvals · Full audit history',
+    desc: 'The core rule of WorldLynk: AI assistants prepare the work, but staff make the final call. Any important academic, visa, or financial decision always waits for staff approval.',
+    benchmarks: 'Instant alerts · Complete audit history · Staff sign-off required',
     features: [
-      'Held-state interception halts any action that alters grades, visas, or financial status.',
-      'Named staff approval workflow logs credentials, timestamp, and diffs to immutable audit log.',
-      'Tamper-evident SHA-256 audit writebacks directly into SITS:Vision history tables.',
-      'One-click UKVI inspection packet generation with cryptographically verifiable proofs.'
+      'Important actions are held in a clear review inbox until staff approve.',
+      'One-click approval workflow records who approved what and when.',
+      'Complete, tamper-evident audit history written back into student records.',
+      'Instant one-click compliance reports for accreditation or visa audits.'
     ]
   }
 ];
@@ -169,26 +169,26 @@ export default function PlatformPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                PLATFORM ARCHITECTURE // FOUR-LAYER OPERATING SPECIFICATION
+                PLATFORM ARCHITECTURE // CONNECTING YOUR CAMPUS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Zero migration. Unify legacy campus databases into one living record.
+                Connect all your campus systems without a painful migration.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Higher education does not need another high-risk, 3-year SIS migration that disrupts campus life. WorldLynk deploys as an operational overlay directly over your existing SITS:Vision, Banner, and Moodle instances, maintaining real-time canonical identity while legacy systems stay in place.
+                Universities don't need another disruptive, multi-year IT overhaul. WorldLynk plugs directly into your existing SITS:Vision, Banner, Canvas, and Moodle systems — bringing everything together in real time while your current tools stay in place.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>SYSTEM TELEMETRY</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>12ms Event Bus</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>100% Deterministic Resolution</div>
+                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>SYSTEM PERFORMANCE</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>Instant Live Sync</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>100% Reliable &amp; Fully Audited</div>
               </div>
               <div className="flex flex-col gap-xs">
                 <div className="flex gap-xs">
                   <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
-                    <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Console</span>
+                    <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Portal</span>
                     <ExternalLink size={11} color="#ff8833" />
                   </a>
                   <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
@@ -197,7 +197,7 @@ export default function PlatformPage() {
                   </a>
                 </div>
                 <Link to="/how-it-works" className="btn-primary btn-sm" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
-                  <span>Explore Operating Loop</span>
+                  <span>See How It Works</span>
                   <ArrowRight size={12} />
                 </Link>
               </div>
@@ -210,12 +210,12 @@ export default function PlatformPage() {
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>THE 4 OPERATING LAYERS</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW THE PLATFORM WORKS</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Engineered for Sovereign Higher Education.
+              Built specifically for higher education.
             </h2>
             <p className="section-desc">
-              Each layer serves an immutable architectural mandate — from low-latency event ingestion to legal human governance.
+              Four connected layers work together — from instant system connection to complete staff control.
             </p>
           </div>
 
@@ -442,38 +442,38 @@ export default function PlatformPage() {
           <div id="nova" className="mb-3xl" style={{ scrollMarginTop: '100px' }}>
             <div className="section-header-left mb-xl">
               <div className="flex gap-xs alignItems-center mb-xs">
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>NOVA AI INFRASTRUCTURE // THE AUTONOMOUS CAMPUS ENGINE</span>
-                <span className="pill pill-approved" style={{ fontSize: '9px' }}>MASTRA RUNTIME · GPT-4O</span>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SPECIALIST AI ASSISTANTS // HOW THEY WORK</span>
+                <span className="pill pill-approved" style={{ fontSize: '9px' }}>ENTERPRISE READY</span>
               </div>
               <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-                Nova: 30 Specialized Agents. 12 Deterministic DAGs. Realtime Voice.
+                How WorldLynk's AI assistants work together.
               </h2>
               <p className="section-desc">
-                Nova is the autonomous AI infrastructure powering both the WorldLynk student ecosystem and the Compass institutional console. Built on the Mastra TypeScript framework, Nova combines LLM-driven multi-agent reasoning with auditable, non-stochastic workflow pipelines.
+                Nova coordinates 30 specialized AI assistants across student support, admissions, attendance, and careers — working smoothly in the background while always keeping staff in control.
               </p>
             </div>
 
             {/* Quick Specs Ribbon */}
             <div className="grid-4 gap-md mb-xl">
               <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(255,107,0,0.3)', backgroundColor: 'rgba(255,107,0,0.04)', borderRadius: '12px' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>SWARM SCALE</div>
-                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>30 Agents</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Domain-specialized Mastra agents</div>
+                <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>SPECIALIZED ASSISTANTS</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>30 Assistants</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Trained on campus workflows</div>
               </div>
               <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(56,189,248,0.3)', backgroundColor: 'rgba(56,189,248,0.04)', borderRadius: '12px' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>DETERMINISTIC PIPELINES</div>
+                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STRUCTURED WORKFLOWS</div>
                 <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>12 Workflows</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Zero-hallucination DAG state machines</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Consistent and reliable steps</div>
               </div>
               <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(16,185,129,0.3)', backgroundColor: 'rgba(16,185,129,0.04)', borderRadius: '12px' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VOICE LATENCY</div>
-                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>&lt; 180ms</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>WebRTC session token minting</div>
+                <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VOICE PRACTICE</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>Real-Time</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Natural spoken interview prep</div>
               </div>
               <div className="card-dark" style={{ padding: '20px', border: '1px solid rgba(192,132,252,0.3)', backgroundColor: 'rgba(192,132,252,0.04)', borderRadius: '12px' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>OMNI-CHANNEL SURFACES</div>
-                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>5 Surfaces</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Web · WhatsApp · Telegram · iMessage · MCP</div>
+                <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>CHANNELS</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px' }}>Every Channel</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Web · WhatsApp · Telegram · Mobile</div>
               </div>
             </div>
 
@@ -486,22 +486,22 @@ export default function PlatformPage() {
                     <Bot size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Supervisor Orchestrator &amp; Context Isolation</h3>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>worldlynk-supervisor-agent · Mastra Engine</div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Campus Coordinator &amp; Specialized Assistants</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Intelligent routing &amp; secure student verification</div>
                   </div>
                 </div>
                 <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
-                  The central supervisor parses natural-language user intent, binds request context, and isolates identity by injecting verified Firebase UIDs (<code style={{ color: 'var(--accent-cyan)' }}>[USER_ID: &lt;uid&gt;]</code>). Sub-agents operate strictly on authenticated records.
+                  The campus coordinator understands student questions in natural language, verifies their student profile securely, and routes their request to the right specialized assistant.
                 </p>
                 <div className="flex flex-col gap-xs">
                   <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
-                    <strong>Admissions &amp; Academics:</strong> <span className="text-secondary">universityRecommender · consultantCopilot · moodle</span>
+                    <strong>Admissions &amp; Academics:</strong> <span className="text-secondary">Course recommendations · Admissions briefs · Course deadlines</span>
                   </div>
                   <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
-                    <strong>Careers &amp; Compliance:</strong> <span className="text-secondary">jobMatch · cvAnalysis · tailoredResume · interviewPrep</span>
+                    <strong>Careers &amp; Visa Rules:</strong> <span className="text-secondary">Job match · CV feedback · Visa 20h limit checker · Mock interview prep</span>
                   </div>
                   <div style={{ padding: '8px 12px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.9)' }}>
-                    <strong>Living &amp; Community:</strong> <span className="text-secondary">accommodation · cafeRestaurant · planYourDay · eventMatch</span>
+                    <strong>Student Life &amp; Housing:</strong> <span className="text-secondary">Verified student housing · Campus food &amp; services · Daily planner · Event matching</span>
                   </div>
                 </div>
               </div>
@@ -513,31 +513,31 @@ export default function PlatformPage() {
                     <GitBranch size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>12 Deterministic Mastra Workflows (DAGs)</h3>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Zero-Hallucination Pipeline Guarantees</div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>12 Structured Campus Workflows</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Reliable, predictable step-by-step processes</div>
                   </div>
                 </div>
                 <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
-                  High-stakes university rules cannot be left to probabilistic next-token generation. Critical sequences execute through compiled directed acyclic graphs with strictly typed inputs, branch validation, and immutable logging.
+                  Important university policies follow clear, predictable rules. Critical workflows follow structured steps with complete audit logs and built-in checks so you get dependable results every time.
                 </p>
                 <div className="grid-2 gap-xs">
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>student-onboarding</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>New student onboarding</span>
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>accommodation-match</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>Housing reservation matching</span>
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>job-match-workflow</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>Visa work-cap check</span>
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>cv-analysis-workflow</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>CV analysis &amp; feedback</span>
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>tailored-resume-workflow</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>Targeted graduate CV coach</span>
                   </div>
                   <div style={{ padding: '8px 10px', borderRadius: '6px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11px', color: 'rgba(255,255,255,0.85)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <Check size={12} color="var(--accent-cyan)" /> <code>interview-prep-workflow</code>
+                    <Check size={12} color="var(--accent-cyan)" /> <span>AI mock interview coaching</span>
                   </div>
                 </div>
               </div>
@@ -549,18 +549,18 @@ export default function PlatformPage() {
                     <Mic size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Nova Realtime Voice AI</h3>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>OpenAI Realtime WebRTC · Whisper STT · Neural TTS</div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Real-Time Voice AI for Student Practice</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Instant spoken dialogue · Natural pronunciation practice</div>
                   </div>
                 </div>
                 <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
-                  Direct, ultra-low-latency voice streaming. The serverless gateway mints ephemeral WebRTC session tokens (<code style={{ color: 'var(--accent-emerald)' }}>voice-realtime-session.js</code>) allowing students to practice mock interviews and consult Nova with natural spoken dialogue.
+                  Fast, natural voice streaming allows students to practice job interviews, speak through visa questions, and get spoken coaching anytime on their mobile phone.
                 </p>
                 <div style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
                   <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
-                    <div><strong>AUDIO PROTOCOL:</strong> <span style={{ color: '#ffffff' }}>WebRTC direct peer connection (sub-200ms)</span></div>
-                    <div><strong>TRANSCRIPTION:</strong> <span style={{ color: '#ffffff' }}>OpenAI Whisper high-accuracy stream</span></div>
-                    <div><strong>SYNTHESIS:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Neural adaptive conversational speech</span></div>
+                    <div><strong>VOICE SPEED:</strong> <span style={{ color: '#ffffff' }}>Instant, conversational audio with zero awkward lag</span></div>
+                    <div><strong>ACCURACY:</strong> <span style={{ color: '#ffffff' }}>Accurate recognition across international accents</span></div>
+                    <div><strong>FEEDBACK:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Helpful coaching on clarity, pacing, and answers</span></div>
                   </div>
                 </div>
               </div>
@@ -572,18 +572,18 @@ export default function PlatformPage() {
                     <Radio size={20} />
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Omni-Channel Bridges &amp; Standard MCP Server</h3>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>WhatsApp · Telegram · iMessage · Model Context Protocol</div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: 0 }}>Multi-Channel Support (WhatsApp, Web &amp; Mobile)</h3>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Meets students on the channels they already use</div>
                   </div>
                 </div>
                 <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
-                  Nova meets students where they already live. Stateless messaging adapters connect via 6-digit OTP pairing. Developers and external tools interface directly through Nova's standard Model Context Protocol (MCP) server over JSON-RPC.
+                  WorldLynk reaches students where they spend their time. Safe verification using official university email ensures that only verified students receive assistance.
                 </p>
                 <div style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
                   <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
-                    <div><strong>MESSAGING GATEWAYS:</strong> <span style={{ color: '#ffffff' }}>WhatsApp (Baileys) · Telegram (@chat-adapter) · iMessage</span></div>
-                    <div><strong>SECURITY CHALLENGE:</strong> <span style={{ color: 'var(--accent-purple)' }}>6-digit OTP + verified .ac.uk university email whitelist</span></div>
-                    <div><strong>MCP SERVER:</strong> <span style={{ color: '#ffffff' }}>worldlynkMCPServer (StdIO / JSON-RPC)</span></div>
+                    <div><strong>POPULAR CHANNELS:</strong> <span style={{ color: '#ffffff' }}>Official WhatsApp · Mobile Student App · Web Portal</span></div>
+                    <div><strong>STUDENT SECURITY:</strong> <span style={{ color: 'var(--accent-purple)' }}>Verified official university email login</span></div>
+                    <div><strong>DATA PRIVACY:</strong> <span style={{ color: '#ffffff' }}>Fully compliant with UK GDPR &amp; university data standards</span></div>
                   </div>
                 </div>
               </div>
@@ -594,10 +594,10 @@ export default function PlatformPage() {
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CONNECTOR CATALOG</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Plug Directly into Your Existing Stack.
+              Plug directly into the tools you already use.
             </h2>
             <p className="section-desc">
-              Bi-directional integration adaptors for the enterprise software your university already relies upon.
+              Pre-built connectors for the software and databases your university already relies upon.
             </p>
           </div>
 

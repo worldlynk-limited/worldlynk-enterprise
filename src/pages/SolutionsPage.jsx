@@ -21,140 +21,140 @@ import {
 const SECTORS = [
   {
     slug: 'vice-chancellor',
-    role: 'Vice-Chancellors & Executive Cabinet',
+    role: 'Vice-Chancellors & University Leadership',
     shortRole: 'Leadership',
-    headline: 'Macro-Capacity & Institutional Financial Viability',
-    thesis: 'Protect vital international tuition revenues, maintain sponsor license integrity, and expand campus capacity without linear administrative payroll inflation.',
+    headline: 'Student Retention & Financial Stability',
+    thesis: 'Protect student tuition revenue, keep visa compliance audit-ready, and support larger cohorts without burning out your administrative teams.',
     metric: '£3.8M',
-    metricLabel: 'Average tuition recovery from early attrition prevention across 5,000 students',
-    roiPill: '+18.4% Net Yield',
+    metricLabel: 'Average tuition protected per year by preventing student dropouts across 5,000 students',
+    roiPill: '+18.4% Retention Yield',
     challenges: [
-      'Structural reliance on non-EU international student tuition streams facing global visa headwinds.',
-      'Staff burnout and strikes across personal tutoring networks unable to keep up with cohort size.',
-      'Data fragmentation between SITS, Moodle, and housing preventing board-level proactive interventions.'
+      'Heavy reliance on international student tuition amid shifting global visa policies.',
+      'Staff burnout across academic advising and support teams struggling with growing caseloads.',
+      'Disconnected databases (student records, learning portals, housing) making it difficult to spot issues early.'
     ],
-    worldlynkSol: 'WorldLynk unifies your legacy databases into an autonomous living graph. Nova AI agents predict dropouts 14 days earlier and pre-draft interventions, while Arbiter ensures faculty maintain total authority on Compass.',
+    worldlynkSol: 'WorldLynk brings your campus systems together into one clear view. AI assistants spot at-risk students weeks earlier and prepare helpful check-ins, while faculty and staff review and approve every key action.',
     kpis: [
-      { label: 'Net Tuition Protection', val: '£3.8M/yr' },
-      { label: 'Staff Admin Reduction', val: '-62%' },
-      { label: 'UKVI Compliance Safety', val: '100%' }
+      { label: 'Tuition Protected', val: '£3.8M/yr' },
+      { label: 'Staff Admin Saved', val: '62%' },
+      { label: 'Audit Readiness', val: '100%' }
     ],
-    quote: '"WorldLynk provided our governing council with real-time operational telemetry we had never seen before. We protected 142 at-risk international students in Term 1 alone."',
+    quote: '"WorldLynk gave our leadership team real-time visibility across campus operations. We helped 142 at-risk international students stay on track in Term 1 alone."',
     quoteAuthor: 'Pro-Vice-Chancellor (Student Experience), Russell Group University'
   },
   {
     slug: 'registrars',
     role: 'Academic Registrars & Student Records',
     shortRole: 'Registrar',
-    headline: 'Queue Clearance with Absolute Cryptographic Lineage',
-    thesis: 'Eliminate peak-season backlogs across transcript evaluations, course prerequisite overrides, and CAS issuance with deterministic agent verification.',
-    metric: '-62%',
-    metricLabel: 'Reduction in routine manual enrollment and degree audit tickets',
-    roiPill: 'Zero-Lag Processing',
+    headline: 'Faster Approvals with Full Records Integrity',
+    thesis: 'Clear peak-season backlogs for transcripts, course swaps, and visa documents with smart assistants that organize everything for staff approval.',
+    metric: '62%',
+    metricLabel: 'Reduction in routine manual enrollment and course audit inquiries',
+    roiPill: 'Instant Processing',
     challenges: [
-      'Weeks of processing delay during peak international credential equivalency reviews (NARIC/UK ENIC).',
-      'Manual CAS generation prone to transcription errors, risking Home Office audit strikes.',
-      'High student friction and registrar queues during midterm course add/drop windows.'
+      'Weeks of processing delays during peak international credential evaluations.',
+      'Manual visa paperwork prone to typos and missing records.',
+      'High student stress and long queues during course add/drop periods.'
     ],
-    worldlynkSol: 'Mastra sub-agents evaluate NARIC equivalents, audit 28-day bank maintenance funds, and stage approved CAS certificates for one-click registrar seal with immutable SHA-256 history.',
+    worldlynkSol: 'AI assistants check qualification equivalencies, verify bank statements, and prepare draft visa certificates so registrars can review and approve in minutes.',
     kpis: [
-      { label: 'CAS Processing Time', val: '4 mins (was 14 days)' },
-      { label: 'Transcript Audit Accuracy', val: '99.8%' },
-      { label: 'SITS Sync Latency', val: '< 8ms' }
+      { label: 'Visa Prep Time', val: '4 mins (was 14 days)' },
+      { label: 'Document Accuracy', val: '99.8%' },
+      { label: 'System Sync Speed', val: 'Instant' }
     ],
-    quote: '"Our registrar team used to drown in 4,000 manual email tickets during Welcome Week. Compass pre-drafted 82% of prerequisite exceptions before staff even arrived at their desks."',
-    quoteAuthor: 'Academic Registrar, Ancient Scottish University'
+    quote: '"Our registrar team used to drown in thousands of emails during Welcome Week. Compass organized over 80% of routine requests before staff even sat down at their desks."',
+    quoteAuthor: 'Academic Registrar, UK University'
   },
   {
     slug: 'admissions',
     role: 'International Admissions & Recruitment',
     shortRole: 'Admissions',
-    headline: 'Eliminating CAS Bottlenecks and Summer Melt',
-    thesis: 'Transform offers into enrolled arrivals. Deliver 24/7 AI visa guidance, secure PBSA housing vouchers, and maintain constant international offer-holder engagement.',
+    headline: 'Guiding Offer Holders from Acceptance to Arrival',
+    thesis: 'Help accepted international students complete visa checks, secure verified accommodation, and arrive on campus without stress.',
     metric: '+28%',
     metricLabel: 'Increase in offer-to-enrolled conversion velocity across international cohorts',
-    roiPill: '-42% Melt Rate',
+    roiPill: '-42% Drop-off Rate',
     challenges: [
-      'Summer melt: up to 35% of international offer holders drop out before arriving in the UK due to visa confusion.',
-      'Immigration and accommodation inquiries clogging inboxes across different global timezones.',
-      'Scarcity of verified student accommodation leading to last-minute offer withdrawals.'
+      'Up to 35% of international offer holders drop out before arriving due to visa confusion or housing stress.',
+      'Inquiries flooding inboxes from applicants across different global timezones.',
+      'Shortage of verified student housing leading to last-minute offer withdrawals.'
     ],
-    worldlynkSol: 'Omnichannel WhatsApp and Telegram agents guide offer holders through an interactive arrival checklist, with direct Stripe-verified PBSA housing vouchers and live arrival assistance.',
+    worldlynkSol: 'Helpful assistants on WhatsApp and Telegram answer applicant questions 24/7, guide them through pre-arrival checklists, and help them secure verified student housing.',
     kpis: [
-      { label: 'Offer Conversion Rate', val: '+28%' },
-      { label: 'Inquiry Response Time', val: '< 4 seconds' },
-      { label: 'PBSA Housing Guarantee', val: '100% Placed' }
+      { label: 'Offer Conversion', val: '+28%' },
+      { label: 'Response Time', val: '< 4 seconds' },
+      { label: 'Housing Placement', val: '100% Placed' }
     ],
-    quote: '"We reduced summer melt by 42% because applicants had continuous 24/7 visa coaching and guaranteed student housing in London before ever stepping on a plane."',
-    quoteAuthor: 'Director of International Recruitment, London Metro University'
+    quote: '"We reduced offer drop-offs by 42% because applicants had 24/7 guidance and secured verified student housing before ever leaving home."',
+    quoteAuthor: 'Director of International Recruitment, London University'
   },
   {
     slug: 'compliance',
-    role: 'UKVI Tier-4 Compliance Officers',
+    role: 'Visa & Compliance Officers',
     shortRole: 'Compliance',
-    headline: 'Automated Sponsor License Protection & Work-Cap Audits',
-    thesis: 'Never risk Home Office license revocation. Sub-180ms dynamic QR scans and external employment tracking provide continuous audit readiness.',
+    headline: 'Protecting Your Sponsor License & Visa Work Hours',
+    thesis: 'Keep your sponsor license completely safe. QR attendance check-ins and smart work-hour tracking ensure full audit readiness at all times.',
     metric: '100%',
-    metricLabel: 'Real-time Tier-4 compliance audit readiness with zero work-cap breaches',
-    roiPill: 'Zero Sponsor Strikes',
+    metricLabel: 'Real-time student visa compliance with zero work-cap breaches',
+    roiPill: 'Audit-Ready Always',
     challenges: [
-      'Manual paper attendance sheets vulnerable to proxy sign-ins, impersonation, and lost clipboards.',
-      'Students inadvertently breaching the 20-hour weekly term-time work ceiling on external employment rotas.',
-      'Substantial institutional liability during unannounced Home Office Sponsor Compliance inspections.'
+      'Paper sign-in sheets vulnerable to proxy check-ins and misplaced records.',
+      'Students inadvertently exceeding their legal 20-hour weekly term-time work limits.',
+      'High administrative burden preparing for sponsor compliance inspections.'
     ],
-    worldlynkSol: 'Anti-spoof dynamic QR codes expire every sub-180ms. Smart calendar intelligence cross-references job rotas with lecture timetables, flagging legal ceiling breaches before they happen.',
+    worldlynkSol: 'Secure QR codes make lecture check-in easy, while smart calendar tracking alerts students and staff before work hours exceed weekly legal limits.',
     kpis: [
-      { label: 'Proxy Scan Vulnerability', val: '0% (Anti-Replay)' },
-      { label: 'Work Cap Breaches Logged', val: '0 Breaches' },
-      { label: 'UKVI Audit Readiness', val: 'Instant 1-Click' }
+      { label: 'Proxy Scan Risk', val: '0%' },
+      { label: 'Work Cap Breaches', val: '0 Breaches' },
+      { label: 'Inspection Audit', val: '1-Click Ready' }
     ],
-    quote: '"When UKVI compliance inspectors arrived for our unannounced sponsor audit, we produced full cryptographic attendance trails and work-hour ledgers in 90 seconds."',
-    quoteAuthor: 'Head of Visa Compliance, Russell Group University'
+    quote: '"When visa compliance inspectors requested our sponsor audit data, we generated complete attendance trails and work-hour records in minutes."',
+    quoteAuthor: 'Head of Visa Compliance, UK University'
   },
   {
     slug: 'faculty-tutors',
-    role: 'Personal Tutors & Academic Faculty',
+    role: 'Personal Tutors & Academic Advisors',
     shortRole: 'Faculty',
-    headline: 'Proactive Pastoral Care Without Administrative Burnout',
-    thesis: 'Detect student disengagement 14 days before failure. Faculty receive synthesized context and pre-drafted interventions instead of searching through raw logs.',
+    headline: 'Personalized Student Support Without the Paperwork',
+    thesis: 'Spot students who need help weeks before they fall behind. Advisors receive a clear summary and pre-written outreach notes, saving hours of manual data checking.',
     metric: '+35%',
-    metricLabel: 'Increase in meaningful tutor-student mentorship time by eliminating routine triage',
+    metricLabel: 'More time spent mentoring students by eliminating routine admin tasks',
     roiPill: '89.2% Retention',
     challenges: [
-      'Tutors have caseloads of 60+ personal tutees with zero visibility into cross-module attendance drops.',
-      'Interventions occur too late—often only after formal end-of-term academic failure or exam absence.',
-      'Hours spent drafting routine extension letters, makeup lab scheduling, and email follow-ups.'
+      'Advisors handle large caseloads with little visibility into attendance dips across different modules.',
+      'Interventions happen too late—often only after a student has already failed an assignment.',
+      'Hours spent drafting routine extension emails and scheduling makeup sessions.'
     ],
-    worldlynkSol: 'Early warning radar correlates Moodle inactivity with QR lecture absences. Tutors receive an actionable dossier with pre-drafted makeup lab slots ready to approve with one click.',
+    worldlynkSol: 'WorldLynk connects portal activity with attendance records. Advisors receive a clear briefing and suggested catch-up options ready to approve with one click.',
     kpis: [
-      { label: 'Early Warning Lead Time', val: '14 Days Earlier' },
-      { label: 'Admin Triage Saved', val: '3.4 hrs/week/tutor' },
-      { label: 'Coursework Recovery', val: '91% on-time' }
+      { label: 'Early Notice Lead Time', val: '14 Days Earlier' },
+      { label: 'Admin Time Saved', val: '3.4 hrs / wk' },
+      { label: 'Assignment Catch-up', val: '91% on-time' }
     ],
-    quote: '"I no longer have to check 5 different systems to see if my tutee is struggling. The dossier is already prepared—I just review it and focus on mentoring the student."',
+    quote: '"I no longer have to check 5 different portals to see if a student is struggling. The summary is right there—I just review it and focus on supporting the student."',
     quoteAuthor: 'Senior Lecturer & Senior Tutor, School of Computing'
   },
   {
     slug: 'housing-directors',
-    role: 'Campus Accommodation & PBSA Directors',
+    role: 'Campus Accommodation & Student Life',
     shortRole: 'Housing',
-    headline: 'Guaranteed Student Living & Zero Tenancy Scams',
-    thesis: 'Protect incoming international cohorts from predatory rental markets with Stripe-verified student housing vouchers and real-time residential rosters.',
+    headline: 'Safe, Verified Student Accommodation',
+    thesis: 'Protect incoming students from rental scams with verified student accommodations and secure booking before they arrive in the UK.',
     metric: '100%',
-    metricLabel: 'Verified housing placement for all incoming international undergraduate & postgraduate cohorts',
-    roiPill: 'Zero Fraud Leases',
+    metricLabel: 'Verified housing placement for incoming international cohorts',
+    roiPill: 'Zero Rental Scams',
     challenges: [
-      'International students landing in the UK without accommodation, falling prey to unverified rental scams.',
-      'Lack of real-time visibility into campus residential occupancy and maintenance ticket queues.',
-      'Manual lease contract coordination causing delayed student arrivals and deferred enrollments.'
+      'International students arriving in the UK without housing and falling prey to online scams.',
+      'Limited visibility into residential occupancy and student arrival schedules.',
+      'Late tenancy confirmations causing delayed arrivals and deferred enrollments.'
     ],
-    worldlynkSol: 'Integrated PBSA marketplace pairs students with verified ensuite rooms (Chapter, Scape, iQ). Tenancies are held with Stripe escrow contracts before international departure.',
+    worldlynkSol: 'Connects students with verified student halls and secure bookings before they leave home, giving families complete peace of mind.',
     kpis: [
-      { label: 'Housing Scam Incidents', val: '0 Reported' },
-      { label: 'Escrow Security Deposit', val: 'Stripe Protected' },
-      { label: 'PBSA Occupancy Rate', val: '99.4%' }
+      { label: 'Rental Scam Incidents', val: '0 Reported' },
+      { label: 'Deposit Protection', val: 'Fully Secure' },
+      { label: 'Room Occupancy', val: '99.4%' }
     ],
-    quote: '"WorldLynk transformed our international arrival experience. Every single student had a confirmed ensuite room key waiting for them before they even touched down at Heathrow."',
+    quote: '"WorldLynk transformed our arrival experience. Every single student had a confirmed room waiting for them before they even touched down at the airport."',
     quoteAuthor: 'Director of Campus Estates & Residential Life'
   }
 ];
@@ -177,25 +177,25 @@ export default function SolutionsPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                SOLUTIONS BY CAMPUS STAKEHOLDER // INSTITUTIONAL EXCELLENCE
+                SOLUTIONS FOR YOUR CAMPUS TEAMS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Tailored operational frameworks for university leadership.
+                Built for every team across your university.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Every campus leader faces distinct institutional mandates. Whether safeguarding your UKVI Tier-4 sponsor license, clearing peak registrar queues, beating summer melt, or empowering personal tutors, WorldLynk provides dedicated operational automation.
+                Whether you're protecting student retention, clearing registrar queues, guiding international arrivals, or supporting tutors, WorldLynk gives your teams the tools to work faster and with complete confidence.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>ACTIVE STAKEHOLDER</div>
+                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>ACTIVE VIEW</div>
                 <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '2px' }}>{activeSector.shortRole}</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{activeSector.roiPill}</div>
               </div>
               <button onClick={() => setShowBriefingModal(true)} className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 <Download size={13} />
-                <span>Executive Briefing Pack</span>
+                <span>Download Solution Guide</span>
               </button>
             </div>
           </div>
@@ -252,7 +252,7 @@ export default function SolutionsPage() {
 
                 {/* Challenge List */}
                 <div style={{ backgroundColor: '#101016', padding: '18px', borderRadius: '12px', borderLeft: '3px solid var(--status-fail)', marginBottom: '20px' }}>
-                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-fail)', marginBottom: '6px' }}>THE INSTITUTIONAL FRICTION</div>
+                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-fail)', marginBottom: '6px' }}>THE CHALLENGE</div>
                   <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '12.5px', lineHeight: 1.6 }}>
                     {activeSector.challenges.map((c, i) => (
                       <li key={i} style={{ marginBottom: '6px' }}>{c}</li>
@@ -262,7 +262,7 @@ export default function SolutionsPage() {
 
                 {/* Resolution */}
                 <div style={{ backgroundColor: '#101016', padding: '18px', borderRadius: '12px', borderLeft: '3px solid var(--status-pass)', marginBottom: '24px' }}>
-                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-pass)', marginBottom: '6px' }}>THE WORLDLYNK RESOLUTION</div>
+                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-pass)', marginBottom: '6px' }}>HOW WORLDLYNK HELPS</div>
                   <p style={{ fontSize: '13px', color: '#ffffff', lineHeight: 1.5 }}>
                     {activeSector.worldlynkSol}
                   </p>
@@ -270,10 +270,10 @@ export default function SolutionsPage() {
 
                 <div className="flex gap-sm">
                   <Link to="/demo" className="btn-primary">
-                    Simulate Workflow for {activeSector.shortRole} ➔
+                    See {activeSector.shortRole} Solutions ➔
                   </Link>
                   <button onClick={() => setShowBriefingModal(true)} className="btn-secondary">
-                    Download Briefing PDF
+                    Download Guide (PDF)
                   </button>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export default function SolutionsPage() {
               <div className="flex flex-col gap-lg">
                 {/* Metric Hero Card */}
                 <div style={{ backgroundColor: '#0d0d14', padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>PRIMARY VALUE DELIVERED</div>
+                  <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>KEY OUTCOME</div>
                   <div style={{ fontSize: '2.8rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '4px', lineHeight: 1 }}>
                     {activeSector.metric}
                   </div>
@@ -345,22 +345,21 @@ export default function SolutionsPage() {
           }}>
             <div className="flex-between mb-md">
               <div>
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>EXECUTIVE OPERATIONAL BRIEFING</span>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SOLUTION GUIDE</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>{activeSector.role}</h3>
               </div>
               <button onClick={() => setShowBriefingModal(false)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
             </div>
 
             <p className="body-sm text-secondary mb-md">
-              Download the complete 18-page whitepaper with detailed SIS integration specifications, Home Office compliance audit checklists, and board-level financial projections.
+              Download the complete overview with workflow breakdowns, student feedback, and step-by-step onboarding details.
             </p>
 
             <div style={{ backgroundColor: '#0a0a0f', padding: '14px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '20px' }}>
               <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <div><strong>DOCUMENT:</strong> WorldLynk_Executive_Brief_{activeSector.slug}.pdf</div>
-                <div><strong>PAGES:</strong> 18 Pages (Includes Architecture Schematics)</div>
-                <div><strong>SECURITY CLEARANCE:</strong> Institutional Leadership / Board Review</div>
-                <div><strong>FORMAT:</strong> PDF (Signed SHA-256 Stamp)</div>
+                <div><strong>DOCUMENT:</strong> WorldLynk_Solution_Guide_{activeSector.slug}.pdf</div>
+                <div><strong>FORMAT:</strong> PDF Summary</div>
+                <div><strong>AUDIENCE:</strong> University Staff &amp; Leadership</div>
               </div>
             </div>
 
@@ -368,7 +367,7 @@ export default function SolutionsPage() {
               <button onClick={() => setShowBriefingModal(false)} className="btn-secondary btn-sm">
                 Cancel
               </button>
-              <button onClick={() => { alert(`Downloading Executive Brief for: ${activeSector.role}`); setShowBriefingModal(false); }} className="btn-primary btn-sm">
+              <button onClick={() => { alert(`Downloading Guide for: ${activeSector.role}`); setShowBriefingModal(false); }} className="btn-primary btn-sm">
                 Download PDF Package ➔
               </button>
             </div>

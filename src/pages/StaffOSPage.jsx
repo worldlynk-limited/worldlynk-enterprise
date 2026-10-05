@@ -32,62 +32,62 @@ const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const INITIAL_MODULES = [
   {
     id: 'attendance',
-    name: 'Dynamic QR Attendance Radar',
+    name: 'Student Attendance',
     shortCode: 'ATTEND',
-    thesis: 'Sub-180ms rotating cryptographic tokens eliminate proxy check-ins and safeguard UKVI compliance automatically.',
-    stats: '98.6% Real-Time Check-In Rate · Sub-180ms Token Lifespan · 0 Proxy Scans',
+    thesis: 'QR check-ins verify student attendance in real time and flag absences before they become critical.',
+    stats: '98.6% On-Time Check-Ins · Zero Proxy Scans · Real-Time Sync',
     queue: [
-      { id: '1', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: 'CS-5100 Absent (Lecture EB-02)', action: 'Makeup lab slot reserved; tutor alert drafted', evidence: 'Dynamic QR DB + Timetable', owner: 'Senior Tutor (Dr. Jenkins)', risk: 78, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Missed 2nd consecutive lecture. Work schedule cross-referenced: barista shift logged previous evening.', hash: 'sha256:8b4f7a2d...d1a9' },
-      { id: '2', student: 'Liam O’Connor', avatar: 'LO', course: 'BSc Computer Science', signal: '3 Consecutive Absences Flagged', action: 'Triggered wellness outreach protocol', evidence: 'Live Attendance Worker #4', owner: 'Student Success (S. Patel)', risk: 89, status: 'HELD', gpa: '2.84', sitsId: '0084-3912', cas: 'Domestic UK', workHours: '0h', email: 'l.oconnor@rhul.ac.uk', phone: '+44 7700 900881', notes: 'Zero LMS logins in 7 days. Personal tutor notification staged.', hash: 'sha256:3c7efa21...fa21' },
-      { id: '3', student: 'Zara Ahmed', avatar: 'ZA', course: 'MEng Robotics', signal: 'Late Check-in (Over 15m)', action: 'Recorded partial attendance per faculty policy', evidence: 'Rotated QR HMAC Timestamp', owner: 'Auto-System Log', risk: 24, status: 'SEALED', gpa: '3.91', sitsId: '0093-1104', cas: 'E2849102C', workHours: '8h', email: 'z.ahmed@rhul.ac.uk', phone: '+44 7700 900332', notes: 'Scanned at 09:16 with HMAC delta +16m. Faculty late rule auto-applied.', hash: 'sha256:1a9bce43...ce43' },
-      { id: '4', student: 'Carlos Gomez', avatar: 'CG', course: 'BSc International Business', signal: 'Seminar Section Clashing', action: 'Shifted to Thursday morning lab group', evidence: 'SITS Timetable Sync', owner: 'Timetable Officer', risk: 32, status: 'APPROVED', gpa: '3.40', sitsId: '0089-4820', cas: 'E2049182D', workHours: '12h', email: 'c.gomez@rhul.ac.uk', phone: '+44 7700 900719', notes: 'Conflict resolved in SITS. Student notified via WhatsApp.', hash: 'sha256:9d4ebb72...bb72' }
+      { id: '1', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: 'Missed Lecture (CS-5100, EB-02)', action: 'Makeup lab slot reserved; tutor alert drafted', evidence: 'Attendance Log + Timetable', owner: 'Senior Tutor (Dr. Jenkins)', risk: 78, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Missed 2nd consecutive lecture. Work schedule cross-referenced: barista shift logged previous evening.', hash: 'rec_8b4f7a2d' },
+      { id: '2', student: 'Liam O’Connor', avatar: 'LO', course: 'BSc Computer Science', signal: '3 Consecutive Absences Flagged', action: 'Triggered wellness check-in outreach', evidence: 'Attendance Records', owner: 'Student Success (S. Patel)', risk: 89, status: 'HELD', gpa: '2.84', sitsId: '0084-3912', cas: 'Domestic UK', workHours: '0h', email: 'l.oconnor@rhul.ac.uk', phone: '+44 7700 900881', notes: 'Zero learning portal logins in 7 days. Personal tutor notification prepared.', hash: 'rec_3c7efa21' },
+      { id: '3', student: 'Zara Ahmed', avatar: 'ZA', course: 'MEng Robotics', signal: 'Late Check-in (Over 15m)', action: 'Recorded partial attendance per faculty policy', evidence: 'Classroom QR Timestamp', owner: 'System Auto-Rule', risk: 24, status: 'APPROVED', gpa: '3.91', sitsId: '0093-1104', cas: 'E2849102C', workHours: '8h', email: 'z.ahmed@rhul.ac.uk', phone: '+44 7700 900332', notes: 'Scanned 16 minutes after lecture start. Standard faculty late policy applied.', hash: 'rec_1a9bce43' },
+      { id: '4', student: 'Carlos Gomez', avatar: 'CG', course: 'BSc International Business', signal: 'Seminar Section Clashing', action: 'Shifted to Thursday morning lab group', evidence: 'Timetable Sync', owner: 'Timetable Officer', risk: 32, status: 'APPROVED', gpa: '3.40', sitsId: '0089-4820', cas: 'E2049182D', workHours: '12h', email: 'c.gomez@rhul.ac.uk', phone: '+44 7700 900719', notes: 'Conflict resolved in records system. Student notified via WhatsApp.', hash: 'rec_9d4ebb72' }
     ]
   },
   {
     id: 'calendar',
-    name: 'Calendar Intelligence & Workload Matrix',
-    shortCode: 'CAL-INTEL',
-    thesis: 'Unified 8-view calendar mapping across student timetables, assessment clusters, 20h UKVI work caps, and faculty office hours.',
-    stats: '8 Institutional Views · Real-Time Clash Radar · Term-Time Cap Defense',
+    name: 'Timetables & Workload',
+    shortCode: 'SCHEDULE',
+    thesis: 'Brings together timetables, upcoming coursework deadlines, student work hours, and tutor office hours into one view.',
+    stats: 'Unified Calendar · Automatic Clash Detection · Work Cap Alerts',
     queue: [
-      { id: '14', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: 'Assessment Clash: CS-5100 & CS-5200', action: 'Staged 48h staggered deadline proposal', evidence: 'Uniportal Calendar Matrix (Tab 4)', owner: 'Module Lead (Prof. Davis)', risk: 72, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Two major 40% courseworks scheduled for same Friday 17:00 deadline. Tutor extension ready.', hash: 'sha256:6e1b99a0...6e1b' },
-      { id: '15', student: 'Tariq Hassan', avatar: 'TH', course: 'BSc Finance', signal: 'Exam Period Overload (3 in 36h)', action: 'Alternative exam session allocated', evidence: 'Exam Timetable Optimizer', owner: 'Registry Exam Lead', risk: 64, status: 'APPROVED', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'Re-spaced Corporate Finance exam to Tuesday morning per university fairness guidelines.', hash: 'sha256:2d8c55f4...2d8c' }
+      { id: '14', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: 'Assessment Clash: CS-5100 & CS-5200', action: 'Staged 48h staggered deadline proposal', evidence: 'Course Timetable Matrix', owner: 'Module Lead (Prof. Davis)', risk: 72, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Two major 40% courseworks scheduled for same Friday 17:00 deadline. Tutor extension ready.', hash: 'rec_6e1b99a0' },
+      { id: '15', student: 'Tariq Hassan', avatar: 'TH', course: 'BSc Finance', signal: 'Exam Period Overload (3 in 36h)', action: 'Alternative exam session allocated', evidence: 'Exam Timetable Optimizer', owner: 'Registry Exam Lead', risk: 64, status: 'APPROVED', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'Re-spaced Corporate Finance exam to Tuesday morning per university fairness guidelines.', hash: 'rec_2d8c55f4' }
     ]
   },
   {
     id: 'admissions',
-    name: 'Admissions & CAS Intelligence',
-    shortCode: 'CAS-ADM',
-    thesis: 'Every international inquiry answered in seconds; transcripts pre-scored; CAS generation briefs ready for registrar seal.',
-    stats: '1,420 Active Inquiries · 284 CAS Drafts Ready · 0 Summer Melt Blindspots',
+    name: 'Admissions & Visa Support',
+    shortCode: 'ADMISSIONS',
+    thesis: 'Answers applicant questions 24/7, organizes transcripts, and prepares visa paperwork for staff review.',
+    stats: '1,420 Inquiries Handled · 284 Visa Drafts Ready · Instant Responses',
     queue: [
-      { id: '5', student: 'Jin-Woo Park', avatar: 'JP', course: 'BSc Software Eng', signal: 'Missing A-Level Math Equivalent', action: 'Drafted international NARIC equivalency brief', evidence: 'Transcripts PDF + Slate CRM', owner: 'Admissions Officer (K. Bell)', risk: 45, status: 'HELD', gpa: '3.65', sitsId: '0088-1249', cas: 'E1948201B', workHours: '0h', email: 'jw.park@applicant.ac.uk', phone: '+82 10 5555 0192', notes: 'Korean CSAT Mathematics score 138/140 evaluates to A* grade per UK ENIC.', hash: 'sha256:7f2a88e1...88e1' },
-      { id: '6', student: 'Aisha Al-Mansoor', avatar: 'AM', course: 'MSc Artificial Intelligence', signal: 'CAS Sponsorship Stage', action: 'Financial maintenance 28-day bank audit passed', evidence: 'Barclays Statement + CAS Registry', owner: 'Compliance Lead (M. Thorne)', risk: 12, status: 'APPROVED', gpa: '3.88', sitsId: '0095-2018', cas: 'E3094819A', workHours: '0h', email: 'a.almansoor@rhul.ac.uk', phone: '+971 50 123 4567', notes: '£15,400 held continuously over 31 days. Ready for SMS Home Office upload.', hash: 'sha256:4e1b99a0...99a0' },
-      { id: '7', student: 'Mateo Rossi', avatar: 'MR', course: 'BA Design & Media', signal: 'Offer Acceptance Follow-up', action: 'Drafted accommodation deposit reminder via WhatsApp', evidence: 'Applicant Portal + Stripe Hook', owner: 'Admissions Bot (Mastra)', risk: 38, status: 'SEALED', gpa: '3.20', sitsId: '0092-4819', cas: 'Domestic EU', workHours: '0h', email: 'm.rossi@rhul.ac.uk', phone: '+39 02 5555 1928', notes: 'Stripe deposit link generated with 7-day expiry.', hash: 'sha256:2d8c55f4...55f4' }
+      { id: '5', student: 'Jin-Woo Park', avatar: 'JP', course: 'BSc Software Eng', signal: 'Missing A-Level Math Equivalent', action: 'Drafted international qualification equivalence brief', evidence: 'Transcripts PDF + CRM', owner: 'Admissions Officer (K. Bell)', risk: 45, status: 'HELD', gpa: '3.65', sitsId: '0088-1249', cas: 'E1948201B', workHours: '0h', email: 'jw.park@applicant.ac.uk', phone: '+82 10 5555 0192', notes: 'Korean CSAT Mathematics score 138/140 evaluates to A* grade per UK ENIC guidance.', hash: 'rec_7f2a88e1' },
+      { id: '6', student: 'Aisha Al-Mansoor', avatar: 'AM', course: 'MSc Artificial Intelligence', signal: 'CAS Visa Sponsorship Stage', action: 'Financial maintenance 28-day bank audit passed', evidence: 'Bank Statement + CAS Registry', owner: 'Compliance Lead (M. Thorne)', risk: 12, status: 'APPROVED', gpa: '3.88', sitsId: '0095-2018', cas: 'E3094819A', workHours: '0h', email: 'a.almansoor@rhul.ac.uk', phone: '+971 50 123 4567', notes: '£15,400 held continuously over 31 days. Ready for official visa system upload.', hash: 'rec_4e1b99a0' },
+      { id: '7', student: 'Mateo Rossi', avatar: 'MR', course: 'BA Design & Media', signal: 'Offer Acceptance Follow-up', action: 'Drafted accommodation deposit reminder via WhatsApp', evidence: 'Applicant Portal + Payment Link', owner: 'Admissions Assistant', risk: 38, status: 'APPROVED', gpa: '3.20', sitsId: '0092-4819', cas: 'Domestic EU', workHours: '0h', email: 'm.rossi@rhul.ac.uk', phone: '+39 02 5555 1928', notes: 'Secure deposit link generated with 7-day expiry.', hash: 'rec_2d8c55f4' }
     ]
   },
   {
     id: 'retention',
-    name: 'Retention & Early Risk Alerts',
-    shortCode: 'RETENTION',
-    thesis: 'AI risk models identify student disengagement 14 days before midterm failure by correlating LMS logins with lecture attendance.',
-    stats: '4,200 Monitored Cohort · 32 Flagged for Tutor Check-In · 89% Retention Rate',
+    name: 'Student Retention & Care',
+    shortCode: 'CARE',
+    thesis: 'Spots when students fall behind on attendance or coursework weeks early so advisors can check in quickly.',
+    stats: '4,200 Students Supported · 32 Suggested Check-Ins · 89% Retention Rate',
     queue: [
-      { id: '8', student: 'Tariq Hassan', avatar: 'TH', course: 'BSc Finance', signal: 'LMS Inactivity for 120 Hours', action: 'Compiled course resource digest and study guide', evidence: 'Moodle AES-256 Client Sync', owner: 'Academic Advisor (J. Ward)', risk: 82, status: 'HELD', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'No Moodle activity since last Tuesday. Quantitative Methods assignment overdue by 48h.', hash: 'sha256:5c9f11b2...11b2' },
-      { id: '9', student: 'Elena Rostova', avatar: 'ER', course: 'MSc Data Analytics', signal: 'Assignment 1 Submission Missed', action: 'Drafted extension request questionnaire', evidence: 'Canvas LTI Gradebook', owner: 'Module Lead (Prof. Davis)', risk: 65, status: 'HELD', gpa: '3.50', sitsId: '0091-8841', cas: 'E2849102X', workHours: '10h', email: 'e.rostova@rhul.ac.uk', phone: '+44 7700 900994', notes: 'Submitted extenuating circumstances form. Medical verification requested.', hash: 'sha256:6a3b44c8...44c8' },
-      { id: '10', student: 'Kwame Mensah', avatar: 'KM', course: 'BSc Economics', signal: 'Risk Score Improved (68 ➔ 92)', action: 'Archived intervention case as resolved', evidence: 'Risk Worker #2 Scoring Graph', owner: 'Student Success Desk', risk: 15, status: 'APPROVED', gpa: '3.62', sitsId: '0085-1928', cas: 'Domestic UK', workHours: '12h', email: 'k.mensah@rhul.ac.uk', phone: '+44 7700 900228', notes: 'Attended tutor office hour and completed 3 catch-up modules on Moodle.', hash: 'sha256:8e2c77d3...77d3' }
+      { id: '8', student: 'Tariq Hassan', avatar: 'TH', course: 'BSc Finance', signal: 'No Learning Portal Activity in 5 Days', action: 'Compiled course resource digest and study guide', evidence: 'Learning Management System Sync', owner: 'Academic Advisor (J. Ward)', risk: 82, status: 'HELD', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'No portal activity since last Tuesday. Quantitative Methods assignment overdue by 48h.', hash: 'rec_5c9f11b2' },
+      { id: '9', student: 'Elena Rostova', avatar: 'ER', course: 'MSc Data Analytics', signal: 'Coursework Deadline Missed', action: 'Drafted extension request questionnaire', evidence: 'Canvas Gradebook', owner: 'Module Lead (Prof. Davis)', risk: 65, status: 'HELD', gpa: '3.50', sitsId: '0091-8841', cas: 'E2849102X', workHours: '10h', email: 'e.rostova@rhul.ac.uk', phone: '+44 7700 900994', notes: 'Submitted extenuating circumstances form. Medical verification requested.', hash: 'rec_6a3b44c8' },
+      { id: '10', student: 'Kwame Mensah', avatar: 'KM', course: 'BSc Economics', signal: 'Attendance & Grades Recovered', action: 'Archived check-in case as resolved', evidence: 'Attendance & Portal Activity', owner: 'Student Success Desk', risk: 15, status: 'APPROVED', gpa: '3.62', sitsId: '0085-1928', cas: 'Domestic UK', workHours: '12h', email: 'k.mensah@rhul.ac.uk', phone: '+44 7700 900228', notes: 'Attended tutor office hour and completed 3 catch-up modules.', hash: 'rec_8e2c77d3' }
     ]
   },
   {
     id: 'compliance',
-    name: 'UKVI Tier-4 Sponsor Shield',
-    shortCode: 'UKVI-4',
-    thesis: 'Continuous automated auditing of term-time employment against the 20-hour Home Office weekly work ceiling.',
-    stats: '100% Sponsor License Safe · 0 Work-Cap Breaches · Real-Time Exception Radar',
+    name: 'Visa Work Hours & Compliance',
+    shortCode: 'VISA-COMPLY',
+    thesis: 'Helps international students track their legal 20-hour weekly work cap and avoid accidental visa breaches.',
+    stats: '100% Audit-Ready · Zero Work-Hour Breaches · Instant Staff Alerts',
     queue: [
-      { id: '11', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: '16h Work Shift Logged', action: 'Calendar conflict with lab resolved automatically', evidence: 'Shift Rota + Academic Calendar', owner: 'UKVI Officer (R. Taylor)', risk: 78, status: 'APPROVED', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Within legal 20h limit. Sunday overtime offer intercepted and rejected by Nova copilot.', hash: 'sha256:7e1a22d0...22d0' },
-      { id: '12', student: 'David Kim', avatar: 'DK', course: 'MEng Mechanical Eng', signal: 'Approaching 19.5h Work Margin', action: 'Delivered legal threshold notice via Telegram', evidence: 'Work Calendar Feed (Stripe Pay)', owner: 'Compliance Officer (M. Thorne)', risk: 88, status: 'SEALED', gpa: '3.44', sitsId: '0087-9912', cas: 'E1948201Z', workHours: '19.5h', email: 'd.kim@rhul.ac.uk', phone: '+44 7700 900447', notes: 'Scheduled 19.5 hours at campus dining hall. Employer notified of 30-minute remaining legal ceiling.', hash: 'sha256:9a3d11c4...11c4' },
-      { id: '13', student: 'Ananya Sharma', avatar: 'AS', course: 'LLM International Law', signal: 'Term-Time Break Transition', action: 'Activated full-time 40h vacation work allowance', evidence: 'University Term Dates Registry', owner: 'System Compliance Guard', risk: 10, status: 'APPROVED', gpa: '3.80', sitsId: '0094-1182', cas: 'E2849102Q', workHours: '0h', email: 'a.sharma@rhul.ac.uk', phone: '+44 7700 900663', notes: 'Official reading week verified. 40h work allowance unlocked until Oct 29.', hash: 'sha256:3f5c88a1...88a1' }
+      { id: '11', student: 'Maya Chen', avatar: 'MC', course: 'MSc Data Science', signal: '16h Work Shift Logged', action: 'Calendar conflict with lab resolved automatically', evidence: 'Shift Rota + Academic Calendar', owner: 'Visa Compliance Officer', risk: 78, status: 'APPROVED', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Within legal 20h limit. Extra shift offer flagged to protect student coursework time.', hash: 'rec_7e1a22d0' },
+      { id: '12', student: 'David Kim', avatar: 'DK', course: 'MEng Mechanical Eng', signal: 'Approaching 19.5h Work Margin', action: 'Delivered work limit notice via message', evidence: 'Student Work Calendar Feed', owner: 'Compliance Officer (M. Thorne)', risk: 88, status: 'APPROVED', gpa: '3.44', sitsId: '0087-9912', cas: 'E1948201Z', workHours: '19.5h', email: 'd.kim@rhul.ac.uk', phone: '+44 7700 900447', notes: 'Scheduled 19.5 hours at campus dining hall. Student notified of 30-minute remaining legal limit.', hash: 'rec_9a3d11c4' },
+      { id: '13', student: 'Ananya Sharma', avatar: 'AS', course: 'LLM International Law', signal: 'Term Break Started', action: 'Activated full-time vacation work allowance', evidence: 'University Term Dates Registry', owner: 'Compliance System Guard', risk: 10, status: 'APPROVED', gpa: '3.80', sitsId: '0094-1182', cas: 'E2849102Q', workHours: '0h', email: 'a.sharma@rhul.ac.uk', phone: '+44 7700 900663', notes: 'Official reading week verified. Vacation work allowance active until Oct 29.', hash: 'rec_3f5c88a1' }
     ]
   }
 ];
@@ -126,7 +126,7 @@ export default function StaffOSPage() {
       if (m.id !== selectedModuleId) return m;
       return {
         ...m,
-        queue: m.queue.map(s => s.id === studentId ? { ...s, status: 'APPROVED', hash: `sha256:${Math.random().toString(16).substring(2, 10)}...${Math.random().toString(16).substring(2, 6)}` } : s)
+        queue: m.queue.map(s => s.id === studentId ? { ...s, status: 'APPROVED', hash: `rec_${Math.random().toString(16).substring(2, 10)}` } : s)
       };
     }));
   };
@@ -136,7 +136,7 @@ export default function StaffOSPage() {
       if (m.id !== selectedModuleId) return m;
       return {
         ...m,
-        queue: m.queue.map(s => s.status === 'HELD' ? { ...s, status: 'APPROVED', hash: `sha256:${Math.random().toString(16).substring(2, 10)}...appr` } : s)
+        queue: m.queue.map(s => s.status === 'HELD' ? { ...s, status: 'APPROVED', hash: `rec_${Math.random().toString(16).substring(2, 10)}` } : s)
       };
     }));
   };
@@ -153,21 +153,21 @@ export default function StaffOSPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                COMPASS // UNIVERSITY OPERATIONS &amp; GOVERNANCE PORTAL
+                STAFF PORTAL // COMPASS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                High-throughput campus operations. Consequential decisions held for staff review.
+                One clear dashboard for campus staff. You always stay in control.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Compass turns disjointed registrar, tutoring, and compliance emails into an unified operational queue. 30 Nova AI specialist agents monitor continuous campus telemetry, cross-reference institutional regulations, and assemble evidence briefs. Crucially, the Arbiter gate guarantees no consequential change occurs without named human authority.
+                Compass turns fragmented student emails and portal requests into one organized inbox. AI assistants draft replies, verify requirements, and flag urgent cases. Staff review and approve every key action before anything is sent.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--status-held)', fontSize: '10px' }}>OPERATIONS HEALTH</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{heldCount} Held Actions</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{highRiskCount} High-Priority Signals</div>
+                <div className="mono-label" style={{ color: 'var(--status-held)', fontSize: '10px' }}>ACTIONS AWAITING REVIEW</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{heldCount} Pending Staff Review</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{highRiskCount} High Priority</div>
               </div>
               <a
                 href={COMPASS_BACKEND_URL}
@@ -254,9 +254,9 @@ export default function StaffOSPage() {
               <div className="flex gap-xs flex-wrap">
                 {[
                   { id: 'all', label: `All (${allQueue.length})` },
-                  { id: 'held', label: `Held for Review (${heldCount})` },
-                  { id: 'highRisk', label: `High Risk (${highRiskCount})` },
-                  { id: 'approved', label: 'Approved & Sealed' }
+                  { id: 'held', label: `Needs Review (${heldCount})` },
+                  { id: 'highRisk', label: `High Priority (${highRiskCount})` },
+                  { id: 'approved', label: 'Approved & Completed' }
                 ].map((f) => (
                   <button
                     key={f.id}
@@ -285,7 +285,7 @@ export default function StaffOSPage() {
                 style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px' }}
               >
                 <CheckCircle2 size={13} color="var(--accent-emerald)" />
-                Batch Approve Held ({heldCount})
+                Approve All Reviewed ({heldCount})
               </button>
               <button
                 onClick={() => setShowLedgerModal(true)}
@@ -293,7 +293,7 @@ export default function StaffOSPage() {
                 style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px' }}
               >
                 <Lock size={13} color="var(--accent-cyan)" />
-                Inspect SHA-256 Ledger
+                View Activity Log
               </button>
             </div>
           </div>
@@ -305,9 +305,9 @@ export default function StaffOSPage() {
             <div className="card-dark" style={{ padding: '0', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
               <div className="flex-between" style={{ padding: '14px 18px', borderBottom: '1px solid var(--border-hairline)', backgroundColor: '#13131b' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>
-                  ACTIVE QUEUE ({filteredQueue.length} ITEMS)
+                  ACTIVE INBOX ({filteredQueue.length} ITEMS)
                 </span>
-                <span className="mono-sm text-muted" style={{ fontSize: '11px' }}>Click row to open dossier</span>
+                <span className="mono-sm text-muted" style={{ fontSize: '11px' }}>Click row to view details</span>
               </div>
 
               <div style={{ overflowX: 'auto' }}>
@@ -315,9 +315,9 @@ export default function StaffOSPage() {
                   <thead>
                     <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
                       <th style={{ padding: '10px 14px' }}>STUDENT</th>
-                      <th style={{ padding: '10px 14px' }}>TELEMETRY SIGNAL</th>
-                      <th style={{ padding: '10px 14px' }}>RISK</th>
-                      <th style={{ padding: '10px 14px' }}>STATE</th>
+                      <th style={{ padding: '10px 14px' }}>UPDATE / REASON</th>
+                      <th style={{ padding: '10px 14px' }}>URGENCY</th>
+                      <th style={{ padding: '10px 14px' }}>STATUS</th>
                       <th style={{ padding: '10px 14px', textAlign: 'right' }}>ACTION</th>
                     </tr>
                   </thead>
@@ -361,7 +361,7 @@ export default function StaffOSPage() {
 
                           <td style={{ padding: '12px 14px' }}>
                             <span className={`pill ${row.status === 'HELD' ? 'pill-held' : row.status === 'APPROVED' ? 'pill-approved' : 'pill-active'}`} style={{ fontSize: '9px' }}>
-                              {row.status}
+                              {row.status === 'HELD' ? 'NEEDS REVIEW' : 'APPROVED'}
                             </span>
                           </td>
 
@@ -379,7 +379,7 @@ export default function StaffOSPage() {
                               </button>
                             ) : (
                               <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-emerald)' }}>
-                                ✓ Sealed
+                                ✓ Approved
                               </span>
                             )}
                           </td>
@@ -391,7 +391,7 @@ export default function StaffOSPage() {
               </div>
             </div>
 
-            {/* ── RIGHT: SELECTED STUDENT DOSSIER & ARBITER GATE ── */}
+            {/* ── RIGHT: SELECTED STUDENT DOSSIER & REVIEW PANEL ── */}
             {selectedStudent && (
               <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
                 <div className="flex-between mb-sm">
@@ -406,28 +406,32 @@ export default function StaffOSPage() {
                   </div>
 
                   <span className={`pill ${selectedStudent.status === 'HELD' ? 'pill-held' : 'pill-approved'}`}>
-                    {selectedStudent.status}
+                    {selectedStudent.status === 'HELD' ? 'NEEDS REVIEW' : 'APPROVED'}
                   </span>
                 </div>
 
                 {/* Sub-tabs for Dossier */}
                 <div className="flex gap-xs mb-md" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '8px' }}>
-                  {['overview', 'notes', 'audit'].map((t) => (
+                  {[
+                    { id: 'overview', label: 'OVERVIEW' },
+                    { id: 'notes', label: 'MESSAGE STUDENT' },
+                    { id: 'audit', label: 'AUDIT LOG' }
+                  ].map((t) => (
                     <button
-                      key={t}
-                      onClick={() => setDossierTab(t)}
+                      key={t.id}
+                      onClick={() => setDossierTab(t.id)}
                       style={{
                         background: 'none',
                         border: 'none',
-                        color: dossierTab === t ? 'var(--accent-orange)' : 'var(--text-muted)',
-                        fontWeight: dossierTab === t ? '700' : '500',
+                        color: dossierTab === t.id ? 'var(--accent-orange)' : 'var(--text-muted)',
+                        fontWeight: dossierTab === t.id ? '700' : '500',
                         fontSize: '11px',
                         cursor: 'pointer',
                         padding: '4px 8px',
-                        borderBottom: dossierTab === t ? '2px solid var(--accent-orange)' : 'none'
+                        borderBottom: dossierTab === t.id ? '2px solid var(--accent-orange)' : 'none'
                       }}
                     >
-                      {t.toUpperCase()}
+                      {t.label}
                     </button>
                   ))}
                 </div>
@@ -437,38 +441,38 @@ export default function StaffOSPage() {
                   <div className="flex flex-col gap-md">
                     {/* Key Attributes Grid */}
                     <div className="grid-2 gap-sm" style={{ backgroundColor: '#0d0d12', padding: '12px', borderRadius: '8px' }}>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>SITS ID:</strong> {selectedStudent.sitsId}</div>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CAS NUMBER:</strong> {selectedStudent.cas}</div>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CUMULATIVE GPA:</strong> {selectedStudent.gpa}</div>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>WORK LOGGED:</strong> {selectedStudent.workHours} / 20h</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>STUDENT ID:</strong> {selectedStudent.sitsId}</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>VISA / CAS:</strong> {selectedStudent.cas}</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CURRENT GPA:</strong> {selectedStudent.gpa}</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>WORK LOGGED:</strong> {selectedStudent.workHours} / 20h limit</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>EMAIL:</strong> {selectedStudent.email}</div>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CONTACT:</strong> {selectedStudent.phone}</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>PHONE:</strong> {selectedStudent.phone}</div>
                     </div>
 
-                    {/* Telemetry Evidence Box */}
+                    {/* What happened box */}
                     <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>TELEMETRY EVIDENCE CHAIN</div>
+                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>WHAT HAPPENED</div>
                       <div style={{ fontSize: '12px', fontWeight: '700', marginTop: '2px' }}>{selectedStudent.signal}</div>
                       <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.4 }}>
                         {selectedStudent.notes}
                       </p>
                       <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9.5px' }}>
-                        Source: {selectedStudent.evidence} · Verified by Nova AI Risk Engine
+                        Source: {selectedStudent.evidence} · Verified by WorldLynk Assistant
                       </div>
                     </div>
 
                     {/* Pre-Drafted Action */}
                     <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>PRE-DRAFTED INTERVENTION (MASTRA AGENT)</div>
+                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>RECOMMENDED ACTION (PRE-DRAFTED)</div>
                       <p style={{ fontSize: '12px', color: '#ffffff', marginTop: '4px', lineHeight: 1.4 }}>
                         "{selectedStudent.action}"
                       </p>
                       <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9.5px' }}>
-                        Assigned Approver: {selectedStudent.owner}
+                        Assigned Reviewer: {selectedStudent.owner}
                       </div>
                     </div>
 
-                    {/* Arbiter Decision Buttons */}
+                    {/* Decision Buttons */}
                     {selectedStudent.status === 'HELD' ? (
                       <div className="flex gap-sm mt-xs">
                         <button
@@ -476,10 +480,10 @@ export default function StaffOSPage() {
                           className="btn-primary"
                           style={{ flex: 1, padding: '10px', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                         >
-                          <CheckCircle2 size={15} /> Approve &amp; Commit to SITS
+                          <CheckCircle2 size={15} /> Approve &amp; Sync with Records
                         </button>
                         <button
-                          onClick={() => alert(`Escalated to Head of Department for: ${selectedStudent.student}`)}
+                          onClick={() => alert(`Escalated case for: ${selectedStudent.student}`)}
                           className="btn-secondary"
                           style={{ padding: '10px', fontSize: '12px' }}
                         >
@@ -490,7 +494,7 @@ export default function StaffOSPage() {
                       <div className="card-dark flex-between" style={{ padding: '10px 14px', border: '1px solid var(--status-pass-border)', backgroundColor: 'var(--status-pass-bg)' }}>
                         <div className="flex gap-xs alignItems-center">
                           <CheckCircle2 size={16} color="var(--status-pass)" />
-                          <span style={{ fontSize: '11.5px', color: 'var(--status-pass)', fontWeight: '700' }}>Approved &amp; Written to SITS:Vision</span>
+                          <span style={{ fontSize: '11.5px', color: 'var(--status-pass)', fontWeight: '700' }}>Approved &amp; Synced to Student Records</span>
                         </div>
                         <span className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>{selectedStudent.hash}</span>
                       </div>
@@ -501,13 +505,13 @@ export default function StaffOSPage() {
                 {/* TAB 2: INTERVENTION COMPOSER */}
                 {dossierTab === 'notes' && (
                   <div className="flex flex-col gap-sm">
-                    <span className="mono-label" style={{ fontSize: '9.5px' }}>DISPATCH DIRECT INTERVENTION NOTICE</span>
+                    <span className="mono-label" style={{ fontSize: '9.5px' }}>SEND DIRECT MESSAGE TO STUDENT</span>
                     
                     {/* Delivery Channel Radio */}
                     <div className="flex gap-sm">
                       {[
-                        { id: 'whatsapp', label: 'WhatsApp (Baileys)', icon: MessageSquare },
-                        { id: 'email', label: 'Institutional Email', icon: FileText }
+                        { id: 'whatsapp', label: 'WhatsApp', icon: MessageSquare },
+                        { id: 'email', label: 'University Email', icon: FileText }
                       ].map((ch) => (
                         <button
                           key={ch.id}
@@ -535,7 +539,7 @@ export default function StaffOSPage() {
 
                     <textarea
                       rows={5}
-                      placeholder={`Draft intervention message for ${selectedStudent.student}...`}
+                      placeholder={`Draft message for ${selectedStudent.student}...`}
                       value={interventionNote || `Dear ${selectedStudent.student},\n\nWe noted your recent absence for ${selectedStudent.signal}. We have reserved a makeup lab session and would like to invite you for a brief check-in with Dr. Jenkins.\n\nPlease reply to confirm your attendance.`}
                       onChange={(e) => setInterventionNote(e.target.value)}
                       style={{
@@ -554,13 +558,13 @@ export default function StaffOSPage() {
 
                     <button
                       onClick={() => {
-                        alert(`Intervention dispatched to ${selectedStudent.student} via ${interventionChannel}!`);
+                        alert(`Message dispatched to ${selectedStudent.student} via ${interventionChannel}!`);
                         handleApproveStudent(selectedStudent.id);
                       }}
                       className="btn-primary btn-sm"
                       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                     >
-                      <Send size={13} /> Dispatch Message &amp; Seal Case
+                      <Send size={13} /> Send Message &amp; Resolve Case
                     </button>
                   </div>
                 )}
@@ -568,14 +572,14 @@ export default function StaffOSPage() {
                 {/* TAB 3: AUDIT TRAIL */}
                 {dossierTab === 'audit' && (
                   <div className="flex flex-col gap-xs">
-                    <span className="mono-label" style={{ fontSize: '9.5px', color: 'var(--accent-cyan)' }}>CRYPTOGRAPHIC AUDIT LINEAGE</span>
+                    <span className="mono-label" style={{ fontSize: '9.5px', color: 'var(--accent-cyan)' }}>ACTIVITY &amp; AUDIT TRAIL</span>
                     <div className="mono-sm" style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', fontSize: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                      <div><strong>RECORD ID:</strong> sits_rec_{selectedStudent.sitsId}</div>
-                      <div><strong>ORIGINATING SIGNAL:</strong> {selectedStudent.evidence}</div>
-                      <div><strong>ARBITER GATE:</strong> Tier-4 Consequential Rule #44</div>
-                      <div><strong>AUDIT HASH:</strong> {selectedStudent.hash}</div>
-                      <div><strong>TIMESTAMP:</strong> 2026-09-23T09:12:08.412Z</div>
-                      <div><strong>STATUS:</strong> {selectedStudent.status === 'HELD' ? 'Awaiting Named Staff Seal' : 'Cryptographically Committed'}</div>
+                      <div><strong>RECORD ID:</strong> rec_{selectedStudent.sitsId}</div>
+                      <div><strong>ORIGINATING SOURCE:</strong> {selectedStudent.evidence}</div>
+                      <div><strong>POLICY RULE:</strong> Requires Named Staff Approval</div>
+                      <div><strong>SYSTEM REF:</strong> {selectedStudent.hash}</div>
+                      <div><strong>TIMESTAMP:</strong> 2026-09-23 09:12 UTC</div>
+                      <div><strong>STATUS:</strong> {selectedStudent.status === 'HELD' ? 'Awaiting Staff Review' : 'Approved and Synced'}</div>
                     </div>
                   </div>
                 )}
@@ -593,10 +597,10 @@ export default function StaffOSPage() {
         <div className="main-container">
           <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
             <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS OPERATIONS BENCH</div>
-              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Deploy Compass for Your Faculty &amp; Registry.</h2>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>READY TO EMPOWER YOUR STAFF?</div>
+              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Bring Compass to your university teams.</h2>
               <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
-                Clear peak-period transcript backlogs, monitor UKVI Tier-4 sponsor risk in real-time, and empower tutors with automated evidence synthesis while maintaining human authority.
+                Cut peak-season backlogs, keep visa tracking audit-ready, and give advisors hours back each week—all while staff retain 100% control over decisions.
               </p>
             </div>
             <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
@@ -605,14 +609,14 @@ export default function StaffOSPage() {
                 <ExternalLink size={15} />
               </a>
               <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
-                Request Architecture Briefing
+                Book a Live Demo
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── MODAL: SHA-256 AUDIT LEDGER ───────────────────────────── */}
+      {/* ── MODAL: AUDIT LOG ───────────────────────────── */}
       {showLedgerModal && (
         <div style={{
           position: 'fixed',
@@ -639,14 +643,14 @@ export default function StaffOSPage() {
           }}>
             <div className="flex-between mb-md">
               <div>
-                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>CRYPTOGRAPHIC INTEGRITY LEDGER</span>
-                <h3 className="headline-sm" style={{ marginTop: '2px' }}>Immutable Write-Back Stream to SITS:Vision</h3>
+                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>AUDIT TRAIL &amp; HISTORY</span>
+                <h3 className="headline-sm" style={{ marginTop: '2px' }}>Activity Log Synced with Student Records</h3>
               </div>
               <button onClick={() => setShowLedgerModal(false)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
             </div>
 
             <p className="body-sm text-secondary mb-md">
-              Every staff intervention approved through the Arbiter gate generates a tamper-evident SHA-256 block that is committed bi-directionally to the institution's student information system.
+              Every staff intervention approved in Compass is logged with full details, timestamped, and safely written back to your student record system.
             </p>
 
             <div style={{ maxHeight: '320px', overflowY: 'auto', backgroundColor: '#0a0a0f', borderRadius: '10px', padding: '12px', border: '1px solid #222230', marginBottom: '20px' }}>
@@ -654,7 +658,7 @@ export default function StaffOSPage() {
                 {allQueue.map((s, i) => (
                   <div key={i} style={{ borderBottom: '1px solid #1a1a24', paddingBottom: '6px' }}>
                     <span style={{ color: 'var(--accent-orange)' }}>{s.hash}</span> · <span style={{ color: '#ffffff' }}>{s.student}</span> ({s.sitsId}) ➔ <span style={{ color: 'var(--accent-emerald)' }}>{s.status}</span>
-                    <div style={{ color: 'var(--text-muted)', fontSize: '9.5px' }}>Action: {s.action} · Signer: {s.owner}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '9.5px' }}>Action: {s.action} · Reviewer: {s.owner}</div>
                   </div>
                 ))}
               </div>
@@ -664,7 +668,7 @@ export default function StaffOSPage() {
               <button onClick={() => setShowLedgerModal(false)} className="btn-secondary btn-sm">
                 Close
               </button>
-              <button onClick={() => { alert('Exported UKVI Audit CSV'); setShowLedgerModal(false); }} className="btn-primary btn-sm">
+              <button onClick={() => { alert('Exported Audit CSV'); setShowLedgerModal(false); }} className="btn-primary btn-sm">
                 Export Audit Log (.CSV) ➔
               </button>
             </div>

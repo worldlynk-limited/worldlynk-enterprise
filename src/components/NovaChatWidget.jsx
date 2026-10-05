@@ -3,20 +3,20 @@ import { Bot, X, Send, Sparkles, Shield, ArrowRight } from 'lucide-react';
 
 const PRESET_QUESTIONS = [
   {
-    q: "How does WorldLynk track UKVI 20-hour work limits?",
-    a: "WorldLynk uses calendar intelligence and external employer shift logs (e.g. Costa, Deliveroo) cross-referenced in real-time against university term dates. If a student is scheduled for 16h and attempts to book an additional 6h shift, the Job Match agent alerts them and halts the booking to prevent breaching the 20h Home Office legal ceiling."
+    q: "How does WorldLynk help students with visa work limits?",
+    a: "WorldLynk helps international students stay safely within their legal term-time work limits (such as the UK 20-hour rule). When students log shifts or sync their work schedules, the app checks them against their lecture timetable and term dates. If a scheduled shift would exceed 20 hours, the student gets an immediate reminder to adjust their hours before any issue arises."
   },
   {
-    q: "What happens during a Tier-4 attendance drop?",
-    a: "When a dynamic QR check-in expires unverified and Moodle LMS logs show inactivity, the supervisor agent evaluates the case. If a consequential visa boundary is reached, Arbiter blocks automated sanctions and places a pre-drafted intervention into the Senior Tutor's queue for a 1-click human approval."
+    q: "What happens when a student starts missing classes?",
+    a: "When a student misses multiple lectures or stops engaging with course materials, WorldLynk spots the pattern early. Instead of sending impersonal warning letters, it prepares a friendly check-in message for the personal tutor to review. Staff can approve, edit, and send the message with a single click."
   },
   {
-    q: "How does SITS and Moodle data sync without migration?",
-    a: "WorldLynk Fabric acts as an encrypted translation layer. It uses AES-256 token proxies to query Moodle and transactional REST/Ethos endpoints for SITS:Vision. Your data remains in your systems; WorldLynk maintains only the canonical identity mapping."
+    q: "How does WorldLynk connect to our existing databases?",
+    a: "WorldLynk connects directly into your existing student records (such as SITS, Banner, and Ellucian) and learning platforms (like Moodle and Canvas) via standard, secure APIs. There is zero data migration required — your existing systems remain your single source of truth."
   },
   {
-    q: "What is the Arbiter governance gate?",
-    a: "Arbiter is our strict human-in-the-loop rule: AI agents prepare, draft, and assemble evidence, but humans decide. Any action that affects student visa status, academic standing, or financial charges requires a named staff member's cryptographically logged approval."
+    q: "How do you ensure university staff stay in control?",
+    a: "Our platform is built on human-in-the-loop governance. While AI assistants handle routine data gathering, schedule checks, and draft responses, any significant decision — including visa reports, disciplinary notices, or official records updates — requires review and one-click approval by authorized staff on the Compass portal."
   }
 ];
 
@@ -25,7 +25,7 @@ export default function NovaChatWidget() {
   const [messages, setMessages] = useState([
     {
       sender: 'agent',
-      text: "Hello! I'm Nova, the WorldLynk campus intelligence assistant. Ask me how our 22 Mastra agents, dynamic QR attendance, or SITS/Moodle integrations work across your campus."
+      text: "Hello! I'm Nova, your WorldLynk campus assistant. Ask me how we help universities simplify student support, protect visa compliance, and save staff time."
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -56,7 +56,7 @@ export default function NovaChatWidget() {
         ...prev,
         {
           sender: 'agent',
-          text: `Thank you for your question regarding "${userText}". In WorldLynk's Agentic Campus architecture, all student signals flow from Fabric through the 30-agent Cortex (powered by Mastra and 12 DAG workflows), with consequential decisions governed by the Arbiter staff terminal.`
+          text: `Thank you for asking about "${userText}". WorldLynk connects directly with your student records and learning systems to give students 24/7 answers while keeping your staff in full control with one-click approvals on the Compass portal.`
         }
       ]);
       setIsTyping(false);
@@ -91,7 +91,7 @@ export default function NovaChatWidget() {
               <div>
                 <div style={{ fontSize: '13px', fontWeight: '600', color: 'var(--ink-primary)' }}>Nova Campus Assistant</div>
                 <div className="mono-sm" style={{ fontSize: '9.5px', color: 'var(--status-pass)' }}>
-                  ● 22 Mastra Agents Online
+                  ● Specialist Assistants Ready
                 </div>
               </div>
             </div>
@@ -118,14 +118,14 @@ export default function NovaChatWidget() {
             {isTyping && (
               <div className="chat-bubble chat-bubble-agent" style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
                 <span className="pulse-dot pulse-dot-amber" />
-                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Nova is analyzing campus graph...</span>
+                <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Nova is checking campus resources...</span>
               </div>
             )}
 
             {/* Canned Presets */}
             {messages.length < 5 && (
               <div style={{ marginTop: '8px' }}>
-                <div className="mono-label mb-xs" style={{ fontSize: '9px' }}>SUGGESTED CAMPUS QUESTIONS:</div>
+                <div className="mono-label mb-xs" style={{ fontSize: '9px' }}>COMMON QUESTIONS:</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {PRESET_QUESTIONS.map((preset, idx) => (
                     <button
@@ -153,7 +153,7 @@ export default function NovaChatWidget() {
           <form onSubmit={handleSend} className="nova-footer">
             <input
               type="text"
-              placeholder="Ask about UKVI, Moodle, QR, or agents..."
+              placeholder="Ask about student support, visa rules, or systems..."
               className="form-input"
               style={{ padding: '8px 12px', fontSize: '12px', flex: 1 }}
               value={inputValue}

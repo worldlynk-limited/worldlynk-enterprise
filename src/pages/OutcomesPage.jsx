@@ -21,39 +21,39 @@ import {
 const BENCHMARKS = [
   {
     criterion: 'Deployment & Setup Time',
-    worldlynk: '4 to 6 weeks (Zero-migration overlay)',
-    legacyCrm: '18 to 36 months (Massive DB migration)',
-    statusQuo: 'Indefinite legacy fragmentation'
+    worldlynk: '4 to 6 weeks (Plugs into existing systems)',
+    legacyCrm: '18 to 36 months (Painful data migration)',
+    statusQuo: 'Permanent fragmented tools'
   },
   {
-    criterion: 'Legacy SIS Schema Mutation',
-    worldlynk: '0 schema changes required (Read/Write via API)',
-    legacyCrm: 'Complete table rewrite & data re-mapping',
-    statusQuo: 'Manual spreadsheets & dual-entry'
+    criterion: 'Changes to Student Database',
+    worldlynk: 'Zero changes required (Safe API sync)',
+    legacyCrm: 'Complex database rewrite & re-mapping',
+    statusQuo: 'Manual spreadsheets & double-entry'
   },
   {
-    criterion: 'Early Dropout Alert Lead Time',
-    worldlynk: '14 Days earlier (Correlates LMS + Dynamic QR)',
-    legacyCrm: 'Post-midterm failure or final exam absence',
-    statusQuo: 'After student stop-out occurs'
+    criterion: 'Early Warning Lead Time',
+    worldlynk: '14 days earlier (Combines portal & attendance data)',
+    legacyCrm: 'Only after midterm failure or missed exams',
+    statusQuo: 'After a student has already dropped out'
   },
   {
-    criterion: 'Consequential Decision Governance',
-    worldlynk: 'Arbiter Gate: Named human approval required',
-    legacyCrm: 'Uncontrolled email chains or rigid hardcoded rules',
-    statusQuo: 'Manual uncoordinated faculty emails'
+    criterion: 'Human Oversight & Control',
+    worldlynk: 'Staff portal: Staff review and approve every key action',
+    legacyCrm: 'Uncontrolled email chains or rigid bot rules',
+    statusQuo: 'Uncoordinated manual emails'
   },
   {
-    criterion: 'UKVI 20-Hour Term-Time Work Shield',
-    worldlynk: 'Automated real-time rota reconciliation',
-    legacyCrm: 'None (Requires bespoke custom software)',
+    criterion: 'Visa 20-Hour Work Limit Tracking',
+    worldlynk: 'Automatic work-hour tracking and alerts',
+    legacyCrm: 'None (Requires expensive custom build)',
     statusQuo: 'Paper timesheets vulnerable to audit strikes'
   },
   {
-    criterion: 'Attendance Verification Technology',
-    worldlynk: 'Sub-180ms rotating HMAC QR tokens',
-    legacyCrm: 'Fixed barcodes or manual sign-in sheets',
-    statusQuo: 'Vulnerable to proxy scanning & buddy check-in'
+    criterion: 'Attendance Verification',
+    worldlynk: 'Secure, rotating QR check-in codes',
+    legacyCrm: 'Fixed barcodes or paper sheets',
+    statusQuo: 'Easy for friends to scan on behalf of others'
   }
 ];
 
@@ -62,23 +62,23 @@ const CASE_STUDIES = [
     institution: 'Russell Group Research University',
     cohort: '22,000 Students · London Campus',
     challenge: 'High volume of international postgraduate students at risk of visa non-compliance due to unmonitored external shift work and disparate attendance logs.',
-    solution: 'Deployed WorldLynk Dynamic QR attendance across 180 lecture theatres and integrated BullMQ work-cap monitoring with university payroll.',
+    solution: 'Deployed WorldLynk QR attendance across lecture theatres and enabled automatic work-hour tracking with university payroll.',
     results: [
-      '£4.6M in international student tuition retention saved over 2 academic terms.',
+      '£4.6M in international student tuition protected over 2 academic terms.',
       '0 Home Office sponsor license compliance warnings during annual inspection.',
       '98.4% lecture attendance verification rate with zero proxy scanning incidents.'
     ],
     metric: '£4.6M',
-    metricLabel: 'Tuition Yield Protected'
+    metricLabel: 'Tuition Protected'
   },
   {
     institution: 'Ancient Scottish University',
     cohort: '14,500 Students · Edinburgh',
-    challenge: 'A 6-week registrar backlog during international credential evaluations (NARIC equivalents) leading to delayed CAS issuance and summer melt.',
-    solution: 'Nova AI Mastra agents deployed to pre-evaluate transcripts, calculate GPA equivalents, and verify 28-day maintenance funds for registrar seal on Compass.',
+    challenge: 'A 6-week registrar backlog during international qualification evaluations, leading to delayed visa issuance and applicant drop-offs.',
+    solution: 'AI assistants deployed to pre-evaluate transcripts, calculate qualification equivalents, and verify bank statements for registrar approval in Compass.',
     results: [
-      'CAS issuance turnaround reduced from 14 business days to under 4 hours.',
-      '68% reduction in routine manual enrollment and prerequisite override tickets.',
+      'Visa document preparation reduced from 14 business days to under 4 hours.',
+      '68% reduction in routine manual enrollment and prerequisite inquiry tickets.',
       '100% audit accuracy verified across 3,200 international offer holders.'
     ],
     metric: '-68%',
@@ -88,20 +88,20 @@ const CASE_STUDIES = [
     institution: 'London Metro University',
     cohort: '18,000 Students · Central London',
     challenge: 'International offer holders dropping out during July-August due to lack of verified student housing and visa anxiety.',
-    solution: 'Integrated Student OS mobile pre-departure checklist with Stripe-verified PBSA ensuite housing vouchers at Chapter and Scape halls.',
+    solution: 'Integrated Student mobile app with verified student accommodation bookings at Chapter and Scape halls.',
     results: [
-      '42% reduction in international offer-holder summer melt before Welcome Week.',
-      '1,840 verified ensuite student rooms booked with zero rental scam occurrences.',
+      '42% reduction in international offer-holder drop-offs before Welcome Week.',
+      '1,840 verified student rooms booked with zero rental scam occurrences.',
       '+24% increase in net international student fee arrivals year-over-year.'
     ],
     metric: '-42%',
-    metricLabel: 'Summer Melt Reduction'
+    metricLabel: 'Drop-off Reduction'
   },
   {
     institution: 'Modern Technological University',
     cohort: '11,000 Students · Midlands Campus',
     challenge: 'Personal tutors managing 65+ tutees with no early warning indicators until students failed end-of-module coursework submissions.',
-    solution: 'Compass early warning radar deployed to correlate Moodle inactivity with lecture absences, delivering pre-drafted makeup lab intervention briefs.',
+    solution: 'Compass early warning dashboard deployed to connect portal activity with lecture attendance, delivering pre-drafted check-in notes.',
     results: [
       '14 days earlier intervention lead time before student coursework failure.',
       '89.4% first-year undergraduate retention rate (up from 81.2% baseline).',
@@ -134,24 +134,24 @@ export default function OutcomesPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                OUTCOMES &amp; ROI ECONOMICS // AUDITED HIGHER-ED BENCHMARKS
+                MEASURABLE CAMPUS IMPACT
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                The financial and operational stakes of student persistence.
+                Real impact for students. Real savings for universities.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Losing an international student costs a British university up to £28,000 in unrecovered tuition, PBSA vacancy, and compliance re-filing fees. WorldLynk delivers proven, auditable retention dividends through autonomous operational preparation and human-governed interventions.
+                Losing an international student costs a university up to £28,000 in lost tuition and administrative overhead. WorldLynk helps institutions protect student retention, save thousands of staff hours, and keep visa compliance audit-ready.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>AUDITED BENCHMARK</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>£3.8M Avg. Dividend</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Per 5,000 Monitored Students</div>
+                <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>PROVEN SAVINGS</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>£3.8M Avg. Protected</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Per 5,000 Students</div>
               </div>
               <Link to="/demo" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>Simulate Campus Economics</span>
+                <span>Estimate Your Savings</span>
                 <ArrowRight size={13} />
               </Link>
             </div>
@@ -163,12 +163,12 @@ export default function OutcomesPage() {
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE ROI DIVIDEND CALCULATOR</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE SAVINGS ESTIMATOR</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Simulate Your Institution's Retention Dividend.
+              Estimate your university's retention impact.
             </h2>
             <p className="section-desc">
-              Adjust your monitored student cohort, average international tuition fee, and historical attrition rates to forecast protected institutional yield.
+              Select your cohort size, average tuition fee, and current dropout rates to see estimated tuition protected and staff hours saved.
             </p>
           </div>
 
@@ -221,7 +221,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>Baseline Attrition Rate</label>
+                    <label className="form-label" style={{ fontSize: '12px' }}>Baseline Dropout Rate</label>
                     <span className="mono-sm" style={{ color: 'var(--status-fail)', fontWeight: '700' }}>{baselineDropoutPct}%</span>
                   </div>
                   <input
@@ -242,7 +242,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>WorldLynk Mitigated Attrition</label>
+                    <label className="form-label" style={{ fontSize: '12px' }}>With WorldLynk Support</label>
                     <span className="mono-sm" style={{ color: 'var(--status-pass)', fontWeight: '700' }}>{mitigatedDropoutPct}%</span>
                   </div>
                   <input
@@ -264,30 +264,30 @@ export default function OutcomesPage() {
 
               {/* Live Forecast Dashboard */}
               <div style={{ backgroundColor: '#0d0d14', padding: '28px', borderRadius: '16px', border: '1px solid var(--border-subtle)' }}>
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ANNUAL INSTITUTIONAL DIVIDEND</span>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ESTIMATED TUITION PROTECTED</span>
                 
                 <div style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '4px', lineHeight: 1.1 }}>
                   £{(protectedRevenue / 1000000).toFixed(2)}M
                 </div>
                 <div className="mono-sm text-secondary mt-xs" style={{ fontSize: '11px' }}>
-                  Net Protected Tuition Yield Recovered Annually
+                  Tuition Protected per Academic Year
                 </div>
 
                 <div className="grid-2 gap-sm mt-lg">
                   <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '10px', border: '1px solid #232332' }}>
-                    <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STUDENTS SAVED</div>
+                    <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STUDENTS RETAINED</div>
                     <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--status-pass)', marginTop: '2px' }}>
                       {savedStudents} Students
                     </div>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>From stop-out attrition</div>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>Staying enrolled and thriving</div>
                   </div>
 
                   <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '10px', border: '1px solid #232332' }}>
-                    <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>ADMIN HOURS RECLAIMED</div>
+                    <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STAFF HOURS SAVED</div>
                     <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--accent-cyan)', marginTop: '2px' }}>
                       {adminHoursSaved.toLocaleString()} hrs
                     </div>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>Redirected to human mentoring</div>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>Given back to direct mentoring</div>
                   </div>
                 </div>
 
@@ -295,7 +295,7 @@ export default function OutcomesPage() {
                 <div className="flex flex-col gap-sm mt-lg" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '16px' }}>
                   <div>
                     <div className="flex-between mono-sm mb-xs" style={{ fontSize: '10.5px' }}>
-                      <span>Status Quo Loss ({baselineDropoutPct}% Attrition)</span>
+                      <span>Current Losses ({baselineDropoutPct}% Dropout)</span>
                       <span style={{ color: 'var(--status-fail)' }}>{baselineDropouts} students (£{((baselineDropouts * tuitionFee) / 1000000).toFixed(1)}M)</span>
                     </div>
                     <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
@@ -305,7 +305,7 @@ export default function OutcomesPage() {
 
                   <div>
                     <div className="flex-between mono-sm mb-xs" style={{ fontSize: '10.5px' }}>
-                      <span>WorldLynk Protected ({mitigatedDropoutPct}% Attrition)</span>
+                      <span>WorldLynk Protected ({mitigatedDropoutPct}% Dropout)</span>
                       <span style={{ color: 'var(--status-pass)' }}>{worldlynkDropouts} students (Saved {savedStudents})</span>
                     </div>
                     <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
@@ -321,12 +321,12 @@ export default function OutcomesPage() {
 
           {/* ── COMPARATIVE BENCHMARKING TABLE ───────────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>COMPETITIVE ARCHITECTURE BENCHMARK</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW WORLDLYNK COMPARES</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              WorldLynk vs. Traditional Campus Architectures.
+              WorldLynk compared to legacy software and manual workflows.
             </h2>
             <p className="section-desc">
-              How our autonomous operating fabric compares against multi-year legacy CRM deployments and fragmented manual advising.
+              See why modern universities choose WorldLynk over multi-year CRM implementations and fragmented spreadsheets.
             </p>
           </div>
 
@@ -335,10 +335,10 @@ export default function OutcomesPage() {
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                    <th style={{ padding: '14px 20px', width: '28%' }}>OPERATIONAL CRITERION</th>
+                    <th style={{ padding: '14px 20px', width: '28%' }}>FEATURE / CRITERION</th>
                     <th style={{ padding: '14px 20px', width: '28%', color: 'var(--accent-orange)' }}>WORLDLYNK ENTERPRISE</th>
                     <th style={{ padding: '14px 20px', width: '22%' }}>LEGACY CAMPUS CRM</th>
-                    <th style={{ padding: '14px 20px', width: '22%' }}>STATUS QUO (SILOED)</th>
+                    <th style={{ padding: '14px 20px', width: '22%' }}>MANUAL SPREADSHEETS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -357,9 +357,9 @@ export default function OutcomesPage() {
 
           {/* ── 4 IN-DEPTH INSTITUTIONAL CASE STUDIES ─────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS CASE STUDIES // VERIFIED DATA</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INSTITUTIONAL CASE STUDIES</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Proven Across Russell Group &amp; Global Institutions.
+              Trusted by leading UK and international universities.
             </h2>
           </div>
 

@@ -106,27 +106,27 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 }}
               >
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
-                  CAMPUS ARCHITECTURE
+                  OUR PLATFORM
                 </div>
                 <Link to="/platform" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Platform Overview</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Living Agent Graph &amp; 4 core layers</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>4 simple layers: Connect, Understand, Assist, Control</div>
                 </Link>
                 <Link to="/platform#nova" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Nova AI Infrastructure</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>30 Agents, 12 DAGs &amp; Realtime Voice</div>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Specialist AI Assistants</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>24/7 student support &amp; automated staff drafts</div>
                 </Link>
                 <Link to="/how-it-works" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Event Continuous Loop</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Deterministic cascade &amp; multi-system sync</div>
+                  <div style={{ fontWeight: '500' }}>How It Works</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>5 simple steps from alert to approved resolution</div>
                 </Link>
                 <Link to="/integrations" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Connectors Matrix</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SITS, Banner, Moodle, Stripe, Wires</div>
+                  <div style={{ fontWeight: '500' }}>Integrations &amp; Connectors</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Connects with SITS, Banner, Moodle &amp; your systems</div>
                 </Link>
                 <Link to="/security" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Security &amp; Governance</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>FERPA, UK GDPR &amp; cryptographic ledger</div>
+                  <div style={{ fontWeight: '500' }}>Security &amp; Privacy</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>UK GDPR, FERPA &amp; human-in-the-loop audit logs</div>
                 </Link>
               </div>
             )}
@@ -141,7 +141,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               textDecoration: 'none'
             }}
           >
-            Compass Portal
+            Compass Staff Portal
           </Link>
 
           <Link
@@ -153,7 +153,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               textDecoration: 'none'
             }}
           >
-            Student OS
+            Student App
           </Link>
 
           {/* Solutions Dropdown */}
@@ -198,10 +198,10 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 }}
               >
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
-                  STAKEHOLDER GOVERNANCE
+                  BY CAMPUS ROLE
                 </div>
                 <Link to="/solutions/vice-chancellor" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  Vice-Chancellors &amp; Cabinet
+                  Vice-Chancellors &amp; Leadership
                 </Link>
                 <Link to="/solutions/registrars" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   Academic Registrars
@@ -210,11 +210,11 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   International Admissions
                 </Link>
                 <Link to="/solutions/compliance" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  UKVI Compliance Officers
+                  Visa &amp; Compliance Teams
                 </Link>
                 <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', margin: '4px 0' }} />
                 <Link to="/outcomes" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ff6b00', fontWeight: '600', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span>Institutional ROI &amp; Outcomes</span>
+                  <span>Outcomes &amp; Case Studies</span>
                   <ArrowRight size={12} />
                 </Link>
               </div>
@@ -389,7 +389,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
             
             {/* Direct Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>CAMPUS OS PRODUCTS</div>
+              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>OUR PLATFORM</div>
               <Link
                 to="/platform"
                 onClick={() => setMobileMenuOpen(false)}
@@ -403,7 +403,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Platform &amp; Agent Graph Architecture
+                Platform Overview (4 Layers)
               </Link>
               <Link
                 to="/staff-os"
@@ -418,7 +418,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Compass Operations Console
+                Compass Staff Portal
               </Link>
               <Link
                 to="/student-os"
@@ -433,7 +433,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Student OS Super-App
+                Student Mobile App
               </Link>
               <Link
                 to="/how-it-works"
@@ -444,7 +444,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   padding: '8px 12px'
                 }}
               >
-                Event Continuous Loop
+                How It Works (5 Simple Steps)
               </Link>
               <Link
                 to="/integrations"
@@ -455,27 +455,27 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   padding: '8px 12px'
                 }}
               >
-                Integrations Matrix (SITS, Moodle, Stripe)
+                Integrations (SITS, Banner, Moodle)
               </Link>
             </div>
 
             {/* Solutions */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SOLUTIONS &amp; STAKEHOLDERS</div>
+              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SOLUTIONS BY ROLE</div>
               <Link to="/solutions" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '6px 12px' }}>
                 Solutions Overview
               </Link>
               <Link to="/solutions/vice-chancellor" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
-                Vice-Chancellors &amp; Cabinet
+                Vice-Chancellors &amp; Leadership
               </Link>
               <Link to="/solutions/registrars" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
                 Academic Registrars
               </Link>
               <Link to="/solutions/compliance" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
-                UKVI Tier-4 Compliance
+                Visa &amp; Compliance Teams
               </Link>
               <Link to="/outcomes" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#ff6b00', fontWeight: '600', padding: '6px 12px' }}>
-                Institutional Outcomes &amp; ROI
+                Outcomes &amp; Case Studies
               </Link>
             </div>
 
@@ -483,10 +483,10 @@ export default function GlobalNavbar({ onOpenSearch }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div className="mono-label" style={{ fontSize: '10px', color: 'var(--ink-secondary)' }}>TRUST &amp; COMPANY</div>
               <Link to="/security" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Security &amp; FERPA Architecture
+                Security &amp; Privacy
               </Link>
               <Link to="/trust" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Trust &amp; Procurement Hub
+                Trust &amp; Procurement
               </Link>
               <Link to="/founders" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
                 Founders &amp; Mission
@@ -507,7 +507,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 className="btn-primary"
                 style={{ width: '100%', textAlign: 'center', padding: '12px' }}
               >
-                Book Executive Briefing
+                Book a Demo
               </Link>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                 <a

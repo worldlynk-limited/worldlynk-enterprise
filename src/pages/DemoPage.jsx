@@ -20,21 +20,21 @@ import {
 
 const STEP_OPTIONS = {
   1: [
-    { id: 'retention', label: 'Student Retention & Early Alerts', desc: 'Predict dropouts 14 days before midterm failure by correlating LMS and attendance.' },
-    { id: 'attendance', label: 'Dynamic Sub-180ms QR Attendance', desc: 'Eliminate proxy check-ins and automate UKVI Tier-4 attendance tracking.' },
-    { id: 'admissions', label: 'International Admissions & CAS Melt', desc: 'Accelerate inquiry-to-enrollment conversion with 24/7 AI visa guidance.' },
-    { id: 'compliance', label: 'UKVI 20-Hour Work-Cap Shield', desc: 'Reconcile student work shifts with university timetables automatically.' }
+    { id: 'retention', label: 'Student Retention & Care', desc: 'Spot when students fall behind on attendance or coursework weeks early.' },
+    { id: 'attendance', label: 'Classroom QR Attendance', desc: 'Verify on-time lecture check-ins easily and flag absences early.' },
+    { id: 'admissions', label: 'Admissions & Pre-Arrival', desc: 'Answer applicant inquiries 24/7 and help students complete arrival steps.' },
+    { id: 'compliance', label: 'Visa Work Hours & Compliance', desc: 'Keep student work hours within legal limits automatically.' }
   ],
   2: [
-    { id: 'vc', label: 'Vice-Chancellor / Provost', desc: 'Institutional capacity, tuition yield protection, and board-level risk radar.' },
-    { id: 'registrar', label: 'Academic Registrar', desc: 'Degree audits, transcript evaluation, and CAS issuance queues.' },
-    { id: 'admissions_lead', label: 'Admissions & Recruitment Lead', desc: 'Offer-holder nurturing, PBSA housing vouchers, and international conversion.' },
-    { id: 'compliance_officer', label: 'UKVI Compliance Officer', desc: 'Tier-4 sponsor license protection and audit readiness.' }
+    { id: 'vc', label: 'University Leadership', desc: 'Student retention, tuition protection, and overall campus operational health.' },
+    { id: 'registrar', label: 'Academic Registrar', desc: 'Transcript reviews, course add/drop swaps, and student record updates.' },
+    { id: 'admissions_lead', label: 'Admissions & Recruitment', desc: 'Offer-holder guidance, student housing, and international arrivals.' },
+    { id: 'compliance_officer', label: 'Visa Compliance Officer', desc: 'Sponsor license protection and legal work-hour tracking.' }
   ],
   3: [
-    { id: 'missed_lecture', label: 'A Missed Lecture Cascading to Sponsor Risk', desc: 'Follow a single unverified absence through attendance, tutor alerts, and visa checks.' },
-    { id: 'transcript_backlog', label: 'Peak-Season International Transcript Backlog', desc: 'Watch agents extract NARIC equivalents and pre-score applicants for staff review.' },
-    { id: 'work_hour_conflict', label: 'Student Over-Working Past the 20h UKVI Cap', desc: 'See how real-time calendar reconciliation prevents compliance violations.' }
+    { id: 'missed_lecture', label: 'Student Misses a Lecture & Needs Support', desc: 'See how attendance updates, advisor alerts, and student messages work together seamlessly.' },
+    { id: 'transcript_backlog', label: 'Clearing Transcript & Application Backlogs', desc: 'See how AI assistants check qualifications and prepare files for staff review in minutes.' },
+    { id: 'work_hour_conflict', label: 'Student Offered Shifts Over the 20h Limit', desc: 'See how work schedules and class timetables are checked to avoid visa violations.' }
   ]
 };
 
@@ -73,21 +73,21 @@ export default function DemoPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                TAILORED CAMPUS PREVIEW // 5-STEP EXECUTIVE WALKTHROUGH
+                INTERACTIVE DEMO // 5-STEP WALKTHROUGH
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                See WorldLynk configured for your institutional stakes.
+                See how WorldLynk works for your university.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Select your office, your greatest operational friction, and your real-world workflow to preview how WorldLynk resolves it in seconds. Schedule an executive technical briefing with our founding architecture team.
+                Choose your campus team and the challenges you face daily to see how WorldLynk helps resolve them in minutes. You can also book a live, 1-on-1 walkthrough with our team.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>BRIEFING STEP</div>
+                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>DEMO STEP</div>
                 <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>Step 0{step} of 05</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Custom Sandbox Environment</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Interactive Preview</div>
               </div>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function DemoPage() {
             {/* ── STEP 4: INTERACTIVE SIMULATION SANDBOX ── */}
             {step === 4 && (
               <div>
-                <span className="mono-label" style={{ color: 'var(--status-pass)' }}>STEP 04 OF 05 // LIVE SIMULATION SANDBOX</span>
+                <span className="mono-label" style={{ color: 'var(--status-pass)' }}>STEP 04 OF 05 // INTERACTIVE PREVIEW</span>
                 <h2 className="headline-md" style={{ margin: '6px 0 8px 0' }}>
                   Simulated Compass Workbench: {getRoleLabel()}
                 </h2>
@@ -246,35 +246,35 @@ export default function DemoPage() {
                   <div className="flex-between mb-sm" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '10px' }}>
                     <div className="flex gap-xs alignItems-center">
                       <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: 'var(--status-pass)' }} />
-                      <span className="mono-sm" style={{ fontSize: '11px', color: '#ffffff' }}>UNIPORTAL COMPASS // TELEMETRY ACTIVE</span>
+                      <span className="mono-sm" style={{ fontSize: '11px', color: '#ffffff' }}>STAFF PORTAL (COMPASS)</span>
                     </div>
-                    <span className="pill pill-held">{simulatedActionApproved ? 'APPROVED & COMMITTED' : 'HELD FOR YOUR REVIEW'}</span>
+                    <span className="pill pill-held">{simulatedActionApproved ? 'APPROVED & SYNCED' : 'NEEDS STAFF REVIEW'}</span>
                   </div>
 
                   <div className="grid-2 gap-md mt-md">
                     <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '8px' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>STUDENT DOSSIER</div>
+                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>STUDENT DETAILS</div>
                       <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '2px' }}>Maya Chen (MSc Data Science)</div>
-                      <div className="mono-sm text-secondary" style={{ fontSize: '10px' }}>SITS ID: 0091-2847 · Tier-4 CAS: E2948102A</div>
+                      <div className="mono-sm text-secondary" style={{ fontSize: '10px' }}>Student ID: 0091-2847 · Visa CAS: E2948102A</div>
                       <div className="mono-sm mt-xs" style={{ color: 'var(--status-fail)', fontSize: '10px' }}>
-                        Signal: 2nd Consecutive Absence in CS-5100 + 16h Weekend Rota
+                        Update: 2nd Consecutive Absence in CS-5100 + 16h Weekend Shift
                       </div>
                     </div>
 
                     <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '8px' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>NOVA PRE-DRAFTED ACTION (MASTRA)</div>
+                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>RECOMMENDED ACTION (PRE-DRAFTED)</div>
                       <div style={{ fontSize: '12px', color: '#ffffff', marginTop: '2px', lineHeight: 1.4 }}>
-                        "Makeup Lab reserved for Thursday 14:00 (EB-04). WhatsApp wellness nudge prepared for student."
+                        "Makeup Lab reserved for Thursday 14:00 (EB-04). WhatsApp wellness check-in prepared for student."
                       </div>
                       <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9.5px' }}>
-                        Governance Rule: UKVI Policy #74 · Requires Named Human Authority
+                        Policy Rule: Requires Named Staff Approval
                       </div>
                     </div>
                   </div>
 
                   <div className="flex-between mt-lg" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '14px' }}>
                     <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>
-                      {simulatedActionApproved ? '✓ SHA-256 Signature Generated: sha256:8b4f7a2d...d1a9 committed to SITS' : 'Click "Approve" to simulate one-click human clearance'}
+                      {simulatedActionApproved ? '✓ Approved and synced to student records system' : 'Click "Approve" to test staff review and approval'}
                     </span>
                     {!simulatedActionApproved ? (
                       <button
@@ -283,11 +283,11 @@ export default function DemoPage() {
                         style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                       >
                         <CheckCircle2 size={13} />
-                        Approve &amp; Commit (Simulated)
+                        Approve &amp; Sync (Test)
                       </button>
                     ) : (
                       <span className="mono-sm" style={{ color: 'var(--status-pass)', fontWeight: '700' }}>
-                        ✓ Action Sealed by {getRoleLabel()}
+                        ✓ Action Approved by {getRoleLabel()}
                       </span>
                     )}
                   </div>
@@ -298,7 +298,7 @@ export default function DemoPage() {
                     ❮ Back
                   </button>
                   <button onClick={() => setStep(5)} className="btn-primary">
-                    Next: Schedule Executive Briefing ➔
+                    Next: Book a Live Demo ➔
                   </button>
                 </div>
               </div>
@@ -307,24 +307,24 @@ export default function DemoPage() {
             {/* ── STEP 5: EXECUTIVE BRIEFING SCHEDULER ── */}
             {step === 5 && (
               <div>
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>STEP 05 OF 05 // CONFIRM EXECUTIVE BRIEFING</span>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>STEP 05 OF 05 // BOOK A DEMO</span>
                 <h2 className="headline-md" style={{ margin: '6px 0 8px 0' }}>
-                  Request a Dedicated Technical Walkthrough.
+                  Book a live walkthrough with our team.
                 </h2>
                 <p className="body-sm text-secondary mb-lg">
-                  Meet directly with our Founding Architect and Higher Education Systems Engineers for a tailored demonstration on your campus test data.
+                  See WorldLynk in action with your specific university systems, questions, and workflows.
                 </p>
 
                 {submitted ? (
                   <div style={{ textAlign: 'center', padding: '36px 0' }}>
                     <div className="pill pill-approved mb-md" style={{ fontSize: '12px', padding: '6px 16px' }}>
-                      BRIEFING REQUEST CONFIRMED
+                      DEMO REQUEST RECEIVED
                     </div>
                     <h3 className="headline-md" style={{ marginBottom: '8px' }}>
                       Thank You, {formData.name}.
                     </h3>
                     <p className="body-md text-secondary" style={{ maxWidth: '580px', margin: '0 auto 24px auto' }}>
-                      Your tailored campus briefing for <strong>{formData.institution}</strong> has been assigned to our London Executive Desk for <strong>{formData.date} at {selectedTimeSlot}</strong>. You will receive an encrypted calendar invite within 2 hours.
+                      Your demo request for <strong>{formData.institution}</strong> has been received for <strong>{formData.date} at {selectedTimeSlot}</strong>. You will receive a calendar invite and confirmation email shortly.
                     </p>
                     <button onClick={() => { setSubmitted(false); setStep(1); }} className="btn-secondary btn-sm">
                       Start Another Walkthrough
@@ -345,7 +345,7 @@ export default function DemoPage() {
                         />
                       </div>
                       <div className="form-group">
-                        <label className="form-label">Institutional Email</label>
+                        <label className="form-label">University Email</label>
                         <input
                           type="email"
                           required
@@ -383,7 +383,7 @@ export default function DemoPage() {
 
                     {/* Time Slot Selector */}
                     <div>
-                      <label className="form-label mb-xs">Select Preferred London Time Slot</label>
+                      <label className="form-label mb-xs">Select Preferred Time Slot</label>
                       <div className="grid-2 gap-sm">
                         {TIME_SLOTS.map((slot) => (
                           <div
@@ -407,10 +407,10 @@ export default function DemoPage() {
                     </div>
 
                     <div className="form-group">
-                      <label className="form-label">Specific Legacy Systems (e.g. SITS:Vision, Banner, Moodle, Canvas)</label>
+                      <label className="form-label">Current Systems (e.g. SITS, Banner, Canvas, Moodle)</label>
                       <textarea
                         rows={3}
-                        placeholder="Tell us about your campus SIS version or specific UKVI compliance concerns..."
+                        placeholder="Tell us about your current student systems or any specific goals..."
                         className="form-textarea"
                         value={formData.notes}
                         onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -422,7 +422,7 @@ export default function DemoPage() {
                         ❮ Back
                       </button>
                       <button type="submit" className="btn-primary">
-                        Confirm Executive Briefing ➔
+                        Book Live Demo ➔
                       </button>
                     </div>
                   </form>

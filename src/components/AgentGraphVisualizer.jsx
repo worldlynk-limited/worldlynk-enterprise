@@ -109,28 +109,28 @@ const STUDENTS_GRAPH_DATA = {
       },
       {
         id: 'nova',
-        label: 'Nova Supervisor Agent',
+        label: 'Nova Assistant',
         type: 'agent',
-        subtitle: 'Mastra DAG Workflow',
-        office: 'Nova AI Infrastructure',
+        subtitle: 'Proactive Outreach & Care',
+        office: 'Specialist AI Assistant',
         icon: Sparkles,
         x: 400,
         y: 50,
         color: '#ff6b00',
         activeOffice: 6,
-        details: { workflow: 'journey-gap-workflow', confidence: '99.4%', tokensCleaned: '100% PII-free' }
+        details: { workflow: 'student-support-workflow', confidence: '99.4%', privacyProtected: '100% anonymized' }
       }
     ],
     edges: [
       { from: 'student', to: 'academic', label: 'Enrolled & Verified', status: 'verified', weight: '100%' },
       { from: 'student', to: 'lms', label: 'Telemetry Signal', status: 'amber', weight: 'Alert' },
       { from: 'student', to: 'tier4', label: 'CAS Compliance', status: 'verified', weight: 'Normal' },
-      { from: 'student', to: 'employer', label: 'HMAC Work Clock', status: 'amber', weight: '16h / 20h' },
-      { from: 'student', to: 'housing', label: 'Secured PBSA', status: 'verified', weight: 'Paid' },
-      { from: 'student', to: 'nova', label: 'Realtime Inference', status: 'verified', weight: 'Live DAG' },
+      { from: 'student', to: 'employer', label: 'Work Hours Tracker', status: 'amber', weight: '16h / 20h' },
+      { from: 'student', to: 'housing', label: 'Secured Housing', status: 'verified', weight: 'Confirmed' },
+      { from: 'student', to: 'nova', label: 'Active Support', status: 'verified', weight: 'Connected' },
       { from: 'tier4', to: 'employer', label: 'Legal Hours Audit', status: 'verified', weight: 'Synchronized' },
-      { from: 'nova', to: 'academic', label: 'Dossier Read', status: 'verified', weight: 'Read-only' },
-      { from: 'nova', to: 'lms', label: 'Proactive Outreach', status: 'verified', weight: 'Automated' }
+      { from: 'nova', to: 'academic', label: 'Records Review', status: 'verified', weight: 'Read-only' },
+      { from: 'nova', to: 'lms', label: 'Drafted Tutor Check-in', status: 'verified', weight: 'Ready' }
     ]
   },
   tariq: {
@@ -239,19 +239,19 @@ const STUDENTS_GRAPH_DATA = {
       { from: 'student', to: 'tier4', label: 'Renewal Gate Pending', status: 'amber', weight: '45d Warning' },
       { from: 'student', to: 'employer', label: 'Permitted Margin Check', status: 'verified', weight: 'Safe' },
       { from: 'student', to: 'housing', label: 'Escrow Confirmed', status: 'verified', weight: 'Valid' },
-      { from: 'student', to: 'nova', label: 'Pre-Packaged Evidence', status: 'verified', weight: 'Active DAG' },
-      { from: 'nova', to: 'tier4', label: 'Drafted CAS Packet', status: 'verified', weight: 'Ready for Staff' }
+      { from: 'student', to: 'nova', label: 'Pre-Packaged Evidence', status: 'verified', weight: 'Active Sync' },
+      { from: 'nova', to: 'tier4', label: 'Drafted CAS Packet', status: 'verified', weight: 'Ready for Review' }
     ]
   }
 };
 
 const ACTIVATION_PHASES = [
-  { level: 1, title: 'Phase 1: Academic Registry', desc: 'Connect SIS: SITS:Vision & Ellucian Banner' },
-  { level: 2, title: 'Phase 2: Learning Systems', desc: 'Activate Moodle LMS & Canvas Engagement Telemetry' },
-  { level: 3, title: 'Phase 3: Student Work', desc: 'Connect Living Payroll & UKVI 20h Work Margin HMACs' },
+  { level: 1, title: 'Phase 1: Academic Registry', desc: 'Connect Student Records (SITS, Banner, Ellucian)' },
+  { level: 2, title: 'Phase 2: Learning Systems', desc: 'Connect Learning Systems (Moodle, Canvas)' },
+  { level: 3, title: 'Phase 3: Student Work', desc: 'Connect Work Calendars & UKVI 20h Work Limits' },
   { level: 4, title: 'Phase 4: Compliance', desc: 'Integrate UKVI Tier-4 Sponsor & CAS Registers' },
-  { level: 5, title: 'Phase 5: PBSA Living', desc: 'Unify Stripe PBSA Escrows & Tenancy Verifications' },
-  { level: 6, title: 'Phase 6: Nova Agents', desc: 'Deploy 30 Mastra Agents & 12 Deterministic DAGs' }
+  { level: 5, title: 'Phase 5: Housing & Living', desc: 'Integrate Housing Verification & Deposits' },
+  { level: 6, title: 'Phase 6: AI Assistants', desc: 'Activate Specialist AI Assistants & Proactive Alerts' }
 ];
 
 export default function AgentGraphVisualizer() {
@@ -275,17 +275,17 @@ export default function AgentGraphVisualizer() {
           </div>
           <div>
             <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '10px' }}>
-              AGENT GRAPH // LIVING OPERATIONAL MAP
+              UNIFIED STUDENT RECORD // LIVE SYSTEM SIGNALS
             </div>
             <div style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>
-              Node-and-Edge Relational Graph Topology
+              Connected Student Profile &amp; Live System Signals
             </div>
           </div>
         </div>
 
         {/* Student Switcher */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-          <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Inspect Subject:</span>
+          <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Select Student Profile:</span>
           {Object.keys(STUDENTS_GRAPH_DATA).map(key => {
             const s = STUDENTS_GRAPH_DATA[key];
             const isSelected = selectedStudentKey === key;

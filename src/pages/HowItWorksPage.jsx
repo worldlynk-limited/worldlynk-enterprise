@@ -197,24 +197,24 @@ export default function HowItWorksPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                HOW IT WORKS // THE CONTINUOUS OPERATIONAL LOOP
+                HOW WORLDLYNK WORKS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                A change happens once. Every campus office reacts in milliseconds.
+                One clear system. Every campus team stays in sync.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                No disconnected spreadsheets. No telephone tag between admissions and tutoring. No weeks of delay before academic struggles become visa risks. Follow the exact real-time lifecycle of an institutional event across the WorldLynk Agentic Campus.
+                No more messy spreadsheets or lost email threads between admissions, tutoring, and visa teams. See how WorldLynk connects everyday campus events with smart, timely actions—all while staff stay in total control.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>OPERATIONAL GUARANTEE</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '2px' }}>Sub-3 Minute</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Incident-to-Resolution Average</div>
+                <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>FAST RESOLUTION</div>
+                <div style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '2px' }}>Under 3 Minutes</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>From Flagged Issue to Staff Review</div>
               </div>
               <Link to="/platform" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>Explore 4-Layer Architecture</span>
+                <span>Explore Platform Overview</span>
                 <ArrowRight size={13} />
               </Link>
             </div>
@@ -226,9 +226,9 @@ export default function HowItWorksPage() {
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>THE 5-STAGE EVENT LIFECYCLE</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW IT WORKS IN 5 SIMPLE STEPS</span>
             <h2 className="headline-lg" style={{ marginTop: '4px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
-              <span>Read</span>
+              <span>Connect</span>
               <ArrowRight size={20} color="var(--accent-orange)" />
               <span>Understand</span>
               <ArrowRight size={20} color="var(--accent-orange)" />
@@ -236,23 +236,23 @@ export default function HowItWorksPage() {
               <ArrowRight size={20} color="var(--accent-orange)" />
               <span>Approve</span>
               <ArrowRight size={20} color="var(--accent-orange)" />
-              <span>Act &amp; Log</span>
+              <span>Act &amp; Complete</span>
             </h2>
             <p className="section-desc">
-              Every single signal—whether an attendance check-in, an LMS quiz submission, or a shift offer—flows through this rigorous, deterministic governance loop.
+              Whether a student misses a lecture, logs extra work hours, or needs housing support, WorldLynk follows a simple, transparent process.
             </p>
           </div>
 
           <div className="grid-auto mb-3xl">
             {[
-              { num: '01', title: 'READ', sub: 'Zero-Migration Ingest', desc: 'Fabric captures raw events from legacy SIS, Moodle, and dynamic QR scanners behind the university VPC boundary.', color: 'var(--accent-orange)' },
-              { num: '02', title: 'UNDERSTAND', sub: 'Graph & Constraints', desc: 'The Agent Graph correlates the signal against student history, timetables, and Home Office UKVI 20h regulations.', color: 'var(--accent-cyan)' },
-              { num: '03', title: 'DRAFT', sub: 'Mastra Agent Synthesis', desc: 'Specialized sub-agents pre-draft the intervention notice, schedule swap, or CAS equivalency document.', color: 'var(--accent-purple)' },
-              { num: '04', title: 'APPROVE', sub: 'The Arbiter Gate', desc: 'Consequential decisions halt in the staff terminal. A named staff member reviews evidence and approves with one click.', color: 'var(--status-held)' },
-              { num: '05', title: 'ACT & LOG', sub: 'Cryptographic Commit', desc: 'The approved change writes back to SITS:Vision and Moodle with a tamper-evident SHA-256 audit timestamp.', color: 'var(--status-pass)' }
+              { num: '01', title: 'CONNECT', sub: 'Zero-Migration Sync', desc: 'WorldLynk reads updates from your existing student records, timetables, and learning management systems with zero migration.', color: 'var(--accent-orange)' },
+              { num: '02', title: 'UNDERSTAND', sub: 'Policies & Work Caps', desc: 'AI assistants check university rules, assignment deadlines, and visa regulations so nothing slips through the cracks.', color: 'var(--accent-cyan)' },
+              { num: '03', title: 'DRAFT', sub: 'Pre-Written Solutions', desc: 'Specialist assistants draft helpful outreach messages, propose timetable adjustments, or compile student support briefs.', color: 'var(--accent-purple)' },
+              { num: '04', title: 'APPROVE', sub: 'Staff Review & Confirmation', desc: 'Every important decision stops at your staff portal. A named team member reviews the details and approves with one click.', color: 'var(--status-held)' },
+              { num: '05', title: 'ACT & COMPLETE', sub: 'Safely Update Records', desc: 'Once approved, messages are sent to the student and records are safely updated with a complete audit history.', color: 'var(--status-pass)' }
             ].map((stage, i) => (
               <div key={i} className="card-dark" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)', position: 'relative' }}>
-                <span className="mono-label" style={{ color: stage.color }}>STAGE {stage.num}</span>
+                <span className="mono-label" style={{ color: stage.color }}>STEP {stage.num}</span>
                 <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0', color: '#ffffff' }}>{stage.title}</h3>
                 <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginBottom: '8px' }}>{stage.sub}</div>
                 <p className="body-sm" style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{stage.desc}</p>
@@ -262,12 +262,12 @@ export default function HowItWorksPage() {
 
           {/* ── INTERACTIVE EVENT CASCADE SIMULATOR ─────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE EVENT CASCADE SIMULATOR</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE WALKTHROUGH</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Simulate Real Campus Incidents in Real Time.
+              See how common campus issues get resolved.
             </h2>
             <p className="section-desc">
-              Choose a scenario below to trace how autonomous agent preparation and the Arbiter consequential gate resolve cross-department crises in under 3 minutes.
+              Choose a scenario below to see how AI assistants prepare solutions and staff make the final call in minutes.
             </p>
           </div>
 
@@ -304,7 +304,7 @@ export default function HowItWorksPage() {
                 <h3 style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '2px' }}>{scenario.name}</h3>
                 <p className="body-sm text-secondary" style={{ marginTop: '4px' }}>{scenario.summary}</p>
               </div>
-              <span className="pill pill-approved">5-STAGE DOMINO EXECUTION</span>
+              <span className="pill pill-approved">5-STEP RESOLUTION</span>
             </div>
           </div>
 
@@ -338,7 +338,7 @@ export default function HowItWorksPage() {
                         </span>
                       </div>
                       <div style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>{st.action}</div>
-                      <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>{st.office} · Actor: {st.actor}</div>
+                      <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>{st.office} · Assistant: {st.actor}</div>
                       <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '6px', lineHeight: 1.4 }}>
                         {st.desc}
                       </p>
@@ -350,19 +350,19 @@ export default function HowItWorksPage() {
 
             {/* Right: Live Packet & Ledger Hash Inspector */}
             <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-              <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>REAL-TIME PACKET &amp; LEDGER INSPECTOR</span>
+              <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STEP DETAILS &amp; SYSTEM LOG</span>
               <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '4px 0 12px 0' }}>Step {activeStepIdx + 1}: {step.action}</h3>
 
               <div style={{ backgroundColor: '#0d0d12', padding: '14px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
                 <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
                   <div><strong>TIMESTAMP:</strong> <span style={{ color: '#ffffff' }}>2026-09-23T{step.time}.000Z</span></div>
-                  <div><strong>CAMPUS OFFICE:</strong> <span style={{ color: '#ffffff' }}>{step.office}</span></div>
-                  <div><strong>RESPONSIBLE ACTOR:</strong> <span style={{ color: 'var(--accent-orange)' }}>{step.actor}</span></div>
-                  <div><strong>GOVERNANCE STATUS:</strong> <span style={{ color: 'var(--status-pass)' }}>{step.status}</span></div>
+                  <div><strong>DEPARTMENT:</strong> <span style={{ color: '#ffffff' }}>{step.office}</span></div>
+                  <div><strong>SYSTEM ASSISTANT:</strong> <span style={{ color: 'var(--accent-orange)' }}>{step.actor}</span></div>
+                  <div><strong>STATUS:</strong> <span style={{ color: 'var(--status-pass)' }}>{step.status}</span></div>
                 </div>
               </div>
 
-              <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '6px' }}>INTER-AGENT BUS PAYLOAD</div>
+              <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '6px' }}>DATA SUMMARY FOR THIS STEP</div>
               <div style={{ backgroundColor: '#060609', padding: '14px', borderRadius: '10px', border: '1px solid #1a1a24', marginBottom: '16px' }}>
                 <pre style={{ margin: 0, fontSize: '11px', color: 'var(--accent-cyan)', fontFamily: 'var(--wl-font-mono)', lineHeight: 1.5, overflowX: 'auto' }}>
                   {JSON.stringify(step.payload, null, 2)}
@@ -371,9 +371,9 @@ export default function HowItWorksPage() {
 
               {/* Arbiter Gate Explanation */}
               <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
-                <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>THE ARBITER GUARANTEE</div>
+                <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>STAFF ALWAYS IN CONTROL</div>
                 <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.45 }}>
-                  Notice that at no point in this domino cascade can an unverified AI make an irrevocable mark on the student's legal academic record. Evidence is gathered in milliseconds; the final seal is held for authorized staff.
+                  AI assistants handle the research and drafting, but your university staff always make the final decision. No critical change to a student record or visa status happens without staff approval.
                 </p>
               </div>
             </div>

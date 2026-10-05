@@ -47,10 +47,10 @@ export default function HomePage() {
   const heroScenarios = [
     {
       id: 'retention',
-      tabLabel: 'Student Welfare',
+      tabLabel: 'Student Support',
       tabCode: '01',
-      category: 'STUDENT PERSISTENCE',
-      title: 'Supportive Welfare Intervention',
+      category: 'STUDENT WELL-BEING & PERSISTENCE',
+      title: 'Early Support for Struggling Students',
       student: 'Maya Chen',
       studentMeta: 'MSc Data Science (ID: 0091-2847)',
       avatar: 'MC',
@@ -58,25 +58,25 @@ export default function HomePage() {
       avatarColor: '#c2410c',
       themeColor: '#10b981',
       themeBg: 'rgba(16, 185, 129, 0.12)',
-      speedBadge: '0.34s Auto-Resolved',
-      triggerText: '3rd consecutive seminar miss (EB-02) · 114h Moodle inactivity detected',
-      actionTitle: 'Autonomous WhatsApp Welfare Outreach',
-      actionBadge: 'Delivered 09:14 AM',
+      speedBadge: 'Resolved in 0.3s',
+      triggerText: 'Missed 3 lectures in a row · Inactive on course portal for 5 days',
+      actionTitle: 'Helpful Check-In Message Prepared',
+      actionBadge: 'Ready for Review',
       actionIcon: MessageSquare,
-      actionBody: '"Hi Maya, Dr. Jenkins from Student Welfare here. Noticed you couldn\'t make CS-5100 this morning. Everything okay? Let\'s grab 10 mins this afternoon to catch up."',
+      actionBody: '"Hi Maya, Dr. Jenkins from Student Welfare here. Noticed you couldn\'t make CS-5100 this morning. Everything okay? Let\'s grab 10 minutes this afternoon to catch up."',
       actionOutcome: 'Maya replied: "Yes please, could we do 2:30pm?"',
       verifications: [
-        'SITS:Vision Synced',
-        'UKVI 20h Cap Safe',
-        'Tutor 1:1 Booked'
+        'Student records updated',
+        'Visa 20h limit safe',
+        'Tutor 1-on-1 scheduled'
       ]
     },
     {
       id: 'compliance',
-      tabLabel: 'Visa & Work Cap',
+      tabLabel: 'Visa Work Hours',
       tabCode: '02',
-      category: 'UKVI TIER-4 COMPLIANCE',
-      title: 'Term-Time Work Cap Verification',
+      category: 'STUDENT VISA COMPLIANCE',
+      title: 'Automatic 20-Hour Work Cap Check',
       student: 'Tariq Hassan',
       studentMeta: 'BSc Finance & Economics (ID: 0074-9912)',
       avatar: 'TH',
@@ -84,25 +84,25 @@ export default function HomePage() {
       avatarColor: '#1d4ed8',
       themeColor: '#38bdf8',
       themeBg: 'rgba(56, 189, 248, 0.12)',
-      speedBadge: '0.18s Deterministic',
-      triggerText: '18h campus shift logged · Checked against Home Office 20h/wk statutory cap',
-      actionTitle: 'Compliant Work Permit Minted & Issued',
-      actionBadge: 'Permit Active',
+      speedBadge: 'Verified Instantly',
+      triggerText: '18h campus shift logged · Checked against 20h/wk student visa limit',
+      actionTitle: 'Work Verification Letter Issued',
+      actionBadge: 'Approved & Active',
       actionIcon: ShieldCheck,
-      actionBody: 'Electronic verification letter signed with university compliance key. Shift logged as authorized under Tier-4 sponsor license.',
-      actionOutcome: 'Guild Union Rota approved · Employer packet sent',
+      actionBody: 'System automatically confirms student is within legal term-time work limits. Official verification letter generated and sent to student and campus employer.',
+      actionOutcome: 'Shift rota approved · Employer packet sent',
       verifications: [
-        'Home Office 20h Pass',
-        'SITS Record Appended',
-        'SHA-256 Audit Sealed'
+        'Within 20h legal limit',
+        'Student file updated',
+        '100% audit safe'
       ]
     },
     {
       id: 'housing',
-      tabLabel: 'PBSA Housing',
+      tabLabel: 'Student Housing',
       tabCode: '03',
       category: 'ACCOMMODATION & ARRIVALS',
-      title: 'Tenancy Lock & Digital Keycard',
+      title: 'Guaranteed Housing & Digital Room Key',
       student: 'Elena Rostova',
       studentMeta: 'MSc Business Analytics · Arrival Sept 28',
       avatar: 'ER',
@@ -110,25 +110,25 @@ export default function HomePage() {
       avatarColor: '#7e22ce',
       themeColor: '#a855f7',
       themeBg: 'rgba(168, 85, 247, 0.12)',
-      speedBadge: '0.42s Escrow Lock',
-      triggerText: 'International CAS cleared · Heathrow flight landing confirmed for Sept 28',
-      actionTitle: 'Crown House En-Suite Room #402 Allocated',
-      actionBadge: 'Tenancy Locked',
+      speedBadge: 'Secured in 0.4s',
+      triggerText: 'International offer confirmed · Heathrow flight landing Sept 28',
+      actionTitle: 'Verified Student Room Reserved',
+      actionBadge: 'Booking Confirmed',
       actionIcon: Building,
-      actionBody: '51-week tenancy lease executed digitally. £1,200 maintenance deposit secured via Stripe Escrow. Smartphone NFC keycard dispatched with door PIN.',
-      actionOutcome: 'Elena acknowledged keycard in Student App',
+      actionBody: 'Matched with verified student accommodation. Tenancy agreement and deposit confirmed digitally. Digital room access sent straight to student app.',
+      actionOutcome: 'Elena confirmed room booking in Student App',
       verifications: [
-        'Stripe Escrow Secured',
-        'PMS Room Reserved',
-        'Welcome Shuttle Booked'
+        'Deposit secured',
+        'Room reserved',
+        'Airport welcome booked'
       ]
     },
     {
       id: 'logistics',
-      tabLabel: 'Campus Logistics',
+      tabLabel: 'Timetable Updates',
       tabCode: '04',
-      category: 'ESTATES & TIMETABLES',
-      title: 'Lecture Outage Instant Re-Route',
+      category: 'CAMPUS OPERATIONS & TIMETABLES',
+      title: 'Instant Room Re-Route When Issues Occur',
       student: '240 Students',
       studentMeta: 'CS-4010 Advanced Algorithms Cohort',
       avatar: '240',
@@ -136,17 +136,17 @@ export default function HomePage() {
       avatarColor: '#ea580c',
       themeColor: '#f97316',
       themeBg: 'rgba(249, 115, 22, 0.12)',
-      speedBadge: '0.22s Sync Speed',
-      triggerText: 'Lecture Hall EB-02 HVAC failure logged 45m before scheduled lecture',
-      actionTitle: 'Instant Re-Route to Great Hall West Wing',
-      actionBadge: 'Broadcast 08:32 AM',
+      speedBadge: 'Updated in 0.2s',
+      triggerText: 'Lecture Hall EB-02 heating issue logged 45m before class',
+      actionTitle: 'Moved Class to Great Hall West Wing',
+      actionBadge: 'Sent 08:32 AM',
       actionIcon: Zap,
-      actionBody: 'Spatial inventory matched vacant Great Hall (cap 260) with zero conflicts. Mobile push notification dispatched with live indoor campus walking route.',
-      actionOutcome: '240 timetables updated · Zero lost lecture minutes',
+      actionBody: 'Instantly found an available nearby hall with enough seating. Mobile alert and campus walking map sent to all 240 enrolled students.',
+      actionOutcome: '240 timetables updated · Zero missed class time',
       verifications: [
-        'Dynamic QR Rotated',
-        'Lecturer App Confirmed',
-        'Estates Work Order Logged'
+        'Timetables updated',
+        'Lecturer confirmed',
+        'Campus team notified'
       ]
     }
   ];
@@ -172,34 +172,34 @@ export default function HomePage() {
   // --- Data structures ---
 
   const agents = [
-    { id: 'supervisor', name: 'worldlynk-supervisor-agent', role: 'Nova Master Orchestrator', desc: 'Central intent router & context binder. Injects authenticated UID, enforces institutional boundaries, evaluates risk, and orchestrates 29 sub-agents.', channels: ['Fabric Event Bus', 'Omnichannel Gateway'], read: ['Student Records', 'LibSQL Memory', 'Moodle Signals'], action: ['SITS Commit Staging', 'Tutor Escalation'], owner: 'Registry & Compliance', icon: ShieldCheck },
-    { id: 'tailoredResume', name: 'worldlynk-tailored-resume-agent', role: 'Career & ATS Optimization', desc: 'Rewrites student CVs aligned to specific UK graduate schemes and visa-compliant vacancies using deterministic 3-step DAG execution.', channels: ['Student App', 'Web'], read: ['Student CV', 'Target Job Description'], action: ['Optimized CV Generation', 'ATS Scorecard'], owner: 'Careers Service', icon: FileText },
-    { id: 'accommodation', name: 'worldlynk-accommodation-agent', role: 'PBSA Housing Allocator', desc: 'Conversational housing match with verified tenancy escrows, room inventory check, and 51-week lease contract lock via Stripe Connect.', channels: ['Student App', 'WhatsApp'], read: ['PBSA Hall Roster', 'Maintenance Database'], action: ['Room Allocation', 'Stripe Escrow Lock'], owner: 'Estate Management', icon: Building },
-    { id: 'moodle', name: 'worldlynk-moodle-agent', role: 'Academic LMS Synchronizer', desc: 'Queries enrolled courses, assignment schedules, lecture timetables, and campus LMS FAQs with zero schema modification to on-prem databases.', channels: ['Student App', 'Web'], read: ['Moodle REST API', 'Course Catalog'], action: ['Timetable Sync', 'Assignment Alert'], owner: 'Faculty Administration', icon: Cpu },
-    { id: 'interviewPrep', name: 'worldlynk-interview-prep-agent', role: 'AI Mock Interview Coach', desc: 'Generates role-specific behavioral, technical, and situational mock packs with real-time audio playback using Nova Voice AI streaming.', channels: ['Student App', 'Voice API'], read: ['Job Context', 'Student Profile'], action: ['Mock Pack Composition', 'Audio Streaming'], owner: 'Careers Service', icon: Bot },
-    { id: 'jobMatch', name: 'worldlynk-job-match-agent', role: 'Tier-4 Work Cap Shield', desc: 'Algolia-indexed job discovery enforcing the strict UKVI 20-hour weekly term-time ceiling before applications can be lodged.', channels: ['Student App', 'Telegram'], read: ['Weekly Rota Log', 'Algolia Job DB'], action: ['Work Cap Verification', 'Job Application'], owner: 'UKVI Compliance', icon: Users },
-    { id: 'eventMatch', name: 'worldlynk-event-match-agent', role: 'Campus Engagement Curator', desc: 'Matches students to verified academic symposiums and society events; sends calendar invites and manages QR live gate check-in tickets.', channels: ['Student App', 'Telegram'], read: ['Student Interests', 'Union Events DB'], action: ['Calendar Invite', 'QR Ticket Minting'], owner: 'Student Union', icon: Calendar },
-    { id: 'planYourDay', name: 'worldlynk-plan-your-day-agent', role: 'Itinerary & Route Engine', desc: 'Assembles dynamic daily itineraries combining lecture slots, transit routes, and study sessions with shareable public URLs.', channels: ['Student App', 'Reliv'], read: ['Campus Timetable', 'Google Maps API'], action: ['Itinerary Compilation', 'Public Slug Minting'], owner: 'Academic Support', icon: Clock },
-    { id: 'searchAgent', name: 'worldlynk-search-agent', role: 'Live Immigration & Web Research', desc: 'Conducts real-time live web research via Exa Search API for up-to-date Home Office UKVI policy guidance and currency exchange updates.', channels: ['Nova Copilot', 'MCP Server'], read: ['Exa Web Index', 'UKVI Gazettes'], action: ['Live Citation Dossier'], owner: 'Immigration Services', icon: Globe },
-    { id: 'consultantCopilot', name: 'worldlynk-consultant-copilot', role: 'Admissions Caseload Manager', desc: 'Manages CAS document preparation timelines, international credential translation, and student-advisor collaboration queues.', channels: ['Compass Console', 'Web'], read: ['CAS Checklist', 'NARIC DB'], action: ['CAS Brief Generation', 'Advisor Alert'], owner: 'International Admissions', icon: Database }
+    { id: 'supervisor', name: 'Nova Campus Coordinator', role: 'Directs requests and checks campus rules', desc: 'Connects student inquiries to the right department, checks institutional policies, and coordinates specialist AI assistants while keeping staff in control.', channels: ['Staff Portal', 'Student App', 'WhatsApp'], read: ['Student Records', 'Course Enrollment', 'Attendance Signals'], action: ['Prepares Staff Briefs', 'Alerts Personal Tutors'], owner: 'Registry & Student Support', icon: ShieldCheck },
+    { id: 'tailoredResume', name: 'CV & Career Coach', role: 'Helps students tailor CVs for UK graduate jobs', desc: 'Helps students improve their CVs, match with visa-compliant UK vacancies, and prepare tailored applications for graduate schemes.', channels: ['Student App', 'Web Portal'], read: ['Student CV', 'Target Job Requirements'], action: ['Optimized CV Draft', 'ATS Scorecard & Feedback'], owner: 'Careers Service', icon: FileText },
+    { id: 'accommodation', name: 'Student Housing Assistant', role: 'Matches students with verified student rooms', desc: 'Helps students find vetted student housing, secure lease agreements, and avoid rental scams before arrival.', channels: ['Student App', 'WhatsApp'], read: ['Campus Halls', 'Partner Housing Inventory'], action: ['Room Allocation', 'Secure Deposit Link'], owner: 'Accommodation Services', icon: Building },
+    { id: 'moodle', name: 'Course & Learning Assistant', role: 'Connects course deadlines and lecture timetables', desc: 'Answers course questions, checks assignment deadlines, and syncs timetables directly from Moodle and Canvas.', channels: ['Student App', 'Web Portal'], read: ['Course Catalog', 'Assignment Timetable'], action: ['Timetable Sync', 'Deadline Reminder'], owner: 'Academic Departments', icon: Cpu },
+    { id: 'interviewPrep', name: 'Mock Interview Coach', role: 'Realistic practice interviews with voice feedback', desc: 'Gives students real-time mock interviews with personalized spoken feedback to build job-search confidence.', channels: ['Student App', 'Voice Assistant'], read: ['Job Description', 'Student Background'], action: ['Practice Question Sets', 'Spoken Feedback'], owner: 'Careers Service', icon: Bot },
+    { id: 'jobMatch', name: 'Visa Work Cap Checker', role: 'Finds jobs while protecting the 20h/wk visa limit', desc: 'Helps international students discover campus and local jobs while making sure they never exceed their 20-hour weekly visa limit.', channels: ['Student App', 'Telegram'], read: ['Weekly Rota Log', 'Verified Campus Jobs'], action: ['Work Hour Check', 'Safe Application Pass'], owner: 'Visa & Compliance', icon: Users },
+    { id: 'eventMatch', name: 'Campus Life & Events Curator', role: 'Connects students to clubs, events, and societies', desc: 'Recommends university workshops, society meetups, and campus events to help students build community and stay engaged.', channels: ['Student App', 'Telegram'], read: ['Student Interests', 'Union Events Calendar'], action: ['Calendar Invite', 'Mobile Event Pass'], owner: 'Student Union', icon: Calendar },
+    { id: 'planYourDay', name: 'Daily Schedule Planner', role: 'Combines classes, study time, and campus routes', desc: 'Brings together lecture times, library study slots, and campus walking directions into one convenient daily view.', channels: ['Student App', 'Mobile Web'], read: ['Class Timetable', 'Campus Map'], action: ['Daily Schedule Digest', 'Walking Directions'], owner: 'Student Support', icon: Clock },
+    { id: 'searchAgent', name: 'Live Visa & Policy Researcher', role: 'Instant answers on Home Office visa rules and policies', desc: 'Searches official UK Home Office guidelines and university policies in real time to give students and staff accurate, cited answers.', channels: ['Staff Console', 'Student App'], read: ['UKVI Guidelines', 'Campus Knowledge Base'], action: ['Clear Cited Answers'], owner: 'Immigration Advice', icon: Globe },
+    { id: 'consultantCopilot', name: 'Admissions Assistant', role: 'Helps admissions teams review student applications faster', desc: 'Assists admissions staff by summarizing overseas credentials, checking visa readiness, and preparing CAS files for sign-off.', channels: ['Compass Console', 'Web'], read: ['Application Checklist', 'Equivalency Guidelines'], action: ['Student Summary Dossier', 'Staff Notification'], owner: 'International Admissions', icon: Database }
   ];
 
   const filteredAgents = agents.filter(a => a.name.toLowerCase().includes(agentSearch.toLowerCase()) || a.role.toLowerCase().includes(agentSearch.toLowerCase()));
   const selectedAgent = agents.find(a => a.id === selectedAgentId) || agents[0];
 
   const cascadeSteps = [
-    { id: 0, title: 'Ingest (Dynamic QR)', time: '09:12:04', loc: 'Classroom EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'A dynamically rotating QR code for lecture attendance expires. Maya Chen fails to register attendance for the 3rd consecutive seminar.', ledger: '{"event_type": "attendance_miss", "student_id": "84729", "location": "EB-02", "timestamp": "2026-09-23T09:12:04Z", "signature": "hmac_sha256:7f8b...88e1"}' },
-    { id: 1, title: 'Fabric Sync (LMS)', time: '09:12:05', loc: 'Moodle Gateway', status: 'SYNCED', pillClass: 'pill-active', narrative: 'The event bus pulls contextual data from Moodle LMS, revealing 114 hours of inactivity on coursework modules for the same module.', ledger: '{"action": "data_fetch", "source": "moodle_lms", "query": "course_activity", "result": {"inactivity_hrs": 114, "last_login": "2026-09-17T14:22:00Z"}, "status": "success"}' },
-    { id: 2, title: 'Nova AI Eval (Risk Model)', time: '09:12:07', loc: 'Nova Supervisor Agent', status: 'EVALUATED', pillClass: 'pill-active', narrative: 'The Nova Supervisor Agent ingests the attendance flag and LMS inactivity. Cross-referencing her work profile, it notes a 16-hour weekend barista shift. Burnout probability assessed at 87%.', ledger: '{"agent": "worldlynk-supervisor-agent", "runtime": "nova_mastra_v4", "inputs": ["attendance_miss_3", "lms_inactive_114h", "work_shift_16h"], "output": {"risk_score": 0.87, "reason": "fatigue_indicator"}}' },
-    { id: 3, title: 'Arbiter Gate (Compass Governance)', time: '09:12:08', loc: 'Compass Arbiter', status: 'HELD', pillClass: 'pill-held', narrative: 'Tier-4 UKVI compliance threshold breached. Autonomous remediation is HELD. Policy dictates human-in-the-loop approval by Senior Tutor on Compass before changes commit.', ledger: '{"governance_check": "tier_4_policy", "rule_id": "pol_742", "action_required": "human_approval", "assigned_to": "tutor_jenkins", "state": "pending"}' },
-    { id: 4, title: 'Audit Seal & Execution', time: '09:14:22', loc: 'Senior Tutor & SITS', status: 'SEALED', pillClass: 'pill-approved', narrative: 'Dr. Jenkins reviews the summarized context via the Compass Portal and approves a wellbeing intervention. SITS:Vision is updated with an immutable SHA-256 audit log.', ledger: '{"approval": "granted", "approver": "tutor_jenkins", "timestamp": "2026-09-23T09:14:22Z", "downstream_sync": ["sits_vision", "wellbeing_crm"], "hash": "sha256:8b4f...d1a9"}' }
+    { id: 0, title: 'Missed Class Flagged', time: '09:12:04', loc: 'Lecture Hall EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'Maya Chen misses morning check-in for her CS-5100 seminar. The system notes this is her 3rd consecutive missed lecture.', ledger: '{"event": "attendance_miss", "student_name": "Maya Chen", "module": "CS-5100", "location": "EB-02", "timestamp": "09:12:04"}' },
+    { id: 1, title: 'Course Activity Checked', time: '09:12:05', loc: 'Learning Portal (Moodle)', status: 'CHECKED', pillClass: 'pill-active', narrative: 'The system checks the online course portal and sees Maya has had zero login activity on coursework materials for over 4 days.', ledger: '{"source": "moodle_lms", "query": "student_activity", "inactivity_hours": 114, "coursework_status": "due_soon"}' },
+    { id: 2, title: 'Support Need Identified', time: '09:12:07', loc: 'Nova Campus Coordinator', status: 'IDENTIFIED', pillClass: 'pill-active', narrative: 'The AI reviews her recent schedule, noting she worked late barista shifts over the weekend. It identifies potential burnout before she falls further behind.', ledger: '{"action": "welfare_risk_check", "reason": "attendance_drop_and_workload", "suggested_action": "tutor_check_in"}' },
+    { id: 3, title: 'Staff Review on Compass', time: '09:12:08', loc: 'Staff Portal (Compass)', status: 'WAITING REVIEW', pillClass: 'pill-held', narrative: 'Staff always stay in control. Rather than sending an unapproved notice, the system prepares a friendly check-in draft and makeup lab suggestion for Senior Tutor Dr. Jenkins.', ledger: '{"staff_review_required": true, "assigned_to": "Dr. Jenkins", "suggested_channel": "WhatsApp", "state": "awaiting_approval"}' },
+    { id: 4, title: 'Support Sent & Saved', time: '09:14:22', loc: 'Senior Tutor & Student Records', status: 'RESOLVED', pillClass: 'pill-approved', narrative: 'Dr. Jenkins reviews the brief on Compass and clicks approve. Maya receives a supportive message on WhatsApp, and university records are updated automatically.', ledger: '{"approved_by": "Dr. Jenkins", "action_taken": "whatsapp_welfare_sent", "records_updated": true, "timestamp": "09:14:22"}' }
   ];
 
   const architecturePillars = [
-    { id: 'fabric', num: '01', name: 'Fabric', desc: 'The nervous system. High-throughput event bus connecting legacy on-prem systems with modern cloud infrastructure.', tech: ['Redis Pub/Sub', 'BullMQ Workers', 'WebSockets', 'GraphQL API'], activeColor: '#ff6b00', metrics: { coverage: 98, latency: 12, uptime: 99.99 } },
-    { id: 'graph', num: '02', name: 'Data Plane', desc: 'The memory. Unified identity resolution mapping students across Compass and WorldLynk apps into a shared schema.', tech: ['Firestore Data Plane', 'users/{uid} Identity', 'Redis Graph Cache', 'LibSQL Vector'], activeColor: '#3b82f6', metrics: { coverage: 100, latency: 18, uptime: 99.95 } },
-    { id: 'nova', num: '03', name: 'Nova AI Engine', desc: 'The autonomous AI brain. 30 specialized agents and 12 deterministic Mastra DAG workflows evaluating thousands of institutional signals.', tech: ['30 Nova Agents', '12 Deterministic DAGs', 'Realtime Voice WebRTC', 'LibSQL Vector Memory', 'Omni-Channel Gateways'], activeColor: '#8b5cf6', metrics: { coverage: 94, latency: 180, uptime: 99.99 } },
-    { id: 'arbiter', num: '04', name: 'Arbiter & Compass', desc: 'The conscience & console. Immutable governance layer ensuring no automated action breaches compliance, ethics, or UKVI rules.', tech: ['Compass Portal', 'Policy Engine', 'Audit Ledger', 'Human-in-the-loop UI', 'SHA-256 Signatures'], activeColor: '#10b981', metrics: { coverage: 100, latency: 5, uptime: 100 } },
+    { id: 'fabric', num: '01', name: 'Connect', desc: 'Plugs directly into your existing SIS, LMS, and campus databases with zero complex migrations or downtime.', tech: ['Works with SITS:Vision & Banner', 'Syncs with Moodle & Canvas', 'Real-time event updates', 'Zero database migrations'], activeColor: '#ff6b00', metrics: { coverage: 98, latency: 12, uptime: 99.99 } },
+    { id: 'graph', num: '02', name: 'Understand', desc: 'Brings student records, timetables, and housing into one unified profile so staff don’t have to jump across multiple tools.', tech: ['Unified student profile', 'Secure cloud storage', 'Instant search across records', 'Privacy-first permissions'], activeColor: '#3b82f6', metrics: { coverage: 100, latency: 18, uptime: 99.95 } },
+    { id: 'nova', num: '03', name: 'Assist', desc: '30 specialized AI assistants work 24/7 to answer student questions, spot drop-out risks early, and prepare routine tasks.', tech: ['30 Focused campus assistants', '24/7 Student chat & guidance', 'Real-time mock interview voice', 'Early alert indicators'], activeColor: '#8b5cf6', metrics: { coverage: 94, latency: 180, uptime: 99.99 } },
+    { id: 'arbiter', num: '04', name: 'Control & Govern', desc: 'A clear staff dashboard where your team reviews, edits, and approves all important actions. Staff always stay in control.', tech: ['Staff review portal (Compass)', 'One-click approvals', 'Complete audit trail', 'Strict UK GDPR & FERPA compliance'], activeColor: '#10b981', metrics: { coverage: 100, latency: 5, uptime: 100 } },
   ];
 
   const activePillar = architecturePillars.find(p => p.id === activePillarId) || architecturePillars[0];
@@ -219,18 +219,18 @@ export default function HomePage() {
           <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
             {/* Left Content */}
             <div>
-              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AI-POWERED CAMPUS OPERATIONS</div>
-              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>Your university, powered by AI.</h1>
+              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AI PLATFORM FOR HIGHER EDUCATION</div>
+              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>One AI platform for your entire campus.</h1>
               <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '540px' }}>
-                WorldLynk connects your university systems and uses AI to automate everyday work, support students, and help staff make better decisions.
+                WorldLynk connects your existing university systems to automate student support, simplify attendance, protect visa compliance, and save staff thousands of hours.
               </p>
               <div className="hero-keywords-container">
                 {[
                   { label: 'Admissions', icon: GraduationCap },
                   { label: 'Attendance', icon: Clock },
                   { label: 'Student Support', icon: Users },
-                  { label: 'Housing', icon: Building },
-                  { label: 'Engagement', icon: Zap },
+                  { label: 'Campus Housing', icon: Building },
+                  { label: 'Visa & Careers', icon: Zap },
                 ].map(({ label, icon: Icon }) => (
                   <span key={label} className="hero-keyword-pill">
                     <Icon size={12} className="hero-keyword-icon" />
@@ -239,9 +239,9 @@ export default function HomePage() {
                 ))}
               </div>
               <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
-                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Request Executive Briefing</Link>
+                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Book a Live Demo</Link>
                 <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
-                  <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Console</span> <ExternalLink size={15} color="#ff8833" />
+                  <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Portal</span> <ExternalLink size={15} color="#ff8833" />
                 </a>
                 <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
                   <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span> <ExternalLink size={15} color="#38bdf8" />
@@ -303,7 +303,7 @@ export default function HomePage() {
                     <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
                     <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#27c93f' }} />
                     <span className="mono-sm" style={{ color: '#71717a', fontSize: '0.66rem', marginLeft: '0.4rem', letterSpacing: '0.04em' }}>
-                      CAMPUS_EXECUTION_ENGINE // LIVE
+                      CAMPUS_AI_IN_ACTION // LIVE_PREVIEW
                     </span>
                   </div>
 
@@ -328,7 +328,7 @@ export default function HomePage() {
                       }}
                     >
                       {isAutoPlaying ? <Pause size={10} color="#10b981" /> : <Play size={10} color="#ff8833" />}
-                      <span>{isAutoPlaying ? 'Auto-Cycle' : 'Paused'}</span>
+                      <span>{isAutoPlaying ? 'Auto-Play' : 'Paused'}</span>
                     </button>
 
                     <div 
@@ -344,7 +344,7 @@ export default function HomePage() {
                     >
                       <span className="hero-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#10b981', display: 'inline-block', boxShadow: '0 0 6px #10b981' }} />
                       <span style={{ color: '#10b981', fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.02em' }}>
-                        {actionsResolvedCount.toLocaleString()} ACTIONS RESOLVED
+                        {actionsResolvedCount.toLocaleString()} ACTIONS RESOLVED TODAY
                       </span>
                     </div>
                   </div>
@@ -602,7 +602,7 @@ export default function HomePage() {
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
                       <Sparkles size={12} style={{ color: 'var(--wl-accent)' }} />
-                      <span>Nova Multi-Agent Engine: <strong>30 agents active</strong></span>
+                      <span>WorldLynk AI: <strong>30 specialist assistants active</strong></span>
                     </div>
 
                     <button
@@ -639,10 +639,10 @@ export default function HomePage() {
           
           {/* Telemetry bar */}
           <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-            <div className="mono-sm text-muted">CAMPUS_AUTOMATION_RATE: 99.4%</div>
-            <div className="mono-sm text-muted">TOTAL_STUDENTS_COVERED: 14,892</div>
-            <div className="mono-sm text-muted">ACTIVE_AI_WORKFLOWS: 12 RUNNING</div>
-            <div className="mono-sm text-muted">UKVI_TIER4_COMPLIANCE: 100% DETERMINISTIC</div>
+            <div className="mono-sm text-muted">CAMPUS AUTOMATION: 99.4%</div>
+            <div className="mono-sm text-muted">STUDENTS SUPPORTED: 15,000+</div>
+            <div className="mono-sm text-muted">SPECIALIST ASSISTANTS: 30 ACTIVE</div>
+            <div className="mono-sm text-muted">VISA COMPLIANCE: 100% AUDIT READY</div>
           </div>
         </div>
       </section>
@@ -651,10 +651,10 @@ export default function HomePage() {
       <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>NOVA AI INFRASTRUCTURE · 30 SPECIALIST AGENTS &amp; 12 WORKFLOWS</div>
-            <h2 className="headline-lg">Every campus decision routed through Nova's deterministic multi-agent brain.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>SPECIALIST AI ASSISTANTS · 30 FOCUSED AGENTS</div>
+            <h2 className="headline-lg">30 focused AI assistants for every team on campus.</h2>
             <p className="body-md text-secondary" style={{ maxWidth: '780px', marginTop: '8px' }}>
-              Built on the Mastra TypeScript framework with LibSQL vector memory and Exa live web search, Nova coordinates 30 specialized AI agents across admissions, student persistence, accommodation, and careers.
+              Instead of one generic chatbot, WorldLynk gives your university 30 specialized AI assistants trained for admissions, student welfare, attendance, and careers — always working inside the tools you already use.
             </p>
           </div>
           
@@ -667,7 +667,7 @@ export default function HomePage() {
                   <input 
                     type="text" 
                     className="form-input" 
-                    placeholder="Search agents by name or role..." 
+                    placeholder="Search assistants by name or department..." 
                     value={agentSearch}
                     onChange={(e) => setAgentSearch(e.target.value)}
                     style={{ paddingLeft: '2.5rem', width: '100%', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white', borderRadius: '4px', padding: '0.75rem 0.75rem 0.75rem 2.5rem' }}
@@ -724,13 +724,13 @@ export default function HomePage() {
                   
                   <div className="grid-2 gap-md mb-lg">
                     <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DATA INGESTION (READ)</div>
+                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DATA SOURCES</div>
                       <div className="flex gap-sm flex-wrap">
                         {selectedAgent.read.map((r, i) => <span key={i} className="badge badge-cyan">{r}</span>)}
                       </div>
                     </div>
                     <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DETERMINISTIC ACTION (WRITE)</div>
+                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>WHAT THIS ASSISTANT DOES</div>
                       <div className="flex gap-sm flex-wrap">
                         {selectedAgent.action.map((a, i) => <span key={i} className="badge badge-purple">{a}</span>)}
                       </div>
@@ -741,13 +741,13 @@ export default function HomePage() {
 
                   <div className="flex flex-between alignItems-center flex-wrap gap-md">
                     <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DELIVERY CHANNELS</div>
+                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>WHERE IT WORKS</div>
                       <div className="flex gap-sm flex-wrap">
                         {selectedAgent.channels.map((c, i) => <span key={i} className="mono-sm" style={{ color: '#e4e4e7' }}>[{c}]</span>)}
                       </div>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>INSTITUTIONAL OWNER</div>
+                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>CAMPUS TEAM</div>
                       <div className="flex gap-sm alignItems-center justify-end">
                         <ShieldCheck size={14} className="text-secondary" />
                         <span style={{ fontWeight: 500 }}>{selectedAgent.owner}</span>
@@ -765,9 +765,9 @@ export default function HomePage() {
       <section className="section" style={{ backgroundColor: '#09090b', borderTop: '1px solid #1a1a24', borderBottom: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>INCIDENT CASCADE SIMULATION</div>
-            <h2 className="headline-lg">Maya Chen — Cross-Office Intervention</h2>
-            <p className="body-md text-secondary" style={{ maxWidth: '600px', margin: '1rem auto 0' }}>Trace how a single missed attendance scan cascades through multiple deterministic systems to trigger a human-in-the-loop wellbeing intervention.</p>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>HOW IT WORKS IN PRACTICE</div>
+            <h2 className="headline-lg">How a student issue gets resolved in minutes.</h2>
+            <p className="body-md text-secondary" style={{ maxWidth: '600px', margin: '1rem auto 0' }}>See how missed classes and a quiet week online turn into a friendly, helpful check-in — before a student falls behind.</p>
           </div>
 
           {/* Cascade Stepper */}
@@ -825,26 +825,26 @@ export default function HomePage() {
                 <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#1a1a24', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '8px' }}>
                   <div className="flex gap-sm alignItems-center mb-sm">
                     <AlertTriangle size={16} style={{ color: '#f59e0b' }} />
-                    <span style={{ color: '#f59e0b', fontWeight: 600, fontSize: '0.9rem' }}>Human Approval Required</span>
+                    <span style={{ color: '#f59e0b', fontWeight: 600, fontSize: '0.9rem' }}>Staff Approval Required</span>
                   </div>
                   <button 
                     className="btn-primary" 
                     style={{ width: '100%', padding: '0.75rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}
                     onClick={() => setActiveCascadeStep(4)}
                   >
-                    Approve Intervention & Seal <Check size={16} />
+                    Approve Support & Send Message <Check size={16} />
                   </button>
                 </div>
               )}
             </div>
 
-            {/* Terminal Ledger */}
+            {/* Activity Log */}
             <div className="mockup-window" style={{ backgroundColor: '#000', border: '1px solid #333' }}>
               <div className="mockup-chrome flex flex-between" style={{ padding: '0.5rem 1rem', borderBottom: '1px solid #333', backgroundColor: '#111' }}>
-                <span className="mono-sm text-muted">fabric_ledger_stdout</span>
+                <span className="mono-sm text-muted">system_activity_log</span>
               </div>
               <div className="mockup-body" style={{ padding: '1.5rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#a1a1aa', overflowX: 'auto', whiteSpace: 'pre-wrap' }}>
-                <div style={{ color: '#4ade80', marginBottom: '1rem' }}>$ tail -f /var/log/fabric/events.log | jq .</div>
+                <div style={{ color: '#4ade80', marginBottom: '1rem' }}>$ live_events --student "Maya Chen"</div>
                 <div style={{ color: '#e4e4e7' }}>
                   {JSON.stringify(JSON.parse(cascadeSteps[activeCascadeStep].ledger), null, 2)}
                 </div>
@@ -859,8 +859,8 @@ export default function HomePage() {
       <section className="section section-stone" style={{ backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>ARCHITECTURE PILLARS</div>
-            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Four sovereign layers, one deterministic fabric.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>HOW THE PLATFORM WORKS</div>
+            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Four simple layers built for higher education.</h2>
           </div>
 
           {/* Pipeline layout */}
@@ -900,13 +900,13 @@ export default function HomePage() {
             <div className="card-stone" style={{ backgroundColor: 'white', padding: '2.5rem', borderRadius: '12px', border: '1px solid #e4e4e7', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05)' }}>
               <div className="grid-2 gap-lg" style={{ alignItems: 'center' }}>
                 <div>
-                  <h3 className="headline-lg mb-md" style={{ color: '#0c0c0f' }}>{activePillar.name} Infrastructure</h3>
-                  <p className="body-lg mb-lg" style={{ color: '#52525b' }}>Deep dive into the operational metrics and technical capabilities of the {activePillar.name.toLowerCase()} layer deployed on your sovereign campus cloud.</p>
+                  <h3 className="headline-lg mb-md" style={{ color: '#0c0c0f' }}>{activePillar.name} Layer</h3>
+                  <p className="body-lg mb-lg" style={{ color: '#52525b' }}>How the {activePillar.name} layer connects with your existing university systems to deliver trusted, reliable outcomes.</p>
                   
                   <div className="flex flex-col gap-md">
                     <div>
                       <div className="flex flex-between mb-xs">
-                        <span className="mono-sm" style={{ fontWeight: 600 }}>System Coverage</span>
+                        <span className="mono-sm" style={{ fontWeight: 600 }}>Campus System Coverage</span>
                         <span className="mono-sm">{activePillar.metrics.coverage}%</span>
                       </div>
                       <div className="comp-bar-track" style={{ height: '8px', backgroundColor: '#e4e4e7', borderRadius: '4px', overflow: 'hidden' }}>
@@ -916,11 +916,11 @@ export default function HomePage() {
                     
                     <div className="grid-2 gap-md mt-md">
                       <div style={{ padding: '1rem', backgroundColor: '#f4f4f5', borderRadius: '8px' }}>
-                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>P99 LATENCY</div>
+                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>RESPONSE SPEED</div>
                         <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0c0c0f' }}>{activePillar.metrics.latency}ms</div>
                       </div>
                       <div style={{ padding: '1rem', backgroundColor: '#f4f4f5', borderRadius: '8px' }}>
-                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>TARGET UPTIME</div>
+                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>SYSTEM UPTIME</div>
                         <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0c0c0f' }}>{activePillar.metrics.uptime}%</div>
                       </div>
                     </div>
@@ -928,7 +928,6 @@ export default function HomePage() {
                 </div>
                 
                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem', backgroundColor: '#f4f4f5', borderRadius: '12px', minHeight: '300px' }}>
-                   {/* Abstract visualization of the layer */}
                    {activePillar.id === 'fabric' && <Network size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
                    {activePillar.id === 'graph' && <Database size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
                    {activePillar.id === 'nova' && <Bot size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
@@ -944,8 +943,11 @@ export default function HomePage() {
       <section className="section" style={{ borderBottom: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>DUAL OPERATING SYSTEM</div>
-            <h2 className="headline-lg">Two interfaces, one fabric.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>TWO CONNECTED APPS</div>
+            <h2 className="headline-lg">One portal for staff. One simple app for students.</h2>
+            <p className="body-md text-secondary" style={{ maxWidth: '620px', margin: '1rem auto 0' }}>
+              Staff get a unified dashboard to review and approve tasks. Students get a single smartphone app for timetables, check-ins, and 24/7 help.
+            </p>
           </div>
 
           <div className="flex" style={{ justifyContent: 'center', marginBottom: '2rem' }}>
@@ -963,7 +965,7 @@ export default function HomePage() {
                   cursor: 'pointer'
                 }}
               >
-                Staff OS (Compass)
+                Staff Portal (Compass)
               </button>
               <button 
                 className={`tab-btn ${activeOS === 'student' ? 'tab-btn-active' : ''}`}
@@ -978,7 +980,7 @@ export default function HomePage() {
                   cursor: 'pointer'
                 }}
               >
-                Student OS (Super-App)
+                Student App (WorldLynk)
               </button>
             </div>
           </div>
@@ -1000,9 +1002,9 @@ export default function HomePage() {
                       <thead style={{ backgroundColor: '#131318', borderBottom: '1px solid #2a2a35' }}>
                         <tr>
                           <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Student</th>
-                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Dept</th>
-                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Signal</th>
-                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Status</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Department</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>What Happened</th>
+                          <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Current Status</th>
                           <th style={{ padding: '1rem', color: '#a1a1aa', fontWeight: 500, fontSize: '0.875rem' }}>Action</th>
                         </tr>
                       </thead>
@@ -1010,23 +1012,23 @@ export default function HomePage() {
                         <tr style={{ borderBottom: '1px solid #1a1a24' }}>
                           <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>James Thorne</div><div className="mono-sm text-muted">ID: 847291</div></td>
                           <td style={{ padding: '1rem', color: '#e4e4e7' }}>Engineering</td>
-                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-attendance" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>QR Miss (3x)</span></td>
-                          <td style={{ padding: '1rem' }}><span className="pill pill-held">Held by Arbiter</span></td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-attendance" style={{ color: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Missed 3 Classes</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-held">Waiting for Review</span></td>
                           <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: '#2a2a35', border: 'none', padding: '0.5rem 1rem', borderRadius: '4px', color: 'white', cursor: 'pointer' }}>Review</button></td>
                         </tr>
                         <tr style={{ borderBottom: '1px solid #1a1a24' }}>
                           <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Sarah Jenkins</div><div className="mono-sm text-muted">ID: 921104</div></td>
                           <td style={{ padding: '1rem', color: '#e4e4e7' }}>Business</td>
-                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-lms" style={{ color: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>LMS Inactive (72h)</span></td>
-                          <td style={{ padding: '1rem' }}><span className="pill pill-active">Agent Nudging</span></td>
-                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>View Log</button></td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-lms" style={{ color: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Inactive for 3 Days</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-active">AI Checking In</span></td>
+                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>View Details</button></td>
                         </tr>
                         <tr>
                           <td style={{ padding: '1rem' }}><div style={{ fontWeight: 500 }}>Aisha Patel</div><div className="mono-sm text-muted">ID: 773829</div></td>
                           <td style={{ padding: '1rem', color: '#e4e4e7' }}>Law</td>
-                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-sis" style={{ color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Visa Doc Uploaded</span></td>
-                          <td style={{ padding: '1rem' }}><span className="pill pill-approved">Auto-Verified</span></td>
-                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>Audit Trail</button></td>
+                          <td style={{ padding: '1rem' }}><span className="source-badge source-badge-sis" style={{ color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.25rem 0.5rem', borderRadius: '4px', fontSize: '0.75rem' }}>Visa Document Uploaded</span></td>
+                          <td style={{ padding: '1rem' }}><span className="pill pill-approved">Verified</span></td>
+                          <td style={{ padding: '1rem' }}><button className="btn-sm" style={{ backgroundColor: 'transparent', border: '1px solid #2a2a35', padding: '0.5rem 1rem', borderRadius: '4px', color: '#a1a1aa', cursor: 'pointer' }}>Check Record</button></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1035,7 +1037,7 @@ export default function HomePage() {
               </div>
               <div style={{ textAlign: 'center', marginTop: '2rem' }}>
                 <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Explore Compass Portal <ArrowRight size={16} />
+                  Explore Staff Portal <ArrowRight size={16} />
                 </a>
               </div>
             </div>
@@ -1046,38 +1048,38 @@ export default function HomePage() {
               <div className="grid-3 gap-md">
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <Clock size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Daily Timeline</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Deterministic routing of classes, society events, and deadlines into a single feed.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Daily Schedule</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Classes, deadlines, and campus events combined into one clear timeline.</p>
                 </div>
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <MessageCircle size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Nova AI Chat</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>24/7 autonomous support mapped directly to university knowledge bases.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>24/7 AI Support</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Instant answers to student questions, grounded directly in your university policies.</p>
                 </div>
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <Building size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Housing Ops</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Log maintenance, request swaps, and manage tenancy docs natively.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Student Housing</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Find verified accommodation, secure tenancy agreements, and log maintenance.</p>
                 </div>
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <Users size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Career Match</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>CV parsing and automated matching to local part-time work or grad schemes.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Career &amp; Jobs</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Discover part-time work that strictly respects student visa work limits.</p>
                 </div>
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <Activity size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Dynamic QR</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Sub-180ms rotating QR for spoof-proof attendance logging.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Quick Attendance</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Fast, 1-tap class check-in using their phone. No queues or lost paper slips.</p>
                 </div>
                 <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
                   <Globe size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Pre-Departure</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Checklists and visa prep for international students before they arrive.</p>
+                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Pre-Arrival Guide</h4>
+                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Step-by-step visa prep and arrival checklists for international students.</p>
                 </div>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
                 <Link to="/student-os" className="btn-secondary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>
-                  Explore Student OS <ArrowRight size={16} />
+                  Explore Student App <ArrowRight size={16} />
                 </Link>
                 <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                   Launch Student App <ExternalLink size={16} />
@@ -1092,22 +1094,22 @@ export default function HomePage() {
       <section className="section section-stone" style={{ backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>INTEGRATION MATRIX</div>
-            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Pre-built connectors for your existing infrastructure.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>CONNECTS WITH YOUR TOOLS</div>
+            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Works with the systems you already use every day.</h2>
           </div>
 
           <div className="grid-auto gap-md" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' }}>
             {[
-              { name: 'SITS:Vision', cat: 'SIS', type: 'Bi-directional', icon: Database },
-              { name: 'Ellucian Banner', cat: 'SIS', type: 'Bi-directional', icon: Database },
-              { name: 'Moodle LMS', cat: 'Learning', type: 'Read-only Sync', icon: GraduationCap },
-              { name: 'Canvas LMS', cat: 'Learning', type: 'Read-only Sync', icon: GraduationCap },
-              { name: 'Stripe Connect', cat: 'Payments', type: 'Webhooks', icon: HardDrive },
-              { name: 'Algolia Search', cat: 'Discovery', type: 'Index Sync', icon: Search },
-              { name: 'WhatsApp (Baileys)', cat: 'Messaging', type: 'Bi-directional', icon: MessageSquare },
-              { name: 'Telegram Bot', cat: 'Messaging', type: 'Bi-directional', icon: MessageSquare },
-              { name: 'BullMQ & Redis', cat: 'Infrastructure', type: 'Queueing', icon: Server },
-              { name: 'Firebase', cat: 'Auth/Push', type: 'Real-time', icon: Zap },
+              { name: 'SITS:Vision', cat: 'Student Records', type: 'Two-way sync', icon: Database },
+              { name: 'Ellucian Banner', cat: 'Student Records', type: 'Two-way sync', icon: Database },
+              { name: 'Moodle LMS', cat: 'Course Portal', type: 'Automatic sync', icon: GraduationCap },
+              { name: 'Canvas LMS', cat: 'Course Portal', type: 'Automatic sync', icon: GraduationCap },
+              { name: 'Stripe Payments', cat: 'Housing Deposits', type: 'Secure Checkout', icon: HardDrive },
+              { name: 'Algolia Search', cat: 'Campus Search', type: 'Instant search', icon: Search },
+              { name: 'WhatsApp', cat: 'Student Messaging', type: 'Two-way chat', icon: MessageSquare },
+              { name: 'Telegram', cat: 'Student Messaging', type: 'Two-way chat', icon: MessageSquare },
+              { name: 'Campus Timetables', cat: 'Scheduling', type: 'Live sync', icon: Server },
+              { name: 'Student Records (SIS)', cat: 'Identity', type: 'Real-time', icon: Zap },
             ].map((conn, i) => (
               <div key={i} className="card-stone" style={{ padding: '1.25rem', backgroundColor: 'white', borderRadius: '8px', border: '1px solid #e4e4e7', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ padding: '0.75rem', backgroundColor: '#f4f4f5', borderRadius: '6px' }}>
@@ -1127,7 +1129,7 @@ export default function HomePage() {
           
           <div style={{ marginTop: '3rem', textAlign: 'center' }}>
             <Link to="/integrations" style={{ color: 'var(--wl-accent)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              View all 40+ connectors <ArrowRight size={16} />
+              View all 40+ integrations <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -1137,8 +1139,8 @@ export default function HomePage() {
       <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>INSTITUTIONAL ECONOMICS</div>
-            <h2 className="headline-lg">Quantified impact on retention and compliance.</h2>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>MEASURABLE IMPACT</div>
+            <h2 className="headline-lg">Calculate the impact on your university.</h2>
           </div>
 
           <div className="grid-2 gap-xl" style={{ alignItems: 'center' }}>
@@ -1177,34 +1179,34 @@ export default function HomePage() {
               </div>
               
               <p className="body-sm text-muted mt-lg" style={{ fontStyle: 'italic' }}>
-                *Projections based on aggregate data from pilot institutions reducing attrition by ~5.8% and automating routine registry queries.
+                *Estimates based on pilot university outcomes reducing student dropout and automating routine administrative tickets.
               </p>
             </div>
 
             {/* Metrics */}
             <div className="grid-2 gap-md">
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--wl-accent)' }}>
-                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>PREVENTED ATTRITIONS / YR</div>
+                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>STUDENTS RETAINED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>{savedStudents}</div>
-                <div className="body-sm text-secondary">Students flagged & retained</div>
+                <div className="body-sm text-secondary">Students flagged &amp; supported</div>
               </div>
               
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--status-pass)' }}>
-                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>RECOVERED REVENUE / YR</div>
+                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>TUITION PROTECTED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>£{(recoveredRevenue / 1000000).toFixed(1)}M</div>
-                <div className="body-sm text-secondary">Protected tuition fees</div>
+                <div className="body-sm text-secondary">Protected student tuition</div>
               </div>
               
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid #e4e4e7' }}>
-                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>ADMIN HOURS SAVED / YR</div>
+                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>STAFF HOURS SAVED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>{(adminHours / 1000).toFixed(1)}k</div>
-                <div className="body-sm text-secondary">Automated via Nova AI Engine</div>
+                <div className="body-sm text-secondary">Routine tasks automated</div>
               </div>
               
               <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--status-pass)' }}>
-                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>UKVI AUDIT RISK</div>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--status-pass)', marginBottom: '0.25rem' }}>0.0%</div>
-                <div className="body-sm text-secondary">Deterministic compliance</div>
+                <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>VISA COMPLIANCE CONFIDENCE</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--status-pass)', marginBottom: '0.25rem' }}>100%</div>
+                <div className="body-sm text-secondary">Peace of mind for your team</div>
               </div>
             </div>
           </div>
@@ -1214,22 +1216,22 @@ export default function HomePage() {
       {/* SECTION 8: TRUST & CTA (DARK) */}
       <section className="section" style={{ backgroundColor: '#09090b', borderTop: '1px solid #1a1a24', paddingBottom: '8rem' }}>
         <div className="main-container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <div className="mono-label mb-md" style={{ color: 'var(--wl-accent)' }}>INSTITUTIONAL ONBOARDING</div>
-          <h2 className="headline-xl mb-lg" style={{ lineHeight: 1.1 }}>Deploy sovereign campus intelligence this academic term.</h2>
+          <div className="mono-label mb-md" style={{ color: 'var(--wl-accent)' }}>GET STARTED</div>
+          <h2 className="headline-xl mb-lg" style={{ lineHeight: 1.1 }}>Bring modern, trusted AI to your university this term.</h2>
           <p className="body-lg text-secondary mb-xl" style={{ maxWidth: '600px', margin: '0 auto 2.5rem' }}>
-            Join leading UK institutions bridging legacy systems with deterministic AI. Schedule a tailored demonstration with our architecture team.
+            Join forward-thinking universities supporting students 24/7 and saving staff hours every week. Book a personalized 20-minute walkthrough.
           </p>
           
           <div className="flex gap-md justify-center mb-xl" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link to="/demo" className="btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Book Tailored Consultation</Link>
-            <Link to="/trust" className="btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>Review Trust & Security Hub</Link>
+            <Link to="/demo" className="btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Book a Live Demo</Link>
+            <Link to="/trust" className="btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>Explore Trust &amp; Security</Link>
           </div>
           
           {/* Trust Badges */}
           <div className="trust-row flex gap-lg justify-center" style={{ flexWrap: 'wrap', opacity: 0.7 }}>
             <div className="trust-item flex gap-sm alignItems-center">
               <ShieldCheck size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">SOC-2 Type II</span>
+              <span className="mono-sm text-secondary">SOC-2 Compliant</span>
             </div>
             <div className="trust-item flex gap-sm alignItems-center">
               <Lock size={18} className="text-secondary" />
@@ -1241,7 +1243,7 @@ export default function HomePage() {
             </div>
             <div className="trust-item flex gap-sm alignItems-center">
               <Zap size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">Sub-180ms QR HMAC</span>
+              <span className="mono-sm text-secondary">Staff Always in Control</span>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ const SECTIONS = [
   { id: 'designation', label: '1. Institutional Processor Designation' },
   { id: 'classification', label: '2. Data Ingest & Classification Matrix' },
   { id: 'zero_training', label: '3. Zero Model Training Guarantee' },
-  { id: 'tokenization', label: '4. Cryptographic PII Tokenization' },
+  { id: 'tokenization', label: '4. Student Identity Protection (PII Anonymization)' },
   { id: 'subprocessors', label: '5. Sub-Processors & Data Residency' },
   { id: 'retention', label: '6. Retention & Cryptographic Erasure' },
   { id: 'sar_rights', label: '7. Student Rights & SAR Protocol' },
@@ -40,13 +40,13 @@ export default function PrivacyPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                DATA GOVERNANCE &amp; PRIVACY POLICY // UK GDPR, DPA 2018 &amp; FERPA COMPLIANT
+                DATA PRIVACY POLICY // UK GDPR, DPA 2018 &amp; FERPA COMPLIANT
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Enterprise Data Privacy Specification.
+                Enterprise Data Privacy Policy.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Version 3.1 · Effective September 2026. WorldLynk operates strictly as a Data Processor under direct institutional instructions, enforcing sovereign UK data residency and zero model training on student records.
+                Version 3.1 · Effective September 2026. WorldLynk acts as a secure data processor under direct university instruction. We enforce UK data residency and zero AI model training on student records.
               </p>
             </div>
 
@@ -145,9 +145,9 @@ export default function PrivacyPage() {
 
               <section id="tokenization">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 04</span>
-                <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>4. Cryptographic PII Tokenization</h2>
+                <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>4. Student Identity Protection (PII Anonymization)</h2>
                 <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
-                  Raw student PII never exits the university's virtual private cloud boundary. Student names, passport numbers, and contact details are tokenized into cryptographic HMAC hashes before prompt submission to the Nova AI Engine. Full student re-identification occurs strictly in-memory inside the authenticated Compass staff terminal.
+                  Personal identifiers never reach external AI models. Student names, passport numbers, and contact details are automatically replaced with anonymous tokens before being processed. Real names and identifiers are only shown to authorized university staff inside the secure staff portal.
                 </p>
               </section>
 

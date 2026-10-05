@@ -22,7 +22,7 @@ const VPAT_CRITERIA = [
   { rule: '2.1.2 No Keyboard Trap', level: 'Level A', support: 'Supports', notes: 'Focus moves cleanly through modals and drawers, with Esc key dismissing active overlays.' },
   { rule: '2.4.7 Focus Visible', level: 'Level AA', support: 'Supports', notes: 'High-visibility 2px focus indicators (#ff6b00) highlight currently active keyboard elements.' },
   { rule: '4.1.2 Name, Role, Value', level: 'Level A', support: 'Supports', notes: 'All custom controls implement standard ARIA roles (button, tab, dialog) with dynamic aria-expanded attributes.' },
-  { rule: '4.1.3 Status Messages', level: 'Level AA', support: 'Supports', notes: 'Live telemetry updates and Arbiter gate transitions use aria-live="polite" regions for non-disruptive announcements.' }
+  { rule: '4.1.3 Status Messages', level: 'Level AA', support: 'Supports', notes: 'Live updates and pending approval alerts use aria-live="polite" regions for non-disruptive screen reader announcements.' }
 ];
 
 const COMPATIBILITY = [
@@ -49,13 +49,13 @@ export default function AccessibilityPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                INCLUSION STANDARDS // WCAG 2.1 LEVEL AA AUDITED · SECTION 508 &amp; EN 301 549
+                ACCESSIBILITY STANDARDS // WCAG 2.1 LEVEL AA COMPLIANT
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Accessibility &amp; VPAT Conformance.
+                Accessibility Commitment &amp; Standards.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Higher education software must be accessible to every student, faculty member, and registrar. WorldLynk is engineered to strictly conform with WCAG 2.1 Level AA standards across both the desktop Compass terminal and mobile Student OS.
+                Campus software should be easy and accessible for every student and staff member. WorldLynk is built to meet WCAG 2.1 Level AA accessibility standards across both desktop and mobile.
               </p>
             </div>
 

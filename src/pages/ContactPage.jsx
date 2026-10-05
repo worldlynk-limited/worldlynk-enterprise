@@ -34,8 +34,8 @@ const DEPARTMENTS = [
     id: 'compliance',
     title: 'UKVI Tier-4 Sponsor Compliance',
     email: 'compliance@worldlynk.com',
-    lead: 'Arbiter Regulatory Desk',
-    desc: 'For university visa compliance officers seeking automated 20-hour work cap monitoring and dynamic QR attendance audit readiness.'
+    lead: 'Visa & Compliance Desk',
+    desc: 'For campus compliance teams seeking automated 20-hour work limit monitoring and easy attendance tracking.'
   },
   {
     id: 'procurement',
@@ -88,21 +88,21 @@ export default function ContactPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                DIRECT ROUTING // CAMPUS OPERATIONS &amp; INTEGRATION ENGINEERING
+                GET IN TOUCH // REACH OUR SPECIALISTS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Direct contact with university systems specialists.
+                Talk to our higher education team.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Select your inquiry department below so your message routes directly to the appropriate campus operations engineer, registrar advisor, or compliance specialist.
+                Choose the topic below that best fits your question. Your inquiry will go straight to the team best equipped to help you.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
               <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>SLA COMMITMENT</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>Sub-4 Hour</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Executive Desk Response</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>Under 4 Hours</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Typical Response Time</div>
               </div>
             </div>
           </div>
@@ -147,7 +147,7 @@ export default function ContactPage() {
             {/* Form Column */}
             <div className="card-dark" style={{ padding: '32px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '4px' }}>
-                DIRECT DISPATCH // {selectedDept.lead}
+                INQUIRY ROUTED TO // {selectedDept.lead}
               </div>
               <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '8px' }}>
                 {selectedDept.title}
@@ -277,10 +277,10 @@ export default function ContactPage() {
               <div className="card-dark" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
                 <div className="flex gap-xs alignItems-center mb-xs">
                   <ShieldCheck size={16} color="var(--status-pass)" />
-                  <span className="mono-label" style={{ color: 'var(--status-pass)' }}>CAMPUS EMERGENCY DESK</span>
+                  <span className="mono-label" style={{ color: 'var(--status-pass)' }}>24/7 CAMPUS SUPPORT DESK</span>
                 </div>
                 <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.45 }}>
-                  Active campus partner institutions have access to our 24/7/365 critical operations emergency hotline for live UKVI unannounced sponsor inspections and peak Welcome Week attendance spikes.
+                  Partner institutions have access to our round-the-clock emergency support line during peak Welcome Week enrollment and critical compliance deadlines.
                 </p>
               </div>
             </div>

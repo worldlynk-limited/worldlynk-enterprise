@@ -22,12 +22,12 @@ const ROLES = [
   {
     id: 'lead-multi-agent',
     title: 'Lead Multi-Agent Systems Engineer',
-    dept: 'Nova AI & Multi-Agent',
+    dept: 'AI & Systems',
     location: 'London, UK / Remote',
     type: 'Full-time',
     salary: '£110,000 - £140,000 + Equity',
     visa: 'UK Skilled Worker Visa Sponsorship Available',
-    desc: 'Scale our 30-agent Nova Mastra graph orchestration and 12 deterministic DAG workflows. Build deterministic delegation pipelines, tool limiters, and cryptographic PII anonymization envelopes for millions of student interactions.',
+    desc: 'Lead our backend multi-agent architecture and workflows. Build scalable agent coordination, tool safety guards, and privacy anonymization pipelines serving millions of student interactions.',
     requirements: [
       '5+ years experience in distributed systems and Node.js/TypeScript or Python.',
       'Deep architectural knowledge of LLM tool calling, vector databases, and multi-agent coordination.',
@@ -43,7 +43,7 @@ const ROLES = [
     type: 'Full-time',
     salary: '£95,000 - £120,000 + Equity',
     visa: 'UK Skilled Worker Visa Sponsorship Available',
-    desc: 'Engineer rock-solid bi-directional connectors for Tribal SITS:Vision, Ellucian Banner, Canvas, and Moodle. Solve complex entity resolution and schema mapping with zero legacy table mutation.',
+    desc: 'Engineer reliable bi-directional connectors for Tribal SITS:Vision, Ellucian Banner, Canvas, and Moodle. Solve complex schema mapping with zero changes required to university databases.',
     requirements: [
       'Expertise in enterprise database integrations (PostgreSQL, Oracle, SQL Server).',
       'Familiarity with higher-ed data models (HESA, UCAS, Tribal SITS or Ellucian Ethos).',
@@ -59,7 +59,7 @@ const ROLES = [
     type: 'Full-time',
     salary: '£85,000 - £110,000 + Equity',
     visa: 'UK Skilled Worker Visa Sponsorship Available',
-    desc: 'Design high-throughput queue consoles for Registrars and Advisors. Craft the visual language of human-agent collaboration where routine work is automated and authority remains clear.',
+    desc: 'Design intuitive queue consoles for Registrars and Advisors. Craft seamless workflows where routine tasks are automated while staff stay firmly in control.',
     requirements: [
       'Proven portfolio of high-density enterprise software or developer tooling.',
       'Obsession with typography, micro-interactions, and keyboard-first queue triage.',
@@ -75,13 +75,13 @@ const ROLES = [
     type: 'Full-time',
     salary: '£80,000 - £105,000 + Equity',
     visa: 'UK Skilled Worker Visa Sponsorship Available',
-    desc: 'Translate complex Home Office Tier-4 student visa regulations and institutional attendance mandates into formal graph rules, Arbiter gate constraints, and audit models.',
+    desc: 'Translate university compliance and student visa requirements into clear software rules, review workflows, and verifiable audit records.',
     requirements: [
       'Prior experience working with university compliance, international student advisory, or Home Office sponsor licenses.',
       'Ability to codify regulatory text into deterministic logic constraints.',
       'Strong institutional communication skills for working with university registrars.'
     ],
-    tech: ['UKVI Tier-4', 'Arbiter Gate', 'Policy Engine', 'Audit Ledgers']
+    tech: ['UKVI Compliance', 'Policy Rules Engine', 'Audit Logs', 'Workflow Automation']
   },
   {
     id: 'distributed-systems-infra',
@@ -144,13 +144,13 @@ export default function CareersPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                CAREERS AT WORLDLYNK // JOIN THE CAMPUS OPERATING LAYER
+                CAREERS AT WORLDLYNK // WE ARE HIRING
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Build the operating layer for sovereign higher education.
+                Help us build the future of university operations.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                We are assembling an elite team of distributed systems engineers, agentic AI researchers, and higher education veterans to transform how universities operate. We sponsor UK visas and offer meaningful equity in our mission.
+                We're building practical, human-centered AI that helps universities support students and streamline campus workflows. Join our team in London or remotely, with visa sponsorship and equity included.
               </p>
             </div>
 
@@ -170,7 +170,7 @@ export default function CareersPage() {
         <div className="main-container">
           
           <div className="flex gap-xs mb-xl flex-wrap">
-            {['All', 'Nova AI & Multi-Agent', 'Fabric & Data', 'Design & Ops', 'Compliance & Governance'].map((dept) => (
+            {['All', 'AI & Systems', 'Fabric & Data', 'Design & Ops', 'Compliance & Governance'].map((dept) => (
               <button
                 key={dept}
                 onClick={() => setSelectedDept(dept)}

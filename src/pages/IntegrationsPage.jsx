@@ -232,13 +232,13 @@ export default function IntegrationsPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                CONNECTOR CATALOG // ZERO-MIGRATION ENTERPRISE ECOSYSTEM
+                INTEGRATIONS CATALOG // WORKS WITH YOUR CURRENT TOOLS
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Plug into your university's live technology stack.
+                Connect smoothly with your campus tools.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                WorldLynk deploys as an operational fabric directly over your existing higher-ed IT infrastructure. Connect your on-premises SIS, learning management systems, payment processors, and student messaging gateways with zero database schema mutations.
+                WorldLynk works alongside your existing university software. Connect your student information systems, learning platforms, payments, and messaging tools without changing your existing databases or rewriting code.
               </p>
             </div>
 
@@ -249,7 +249,7 @@ export default function IntegrationsPage() {
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Sub-18ms Average Latency</div>
               </div>
               <button onClick={() => setShowCustomModal(true)} className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>Request Custom Adaptor</span>
+                <span>Request Custom Integration</span>
                 <ArrowRight size={13} />
               </button>
             </div>
@@ -369,16 +369,16 @@ export default function IntegrationsPage() {
            {/* Bespoke Campus Connector Callout */}
            <div className="card-dark flex-between flex-wrap gap-md" style={{ padding: '32px 36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
              <div>
-               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; LEGACY CAMPUS DATABASES</span>
+               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; CUSTOM CAMPUS SYSTEMS</span>
                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '4px' }}>
-                 Need a bespoke campus connector for a legacy database?
+                 Need an integration for a custom or in-house database?
                </h3>
                <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px' }}>
-                 Our systems engineering team builds certified bi-directional adaptors for custom on-premises SQL databases, legacy Oracle campus installations, and proprietary student housing backends within 3 weeks.
+                 Our engineering team builds certified integrations for custom on-premises SQL databases, legacy campus setups, and proprietary student housing backends in under 3 weeks.
                </p>
              </div>
              <button onClick={() => setShowCustomModal(true)} className="btn-primary" style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-               <span>Request Custom Connector</span>
+               <span>Request Custom Integration</span>
                <ArrowRight size={13} />
              </button>
            </div>

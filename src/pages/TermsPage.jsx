@@ -12,7 +12,7 @@ import {
 
 const CLAUSES = [
   { id: 'provision', num: '1', title: 'Provision of Campus Services' },
-  { id: 'governance', num: '2', title: 'Institutional Authority & The Arbiter Gate' },
+  { id: 'governance', num: '2', title: 'Institutional Authority & Human Approval Gate' },
   { id: 'sla', num: '3', title: 'Service Level Agreement (99.95% Uptime)' },
   { id: 'ip_ownership', num: '4', title: 'Intellectual Property & Student Data Ownership' },
   { id: 'security', num: '5', title: 'Cryptographic Security & SOC-2 Audits' },
@@ -48,7 +48,7 @@ export default function TermsPage() {
                 Master Services Agreement.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Standard higher education terms for university subscribers. Establishes legal boundaries, 99.95% uptime guarantees, student data ownership, and named human authority via the Arbiter gate.
+                Standard terms for university subscribers. Covers service guarantees, 99.95% uptime commitments, student data ownership, and our human-in-the-loop approval requirements.
               </p>
             </div>
 
@@ -113,9 +113,9 @@ export default function TermsPage() {
 
               <section id="governance">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ARTICLE 02</span>
-                <h2 style={{ fontSize: '1.35rem', fontWeight: '800', margin: '4px 0 10px 0' }}>2. Institutional Authority &amp; The Arbiter Gate</h2>
+                <h2 style={{ fontSize: '1.35rem', fontWeight: '800', margin: '4px 0 10px 0' }}>2. Institutional Authority &amp; Human-in-the-Loop Safeguards</h2>
                 <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
-                  Subscriber retains exclusive operational and pedagogical authority over all campus affairs. The Services operate under the cardinal rule: <em>Agents prepare, named staff decide</em>. Consequential actions concerning student disciplinary status, academic standing, attendance strikes, or UKVI visa reporting cannot auto-commit and remain held in the Arbiter gate until approved by an authenticated university employee.
+                  The subscribing institution retains complete operational authority over all campus policies and decisions. The Services operate under a clear principle: <em>AI prepares information, authorized campus staff make decisions</em>. Important actions—such as student holds, academic penalties, or official visa reports—never commit automatically and always require review and explicit approval by an authorized university employee.
                 </p>
               </section>
 

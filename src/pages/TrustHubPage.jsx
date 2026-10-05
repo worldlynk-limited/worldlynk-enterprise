@@ -30,7 +30,7 @@ const DOCS = [
   { id: 'hecvat', name: 'HECVAT Full Cloud Assessment (Higher Ed)', size: '1.8 MB XLSX', status: 'Instant Download', badge: 'Completed', desc: 'Standardized higher-education questionnaire with 260+ answered security controls.' },
   { id: 'dpa', name: 'UK GDPR & DPA 2018 Data Processing Addendum', size: '420 KB PDF', status: 'Standard DPA', badge: 'Verified', desc: 'Pre-executed institutional addendum specifying data processor obligations and sub-processors.' },
   { id: 'ferpa', name: 'FERPA School Official Designation & Data Brief', size: '310 KB PDF', status: 'Legal Guidance', badge: 'Compliant', desc: 'Legal analysis outlining institution-managed data processing and audit boundaries.' },
-  { id: 'qr_arch', name: 'Sub-180ms QR HMAC Cryptographic Architecture', size: '890 KB PDF', status: 'Whitepaper', badge: 'Architecture', desc: 'Deep dive into rotating token algorithms, anti-replay guards, and offline verification.' },
+  { id: 'qr_arch', name: 'Fast & Secure QR Attendance Architecture', size: '890 KB PDF', status: 'Whitepaper', badge: 'Architecture', desc: 'Technical overview of rotating QR codes, anti-screenshot protection, and offline scanning.' },
   { id: 'bcp_dr', name: 'Business Continuity & Disaster Recovery Plan', size: '1.2 MB PDF', status: 'Available Under NDA', badge: 'Annual Audit', desc: 'RPO < 15 minutes, RTO < 1 hour, multi-region failover protocols and live drills.' },
   { id: 'pentest', name: 'Third-Party Penetration Test Executive Summary', size: '640 KB PDF', status: 'Available Under NDA', badge: 'Annual Audit', desc: 'Independent gray-box network and application penetration test report (CREST certified).' },
   { id: 'subprocessors', name: 'Official Sub-Processor & Geolocation Register', size: '280 KB PDF', status: 'Public Document', badge: 'Updated Q3', desc: 'Complete inventory of hosting providers, database clusters, and data residency regions.' }
@@ -66,13 +66,13 @@ export default function TrustHubPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                TRUST &amp; PROCUREMENT HUB // INSTITUTIONAL SECURITY &amp; COMPLIANCE
+                TRUST &amp; COMPLIANCE HUB // SECURITY DOCUMENTATION
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
                 Security documentation for university IT and legal teams.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                Higher education software procurement should not take 9 months. We provide standardized security packets, complete architecture whitepapers, certified independent audits, and pre-executed data protection agreements.
+                University software reviews shouldn't take months. We provide ready-to-review security assessments, independent audit reports, and standard data protection agreements.
               </p>
             </div>
 
@@ -172,12 +172,12 @@ export default function TrustHubPage() {
 
           {/* ── SUBPROCESSORS GEOLOCATION REGISTER ──────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>DATA RESIDENCY &amp; SUB-PROCESSORS</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>DATA RESIDENCY &amp; HOSTING</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Strict Sovereign Geolocation Register.
+              UK Data Residency &amp; Approved Sub-Processors.
             </h2>
             <p className="section-desc">
-              All UK higher education student records reside strictly within certified data centres located in London, United Kingdom, with zero cross-border transfer.
+              All UK student records are stored exclusively within certified data centers in London, United Kingdom, ensuring zero unauthorized cross-border transfers.
             </p>
           </div>
 
@@ -208,7 +208,7 @@ export default function TrustHubPage() {
 
           {/* ── CIO PROCUREMENT FAQ ─────────────────────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CIO &amp; CISO SPECIFICATIONS</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECURITY &amp; PROCUREMENT FAQ</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
               Frequently Asked Procurement Questions.
             </h2>
@@ -220,7 +220,7 @@ export default function TrustHubPage() {
                 Can student records leak into public LLM training data?
               </h4>
               <p className="body-sm text-secondary" style={{ lineHeight: 1.5 }}>
-                No. Our zero-training agreements with enterprise model providers strictly forbid data retention or model training. Furthermore, student PII is stripped and converted into HMAC tokens prior to prompting.
+                No. Enterprise contracts strictly forbid model providers from saving or training on your data. In addition, student names and IDs are anonymized before any AI prompt is sent.
               </p>
             </div>
 
@@ -229,7 +229,7 @@ export default function TrustHubPage() {
                 How is database multi-tenancy enforced?
               </h4>
               <p className="body-sm text-secondary" style={{ lineHeight: 1.5 }}>
-                Every database request enforces strict <code>universityId</code> scoping at the middleware layer. Firestore rules, Neo4j namespaces, and Redis clusters cryptographically isolate tenant data partitions.
+                Every database request is strictly partitioned by institution ID. Data for one university is completely isolated from all other institutions.
               </p>
             </div>
 
@@ -247,7 +247,7 @@ export default function TrustHubPage() {
                 How do we handle unannounced UKVI Home Office audits?
               </h4>
               <p className="body-sm text-secondary" style={{ lineHeight: 1.5 }}>
-                The Compass console exports instant, cryptographically verifiable UKVI compliance exception reports containing attendance logs and 20-hour work cap ledgers in under 90 seconds.
+                The Staff dashboard exports clear UKVI compliance reports in seconds, showing complete attendance logs and 20-hour work limit records ready for inspection.
               </p>
             </div>
           </div>

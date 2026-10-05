@@ -71,13 +71,13 @@ export default function SecurityPage() {
           <div className="flex-between flex-wrap gap-md">
             <div>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                DATA GOVERNANCE &amp; ARCHITECTURE // FERPA &amp; UK GDPR SPECIFICATION
+                DATA PRIVACY &amp; SECURITY // FERPA &amp; UK GDPR COMPLIANCE
               </div>
               <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Cryptographic separation. Zero model training on student data.
+                Bank-grade privacy. Zero AI training on student data.
               </h1>
               <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                WorldLynk acts as a designated School Official under direct institutional authority. We enforce per-tenant AES-256 cryptographic vaults, hardware-secured model egress boundaries, and strict immutable audit lineage for all campus actions.
+                Your student data stays yours. WorldLynk keeps all university data in isolated, encrypted cloud vaults. Personal details are automatically stripped before reaching AI models, and every staff action is clearly logged.
               </p>
             </div>
 
@@ -100,12 +100,12 @@ export default function SecurityPage() {
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE PII REDACTION WORKBENCH</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE PRIVACY DEMO</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              The 5-Stage Model-Call Privacy Pipeline.
+              How We Protect Student Data in 5 Steps.
             </h2>
             <p className="section-desc">
-              Student identities never leave the university's VPC boundary. Click the simulator below to inspect how student records are masked into HMAC tokens prior to LLM inference.
+              Personal details never reach external AI models. Click the button below to see how student names, passports, and contact info are automatically replaced with anonymous tokens before processing.
             </p>
           </div>
 
@@ -114,7 +114,7 @@ export default function SecurityPage() {
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>LIVE EGRESS PRIVACY SIMULATOR</span>
                 <h3 style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '2px' }}>
-                  {tokenized ? 'Stage 03: Anonymized Inference Token' : 'Stage 01: Raw Ingest Behind University Firewall'}
+                  {tokenized ? 'Stage 03: Anonymized Data (Ready for AI)' : 'Stage 01: Original Record Behind University Firewall'}
                 </h3>
               </div>
               <button
@@ -123,7 +123,7 @@ export default function SecurityPage() {
                 style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
               >
                 <RefreshCw size={13} />
-                {tokenized ? 'Reset to Raw Ingest' : 'Execute Cryptographic Masking'}
+                {tokenized ? 'Reset to Original Data' : 'Anonymize Data for AI'}
               </button>
             </div>
 
@@ -131,8 +131,8 @@ export default function SecurityPage() {
               {/* Raw View */}
               <div style={{ backgroundColor: '#0d0d14', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
                 <div className="flex-between mb-sm">
-                  <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS VPC INTERNAL RECORD</span>
-                  <span className="pill pill-flagged" style={{ fontSize: '8.5px' }}>CONTAINS PII</span>
+                  <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS INTERNAL RECORD</span>
+                  <span className="pill pill-flagged" style={{ fontSize: '8.5px' }}>CONTAINS PERSONAL INFO</span>
                 </div>
                 <pre style={{ margin: 0, fontSize: '11px', color: '#ffffff', fontFamily: 'var(--wl-font-mono)', lineHeight: 1.5, overflowX: 'auto' }}>
                   {JSON.stringify(RAW_STUDENT_DATA, null, 2)}
@@ -142,29 +142,29 @@ export default function SecurityPage() {
               {/* Masked Output */}
               <div style={{ backgroundColor: '#060609', padding: '20px', borderRadius: '12px', border: tokenized ? '1px solid var(--status-pass)' : '1px solid #1a1a24' }}>
                 <div className="flex-between mb-sm">
-                  <span className="mono-label" style={{ color: 'var(--status-pass)' }}>EGRESS PAYLOAD (SENT TO LLM)</span>
+                  <span className="mono-label" style={{ color: 'var(--status-pass)' }}>DATA SENT TO AI MODEL</span>
                   <span className={`pill ${tokenized ? 'pill-approved' : 'pill-held'}`} style={{ fontSize: '8.5px' }}>
-                    {tokenized ? 'ANONYMIZED HMACS' : 'AWAITING RUN'}
+                    {tokenized ? 'ANONYMIZED' : 'READY TO ANONYMIZE'}
                   </span>
                 </div>
                 <pre style={{ margin: 0, fontSize: '11px', color: tokenized ? 'var(--accent-cyan)' : 'var(--text-muted)', fontFamily: 'var(--wl-font-mono)', lineHeight: 1.5, overflowX: 'auto' }}>
                   {tokenized
                     ? JSON.stringify(TOKENIZED_PAYLOAD, null, 2)
-                    : '// Click "Execute Cryptographic Masking" above\n// to preview the redacted model payload.'}
+                    : '// Click "Anonymize Data for AI" above\n// to preview the protected data sent to AI.'}
                 </pre>
               </div>
             </div>
 
             <div className="mono-sm text-secondary mt-lg" style={{ fontSize: '11px', borderTop: '1px solid var(--border-hairline)', paddingTop: '16px' }}>
-              ✓ <strong>Zero Student Identifiers Leak:</strong> LLMs only perceive abstract mathematical vectors and constraint variables. Re-identification happens exclusively inside the staff member's browser via per-tenant institutional AES keys.
+              ✓ <strong>Zero Student Identifiers Shared:</strong> AI models never see real names, contact numbers, or passport IDs. Real identities only display inside your staff members\' authorized accounts.
             </div>
           </div>
 
           {/* ── DEFENSE-IN-DEPTH SECURITY MATRIX ─────────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>DEFENSE-IN-DEPTH ARCHITECTURE</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>MULTI-LAYERED PROTECTION</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Institutional Security Controls.
+              How We Keep Your Campus Data Secure.
             </h2>
           </div>
 
@@ -172,11 +172,11 @@ export default function SecurityPage() {
             <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
               <div className="flex gap-xs alignItems-center mb-xs">
                 <Lock size={16} color="var(--accent-orange)" />
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>TIER 01: DATA AT REST</span>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>LAYER 01: DATA STORAGE</span>
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>Per-Tenant HSM Keys</h3>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>Dedicated Encryption Keys</h3>
               <p className="body-sm text-secondary mb-md">
-                Every institutional subscriber maintains their own isolated database partition encrypted with dedicated AES-256 keys managed via AWS KMS / Cloud HSM.
+                Each university gets its own isolated database encrypted with dedicated AES-256 keys, ensuring complete separation between institutions.
               </p>
               <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>
                 FIPS 140-2 Level 3 Certified Hardware
@@ -186,40 +186,40 @@ export default function SecurityPage() {
             <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
               <div className="flex gap-xs alignItems-center mb-xs">
                 <Server size={16} color="var(--accent-cyan)" />
-                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>TIER 02: DATA IN TRANSIT</span>
+                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>LAYER 02: DATA IN TRANSIT</span>
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>TLS 1.3 &amp; mTLS Webhooks</h3>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>Secure Encrypted Connections</h3>
               <p className="body-sm text-secondary mb-md">
-                All bi-directional traffic to on-premise SITS:Vision databases and Moodle proxies runs over mutual TLS (mTLS) with pinned institutional certificates.
+                All communication between campus databases, student systems, and WorldLynk is encrypted with modern TLS 1.3 standards.
               </p>
               <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>
-                Strict HSTS Enabled with Sub-Millisecond Handshakes
+                Strict HSTS Enabled with Verified Certificates
               </div>
             </div>
 
             <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
               <div className="flex gap-xs alignItems-center mb-xs">
                 <ShieldCheck size={16} color="var(--status-pass)" />
-                <span className="mono-label" style={{ color: 'var(--status-pass)' }}>TIER 03: ZERO MODEL RETENTION</span>
+                <span className="mono-label" style={{ color: 'var(--status-pass)' }}>LAYER 03: AI MODEL SAFETY</span>
               </div>
-              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>Zero Training Agreements</h3>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 8px 0' }}>Zero AI Model Training</h3>
               <p className="body-sm text-secondary mb-md">
-                Enterprise contracts strictly prohibit model providers from logging, persisting, or training on any prompt tokens generated by WorldLynk agents.
+                Strict enterprise agreements guarantee that AI providers never store, log, or train models on any of your university's prompts or student records.
               </p>
               <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>
-                Contractual Indemnification &amp; Data Erasure Proofs
+                Contractual Guarantee &amp; Data Erasure Proofs
               </div>
             </div>
           </div>
 
           {/* ── IMMUTABLE AUDIT LEDGER VIEWER ────────────────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>TRANSACTION AUDIT LEDGER</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ACTIVITY AUDIT TRAIL</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Tamper-Evident SHA-256 Audit Stream.
+              Complete, Tamper-Evident Activity Log.
             </h2>
             <p className="section-desc">
-              Every approved intervention, attendance override, and CAS brief generation writes to an immutable cryptographic log committed to SITS history tables.
+              Every staff approval, attendance check, and visa alert creates a permanent, searchable audit record so your team always knows who approved what and when.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function SecurityPage() {
             <div style={{ padding: '14px 20px', backgroundColor: '#13131b', borderBottom: '1px solid var(--border-hairline)' }} className="flex-between">
               <input
                 type="text"
-                placeholder="Search audit ledger by hash, action, approver..."
+                placeholder="Search audit log by ID, action, approver..."
                 value={filterQuery}
                 onChange={(e) => setFilterQuery(e.target.value)}
                 style={{
@@ -242,19 +242,19 @@ export default function SecurityPage() {
                   outline: 'none'
                 }}
               />
-              <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>{filteredRows.length} Ledger Blocks</span>
+              <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>{filteredRows.length} Log Entries</span>
             </div>
 
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                    <th style={{ padding: '12px 18px' }}>TX HASH</th>
-                    <th style={{ padding: '12px 18px' }}>ACTION</th>
-                    <th style={{ padding: '12px 18px' }}>AGENT ACTOR</th>
-                    <th style={{ padding: '12px 18px' }}>NAMED APPROVER</th>
-                    <th style={{ padding: '12px 18px' }}>TIMESTAMP</th>
-                    <th style={{ padding: '12px 18px', textAlign: 'right' }}>LEDGER STATUS</th>
+                    <th style={{ padding: '12px 18px' }}>RECORD ID</th>
+                    <th style={{ padding: '12px 18px' }}>ACTION TAKEN</th>
+                    <th style={{ padding: '12px 18px' }}>AI ASSISTANT</th>
+                    <th style={{ padding: '12px 18px' }}>CAMPUS STAFF APPROVER</th>
+                    <th style={{ padding: '12px 18px' }}>DATE &amp; TIME</th>
+                    <th style={{ padding: '12px 18px', textAlign: 'right' }}>STATUS</th>
                   </tr>
                 </thead>
                 <tbody>

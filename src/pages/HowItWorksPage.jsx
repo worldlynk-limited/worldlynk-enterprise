@@ -24,105 +24,156 @@ const SCENARIOS = [
     id: 'missed_lecture',
     name: 'Scenario A: Missed Lecture & Burnout Risk',
     tag: 'STUDENT PERSISTENCE & RETENTION',
-    summary: 'A student misses a mandatory lecture, LMS activity drops, and weekend work fatigue is evaluated by the Supervisor agent before Senior Tutor intervention.',
+    summary: 'A student misses a seminar, learning portal activity drops, and work fatigue is evaluated so the personal tutor can offer support early.',
+    studentName: 'Maya Chen',
+    studentPhoto: '/images/aspiring_student.jpg',
     steps: [
       {
-        time: '09:12:04',
-        office: 'Dynamic QR Engine (Classroom EB-02)',
-        action: 'Dynamic QR Token Expiry & Attendance Absence',
-        desc: 'Rotating cryptographic HMAC token for CS-5100 expires. Maya Chen fails to check in for 2nd consecutive seminar.',
-        actor: 'Dynamic QR Worker #3',
+        time: '09:12 AM',
+        office: 'Classroom Lecture Hall (EB-02)',
+        action: 'Missed Lecture Check-In Detected',
+        desc: 'Maya Chen misses check-in for her CS-5100 seminar. The attendance system flags this as a second consecutive absence.',
+        actor: 'Attendance Check-In Assistant',
         status: 'FLAGGED',
-        payload: { "event": "attendance_miss", "student_id": "0091-2847", "module": "CS-5100", "room": "EB-02", "token_delta_ms": 174 }
+        humanSummary: {
+          event: 'Missed Lecture (CS-5100)',
+          location: 'Hall EB-02',
+          impact: '2nd consecutive seminar absence',
+          urgency: 'Medium — Tutor check-in recommended'
+        }
       },
       {
-        time: '09:12:05',
-        office: 'Moodle LMS Connector',
-        action: 'AES-256 Coursework Inactivity Corroboration',
-        desc: 'Fabric queries Moodle proxy, revealing 114 consecutive hours of inactivity on CS-5100 course materials and lab repositories.',
-        actor: 'Moodle Connector Client',
+        time: '09:12 AM',
+        office: 'Course Learning Portal (Moodle)',
+        action: 'Portal Inactivity Corroborated',
+        desc: 'WorldLynk checks recent course engagement, noticing no downloads or quiz submissions on CS-5100 in 4 days.',
+        actor: 'Learning Engagement Assistant',
         status: 'SYNCED',
-        payload: { "event": "lms_poll", "user": "mchen3", "inactivity_hours": 114, "overdue_quizzes": 1, "last_login": "2026-09-17" }
+        humanSummary: {
+          portal: 'Moodle Learning Portal',
+          inactivity: '4 days with zero quiz or lab activity',
+          modules: 'CS-5100 Distributed Systems',
+          urgency: 'Early warning signal confirmed'
+        }
       },
       {
-        time: '09:12:07',
-        office: 'Nova Supervisor Agent (worldlynk-bot)',
-        action: 'Workload Cross-Reference & Risk Assessment',
-        desc: 'Cross-referencing campus barista rota reveals a 16h shift schedule. Nova assesses fatigue-induced dropout risk at 78%.',
-        actor: 'worldlynk-supervisor-agent & planYourDayAgent',
+        time: '09:12 AM',
+        office: 'Student Welfare & Work Schedule',
+        action: 'Workload Cross-Check & Fatigue Assessment',
+        desc: 'Checking campus work records shows Maya worked a 16-hour cafe shift over the weekend. The assistant identifies fatigue risk rather than disengagement.',
+        actor: 'Welfare & Work-Hour Assistant',
         status: 'EVALUATED',
-        payload: { "agent": "worldlynk-supervisor-agent", "runtime": "nova_mastra_v4", "risk_score": 0.78, "fatigue_index": "high", "work_hours": 16.0, "ukvi_cap": 20.0 }
+        humanSummary: {
+          workload: '16.0 hours logged over weekend',
+          diagnosis: 'Temporary study-work fatigue',
+          riskLevel: 'Elevated (78%)',
+          recommendedAction: 'Offer makeup lab slot rather than formal disciplinary warning'
+        }
       },
       {
-        time: '09:12:08',
-        office: 'Compass Arbiter Governance Gate',
-        action: 'Consequential Gate Interception',
-        desc: 'Direct automated academic warning blocked. Consequential policy #74 holds intervention for human approval by Senior Tutor Dr. Jenkins on Compass.',
-        actor: 'Compass Arbiter Policy Engine',
+        time: '09:13 AM',
+        office: 'Staff Compass Review Inbox',
+        action: 'Prepared for Personal Tutor Review',
+        desc: 'Instead of sending an automated warning to the student, WorldLynk prepares a friendly check-in draft and holds it for Dr. Jenkins to review.',
+        actor: 'Staff Review Gatekeeper',
         status: 'HELD FOR REVIEW',
-        payload: { "gate": "consequential_hold", "rule": "pol_74_attendance", "target_approver": "Dr. R. Jenkins", "action": "makeup_lab_offer" }
+        humanSummary: {
+          reviewer: 'Dr. R. Jenkins (Senior Tutor)',
+          proposedDraft: 'Friendly 1-on-1 check-in + reserved Friday makeup lab slot',
+          decision: 'Awaiting tutor approval in Compass',
+          automatedSend: 'Blocked until human approves'
+        }
       },
       {
-        time: '09:14:22',
-        office: 'Senior Tutor on Compass & SITS:Vision',
-        action: 'One-Click Staff Approval & Cryptographic Seal',
-        desc: 'Dr. Jenkins reviews Nova brief on Compass and approves makeup lab slot. WhatsApp dispatch sent to student; SITS updated with immutable SHA-256 hash.',
-        actor: 'Dr. Jenkins & SITS Sync Engine',
-        status: 'SEALED & WRITTEN',
-        payload: { "approval": "confirmed", "approver": "Dr. R. Jenkins", "sits_sync": "success", "hash": "sha256:8b4f...d1a9" }
+        time: '09:14 AM',
+        office: 'Senior Tutor & Student Records',
+        action: 'One-Click Tutor Approval & Record Updated',
+        desc: 'Dr. Jenkins reviews the brief on Compass, approves the makeup lab slot, and a warm message reaches Maya via WhatsApp within 2 minutes.',
+        actor: 'Dr. Jenkins & Student Records Sync',
+        status: 'APPROVED & RESOLVED',
+        humanSummary: {
+          approvedBy: 'Dr. R. Jenkins',
+          studentChannel: 'Official WhatsApp outreach sent',
+          recordUpdate: 'SITS records updated with makeup lab confirmation',
+          outcome: 'Student retained with zero stress or punitive action'
+        }
       }
     ]
   },
   {
     id: 'work_cap_breach',
-    name: 'Scenario B: UKVI 20-Hour Work-Cap Shield',
+    name: 'Scenario B: Visa 20-Hour Work-Cap Shield',
     tag: 'IMMIGRATION & SPONSOR COMPLIANCE',
-    summary: 'A student is offered an overtime barista shift that would breach the Home Office term-time 20-hour ceiling. Nova intercepts and resolves.',
+    summary: 'A student is offered an extra barista shift that would exceed the 20-hour weekly legal limit. WorldLynk spots this immediately and finds a compliant alternative.',
+    studentName: 'Maya Chen',
+    studentPhoto: '/images/aspiring_student.jpg',
     steps: [
       {
-        time: '14:20:10',
-        office: 'Retail Hub Rota Connector',
-        action: 'Overtime Shift Offer Ingested',
-        desc: 'Campus coffee shop manager posts a 6-hour Sunday replacement shift for Maya Chen.',
-        actor: 'Rota Webhook Worker',
+        time: '02:20 PM',
+        office: 'Campus Retail Hub',
+        action: 'Overtime Shift Offered to Student',
+        desc: 'Campus coffee shop manager offers Maya Chen a 6-hour Sunday replacement shift.',
+        actor: 'Work Rota Link',
         status: 'INGESTED',
-        payload: { "shift_date": "2026-09-27", "offered_hours": 6.0, "role": "Barista", "location": "Campus Union" }
+        humanSummary: {
+          offeredShift: '6.0 hours on Sunday',
+          role: 'Campus Barista',
+          source: 'Campus Union coffee shop rota'
+        }
       },
       {
-        time: '14:20:11',
-        office: 'UKVI Tier-4 Rule Engine',
-        action: 'Weekly Cumulative Hours Calculation',
-        desc: 'Fabric aggregates current week shifts (16.0h) with offered shift (6.0h) = 22.0h total, exceeding the 20.0h legal cap by 2 hours.',
-        actor: 'Graph Constraint Validator',
-        status: 'BREACH DETECTED',
-        payload: { "current_logged": 16.0, "candidate_shift": 6.0, "total_attempt": 22.0, "max_allowed": 20.0, "violation": true }
+        time: '02:20 PM',
+        office: 'Visa Work-Hour Rule Check',
+        action: 'Weekly Work Hours Evaluated',
+        desc: 'WorldLynk adds current weekly logged hours (16h) with the proposed shift (6h) = 22h total, which would breach the 20-hour legal limit by 2 hours.',
+        actor: 'Visa Rule Assistant',
+        status: 'LIMIT EXCEEDED',
+        humanSummary: {
+          currentHours: '16.0 hours',
+          proposedHours: '22.0 hours total',
+          legalLimit: '20.0 hours weekly term-time cap',
+          breachPrevented: 'Overtime blocked before acceptance'
+        }
       },
       {
-        time: '14:20:12',
-        office: 'Nova Student Copilot',
-        action: 'Autonomous Shift Interception & Explanation',
-        desc: 'Nova alerts the student via WhatsApp, explaining the Tier-4 visa violation risk and offering to search for a compliant 4.0h alternative.',
-        actor: 'novaAssistantAgent',
+        time: '02:20 PM',
+        office: 'Student Mobile Companion',
+        action: 'Friendly Message Explaining the Limit',
+        desc: 'Maya receives a message explaining that accepting 6 hours would exceed her visa work limit, and offering to find a shorter, compliant shift.',
+        actor: 'Student Guidance Assistant',
         status: 'INTERCEPTED',
-        payload: { "channel": "whatsapp", "recipient": "mchen3", "message": "Legal cap warning dispatched", "buffer_left": 4.0 }
+        humanSummary: {
+          recipient: 'Maya Chen',
+          channel: 'Student Mobile App & WhatsApp',
+          guidance: 'Clear explanation of the 20-hour visa regulation',
+          alternativeOffered: 'Search for maximum 4.0-hour shift'
+        }
       },
       {
-        time: '14:20:14',
-        office: 'Careers Service Job Matcher',
-        action: 'Compliant 4-Hour Shift Replacement',
-        desc: 'Job Match agent identifies a 4.0h Friday afternoon shift at the library technology helpdesk, keeping weekly hours at exactly 20.0h.',
-        actor: 'jobMatchAgent',
-        status: 'RECONCILED',
-        payload: { "replacement_id": "lib_04", "hours": 4.0, "weekly_total": 20.0, "status": "legal_max" }
+        time: '02:21 PM',
+        office: 'Campus Jobs & Careers Desk',
+        action: 'Compliant 4-Hour Shift Found',
+        desc: 'The assistant identifies an open 4-hour Friday shift at the library tech helpdesk, bringing Maya exactly to her 20-hour cap without breaking any rules.',
+        actor: 'Campus Job Assistant',
+        status: 'RESOLVED',
+        humanSummary: {
+          replacementShift: '4.0 hours Friday (Library Helpdesk)',
+          newWeeklyTotal: '20.0 hours (100% legally compliant)',
+          studentEarnings: 'Fully protected without visa risk'
+        }
       },
       {
-        time: '14:21:05',
-        office: 'Compliance Audit Ledger',
-        action: 'Immutable Compliance Shield Logged',
-        desc: 'Prevented breach recorded in compliance ledger, proving proactive sponsor license defense for UKVI inspection visits.',
-        actor: 'Arbiter Ledger Worker',
-        status: 'SEALED & WRITTEN',
-        payload: { "audit_type": "tier4_breach_prevention", "sponsor_safe": true, "hash": "sha256:3c7e...fa21" }
+        time: '02:21 PM',
+        office: 'Visa Compliance Audit Record',
+        action: 'Proactive Sponsor Defense Recorded',
+        desc: 'The prevented violation is recorded in the university compliance audit log, demonstrating proactive sponsor license protection for inspections.',
+        actor: 'Compliance Audit Assistant',
+        status: 'AUDIT LOGGED',
+        humanSummary: {
+          sponsorLicense: '100% Protected',
+          auditEvidence: 'Permanent verifiable record created',
+          inspectionStatus: '1-click ready for Home Office sponsor review'
+        }
       }
     ]
   },
@@ -130,52 +181,76 @@ const SCENARIOS = [
     id: 'cas_summer_melt',
     name: 'Scenario C: International Offer Holder Summer Melt',
     tag: 'ADMISSIONS & REVENUE RECOVERY',
-    summary: 'An international offer holder stops responding during visa filing. Agent detects housing bottleneck and coordinates PBSA booking.',
+    summary: 'An accepted international student goes quiet during pre-arrival. WorldLynk spots housing anxiety as the roadblock and coordinates verified student accommodation.',
+    studentName: 'Jin-Woo Park',
+    studentPhoto: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
     steps: [
       {
-        time: '11:00:00',
-        office: 'Applicant CRM Gateway',
-        action: '14-Day Applicant Inactivity Signal',
-        desc: 'MSc Data Science offer holder Jin-Woo Park has not opened CAS checklist emails in 14 days, entering high-risk summer melt threshold.',
-        actor: 'CRM Ingestion Engine',
+        time: '11:00 AM',
+        office: 'Admissions & Recruitment',
+        action: '14-Day Inactivity Signal Detected',
+        desc: 'Jin-Woo Park has not completed his pre-arrival visa checklist in 14 days, entering the critical summer drop-off window.',
+        actor: 'Admissions Progress Assistant',
         status: 'FLAGGED',
-        payload: { "applicant": "jwpark9", "status": "offer_uncond", "inactivity_days": 14, "deposit_paid": true }
+        humanSummary: {
+          applicant: 'Jin-Woo Park (BSc Software Engineering)',
+          offerStatus: 'Unconditional Offer Accepted',
+          inactivity: '14 days without opening visa checklists',
+          risk: 'Potential summer drop-off / non-arrival'
+        }
       },
       {
-        time: '11:00:02',
-        office: 'Knowledge Checklist Agent',
-        action: 'Bottleneck Root-Cause Diagnosis',
-        desc: 'Agent parses student interaction history: student repeatedly searched for ensuite housing in Central London within £300/wk budget.',
-        actor: 'knowledgeChecklistAgent',
+        time: '11:00 AM',
+        office: 'Applicant Inquiry Analysis',
+        action: 'Root Cause Identified: Housing Anxiety',
+        desc: 'Reviewing recent student questions reveals repeated searches for student housing in London within a £300/week budget without finding verified options.',
+        actor: 'Applicant Care Assistant',
         status: 'DIAGNOSED',
-        payload: { "blocker": "housing_scarcity", "budget_ceiling": 300, "preferred_location": "King's Cross" }
+        humanSummary: {
+          blocker: 'Unable to find safe student accommodation from abroad',
+          studentBudget: 'Up to £300 / week',
+          preferredLocation: 'Central London (Bloomsbury)'
+        }
       },
       {
-        time: '11:00:05',
-        office: 'PBSA Accommodation Matcher',
-        action: 'Verified Tenancy Voucher Reserved',
-        desc: 'Accommodation agent matches an exclusive university-partnered room at Scape Bloomsbury (£295/wk) and stages reservation.',
-        actor: 'accommodationAgent',
-        status: 'RESERVED',
-        payload: { "hall": "Scape Bloomsbury", "rent_weekly": 295, "lease_terms": "51_weeks", "stripe_escrow": "ready" }
+        time: '11:00 AM',
+        office: 'Verified Student Housing Partner',
+        action: 'Verified Room Held for Student',
+        desc: 'WorldLynk identifies a guaranteed ensuite room at Scape Bloomsbury (£295/wk) held exclusively for incoming university students.',
+        actor: 'Student Housing Assistant',
+        status: 'ROOM RESERVED',
+        humanSummary: {
+          hallOfResidence: 'Scape Bloomsbury (Ensuite Room)',
+          weeklyRent: '£295 / week (within student budget)',
+          guarantee: '100% verified partner property — zero scam risk'
+        }
       },
       {
-        time: '11:00:08',
-        office: 'Admissions Lead Review',
-        action: 'Arbiter Gate: Personalized Outreach Approval',
-        desc: 'Admissions officer reviews the customized pre-departure bundle with 1-click WhatsApp interactive tour and approves dispatch.',
-        actor: 'K. Bell (Admissions)',
-        status: 'APPROVED',
-        payload: { "dispatch_mode": "whatsapp_interactive", "approver": "k.bell", "content": "3D room tour + CAS brief" }
+        time: '11:01 AM',
+        office: 'Admissions Team Review',
+        action: 'Admissions Officer Reviews Outreach Pack',
+        desc: 'Admissions officer K. Bell reviews the personalized room tour and pre-departure guide, approving dispatch with one click.',
+        actor: 'K. Bell (Admissions Officer)',
+        status: 'APPROVED BY STAFF',
+        humanSummary: {
+          approvedBy: 'K. Bell (Admissions Lead)',
+          dispatchBundle: 'Virtual 3D room tour + direct booking link + visa guide',
+          outreachMode: 'WhatsApp message & applicant portal'
+        }
       },
       {
-        time: '11:45:12',
-        office: 'Stripe Escrow & SITS Registry',
-        action: 'Tenancy Deposit Paid & CAS Generated',
-        desc: 'Applicant books room via Stripe; CAS document generated and pushed to Home Office SMS portal with zero summer melt.',
-        actor: 'Stripe Hook & SITS CAS Sync',
-        status: 'SEALED & WRITTEN',
-        payload: { "tuition_protected": 24500, "housing_booked": true, "cas_issued": "E1948201B", "hash": "sha256:7f2a...88e1" }
+        time: '11:45 AM',
+        office: 'Student Confirmation & Visa Registry',
+        action: 'Room Confirmed & Visa Document Issued',
+        desc: 'Jin-Woo books the room with peace of mind. His official visa CAS document is generated and dispatched with zero drop-off.',
+        actor: 'Admissions & Visa Sync',
+        status: 'ARRIVING ON CAMPUS',
+        humanSummary: {
+          tuitionProtected: '£24,500 annual tuition fee secured',
+          accommodation: 'Confirmed room waiting for student arrival',
+          visaDocument: 'CAS document generated and issued',
+          result: 'Student arrives on campus with complete confidence'
+        }
       }
     ]
   }
@@ -350,26 +425,47 @@ export default function HowItWorksPage() {
 
             {/* Right: Live Packet & Ledger Hash Inspector */}
             <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-              <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STEP DETAILS &amp; SYSTEM LOG</span>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '4px 0 12px 0' }}>Step {activeStepIdx + 1}: {step.action}</h3>
+              <div className="flex-between mb-sm">
+                <div>
+                  <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STEP DETAILS &amp; RESOLUTION BRIEF</span>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '4px 0 0 0' }}>Step {activeStepIdx + 1}: {step.action}</h3>
+                </div>
+                {scenario.studentPhoto && (
+                  <img
+                    src={scenario.studentPhoto}
+                    alt={scenario.studentName}
+                    style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-orange)' }}
+                  />
+                )}
+              </div>
 
               <div style={{ backgroundColor: '#0d0d12', padding: '14px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
                 <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
-                  <div><strong>TIMESTAMP:</strong> <span style={{ color: '#ffffff' }}>2026-09-23T{step.time}.000Z</span></div>
-                  <div><strong>DEPARTMENT:</strong> <span style={{ color: '#ffffff' }}>{step.office}</span></div>
-                  <div><strong>SYSTEM ASSISTANT:</strong> <span style={{ color: 'var(--accent-orange)' }}>{step.actor}</span></div>
-                  <div><strong>STATUS:</strong> <span style={{ color: 'var(--status-pass)' }}>{step.status}</span></div>
+                  <div><strong>STUDENT:</strong> <span style={{ color: '#ffffff' }}>{scenario.studentName}</span></div>
+                  <div><strong>TIME:</strong> <span style={{ color: '#ffffff' }}>{step.time}</span></div>
+                  <div><strong>CAMPUS AREA:</strong> <span style={{ color: '#ffffff' }}>{step.office}</span></div>
+                  <div><strong>CAMPUS ASSISTANT:</strong> <span style={{ color: 'var(--accent-orange)' }}>{step.actor}</span></div>
+                  <div><strong>OUTCOME:</strong> <span style={{ color: 'var(--status-pass)' }}>{step.status}</span></div>
                 </div>
               </div>
 
-              <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '6px' }}>DATA SUMMARY FOR THIS STEP</div>
-              <div style={{ backgroundColor: '#060609', padding: '14px', borderRadius: '10px', border: '1px solid #1a1a24', marginBottom: '16px' }}>
-                <pre style={{ margin: 0, fontSize: '11px', color: 'var(--accent-cyan)', fontFamily: 'var(--wl-font-mono)', lineHeight: 1.5, overflowX: 'auto' }}>
-                  {JSON.stringify(step.payload, null, 2)}
-                </pre>
+              <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '8px' }}>SUMMARY FOR ADVISORS &amp; STAFF</div>
+              <div style={{ backgroundColor: '#060609', padding: '16px', borderRadius: '10px', border: '1px solid #1a1a24', marginBottom: '16px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                  {step.humanSummary && Object.entries(step.humanSummary).map(([key, value], idx) => (
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #14141e', paddingBottom: '6px' }}>
+                      <span className="mono-sm text-secondary" style={{ fontSize: '11px', textTransform: 'capitalize' }}>
+                        {key.replace(/([A-Z])/g, ' $1')}:
+                      </span>
+                      <span style={{ fontSize: '11.5px', fontWeight: '600', color: key.toLowerCase().includes('risk') || key.toLowerCase().includes('breach') ? 'var(--accent-orange)' : '#ffffff' }}>
+                        {value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Arbiter Gate Explanation */}
+              {/* Staff Control Guarantee */}
               <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
                 <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>STAFF ALWAYS IN CONTROL</div>
                 <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.45 }}>

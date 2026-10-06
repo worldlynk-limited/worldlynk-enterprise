@@ -174,14 +174,14 @@ export default function InteractiveFunnelSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            END-TO-END HIGHER EDUCATION WORKFLOWS
+            THE 11 STAGES OF STUDENT LIFE
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
-            The Connected Student Journey Funnel
+            Every step from application to graduation, fully connected.
           </h2>
           <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>
-            Based on established higher-education recruitment frameworks, but extended continuously into post-enrolment success, campus operations, and graduate careers.
-            Click any stage to inspect the cross-functional actions.
+            See how admissions teams, tutors, housing managers, and careers staff work together smoothly without lost emails or manual spreadsheets. 
+            Click any stage below to see how it works for students and staff.
           </p>
         </div>
 

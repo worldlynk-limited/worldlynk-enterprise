@@ -252,12 +252,19 @@ export default function DemoPage() {
                   </div>
 
                   <div className="grid-2 gap-md mt-md">
-                    <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '8px' }}>
-                      <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>STUDENT DETAILS</div>
-                      <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '2px' }}>Maya Chen (MSc Data Science)</div>
-                      <div className="mono-sm text-secondary" style={{ fontSize: '10px' }}>Student ID: 0091-2847 · Visa CAS: E2948102A</div>
-                      <div className="mono-sm mt-xs" style={{ color: 'var(--status-fail)', fontSize: '10px' }}>
-                        Update: 2nd Consecutive Absence in CS-5100 + 16h Weekend Shift
+                    <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '8px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                      <img
+                        src="/images/aspiring_student.jpg"
+                        alt="Maya Chen"
+                        style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-orange)', flexShrink: 0 }}
+                      />
+                      <div>
+                        <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>STUDENT DETAILS</div>
+                        <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '2px' }}>Maya Chen (MSc Data Science)</div>
+                        <div className="mono-sm text-secondary" style={{ fontSize: '10px' }}>Student ID: 0091-2847 · Visa CAS: E2948102A</div>
+                        <div className="mono-sm mt-xs" style={{ color: 'var(--status-fail)', fontSize: '10px' }}>
+                          Update: 2nd Consecutive Absence in CS-5100 + 16h Weekend Shift
+                        </div>
                       </div>
                     </div>
 

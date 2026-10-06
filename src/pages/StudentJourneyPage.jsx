@@ -22,17 +22,16 @@ export default function StudentJourneyPage() {
         <div className="main-container" style={{ position: 'relative', zIndex: 10, textAlign: 'center', maxWidth: '920px' }}>
           
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1.25rem' }}>
-            THE FULL HIGHER EDUCATION FUNNEL
+            THE COMPLETE STUDENT EXPERIENCE
           </div>
 
           <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.08 }}>
-            Prospect → Conversion → Enrolment → Student Success → Career
+            From first inquiry to graduation day.
           </h1>
 
           <p className="body-lg text-secondary" style={{ marginBottom: '2rem', maxWidth: '780px', margin: '0 auto 2rem', lineHeight: 1.65 }}>
-            Traditional education CRMs stop at enrolment. Generic campus chatbots have no context on applicant history. 
-            WorldLynk connects the entire student journey into <strong>one continuous context and agent layer</strong> — 
-            before, during, and after university.
+            Most university software loses context the moment an applicant becomes an enrolled student. 
+            WorldLynk connects the entire journey — admissions, verified housing, daily campus life, well-being check-ins, and graduate careers — so students thrive and staff stay informed.
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>

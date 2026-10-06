@@ -437,50 +437,100 @@ export default function MeetStudentStorySection() {
 
             </div>
 
-            {/* Right: Live Permitted Context Packet (Terminal / Ledger View) */}
+            {/* Right: Live Visual Student Dossier & Verified Context */}
             <div 
               style={{ 
-                backgroundColor: '#0a0a0f', 
-                borderRadius: '10px', 
-                border: '1px solid #26273a', 
+                backgroundColor: '#151622', 
+                borderRadius: '12px', 
+                border: '1px solid #28293d', 
                 display: 'flex', 
                 flexDirection: 'column', 
                 overflow: 'hidden' 
               }}
             >
+              {/* Dossier Header with Student Photo & Status */}
               <div 
                 style={{ 
-                  backgroundColor: '#12131c', 
-                  padding: '0.65rem 1rem', 
-                  borderBottom: '1px solid #26273a', 
+                  backgroundColor: '#1a1c2b', 
+                  padding: '1rem 1.25rem', 
+                  borderBottom: '1px solid #28293d', 
                   display: 'flex', 
                   justifyContent: 'space-between', 
                   alignItems: 'center' 
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-                  <div style={{ width: 9, height: 9, borderRadius: '50%', backgroundColor: '#27c93f' }} />
-                  <span className="mono-sm" style={{ color: '#71717a', fontSize: '0.68rem', marginLeft: '6px' }}>
-                    WORLDLYNK_CONTEXT_PACKET // PAYLOAD
-                  </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <img 
+                    src="/images/aspiring_student.jpg" 
+                    alt="Maya Chen" 
+                    style={{ width: 36, height: 36, borderRadius: '50%', objectFit: 'cover', border: `2px solid ${currentStep.actorColor}` }}
+                  />
+                  <div>
+                    <div style={{ fontSize: '0.86rem', fontWeight: 700, color: '#ffffff' }}>
+                      Maya Chen
+                    </div>
+                    <div style={{ fontSize: '0.7rem', color: '#9ca3af' }}>
+                      MSc Advanced CS · International Cohort
+                    </div>
+                  </div>
                 </div>
-                <span className="mono-sm" style={{ color: '#10b981', fontSize: '0.68rem' }}>
-                  ENCRYPTED · UK GDPR SAFE
+                <span 
+                  style={{ 
+                    fontSize: '0.68rem', 
+                    color: '#10b981', 
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)', 
+                    padding: '0.2rem 0.55rem', 
+                    borderRadius: '4px',
+                    fontWeight: 700,
+                    border: '1px solid rgba(16, 185, 129, 0.25)'
+                  }}
+                >
+                  ✓ VERIFIED &amp; PRIVATE
                 </span>
               </div>
 
-              <div style={{ padding: '1.25rem', flex: 1, fontFamily: 'monospace', fontSize: '0.8rem', color: '#e4e4e7', lineHeight: 1.6, overflowX: 'auto' }}>
-                <div style={{ color: '#38bdf8', marginBottom: '0.5rem' }}>
-                  // Live permitted context transferred at Stage {currentStep.stepNum}:
+              {/* Friendly Visual Key-Value Records */}
+              <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: currentStep.actorColor, letterSpacing: '0.04em' }}>
+                  VERIFIED INFORMATION AT STAGE {currentStep.stepNum}:
                 </div>
-                <pre style={{ margin: 0, color: '#f4f4f5', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-                  {JSON.stringify(currentStep.contextTransferred, null, 2)}
-                </pre>
-                <div style={{ marginTop: '1rem', color: '#a1a1aa', borderTop: '1px solid #1f2030', paddingTop: '0.75rem', fontSize: '0.72rem' }}>
-                  <div>$ context_chain --verify-consent</div>
-                  <div style={{ color: '#10b981' }}>✓ 100% Policy Compliant · Zero Sensitive Data Exposed to Third Parties</div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {Object.entries(currentStep.contextTransferred).map(([key, val], idx) => {
+                    const humanLabel = key
+                      .replace(/_/g, ' ')
+                      .replace(/\b\w/g, c => c.toUpperCase());
+                    return (
+                      <div 
+                        key={idx}
+                        style={{
+                          backgroundColor: '#10111a',
+                          border: '1px solid #212232',
+                          borderRadius: '6px',
+                          padding: '0.55rem 0.8rem',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'flex-start',
+                          gap: '12px',
+                          fontSize: '0.8rem'
+                        }}
+                      >
+                        <span style={{ color: '#9ca3af', fontWeight: 600, flexShrink: 0, fontSize: '0.74rem' }}>
+                          {humanLabel}:
+                        </span>
+                        <span style={{ color: '#ffffff', fontWeight: 500, textAlign: 'right', wordBreak: 'break-word' }}>
+                          {String(val)}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div style={{ marginTop: 'auto', paddingTop: '0.75rem', borderTop: '1px solid #222334', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ShieldCheck size={15} style={{ color: '#10b981', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.72rem', color: '#9ca3af' }}>
+                    Context carries forward automatically — Maya never has to repeat herself to admissions, tutors, or housing staff.
+                  </span>
                 </div>
               </div>
             </div>

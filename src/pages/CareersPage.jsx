@@ -254,6 +254,32 @@ export default function CareersPage() {
             ))}
           </div>
 
+          {/* ── CAMPUS & TEAM CULTURE BANNER ──────────────────────── */}
+          <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+            <div className="responsive-grid-split">
+              <div style={{ position: 'relative', minHeight: '260px' }}>
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+                  alt="WorldLynk Team Collaborating in London"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, transparent 50%, rgba(19, 19, 28, 0.95) 100%)' }} />
+              </div>
+              <div style={{ padding: '36px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>OUR CULTURE</span>
+                <h3 className="headline-md" style={{ margin: '6px 0 10px 0' }}>Build software that changes real student lives.</h3>
+                <p className="body-sm text-secondary" style={{ lineHeight: 1.6, margin: 0 }}>
+                  We are a focused team of builders, researchers, and campus advocates based in London. We value kindness, technical rigor, and deep respect for the educators and international students who rely on our platform every day.
+                </p>
+                <div className="flex gap-md mt-md flex-wrap">
+                  <div className="mono-sm text-secondary"><strong style={{ color: '#ffffff' }}>4-day offer turnaround</strong></div>
+                  <div className="mono-sm text-secondary"><strong style={{ color: '#ffffff' }}>London HQ + Hybrid</strong></div>
+                  <div className="mono-sm text-secondary"><strong style={{ color: '#ffffff' }}>Full visa sponsorship</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* ── BENEFITS & PERKS GRID ───────────────────────────────── */}
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>BENEFITS &amp; CULTURE</span>

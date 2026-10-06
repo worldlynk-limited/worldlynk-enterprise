@@ -23,6 +23,7 @@ const SECTORS = [
     slug: 'vice-chancellor',
     role: 'Vice-Chancellors & University Leadership',
     shortRole: 'Leadership',
+    image: '/images/oxford_campus.jpg',
     headline: 'Student Retention & Financial Stability',
     thesis: 'Protect student tuition revenue, keep visa compliance audit-ready, and support larger cohorts without burning out your administrative teams.',
     metric: '£3.8M',
@@ -46,6 +47,7 @@ const SECTORS = [
     slug: 'registrars',
     role: 'Academic Registrars & Student Records',
     shortRole: 'Registrar',
+    image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80',
     headline: 'Faster Approvals with Full Records Integrity',
     thesis: 'Clear peak-season backlogs for transcripts, course swaps, and visa documents with smart assistants that organize everything for staff approval.',
     metric: '62%',
@@ -69,6 +71,7 @@ const SECTORS = [
     slug: 'admissions',
     role: 'International Admissions & Recruitment',
     shortRole: 'Admissions',
+    image: '/images/london_campus.jpg',
     headline: 'Guiding Offer Holders from Acceptance to Arrival',
     thesis: 'Help accepted international students complete visa checks, secure verified accommodation, and arrive on campus without stress.',
     metric: '+28%',
@@ -92,6 +95,7 @@ const SECTORS = [
     slug: 'compliance',
     role: 'Visa & Compliance Officers',
     shortRole: 'Compliance',
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
     headline: 'Protecting Your Sponsor License & Visa Work Hours',
     thesis: 'Keep your sponsor license completely safe. QR attendance check-ins and smart work-hour tracking ensure full audit readiness at all times.',
     metric: '100%',
@@ -115,6 +119,7 @@ const SECTORS = [
     slug: 'faculty-tutors',
     role: 'Personal Tutors & Academic Advisors',
     shortRole: 'Faculty',
+    image: '/images/student_support.png',
     headline: 'Personalized Student Support Without the Paperwork',
     thesis: 'Spot students who need help weeks before they fall behind. Advisors receive a clear summary and pre-written outreach notes, saving hours of manual data checking.',
     metric: '+35%',
@@ -138,6 +143,7 @@ const SECTORS = [
     slug: 'housing-directors',
     role: 'Campus Accommodation & Student Life',
     shortRole: 'Housing',
+    image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=800&q=80',
     headline: 'Safe, Verified Student Accommodation',
     thesis: 'Protect incoming students from rental scams with verified student accommodations and secure booking before they arrive in the UK.',
     metric: '100%',
@@ -278,8 +284,24 @@ export default function SolutionsPage() {
                 </div>
               </div>
 
-              {/* Right Column: KPIs & Testimonial Quote */}
+              {/* Right Column: Image, KPIs & Testimonial Quote */}
               <div className="flex flex-col gap-lg">
+                {/* Photographic Campus Spotlight Banner */}
+                {activeSector.image && (
+                  <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', height: '180px', border: '1px solid var(--border-subtle)' }}>
+                    <img
+                      src={activeSector.image}
+                      alt={activeSector.role}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(19, 19, 28, 0.95) 0%, rgba(19, 19, 28, 0.2) 60%, transparent 100%)' }} />
+                    <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                      <span className="pill pill-approved" style={{ fontSize: '9px' }}>CAMPUS PROVEN</span>
+                      <span className="mono-sm" style={{ fontSize: '10px', color: '#ffffff', fontWeight: '700' }}>{activeSector.shortRole} Workflow</span>
+                    </div>
+                  </div>
+                )}
+
                 {/* Metric Hero Card */}
                 <div style={{ backgroundColor: '#0d0d14', padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>KEY OUTCOME</div>

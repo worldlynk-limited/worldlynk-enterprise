@@ -6,7 +6,7 @@ import {
   Users, Database, Calendar, Building, GraduationCap, 
   FileText, Lock, GitCommit, Check, Cpu, Network, Globe, MessageSquare,
   Server, Shield, MessageCircle, BarChart, HardDrive, Sparkles,
-  Play, Pause, RotateCcw, ChevronRight
+  Play, Pause, RotateCcw, ChevronRight, Award
 } from 'lucide-react';
 
 import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSection';
@@ -181,19 +181,19 @@ export default function HomePage() {
           <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
             {/* Left Content */}
             <div>
-              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AI PLATFORM FOR HIGHER EDUCATION</div>
-              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>One AI platform for your entire campus.</h1>
-              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '560px', lineHeight: 1.6 }}>
-                Connect your existing university systems and the people around every student — from first interest through enrolment, student life and career progression.
+              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>HIGHER EDUCATION OPERATING PLATFORM</div>
+              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>One connected platform for your entire campus.</h1>
+              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '580px', lineHeight: 1.6 }}>
+                Support every student from first inquiry to graduation day. Free your staff from repetitive paperwork, ensure international students are safe and settled, and give university leadership complete confidence.
               </p>
               <div className="hero-keywords-container">
                 {[
-                  { label: 'Prospect & Inquiries', icon: Search },
-                  { label: 'Admissions & CAS', icon: GraduationCap },
-                  { label: 'Attendance', icon: Clock },
-                  { label: 'Student Support', icon: Users },
-                  { label: 'Campus Housing', icon: Building },
-                  { label: 'Visa & Careers', icon: Zap },
+                  { label: 'Student Inquiries & Offers', icon: Search },
+                  { label: 'Verified Campus Housing', icon: Building },
+                  { label: 'Daily Timetables & Classes', icon: Clock },
+                  { label: 'Friendly Well-being Checks', icon: Users },
+                  { label: 'Visa Work-Hour Peace of Mind', icon: ShieldCheck },
+                  { label: 'Careers & Graduate Jobs', icon: GraduationCap },
                 ].map(({ label, icon: Icon }) => (
                   <span key={label} className="hero-keyword-pill">
                     <Icon size={12} className="hero-keyword-icon" />
@@ -293,8 +293,8 @@ export default function HomePage() {
                     <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ff5f56' }} />
                     <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
                     <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#27c93f' }} />
-                    <span className="mono-sm" style={{ color: '#71717a', fontSize: '0.66rem', marginLeft: '0.4rem', letterSpacing: '0.04em' }}>
-                      CAMPUS_AI_IN_ACTION // LIVE_PREVIEW
+                    <span className="mono-sm" style={{ color: '#a1a1aa', fontSize: '0.66rem', marginLeft: '0.4rem', letterSpacing: '0.04em', fontWeight: 600 }}>
+                      LIVE CAMPUS EXPERIENCE
                     </span>
                   </div>
 
@@ -335,7 +335,7 @@ export default function HomePage() {
                     >
                       <span className="hero-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#10b981', display: 'inline-block', boxShadow: '0 0 6px #10b981' }} />
                       <span style={{ color: '#10b981', fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.02em' }}>
-                        {actionsResolvedCount.toLocaleString()} ACTIONS RESOLVED TODAY
+                        {actionsResolvedCount.toLocaleString()} STUDENT REQUESTS RESOLVED TODAY
                       </span>
                     </div>
                   </div>
@@ -628,12 +628,195 @@ export default function HomePage() {
             </div>
           </div>
           
-          {/* Telemetry bar */}
+          {/* Institutional Telemetry bar */}
           <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
-            <div className="mono-sm text-muted">CAMPUS AUTOMATION: 99.4%</div>
             <div className="mono-sm text-muted">STUDENTS SUPPORTED: 15,000+</div>
-            <div className="mono-sm text-muted">SPECIALIST ASSISTANTS: 30 ACTIVE</div>
+            <div className="mono-sm text-muted">STUDENT SATISFACTION: 98%</div>
+            <div className="mono-sm text-muted">CAMPUS CAPABILITIES: 30 SPECIALISTS</div>
             <div className="mono-sm text-muted">VISA COMPLIANCE: 100% AUDIT READY</div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION: BUILT FOR YOUR WHOLE CAMPUS (LIVELY PHOTO SPOTLIGHT) */}
+      <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>
+        <div className="main-container">
+          <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3.5rem' }}>
+            <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
+              BUILT FOR EVERY PERSON ON CAMPUS
+            </div>
+            <h2 className="headline-lg" style={{ marginBottom: '1rem' }}>
+              A calmer campus for staff. A happier journey for students.
+            </h2>
+            <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>
+              Whether you lead the university, teach in lecture halls, or have just arrived from across the globe — WorldLynk takes care of the routine chaos so you can focus on what matters.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+            
+            {/* Card 1: University Leadership */}
+            <div 
+              style={{ 
+                backgroundColor: '#13131a', 
+                borderRadius: '16px', 
+                border: '1px solid #232332', 
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease, border-color 0.2s ease'
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                <img 
+                  src="/images/oxford_campus.jpg" 
+                  alt="University Leadership & Historic Campus" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <span 
+                  style={{ 
+                    position: 'absolute', 
+                    top: '1rem', 
+                    left: '1rem', 
+                    backgroundColor: 'rgba(255, 107, 0, 0.9)', 
+                    color: '#ffffff', 
+                    padding: '0.3rem 0.75rem', 
+                    borderRadius: '20px', 
+                    fontSize: '0.72rem', 
+                    fontWeight: 700,
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  FOR UNIVERSITY LEADERSHIP
+                </span>
+              </div>
+              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                    Protect Student Retention &amp; Institutional Revenue
+                  </h3>
+                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                    Spot drop-out risks before students slip away. Retain cohorts to graduation and safeguard international tuition without painful software replacements or extra admin headcount.
+                  </p>
+                </div>
+                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Award size={16} style={{ color: '#ff8833', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.8rem', color: '#ffb27a', fontWeight: 600 }}>
+                    £1.4M+ average protected tuition per 15k cohort
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Faculty, Academic Tutors & Student Services */}
+            <div 
+              style={{ 
+                backgroundColor: '#13131a', 
+                borderRadius: '16px', 
+                border: '1px solid #232332', 
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease, border-color 0.2s ease'
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                <img 
+                  src="/images/student_support.png" 
+                  alt="Academic Tutor and Student Support" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <span 
+                  style={{ 
+                    position: 'absolute', 
+                    top: '1rem', 
+                    left: '1rem', 
+                    backgroundColor: 'rgba(56, 189, 248, 0.9)', 
+                    color: '#0a0a0f', 
+                    padding: '0.3rem 0.75rem', 
+                    borderRadius: '20px', 
+                    fontSize: '0.72rem', 
+                    fontWeight: 700,
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  FOR TUTORS &amp; STUDENT WELFARE
+                </span>
+              </div>
+              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                    Less Repetitive Paperwork, More Quality Mentorship
+                  </h3>
+                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                    Routine queries, attendance logs, and visa checklists are prepared automatically. Tutors receive thoughtful, ready-to-send welfare messages they can review and approve in seconds.
+                  </p>
+                </div>
+                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(56, 189, 248, 0.08)', border: '1px solid rgba(56, 189, 248, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Clock size={16} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.8rem', color: '#7dd3fc', fontWeight: 600 }}>
+                    3,400+ staff hours saved from admin every year
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Domestic & International Students */}
+            <div 
+              style={{ 
+                backgroundColor: '#13131a', 
+                borderRadius: '16px', 
+                border: '1px solid #232332', 
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'transform 0.2s ease, border-color 0.2s ease'
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                <img 
+                  src="/images/aspiring_student.jpg" 
+                  alt="International Student on Campus" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <span 
+                  style={{ 
+                    position: 'absolute', 
+                    top: '1rem', 
+                    left: '1rem', 
+                    backgroundColor: 'rgba(16, 185, 129, 0.9)', 
+                    color: '#ffffff', 
+                    padding: '0.3rem 0.75rem', 
+                    borderRadius: '20px', 
+                    fontSize: '0.72rem', 
+                    fontWeight: 700,
+                    letterSpacing: '0.04em'
+                  }}
+                >
+                  FOR STUDENTS &amp; FAMILIES
+                </span>
+              </div>
+              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+                <div>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                    A Warm, Confident Welcome From Day One
+                  </h3>
+                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                    From course preparation and verified student accommodation to lecture halls and campus careers — students have a friendly guide in their pocket, available 24/7.
+                  </p>
+                </div>
+                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <ShieldCheck size={16} style={{ color: '#10b981', flexShrink: 0 }} />
+                  <span style={{ fontSize: '0.8rem', color: '#6ee7b7', fontWeight: 600 }}>
+                    Guaranteed housing &amp; 100% visa work-hour safety
+                  </span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -750,45 +933,104 @@ export default function HomePage() {
 
           {activeOS === 'student' && (
             <div className="animate-fade-in">
-              <div className="grid-3 gap-md">
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <Clock size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Daily Schedule</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Classes, deadlines, and campus events combined into one clear timeline.</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
+                
+                {/* Visual Phone Mockup Showcase */}
+                <div style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
+                  <div 
+                    style={{ 
+                      position: 'relative', 
+                      maxWidth: '340px', 
+                      borderRadius: '24px', 
+                      overflow: 'hidden', 
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(56, 189, 248, 0.2)' 
+                    }}
+                  >
+                    <img 
+                      src="/images/student_housing_mockup.png" 
+                      alt="WorldLynk Student Mobile App Interface" 
+                      style={{ width: '100%', height: 'auto', display: 'block' }}
+                    />
+                    <div 
+                      style={{ 
+                        position: 'absolute', 
+                        bottom: '1rem', 
+                        left: '1rem', 
+                        right: '1rem', 
+                        backgroundColor: 'rgba(12, 13, 18, 0.92)', 
+                        backdropFilter: 'blur(10px)',
+                        padding: '0.75rem 1rem', 
+                        borderRadius: '10px',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: '#10b981' }} />
+                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ffffff' }}>Student App Active</span>
+                      </div>
+                      <span style={{ fontSize: '0.7rem', color: '#38bdf8', fontWeight: 600 }}>iOS &amp; Android</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <MessageCircle size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>24/7 AI Support</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Instant answers to student questions, grounded directly in your university policies.</p>
+
+                {/* 4 Clear Everyday Student Benefits */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  
+                  <div style={{ padding: '1.25rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.35rem' }}>
+                      <Building size={20} style={{ color: 'var(--wl-accent)' }} />
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>Verified Accommodation &amp; Digital Room Key</h4>
+                    </div>
+                    <p style={{ color: '#a1a1aa', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                      Students reserve vetted university and private halls, review tenancy terms, and secure their arrival accommodation before landing.
+                    </p>
+                  </div>
+
+                  <div style={{ padding: '1.25rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.35rem' }}>
+                      <Clock size={20} style={{ color: '#38bdf8' }} />
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>Live Timetable &amp; 1-Tap Attendance</h4>
+                    </div>
+                    <p style={{ color: '#a1a1aa', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                      Daily lectures, room locations, and coursework deadlines synchronized in one clear timeline. Attendance check-ins happen in 1 tap.
+                    </p>
+                  </div>
+
+                  <div style={{ padding: '1.25rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.35rem' }}>
+                      <ShieldCheck size={20} style={{ color: '#10b981' }} />
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>20-Hour Visa Work Cap Peace of Mind</h4>
+                    </div>
+                    <p style={{ color: '#a1a1aa', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                      Campus shifts and part-time jobs are automatically cross-checked against legal term-time visa limits so students stay safe.
+                    </p>
+                  </div>
+
+                  <div style={{ padding: '1.25rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '12px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '0.35rem' }}>
+                      <MessageCircle size={20} style={{ color: '#c084fc' }} />
+                      <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#ffffff' }}>24/7 Friendly University Answers</h4>
+                    </div>
+                    <p style={{ color: '#a1a1aa', fontSize: '0.88rem', lineHeight: 1.5 }}>
+                      Instant, welcoming answers to common questions about campus services, library hours, and welfare support — day or night.
+                    </p>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                    <Link to="/student-os" className="btn-secondary" style={{ padding: '0.75rem 1.4rem', fontSize: '0.9rem', color: '#ffffff', border: '1px solid #2a2a35', backgroundColor: '#131318' }}>
+                      Explore Student App <ArrowRight size={15} />
+                    </Link>
+                    <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.4rem', fontSize: '0.9rem' }}>
+                      Launch Live Student App <ExternalLink size={15} />
+                    </a>
+                  </div>
+
                 </div>
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <Building size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Student Housing</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Find verified accommodation, secure tenancy agreements, and log maintenance.</p>
-                </div>
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <Users size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Career &amp; Jobs</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Discover part-time work that strictly respects student visa work limits.</p>
-                </div>
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <Activity size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Quick Attendance</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Fast, 1-tap class check-in using their phone. No queues or lost paper slips.</p>
-                </div>
-                <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '8px' }}>
-                  <Globe size={24} style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }} />
-                  <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Pre-Arrival Guide</h4>
-                  <p className="text-secondary" style={{ fontSize: '0.9rem' }}>Step-by-step visa prep and arrival checklists for international students.</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-                <Link to="/student-os" className="btn-secondary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>
-                  Explore Student App <ArrowRight size={16} />
-                </Link>
-                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.75rem 1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                  Launch Student App <ExternalLink size={16} />
-                </a>
+
               </div>
             </div>
           )}

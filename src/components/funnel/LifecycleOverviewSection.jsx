@@ -13,76 +13,82 @@ export default function LifecycleOverviewSection() {
     {
       id: 'discover',
       stepRange: 'Stages 01 – 06',
-      title: 'Discover & Convert',
-      subtitle: 'Pre-Enrolment & Acquisition Layer',
-      tagline: 'From first enquiry to confirmed offer',
+      title: 'Discover & Apply',
+      subtitle: 'From First Inquiry to Confirmed Offer',
+      tagline: 'Instant answers & verified applications',
       color: '#ff6b00',
       bgLight: 'rgba(255, 107, 0, 0.08)',
       borderColor: 'rgba(255, 107, 0, 0.35)',
-      description: 'WorldLynk captures permitted student intent across web portals, campaigns, and partners. Personal AI agents guide course evaluation, qualify readiness, and route high-intent signals directly to admissions teams and approved consultants.',
+      image: '/images/student_universities_mockup.png',
+      imageCaption: 'Students explore courses & verify qualification equivalency in seconds',
+      description: 'Prospective students get welcoming, instant answers to course and fee questions 24/7. International qualifications are evaluated against university benchmarks, routing qualified applicants directly to admissions staff without lost emails or delays.',
       keyOutcomes: [
-        'Instant answers for international & domestic prospects',
-        'Permitted intent & readiness scoring before application',
-        'Consent-governed routing to university staff or consultants',
-        'Document and qualification checklist acceleration'
+        '24/7 welcoming guidance for domestic & international prospects',
+        'Automatic entry grade & English requirement evaluations',
+        'Direct connection to university admissions staff without lost emails',
+        'Step-by-step document checklists that speed up completed applications'
       ],
       stagesIncluded: [
-        '01 Awareness & Discovery',
-        '02 Active Inquiry & Intent Capture',
-        '03 Intake & Course Qualification',
-        '04 Permitted Consultant / Staff Connect',
-        '05 Application & Dossier Assembly',
-        '06 Offer Issuance & Decision Nurturing'
+        '01 University & Course Discovery',
+        '02 Instant Inquiries & Answers',
+        '03 Entry Grade & Qualification Check',
+        '04 Admissions Advisor Connection',
+        '05 Application & Document Review',
+        '06 Offer Issuance & Acceptance'
       ],
-      surfaces: ['University Web Portals', 'Student Prospect Agent', 'Compass Recruitment Console', 'Approved Partner Desks'],
-      systems: ['CRM (Salesforce / HubSpot)', 'Admissions Systems', 'Direct Messaging (WhatsApp)']
+      surfaces: ['University Web Portals', 'Student Inquiry Assistant', 'Compass Admissions Desk'],
+      systems: ['Admissions Database', 'University CRM', 'Official WhatsApp Channel']
     },
     {
       id: 'enrol',
       stepRange: 'Stages 07 – 08',
-      title: 'Enrol & Operate',
-      subtitle: 'Transition & Campus Operations Layer',
-      tagline: 'From CAS & visa to active student induction',
+      title: 'Arrival & Accommodation',
+      subtitle: 'From Offer to Living on Campus',
+      tagline: 'Guaranteed housing & smooth visa prep',
       color: '#38bdf8',
       bgLight: 'rgba(56, 189, 248, 0.08)',
       borderColor: 'rgba(56, 189, 248, 0.35)',
-      description: 'The journey continues seamlessly without dropping context. The student transitions into the WorldLynk Student App for pre-arrival guidance, verified room reservations, visa compliance checks, and automated LMS/SIS onboarding.',
+      image: '/images/student_housing_mockup.png',
+      imageCaption: 'Verified campus housing & digital room key issued before landing',
+      description: 'The journey continues seamlessly without starting from scratch. Incoming students receive a clear pre-arrival checklist, secure verified campus housing with digital tenancy agreements, and arrive confident and ready for classes.',
       keyOutcomes: [
-        'Personal AI checklist for visa, CAS, and finance',
-        'Verified student accommodation matched before flight',
-        'Seamless handoff from prospect record to SIS student ID',
-        'Automatic timetable & learning portal (Moodle/Canvas) sync'
+        'Step-by-step visa checklist and airport arrival support',
+        'Guaranteed, verified student accommodation before flying',
+        'Zero manual data re-entry: student records sync automatically',
+        'Daily lecture timetables and course materials ready in their app'
       ],
       stagesIncluded: [
-        '07 Pre-Arrival: Visa, Housing & Flight Readiness',
-        '08 On-Campus Enrolment & System Sync'
+        '07 Visa Preparation & Travel Readiness',
+        '08 Campus Housing & Timetable Setup'
       ],
-      surfaces: ['WorldLynk Student App', 'Compass Admissions Console', 'Accommodation Partner Desk'],
-      systems: ['SITS:Vision / Ellucian Banner', 'Moodle / Canvas LMS', 'Campus Timetable Feeds']
+      surfaces: ['WorldLynk Student App', 'Compass Admissions Console', 'Accommodation Portal'],
+      systems: ['Student Records System (SIS)', 'Learning Portal (Moodle/Canvas)', 'Campus Timetable Feeds']
     },
     {
       id: 'engage',
       stepRange: 'Stages 09 – 11',
-      title: 'Engage & Succeed',
-      subtitle: 'Campus Life, Retention & Careers Layer',
-      tagline: 'From lecture hall persistence to graduate employment',
+      title: 'Campus Life & Careers',
+      subtitle: 'From Day One to Graduation & Employment',
+      tagline: 'Welfare check-ins, visa safety & careers',
       color: '#10b981',
       bgLight: 'rgba(16, 185, 129, 0.08)',
       borderColor: 'rgba(16, 185, 129, 0.35)',
-      description: 'Throughout campus life, multi-agent signals detect drop-out risks, protect the 20h/wk visa work cap, and empower staff to intervene early. As graduation approaches, students transition directly into career coaching and graduate jobs.',
+      image: '/images/student_support.png',
+      imageCaption: 'Tutors review supportive check-in drafts; students thrive',
+      description: 'Throughout campus life, WorldLynk supports students with 1-tap check-in, notices early signs of burnout, and prepares supportive check-in drafts for tutors. As graduation approaches, students transition directly into career mentorship and graduate jobs.',
       keyOutcomes: [
-        '1-tap attendance check-in and automated compliance logs',
-        'Early-warning welfare signals for struggling students',
-        'Strict 20h/wk student visa work cap validation',
-        'Tailored CV builder, mock voice interviews & graduate routes'
+        '1-tap class check-in on smartphone; zero lost paper registers',
+        'Gentle check-in drafts prepared for tutors when students miss classes',
+        'Automatic checks against the 20-hour visa work cap for peace of mind',
+        'Tailored CV feedback, mock interview practice & graduate job matching'
       ],
       stagesIncluded: [
-        '09 Campus Engagement & Everyday Support',
-        '10 Retention Signals & Human-Led Intervention',
-        '11 Careers, Post-Study Work & Alumni Transition'
+        '09 Daily Campus Life & 24/7 Guidance',
+        '10 Caring Support When Students Struggle',
+        '11 Careers, Internships & Graduate Routes'
       ],
       surfaces: ['WorldLynk Student App', 'Compass Staff Portal', 'Senior Tutor & Welfare Desks'],
-      systems: ['Attendance Logs', 'Student Records (SIS)', 'Careers & Graduate Job Networks']
+      systems: ['Attendance Records', 'Student Academic Files', 'Graduate Career Networks']
     }
   ];
 
@@ -236,8 +242,8 @@ export default function LifecycleOverviewSection() {
               </div>
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <a 
-                  href="#interactive-funnel" 
+                <Link 
+                  to="/journey" 
                   className="btn-primary" 
                   style={{ 
                     padding: '0.75rem 1.4rem', 
@@ -246,8 +252,8 @@ export default function LifecycleOverviewSection() {
                     borderColor: currentZone.color
                   }}
                 >
-                  Inspect Full 11 Stages <ArrowRight size={14} />
-                </a>
+                  Explore 11-Stage Student Journey <ArrowRight size={14} />
+                </Link>
                 <Link 
                   to="/demo" 
                   className="btn-secondary" 
@@ -258,18 +264,52 @@ export default function LifecycleOverviewSection() {
               </div>
             </div>
 
-            {/* Right: Stages Included & Connected Stack */}
+            {/* Right: Visual Experience Preview & Stages Included */}
             <div 
               style={{ 
                 backgroundColor: '#181922', 
-                borderRadius: '10px', 
+                borderRadius: '12px', 
                 border: '1px solid #2a2a38', 
-                padding: '1.75rem' 
+                padding: '1.5rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.25rem'
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem', borderBottom: '1px solid #2a2a38', paddingBottom: '0.75rem' }}>
-                <span className="mono-sm text-muted" style={{ fontWeight: 700 }}>STAGES COVERED IN THIS ZONE</span>
-                <span style={{ fontSize: '0.75rem', color: currentZone.color, fontWeight: 700 }}>Active Coverage</span>
+              {/* Dynamic Zone Image Spotlight */}
+              {currentZone.image && (
+                <div style={{ borderRadius: '10px', overflow: 'hidden', border: `1px solid ${currentZone.color}33`, position: 'relative' }}>
+                  <img 
+                    src={currentZone.image} 
+                    alt={currentZone.title} 
+                    style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div 
+                    style={{ 
+                      position: 'absolute', 
+                      bottom: 0, 
+                      left: 0, 
+                      right: 0, 
+                      background: 'linear-gradient(to top, rgba(12, 13, 18, 0.95), rgba(12, 13, 18, 0.4))', 
+                      padding: '0.6rem 0.85rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <span style={{ fontSize: '0.76rem', color: '#ffffff', fontWeight: 600 }}>
+                      {currentZone.imageCaption}
+                    </span>
+                    <span style={{ fontSize: '0.68rem', color: currentZone.color, fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+                      LIVE PREVIEW
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #2a2a38', paddingBottom: '0.5rem' }}>
+                <span className="mono-sm text-muted" style={{ fontWeight: 700 }}>STUDENT STAGES COVERED</span>
+                <span style={{ fontSize: '0.75rem', color: currentZone.color, fontWeight: 700 }}>Continuous Record</span>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', marginBottom: '1.75rem' }}>

@@ -81,34 +81,51 @@ export default function FoundersPage() {
       <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
         <div className="main-container">
           
-          <div className="card-dark mb-3xl" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-            <div style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-              <div style={{ width: '72px', height: '72px', borderRadius: '14px', background: 'linear-gradient(135deg, #ff6b00, #ff8833)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '22px', flexShrink: 0 }}>
-                JT
-              </div>
-              
-              <div style={{ flex: 1, minWidth: '240px' }}>
-                <div className="flex-between flex-wrap gap-xs mb-sm">
+          <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+            <div className="responsive-grid-split">
+              {/* Left Column: Conviction & Bio */}
+              <div style={{ padding: '36px' }}>
+                <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '20px' }}>
+                  <div style={{ width: '64px', height: '64px', borderRadius: '16px', background: 'linear-gradient(135deg, #ff6b00, #ff8833)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '20px', flexShrink: 0, boxShadow: '0 8px 24px rgba(255,107,0,0.3)' }}>
+                    JT
+                  </div>
                   <div>
                     <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>Jaswanth Thummala</h2>
                     <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>FOUNDER &amp; CHIEF ARCHITECT · LONDON, UK</div>
+                    <span className="pill pill-approved mt-xs" style={{ fontSize: '9px', display: 'inline-block' }}>SYSTEMS ARCHITECT &amp; RESEARCHER</span>
                   </div>
-                  <span className="pill pill-approved">SYSTEMS ARCHITECT &amp; RESEARCHER</span>
                 </div>
 
-                <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px', marginTop: '12px' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px', marginTop: '16px' }}>
                   THE OPERATING CONVICTION
                 </div>
-                <p className="body-md text-secondary mt-xs" style={{ lineHeight: 1.6 }}>
+                <p className="body-md text-secondary mt-xs" style={{ lineHeight: 1.6, fontSize: '13px' }}>
                   Higher education is the most transformative ladder for social and economic mobility in human history. Yet every single academic year, hundreds of thousands of brilliant international students land in the UK only to face disjointed portals, predatory rental housing scams, and accidental visa compliance breaches that derail their degrees.
                 </p>
 
                 <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px', marginTop: '16px' }}>
                   WHAT WE ARCHITECTED
                 </div>
-                <p className="body-md text-secondary mt-xs" style={{ lineHeight: 1.6 }}>
+                <p className="body-md text-secondary mt-xs" style={{ lineHeight: 1.6, fontSize: '13px' }}>
                   AI should never act as an unmonitored replacement for human educators. It should be the ultimate preparation engine—lifting the crushing administrative burden of routine transcript grading, scheduling conflicts, and CAS tracking off staff shoulders so educators can do what only humans can: inspire, mentor, and guide.
                 </p>
+              </div>
+
+              {/* Right Column: London Campus Visual & Mission Snapshot */}
+              <div style={{ position: 'relative', minHeight: '320px', borderLeft: '1px solid var(--border-hairline)' }}>
+                <img
+                  src="/images/london_campus.jpg"
+                  alt="University Campus London"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(13, 13, 18, 0.95) 0%, rgba(13, 13, 18, 0.4) 60%, transparent 100%)' }} />
+                <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>HEADQUARTERED IN LONDON</div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#ffffff', margin: '4px 0 8px 0' }}>Serving Campuses Across the UK &amp; Worldwide</h3>
+                  <p className="mono-sm text-secondary" style={{ fontSize: '11px', margin: 0, lineHeight: 1.4 }}>
+                    From Russell Group institutions to international pathways, WorldLynk brings calmness and confidence to campus operations.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

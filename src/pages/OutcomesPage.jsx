@@ -61,6 +61,7 @@ const CASE_STUDIES = [
   {
     institution: 'Russell Group Research University',
     cohort: '22,000 Students · London Campus',
+    image: '/images/london_campus.jpg',
     challenge: 'High volume of international postgraduate students at risk of visa non-compliance due to unmonitored external shift work and disparate attendance logs.',
     solution: 'Deployed WorldLynk QR attendance across lecture theatres and enabled automatic work-hour tracking with university payroll.',
     results: [
@@ -74,6 +75,7 @@ const CASE_STUDIES = [
   {
     institution: 'Ancient Scottish University',
     cohort: '14,500 Students · Edinburgh',
+    image: '/images/oxford_campus.jpg',
     challenge: 'A 6-week registrar backlog during international qualification evaluations, leading to delayed visa issuance and applicant drop-offs.',
     solution: 'AI assistants deployed to pre-evaluate transcripts, calculate qualification equivalents, and verify bank statements for registrar approval in Compass.',
     results: [
@@ -87,6 +89,7 @@ const CASE_STUDIES = [
   {
     institution: 'London Metro University',
     cohort: '18,000 Students · Central London',
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80',
     challenge: 'International offer holders dropping out during July-August due to lack of verified student housing and visa anxiety.',
     solution: 'Integrated Student mobile app with verified student accommodation bookings at Chapter and Scape halls.',
     results: [
@@ -100,6 +103,7 @@ const CASE_STUDIES = [
   {
     institution: 'Modern Technological University',
     cohort: '11,000 Students · Midlands Campus',
+    image: '/images/university_campus.jpg',
     challenge: 'Personal tutors managing 65+ tutees with no early warning indicators until students failed end-of-module coursework submissions.',
     solution: 'Compass early warning dashboard deployed to connect portal activity with lecture attendance, delivering pre-drafted check-in notes.',
     results: [
@@ -365,17 +369,32 @@ export default function OutcomesPage() {
 
           <div className="grid-2 mb-3xl">
             {CASE_STUDIES.map((cs, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '28px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c', display: 'flex', flexDirection: 'column' }}>
-                <div className="flex-between mb-sm">
-                  <div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff' }}>{cs.institution}</h3>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{cs.cohort}</div>
+              <div key={idx} className="card-dark" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c', display: 'flex', flexDirection: 'column' }}>
+                {cs.image && (
+                  <div style={{ position: 'relative', height: '140px', width: '100%', overflow: 'hidden' }}>
+                    <img
+                      src={cs.image}
+                      alt={cs.institution}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(19, 19, 28, 0.95) 0%, rgba(19, 19, 28, 0.3) 60%, transparent 100%)' }} />
+                    <div style={{ position: 'absolute', bottom: '10px', left: '20px', right: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                      <span className="pill pill-approved" style={{ fontSize: '9px' }}>VERIFIED PARTNER</span>
+                      <span className="mono-sm" style={{ fontSize: '10.5px', color: '#ffffff', fontWeight: '700' }}>{cs.cohort}</span>
+                    </div>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{cs.metric}</div>
-                    <div className="mono-sm text-muted" style={{ fontSize: '9px' }}>{cs.metricLabel}</div>
+                )}
+
+                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <div className="flex-between mb-sm">
+                    <div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff' }}>{cs.institution}</h3>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{cs.metric}</div>
+                      <div className="mono-sm text-muted" style={{ fontSize: '9px' }}>{cs.metricLabel}</div>
+                    </div>
                   </div>
-                </div>
 
                 <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', borderLeft: '3px solid var(--status-fail)', margin: '12px 0' }}>
                   <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-fail)' }}>THE CHALLENGE</div>
@@ -399,8 +418,9 @@ export default function OutcomesPage() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
 
         </div>
       </section>

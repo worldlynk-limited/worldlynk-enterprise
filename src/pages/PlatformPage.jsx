@@ -34,45 +34,126 @@ const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 const STUDENTS = [
   {
     name: 'Maya Chen',
+    photo: '/images/aspiring_student.jpg',
     course: 'MSc Data Science & Machine Learning',
     sitsId: '0091-2847',
     moodleUser: 'mchen3',
     cas: 'E2948102A',
     stripeCus: 'cus_9941a88b',
     status: 'Enrolled Full-Time · Tier-4 Sponsored',
-    recentSignal: 'CS-5100 attendance drop; 16h work fatigue detected.',
-    sitsPayload: { "student_id": "0091-2847", "degree": "MSc Data Science", "enrol_status": "ENR", "fee_status": "OS_INTL", "tutor": "Dr. R. Jenkins" },
-    moodlePayload: { "user_id": "mchen3", "last_access": "2026-09-21T08:14:00Z", "inactivity_hours": 114, "coursework_complete": "3/5" },
-    stripePayload: { "customer_id": "cus_9941a88b", "escrow_id": "esc_8849", "hall": "Chapter King's Cross", "amount": 31500, "currency": "gbp" },
-    attendancePayload: { "hmac_scan": "hmac_sha256:7f8b9a2c...88e1", "session": "EB-02", "missed_consecutive": 2, "late_minutes": 0, "verified_at": "2026-09-23T08:58:14Z" }
+    tutor: 'Dr. R. Jenkins (Senior Tutor)',
+    recentSignal: 'Missed CS-5100 seminar; work fatigue detected after evening shift.',
+    details: {
+      sits: {
+        title: 'Student Records System (SITS:Vision)',
+        status: 'Active · Good Academic Standing',
+        enrolment: 'Full-Time Postgraduate',
+        tutor: 'Dr. R. Jenkins',
+        feeStatus: 'International Tier-4'
+      },
+      moodle: {
+        title: 'Learning Portal (Moodle)',
+        status: 'Needs Engagement Follow-Up',
+        lastLogin: '3 days ago',
+        coursework: '3 of 5 assignments submitted',
+        alert: 'Study guide prepared for tutor check-in'
+      },
+      stripe: {
+        title: 'Student Housing & Tenancy',
+        status: 'Confirmed & Deposit Protected',
+        residence: "Chapter King's Cross (Studio Ensuite)",
+        rent: '£315 / week',
+        escrow: 'Protected via Stripe Escrow'
+      },
+      attendance: {
+        title: 'Lecture & Seminar Check-In',
+        status: 'Missed 2 Seminars (EB-02)',
+        verification: 'Verified via Student Mobile Check-In',
+        action: 'Makeup lab slot reserved by tutor'
+      }
+    }
   },
   {
     name: 'Jin-Woo Park',
+    photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
     course: 'BSc Software Engineering',
     sitsId: '0088-1249',
     moodleUser: 'jwpark9',
     cas: 'E1948201B',
     stripeCus: 'cus_8812b11a',
     status: 'Offer Holder · International Applicant',
-    recentSignal: 'NARIC math equivalency evaluated; CAS brief drafted.',
-    sitsPayload: { "student_id": "0088-1249", "degree": "BSc Software Eng", "enrol_status": "OFFER_COND", "fee_status": "OS_INTL", "tutor": "Prof. T. Davis" },
-    moodlePayload: { "user_id": "jwpark9", "last_access": "N/A", "inactivity_hours": 0, "coursework_complete": "Pre-Enrolled" },
-    stripePayload: { "customer_id": "cus_8812b11a", "escrow_id": "esc_7712", "hall": "Scape Bloomsbury", "amount": 29500, "currency": "gbp" },
-    attendancePayload: { "hmac_scan": "N/A", "session": "Orientation", "missed_consecutive": 0, "late_minutes": 0, "verified_at": null }
+    tutor: 'Prof. T. Davis (Admissions Lead)',
+    recentSignal: 'High school math equivalency verified; CAS visa draft ready for review.',
+    details: {
+      sits: {
+        title: 'Student Records System (SITS:Vision)',
+        status: 'Unconditional Offer Accepted',
+        enrolment: 'Incoming Undergraduate (Year 1)',
+        tutor: 'Prof. T. Davis',
+        feeStatus: 'International Applicant'
+      },
+      moodle: {
+        title: 'Learning Portal (Moodle)',
+        status: 'Pre-Enrolment Welcome Module Ready',
+        lastLogin: 'Pending term start',
+        coursework: 'Reading list delivered via app',
+        alert: 'Welcome pack dispatched via WhatsApp'
+      },
+      stripe: {
+        title: 'Student Housing & Tenancy',
+        status: 'Accommodation Voucher Reserved',
+        residence: 'Scape Bloomsbury (Standard Ensuite)',
+        rent: '£295 / week',
+        escrow: 'Holding deposit verified'
+      },
+      attendance: {
+        title: 'Lecture & Seminar Check-In',
+        status: 'Orientation Session Scheduled',
+        verification: 'Welcome Week check-in pending',
+        action: 'Campus arrival guide shared'
+      }
+    }
   },
   {
     name: 'Tariq Hassan',
+    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     course: 'BSc Accounting & Finance',
     sitsId: '0074-9912',
     moodleUser: 'thassan1',
     cas: 'E3091841C',
     stripeCus: 'cus_7712c99f',
     status: 'Year 2 Enrolled · Tier-4 Sponsored',
-    recentSignal: '120h Moodle inactivity; study guide compiled for tutor review.',
-    sitsPayload: { "student_id": "0074-9912", "degree": "BSc Finance", "enrol_status": "ENR", "fee_status": "OS_INTL", "tutor": "Dr. J. Ward" },
-    moodlePayload: { "user_id": "thassan1", "last_access": "2026-09-17T11:20:00Z", "inactivity_hours": 120, "coursework_complete": "1/4" },
-    stripePayload: { "customer_id": "cus_7712c99f", "escrow_id": "esc_9912", "hall": "Campus Halls B", "amount": 22000, "currency": "gbp" },
-    attendancePayload: { "hmac_scan": "hmac_sha256:9d4e21ab...ce43", "session": "Hall-1", "missed_consecutive": 1, "late_minutes": 15, "verified_at": "2026-09-22T09:15:22Z" }
+    tutor: 'Dr. J. Ward (Academic Advisor)',
+    recentSignal: '5 days of portal inactivity; personalized study plan compiled for tutor review.',
+    details: {
+      sits: {
+        title: 'Student Records System (SITS:Vision)',
+        status: 'Enrolled Year 2 · Good Standing',
+        enrolment: 'Full-Time Undergraduate',
+        tutor: 'Dr. J. Ward',
+        feeStatus: 'International Tier-4'
+      },
+      moodle: {
+        title: 'Learning Portal (Moodle)',
+        status: '5 Days Inactive on Finance Modules',
+        lastLogin: 'Last Tuesday 11:20',
+        coursework: '1 of 4 modules in progress',
+        alert: 'Suggested 1-on-1 advisor check-in prepared'
+      },
+      stripe: {
+        title: 'Student Housing & Tenancy',
+        status: 'Campus Residence Confirmed',
+        residence: 'Campus Halls (Ensuite Block B)',
+        rent: '£220 / week',
+        escrow: 'Term 1 payment complete'
+      },
+      attendance: {
+        title: 'Lecture & Seminar Check-In',
+        status: '91% Attendance Rate',
+        verification: 'Checked-in for Tuesday Lecture (Hall-1)',
+        action: 'No attendance flags active'
+      }
+    }
   }
 ];
 
@@ -142,20 +223,20 @@ const LAYERS = [
 const CONNECTORS = [
   { name: 'SITS:Vision (Tribal)', category: 'Student Information System', type: 'Two-Way Bi-directional', status: 'Production', icon: Database, latency: '8ms' },
   { name: 'Ellucian Banner', category: 'Student Information System', type: 'REST & Ethos API', status: 'Production', icon: Database, latency: '14ms' },
-  { name: 'Moodle LMS', category: 'Learning Management', type: 'AES-256 Token Proxy', status: 'Production', icon: Cpu, latency: '12ms' },
-  { name: 'Canvas LMS', category: 'Learning Management', type: 'LTI 1.3 & GraphQL', status: 'Production', icon: Cpu, latency: '10ms' },
-  { name: 'Stripe Connect', category: 'Billing & Escrows', type: 'Webhooks & Marketplace', status: 'Production', icon: Lock, latency: '45ms' },
-  { name: 'Algolia Search', category: 'Discovery Engine', type: 'Sub-20ms Faceted Search', status: 'Production', icon: Zap, latency: '16ms' },
-  { name: 'WhatsApp (Baileys)', category: 'Messaging Gateway', type: 'WebSocket Live Gateway', status: 'Production', icon: MessageSquare, latency: '60ms' },
-  { name: 'Telegram Bot API', category: 'Messaging Gateway', type: 'Webhook & Polling Engine', status: 'Production', icon: Globe, latency: '55ms' },
-  { name: 'BullMQ & Redis', category: 'Task Execution', type: '14 Dedicated Workers', status: 'Production', icon: Layers, latency: '2ms' },
-  { name: 'Firebase Firestore', category: 'Shared Data Plane', type: 'Multi-Tenant Scoped', status: 'Production', icon: Database, latency: '18ms' }
+  { name: 'Moodle LMS', category: 'Learning Management', type: 'Official University Proxy', status: 'Production', icon: Cpu, latency: '12ms' },
+  { name: 'Canvas LMS', category: 'Learning Management', type: 'LTI 1.3 & Webhook Sync', status: 'Production', icon: Cpu, latency: '10ms' },
+  { name: 'Stripe Connect', category: 'Billing & Escrows', type: 'Verified PBSA Payments', status: 'Production', icon: Lock, latency: '45ms' },
+  { name: 'Algolia Search', category: 'Discovery Engine', type: 'Instant Student Search', status: 'Production', icon: Zap, latency: '16ms' },
+  { name: 'WhatsApp (Verified)', category: 'Messaging Gateway', type: 'Official Student Outreach', status: 'Production', icon: MessageSquare, latency: '60ms' },
+  { name: 'Telegram Bot API', category: 'Messaging Gateway', type: 'Student Group Outreach', status: 'Production', icon: Globe, latency: '55ms' },
+  { name: 'Campus Task Queue', category: 'Background Tasks', type: 'Automated Event Workers', status: 'Production', icon: Layers, latency: '2ms' },
+  { name: 'Cloud Student Store', category: 'Secure Data Layer', type: 'Encrypted Multi-Tenant', status: 'Production', icon: Database, latency: '18ms' }
 ];
 
 export default function PlatformPage() {
   const [selectedStudentIdx, setSelectedStudentIdx] = useState(0);
   const [activeLayerId, setActiveLayerId] = useState('fabric');
-  const [payloadView, setPayloadView] = useState('sits'); // sits, moodle, stripe, attendance
+  const [detailTab, setDetailTab] = useState('sits'); // sits, moodle, stripe, attendance
 
   const student = STUDENTS[selectedStudentIdx];
   const activeLayer = LAYERS.find(l => l.id === activeLayerId) || LAYERS[0];
@@ -258,14 +339,14 @@ export default function PlatformPage() {
                 <p className="body-md text-secondary" style={{ maxWidth: '780px' }}>{activeLayer.desc}</p>
               </div>
               <div className="mono-sm text-secondary" style={{ backgroundColor: '#0d0d12', padding: '10px 14px', borderRadius: '8px', border: '1px solid var(--border-hairline)' }}>
-                <strong>STACK:</strong> {activeLayer.tech}
+                <strong>SYSTEMS SUPPORTED:</strong> {activeLayer.tech}
               </div>
             </div>
 
             <div className="grid-2 gap-xl" style={{ alignItems: 'start' }}>
               {/* Features List */}
               <div>
-                <span className="mono-label" style={{ color: 'var(--text-muted)' }}>ARCHITECTURAL MANDATES</span>
+                <span className="mono-label" style={{ color: 'var(--text-muted)' }}>KEY CAPABILITIES</span>
                 <div className="flex flex-col gap-sm mt-sm">
                   {activeLayer.features.map((feat, idx) => (
                     <div key={idx} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', backgroundColor: '#171722', padding: '12px', borderRadius: '8px' }}>
@@ -278,17 +359,17 @@ export default function PlatformPage() {
 
               {/* Technical Benchmarks & Topology Box */}
               <div style={{ backgroundColor: '#0d0d14', padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
-                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>LAYER SPECIFICATIONS &amp; METRICS</span>
+                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>GUARANTEED STANDARDS &amp; SAFETY</span>
                 <div className="mono-sm mt-md" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '10px', color: 'var(--text-secondary)' }}>
                   <div><strong>REAL-TIME PERFORMANCE:</strong> <span style={{ color: '#ffffff' }}>{activeLayer.benchmarks}</span></div>
-                  <div><strong>FAULT TOLERANCE:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Zero-loss queue persistence with Redis cluster replication</span></div>
-                  <div><strong>MIGRATION OVERHEAD:</strong> <span style={{ color: 'var(--status-pass)' }}>0 database schema alterations required on host SIS</span></div>
-                  <div><strong>SECURITY MODEL:</strong> <span style={{ color: '#ffffff' }}>Per-tenant AES-256 envelope encryption with hardware HSM</span></div>
+                  <div><strong>ZERO LOST UPDATES:</strong> <span style={{ color: 'var(--accent-emerald)' }}>All student updates queued safely and delivered reliably</span></div>
+                  <div><strong>ZERO SYSTEM DISRUPTION:</strong> <span style={{ color: 'var(--status-pass)' }}>No changes or alterations required on your existing campus databases</span></div>
+                  <div><strong>PRIVACY &amp; SECURITY:</strong> <span style={{ color: '#ffffff' }}>Strict institutional encryption compliant with UK GDPR and higher education standards</span></div>
                 </div>
 
                 <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-hairline)' }}>
                   <Link to="/how-it-works" className="btn-secondary btn-sm" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                    <span>Trace Event Lifecycle in How It Works</span>
+                    <span>See How Common Issues Get Resolved</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -296,14 +377,14 @@ export default function PlatformPage() {
             </div>
           </div>
 
-          {/* ── INTERACTIVE IDENTITY RESOLVER MOCKUP ───────────────── */}
+          {/* ── UNIFIED STUDENT RECORD MOCKUP ───────────────── */}
           <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>DETERMINISTIC ENTITY RESOLVER</span>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>UNIFIED STUDENT RECORD</span>
             <h2 className="headline-lg" style={{ marginTop: '4px' }}>
-              Five Fragmented Silos. Reconciled in Milliseconds.
+              One clear view for your entire campus.
             </h2>
             <p className="section-desc">
-              Select a student to inspect how WorldLynk stitches records from SITS, Moodle, Stripe, and QR attendance into a single canonical dossier without altering source schemas.
+              Select a student to see how WorldLynk brings together records from your student database, course portal, accommodation, and lecture attendance into one friendly profile.
             </p>
           </div>
 
@@ -315,7 +396,7 @@ export default function PlatformPage() {
                   <span className="mockup-dot mockup-dot-amber" />
                   <span className="mockup-dot mockup-dot-green" />
                 </div>
-                <span className="mono-sm text-muted">FABRIC ENTITY RESOLVER // LIVE RECONCILIATION</span>
+                <span className="mono-sm text-muted">CONNECTED STUDENT RECORD // LIVE PROFILE</span>
               </div>
 
               {/* Student Switcher */}
@@ -326,12 +407,13 @@ export default function PlatformPage() {
                     onClick={() => setSelectedStudentIdx(idx)}
                     className="tab-btn"
                     style={{
-                      padding: '4px 10px',
+                      padding: '5px 12px',
                       fontSize: '11px',
                       borderRadius: '6px',
                       backgroundColor: selectedStudentIdx === idx ? 'var(--accent-orange)' : '#191924',
                       color: selectedStudentIdx === idx ? '#ffffff' : 'var(--text-secondary)',
-                      border: '1px solid var(--border-subtle)'
+                      border: '1px solid var(--border-subtle)',
+                      fontWeight: selectedStudentIdx === idx ? '700' : '500'
                     }}
                   >
                     {s.name}
@@ -341,65 +423,84 @@ export default function PlatformPage() {
             </div>
 
             <div className="mockup-body" style={{ padding: '24px', backgroundColor: '#0d0d12' }}>
-              <div className="flex-between flex-wrap gap-md mb-lg">
-                <div>
-                  <div className="mono-label" style={{ color: 'var(--accent-cyan)' }}>CANONICAL RESOLVED IDENTITY</div>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{student.name}</h3>
-                  <div className="mono-sm text-secondary">{student.course} · {student.status}</div>
+              <div className="flex-between flex-wrap gap-md mb-lg" style={{ paddingBottom: '16px', borderBottom: '1px solid #1a1a24' }}>
+                <div className="flex gap-md alignItems-center">
+                  <img
+                    src={student.photo}
+                    alt={student.name}
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '2px solid var(--accent-orange)'
+                    }}
+                  />
+                  <div>
+                    <div className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STUDENT DOSSIER</div>
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{student.name}</h3>
+                    <div className="mono-sm text-secondary">{student.course} · {student.status}</div>
+                  </div>
                 </div>
+
                 <div style={{ textAlign: 'right' }}>
-                  <span className="pill pill-approved"><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> 100% CONFIDENCE MATCH</span>
-                  <div className="mono-sm text-muted mt-xs">Signal: {student.recentSignal}</div>
+                  <span className="pill pill-approved"><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> ALL CAMPUS SYSTEMS CONNECTED</span>
+                  <div className="mono-sm text-muted mt-xs">Latest Note: {student.recentSignal}</div>
                 </div>
               </div>
 
-              {/* Disparate Feeds Grid */}
+              {/* 4 Connected Systems Grid */}
               <div className="grid-4 mb-xl">
-                <div className="card-dark" style={{ padding: '14px', border: '1px solid #232332' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>SITS:VISION (TRIBAL)</div>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STUDENT RECORD (SITS)</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>ID: {student.sitsId}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>Status: Enrolled Full-Time</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Tutor: {student.tutor}</div>
+                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Official Record Synced</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '14px', border: '1px solid #232332' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>MOODLE LMS</div>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>LEARNING PORTAL (MOODLE)</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>User: {student.moodleUser}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>Inactivity: {student.moodlePayload.inactivity_hours}h</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.moodle.coursework}</div>
+                  <div className="pill pill-active" style={{ marginTop: '8px', fontSize: '9px' }}>Coursework In Progress</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '14px', border: '1px solid #232332' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>STRIPE ESCROW</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>Cus: {student.stripeCus}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>PBSA: £{student.stripePayload.amount / 100}/wk</div>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VERIFIED HOUSING</div>
+                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>{student.details.stripe.residence.split('(')[0]}</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Rent: {student.details.stripe.rent}</div>
+                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Deposit Protected</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '14px', border: '1px solid #232332' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>DYNAMIC QR ATTENDANCE</div>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                  <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>ATTENDANCE &amp; VISA</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>CAS: {student.cas}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>Missed: {student.attendancePayload.missed_consecutive} sessions</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.attendance.verification}</div>
+                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Within 20h Work Cap</div>
                 </div>
               </div>
 
-              {/* Raw JSON Payload Viewer */}
-              <div style={{ backgroundColor: '#060609', padding: '16px', borderRadius: '10px', border: '1px solid #1a1a24' }}>
-                <div className="flex-between mb-sm">
+              {/* Friendly Tabbed Detail Inspector (No Raw JSON) */}
+              <div style={{ backgroundColor: '#13131c', padding: '18px', borderRadius: '12px', border: '1px solid #20202e' }}>
+                <div className="flex-between mb-md" style={{ borderBottom: '1px solid #1c1c28', paddingBottom: '10px' }}>
                   <div className="flex gap-xs">
                     {[
-                      { id: 'sits', label: 'SITS Payload' },
-                      { id: 'moodle', label: 'Moodle LMS' },
-                      { id: 'stripe', label: 'Stripe Escrow' },
-                      { id: 'attendance', label: 'QR Attendance' }
+                      { id: 'sits', label: 'Student Records' },
+                      { id: 'moodle', label: 'Learning Portal' },
+                      { id: 'stripe', label: 'Housing & Tenancy' },
+                      { id: 'attendance', label: 'Attendance & Check-In' }
                     ].map((tab) => (
                       <button
                         key={tab.id}
-                        onClick={() => setPayloadView(tab.id)}
+                        onClick={() => setDetailTab(tab.id)}
                         style={{
-                          backgroundColor: payloadView === tab.id ? '#20202e' : 'transparent',
-                          color: payloadView === tab.id ? 'var(--accent-orange)' : 'var(--text-muted)',
+                          backgroundColor: detailTab === tab.id ? 'var(--accent-orange)' : '#191924',
+                          color: detailTab === tab.id ? '#ffffff' : 'var(--text-secondary)',
                           border: 'none',
-                          padding: '3px 8px',
-                          borderRadius: '4px',
-                          fontSize: '11px',
+                          padding: '6px 12px',
+                          borderRadius: '6px',
+                          fontSize: '11.5px',
+                          fontWeight: detailTab === tab.id ? '700' : '500',
                           cursor: 'pointer'
                         }}
                       >
@@ -407,15 +508,88 @@ export default function PlatformPage() {
                       </button>
                     ))}
                   </div>
-                  <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>Ingested via Redis Event Bus</span>
+                  <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>Synced via WorldLynk Campus Connector</span>
                 </div>
 
-                <pre style={{ margin: 0, fontSize: '11px', color: 'var(--accent-cyan)', fontFamily: 'var(--wl-font-mono)', overflowX: 'auto', lineHeight: 1.5 }}>
-                  {payloadView === 'sits' && JSON.stringify(student.sitsPayload, null, 2)}
-                  {payloadView === 'moodle' && JSON.stringify(student.moodlePayload, null, 2)}
-                  {payloadView === 'stripe' && JSON.stringify(student.stripePayload, null, 2)}
-                  {payloadView === 'attendance' && JSON.stringify(student.attendancePayload, null, 2)}
-                </pre>
+                {detailTab === 'sits' && (
+                  <div className="grid-3 gap-md">
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>OFFICIAL ENROLMENT STATUS</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.sits.status}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.sits.enrolment}</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>ASSIGNED TUTOR</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.sits.tutor}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Faculty of Computing</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>FEES &amp; SPONSORSHIP</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.sits.feeStatus}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>CAS: {student.cas}</div>
+                    </div>
+                  </div>
+                )}
+
+                {detailTab === 'moodle' && (
+                  <div className="grid-3 gap-md">
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>PORTAL ENGAGEMENT</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.moodle.status}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Last seen: {student.details.moodle.lastLogin}</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>COURSEWORK PROGRESS</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.moodle.coursework}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>On track for Term 1</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>ADVISOR RECOMMENDATION</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.moodle.alert}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Ready for tutor approval</div>
+                    </div>
+                  </div>
+                )}
+
+                {detailTab === 'stripe' && (
+                  <div className="grid-3 gap-md">
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>BOOKING STATUS</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.stripe.status}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.stripe.escrow}</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>VERIFIED HALL OF RESIDENCE</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.stripe.residence}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Rate: {student.details.stripe.rent}</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>FRAUD PROTECTION</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-cyan)' }}>100% Scam-Free Guarantee</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Verified partner property</div>
+                    </div>
+                  </div>
+                )}
+
+                {detailTab === 'attendance' && (
+                  <div className="grid-3 gap-md">
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>ATTENDANCE SUMMARY</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.attendance.status}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.attendance.verification}</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>NEXT ACTION</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.attendance.action}</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Waiting for tutor sign-off</div>
+                    </div>
+                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                      <div className="mono-label" style={{ fontSize: '9px' }}>VISA SPONSOR STATUS</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>Fully Compliant</div>
+                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Meets sponsor requirements</div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

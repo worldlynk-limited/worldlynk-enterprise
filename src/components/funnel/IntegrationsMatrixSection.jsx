@@ -69,14 +69,14 @@ export default function IntegrationsMatrixSection() {
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ENTERPRISE ECOSYSTEM CONNECTORS
+            ZERO-MIGRATION CAMPUS CONNECTORS
           </div>
           <h2 className="headline-lg" style={{ color: '#0c0c0f', marginBottom: '1rem' }}>
-            Works with the systems you already use every day.
+            Works with the tools your team already relies on.
           </h2>
           <p className="body-lg" style={{ color: '#52525b', lineHeight: 1.6 }}>
-            WorldLynk connects non-invasively via REST APIs, webhook listeners, and event brokers. 
-            Your existing CRM, Admissions, SIS, and LMS remain your system of record — zero migrations required.
+            No complex IT projects. No painful database migrations. WorldLynk plugs smoothly into your existing student records, 
+            learning portals, and admissions tools — keeping your current systems completely untouched.
           </p>
         </div>
 

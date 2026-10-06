@@ -33,10 +33,12 @@ export default function GlobalFooter() {
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Platform</h3>
             <ul className="wl-footer__list">
+              <li><Link to="/journey" style={{ color: 'var(--wl-accent)', fontWeight: 600 }}>Student Journey Funnel</Link></li>
               <li><Link to="/platform#nova">Specialist AI Assistants</Link></li>
               <li><Link to="/staff-os">Compass Staff Portal</Link></li>
               <li><Link to="/student-os">Student Mobile App</Link></li>
               <li><Link to="/how-it-works">How It Works</Link></li>
+              <li><Link to="/integrations">Integrations Directory</Link></li>
               <li><a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer">Student App ↗</a></li>
               <li><a href="https://uniportal-uq1p.onrender.com" target="_blank" rel="noopener noreferrer">Compass Staff Portal ↗</a></li>
             </ul>

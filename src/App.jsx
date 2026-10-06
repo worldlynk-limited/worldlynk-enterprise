@@ -32,6 +32,7 @@ import AccessibilityPage from './pages/AccessibilityPage';
 import TermsPage from './pages/TermsPage';
 import TrustHubPage from './pages/TrustHubPage';
 import IntegrationsPage from './pages/IntegrationsPage';
+import StudentJourneyPage from './pages/StudentJourneyPage';
 
 export default function App() {
   const [cmdOpen, setCmdOpen] = useState(false);
@@ -62,6 +63,8 @@ export default function App() {
           <Route path="/demo" element={<DemoPage />} />
 
           {/* Platform Sub-Pages */}
+          <Route path="/journey" element={<StudentJourneyPage />} />
+          <Route path="/funnel" element={<StudentJourneyPage />} />
           <Route path="/how-it-works" element={<HowItWorksPage />} />
           <Route path="/integrations" element={<IntegrationsPage />} />
 

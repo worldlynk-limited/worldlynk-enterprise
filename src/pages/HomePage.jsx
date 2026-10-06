@@ -9,6 +9,13 @@ import {
   Play, Pause, RotateCcw, ChevronRight
 } from 'lucide-react';
 
+import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSection';
+import InteractiveFunnelSection from '../components/funnel/InteractiveFunnelSection';
+import MeetStudentStorySection from '../components/funnel/MeetStudentStorySection';
+import ContextLayerNetworkSection from '../components/funnel/ContextLayerNetworkSection';
+import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSection';
+import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
+
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 
@@ -26,10 +33,6 @@ export default function HomePage() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [scenarioProgress, setScenarioProgress] = useState(0);
   const [actionsResolvedCount, setActionsResolvedCount] = useState(4184);
-
-  // State for Section 2: Cortex
-  const [selectedAgentId, setSelectedAgentId] = useState('supervisor');
-  const [agentSearch, setAgentSearch] = useState('');
 
   // State for Section 3: Cascade Simulation
   const [activeCascadeStep, setActiveCascadeStep] = useState(0);
@@ -171,21 +174,6 @@ export default function HomePage() {
 
   // --- Data structures ---
 
-  const agents = [
-    { id: 'supervisor', name: 'Nova Campus Coordinator', role: 'Directs requests and checks campus rules', desc: 'Connects student inquiries to the right department, checks institutional policies, and coordinates specialist AI assistants while keeping staff in control.', channels: ['Staff Portal', 'Student App', 'WhatsApp'], read: ['Student Records', 'Course Enrollment', 'Attendance Signals'], action: ['Prepares Staff Briefs', 'Alerts Personal Tutors'], owner: 'Registry & Student Support', icon: ShieldCheck },
-    { id: 'tailoredResume', name: 'CV & Career Coach', role: 'Helps students tailor CVs for UK graduate jobs', desc: 'Helps students improve their CVs, match with visa-compliant UK vacancies, and prepare tailored applications for graduate schemes.', channels: ['Student App', 'Web Portal'], read: ['Student CV', 'Target Job Requirements'], action: ['Optimized CV Draft', 'ATS Scorecard & Feedback'], owner: 'Careers Service', icon: FileText },
-    { id: 'accommodation', name: 'Student Housing Assistant', role: 'Matches students with verified student rooms', desc: 'Helps students find vetted student housing, secure lease agreements, and avoid rental scams before arrival.', channels: ['Student App', 'WhatsApp'], read: ['Campus Halls', 'Partner Housing Inventory'], action: ['Room Allocation', 'Secure Deposit Link'], owner: 'Accommodation Services', icon: Building },
-    { id: 'moodle', name: 'Course & Learning Assistant', role: 'Connects course deadlines and lecture timetables', desc: 'Answers course questions, checks assignment deadlines, and syncs timetables directly from Moodle and Canvas.', channels: ['Student App', 'Web Portal'], read: ['Course Catalog', 'Assignment Timetable'], action: ['Timetable Sync', 'Deadline Reminder'], owner: 'Academic Departments', icon: Cpu },
-    { id: 'interviewPrep', name: 'Mock Interview Coach', role: 'Realistic practice interviews with voice feedback', desc: 'Gives students real-time mock interviews with personalized spoken feedback to build job-search confidence.', channels: ['Student App', 'Voice Assistant'], read: ['Job Description', 'Student Background'], action: ['Practice Question Sets', 'Spoken Feedback'], owner: 'Careers Service', icon: Bot },
-    { id: 'jobMatch', name: 'Visa Work Cap Checker', role: 'Finds jobs while protecting the 20h/wk visa limit', desc: 'Helps international students discover campus and local jobs while making sure they never exceed their 20-hour weekly visa limit.', channels: ['Student App', 'Telegram'], read: ['Weekly Rota Log', 'Verified Campus Jobs'], action: ['Work Hour Check', 'Safe Application Pass'], owner: 'Visa & Compliance', icon: Users },
-    { id: 'eventMatch', name: 'Campus Life & Events Curator', role: 'Connects students to clubs, events, and societies', desc: 'Recommends university workshops, society meetups, and campus events to help students build community and stay engaged.', channels: ['Student App', 'Telegram'], read: ['Student Interests', 'Union Events Calendar'], action: ['Calendar Invite', 'Mobile Event Pass'], owner: 'Student Union', icon: Calendar },
-    { id: 'planYourDay', name: 'Daily Schedule Planner', role: 'Combines classes, study time, and campus routes', desc: 'Brings together lecture times, library study slots, and campus walking directions into one convenient daily view.', channels: ['Student App', 'Mobile Web'], read: ['Class Timetable', 'Campus Map'], action: ['Daily Schedule Digest', 'Walking Directions'], owner: 'Student Support', icon: Clock },
-    { id: 'searchAgent', name: 'Live Visa & Policy Researcher', role: 'Instant answers on Home Office visa rules and policies', desc: 'Searches official UK Home Office guidelines and university policies in real time to give students and staff accurate, cited answers.', channels: ['Staff Console', 'Student App'], read: ['UKVI Guidelines', 'Campus Knowledge Base'], action: ['Clear Cited Answers'], owner: 'Immigration Advice', icon: Globe },
-    { id: 'consultantCopilot', name: 'Admissions Assistant', role: 'Helps admissions teams review student applications faster', desc: 'Assists admissions staff by summarizing overseas credentials, checking visa readiness, and preparing CAS files for sign-off.', channels: ['Compass Console', 'Web'], read: ['Application Checklist', 'Equivalency Guidelines'], action: ['Student Summary Dossier', 'Staff Notification'], owner: 'International Admissions', icon: Database }
-  ];
-
-  const filteredAgents = agents.filter(a => a.name.toLowerCase().includes(agentSearch.toLowerCase()) || a.role.toLowerCase().includes(agentSearch.toLowerCase()));
-  const selectedAgent = agents.find(a => a.id === selectedAgentId) || agents[0];
 
   const cascadeSteps = [
     { id: 0, title: 'Missed Class Flagged', time: '09:12:04', loc: 'Lecture Hall EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'Maya Chen misses morning check-in for her CS-5100 seminar. The system notes this is her 3rd consecutive missed lecture.', ledger: '{"event": "attendance_miss", "student_name": "Maya Chen", "module": "CS-5100", "location": "EB-02", "timestamp": "09:12:04"}' },
@@ -221,12 +209,13 @@ export default function HomePage() {
             <div>
               <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>AI PLATFORM FOR HIGHER EDUCATION</div>
               <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>One AI platform for your entire campus.</h1>
-              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '540px' }}>
-                WorldLynk connects your existing university systems to automate student support, simplify attendance, protect visa compliance, and save staff thousands of hours.
+              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '560px', lineHeight: 1.6 }}>
+                Connect your existing university systems and the people around every student — from first interest through enrolment, student life and career progression.
               </p>
               <div className="hero-keywords-container">
                 {[
-                  { label: 'Admissions', icon: GraduationCap },
+                  { label: 'Prospect & Inquiries', icon: Search },
+                  { label: 'Admissions & CAS', icon: GraduationCap },
                   { label: 'Attendance', icon: Clock },
                   { label: 'Student Support', icon: Users },
                   { label: 'Campus Housing', icon: Building },
@@ -240,11 +229,14 @@ export default function HomePage() {
               </div>
               <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
                 <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Book a Live Demo</Link>
-                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
-                  <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Portal</span> <ExternalLink size={15} color="#ff8833" />
+                <a href="#interactive-funnel" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', border: '1px solid rgba(255, 107, 0, 0.4)', background: 'rgba(255, 107, 0, 0.08)', color: '#ff8833', fontWeight: 600 }}>
+                  Explore 11-Stage Funnel
                 </a>
-                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.5rem', fontSize: '0.95rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
-                  <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span> <ExternalLink size={15} color="#38bdf8" />
+                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 255, 255, 0.15)', background: 'rgba(255, 255, 255, 0.04)' }}>
+                  <span style={{ color: '#ffffff', fontWeight: 500 }}>Staff Portal</span> <ExternalLink size={14} color="#a1a1aa" />
+                </a>
+                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
+                  <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span> <ExternalLink size={14} color="#38bdf8" />
                 </a>
               </div>
             </div>
@@ -647,119 +639,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 2: NOVA AI MULTI-AGENT ENGINE (DARK) */}
-      <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
-        <div className="main-container">
-          <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>SPECIALIST AI ASSISTANTS · 30 FOCUSED AGENTS</div>
-            <h2 className="headline-lg">30 focused AI assistants for every team on campus.</h2>
-            <p className="body-md text-secondary" style={{ maxWidth: '780px', marginTop: '8px' }}>
-              Instead of one generic chatbot, WorldLynk gives your university 30 specialized AI assistants trained for admissions, student welfare, attendance, and careers — always working inside the tools you already use.
-            </p>
-          </div>
-          
-          <div className="responsive-grid-cortex">
-            {/* Left Sidebar: Agent List */}
-            <div className="flex flex-col gap-md">
-              <div className="form-group" style={{ marginBottom: '1rem' }}>
-                <div style={{ position: 'relative' }}>
-                  <Search size={18} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#6b7280' }} />
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="Search assistants by name or department..." 
-                    value={agentSearch}
-                    onChange={(e) => setAgentSearch(e.target.value)}
-                    style={{ paddingLeft: '2.5rem', width: '100%', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white', borderRadius: '4px', padding: '0.75rem 0.75rem 0.75rem 2.5rem' }}
-                  />
-                </div>
-              </div>
-              <div style={{ maxHeight: '500px', overflowY: 'auto', paddingRight: '0.5rem' }} className="flex flex-col gap-sm">
-                {filteredAgents.map(agent => (
-                  <div 
-                    key={agent.id} 
-                    className={`card ${selectedAgentId === agent.id ? 'card-selected' : 'card-hover'}`}
-                    onClick={() => setSelectedAgentId(agent.id)}
-                    style={{ 
-                      padding: '1rem', 
-                      cursor: 'pointer', 
-                      backgroundColor: selectedAgentId === agent.id ? '#1a1a24' : '#131318',
-                      border: selectedAgentId === agent.id ? '1px solid var(--wl-accent)' : '1px solid #2a2a35',
-                      borderRadius: '8px'
-                    }}
-                  >
-                    <div className="flex flex-between alignItems-center">
-                      <div className="flex gap-md alignItems-center">
-                        <agent.icon size={20} style={{ color: selectedAgentId === agent.id ? 'var(--wl-accent)' : '#a1a1aa' }} />
-                        <div>
-                          <div style={{ fontWeight: 600, fontSize: '1rem' }}>{agent.name}</div>
-                          <div className="mono-sm text-muted" style={{ fontSize: '0.75rem' }}>{agent.role}</div>
-                        </div>
-                      </div>
-                      <ArrowRight size={16} style={{ color: selectedAgentId === agent.id ? 'var(--wl-accent)' : 'transparent' }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* SECTION 1: BEFORE, DURING & AFTER UNIVERSITY (ADD #1) */}
+      <LifecycleOverviewSection />
 
-            {/* Right Panel: Agent Detail */}
-            {selectedAgent && (
-              <div className="card-dark" style={{ padding: '2rem', borderRadius: '12px', border: '1px solid #2a2a35', backgroundColor: '#131318', display: 'flex', flexDirection: 'col', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: 0, right: 0, padding: '2rem', opacity: 0.05 }}>
-                  <selectedAgent.icon size={120} />
-                </div>
-                <div style={{ position: 'relative', zIndex: 2 }}>
-                  <div className="flex gap-md alignItems-center mb-lg">
-                    <div style={{ padding: '1rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35' }}>
-                      <selectedAgent.icon size={32} style={{ color: 'var(--wl-accent)' }} />
-                    </div>
-                    <div>
-                      <h3 className="headline-md" style={{ marginBottom: '0.25rem' }}>{selectedAgent.name}</h3>
-                      <div className="pill" style={{ backgroundColor: '#1a1a24', color: '#a1a1aa', border: '1px solid #2a2a35' }}>{selectedAgent.role}</div>
-                    </div>
-                  </div>
-                  
-                  <p className="body-lg text-secondary mb-xl">{selectedAgent.desc}</p>
-                  
-                  <div className="grid-2 gap-md mb-lg">
-                    <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>DATA SOURCES</div>
-                      <div className="flex gap-sm flex-wrap">
-                        {selectedAgent.read.map((r, i) => <span key={i} className="badge badge-cyan">{r}</span>)}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>WHAT THIS ASSISTANT DOES</div>
-                      <div className="flex gap-sm flex-wrap">
-                        {selectedAgent.action.map((a, i) => <span key={i} className="badge badge-purple">{a}</span>)}
-                      </div>
-                    </div>
-                  </div>
+      {/* SECTION 2: INTERACTIVE 11-STAGE FUNNEL (ADD #2) */}
+      <InteractiveFunnelSection />
 
-                  <div className="divider" style={{ borderTop: '1px solid #2a2a35', margin: '2rem 0' }}></div>
+      {/* SECTION 3: MEET A STUDENT STORY (ADD #3) */}
+      <MeetStudentStorySection />
 
-                  <div className="flex flex-between alignItems-center flex-wrap gap-md">
-                    <div>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>WHERE IT WORKS</div>
-                      <div className="flex gap-sm flex-wrap">
-                        {selectedAgent.channels.map((c, i) => <span key={i} className="mono-sm" style={{ color: '#e4e4e7' }}>[{c}]</span>)}
-                      </div>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>CAMPUS TEAM</div>
-                      <div className="flex gap-sm alignItems-center justify-end">
-                        <ShieldCheck size={14} className="text-secondary" />
-                        <span style={{ fontWeight: 500 }}>{selectedAgent.owner}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* SECTION 4: ONE CONTEXT LAYER & NETWORK FLOW (ADD #4 & ADD #5) */}
+      <ContextLayerNetworkSection />
+
+      {/* SECTION 5: EXPANDED SPECIALIST AI AGENTS (ADD #8) */}
+      <SpecialistAgentsSection />
 
       {/* SECTION 3: INCIDENT CASCADE SIMULATION (DARK) */}
       <section className="section" style={{ backgroundColor: '#09090b', borderTop: '1px solid #1a1a24', borderBottom: '1px solid #1a1a24' }}>
@@ -1090,50 +983,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 6: INTEGRATION CONNECTOR MATRIX (STONE/LIGHT) */}
-      <section className="section section-stone" style={{ backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
-        <div className="main-container">
-          <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>CONNECTS WITH YOUR TOOLS</div>
-            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Works with the systems you already use every day.</h2>
-          </div>
-
-          <div className="grid-auto gap-md" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))' }}>
-            {[
-              { name: 'SITS:Vision', cat: 'Student Records', type: 'Two-way sync', icon: Database },
-              { name: 'Ellucian Banner', cat: 'Student Records', type: 'Two-way sync', icon: Database },
-              { name: 'Moodle LMS', cat: 'Course Portal', type: 'Automatic sync', icon: GraduationCap },
-              { name: 'Canvas LMS', cat: 'Course Portal', type: 'Automatic sync', icon: GraduationCap },
-              { name: 'Stripe Payments', cat: 'Housing Deposits', type: 'Secure Checkout', icon: HardDrive },
-              { name: 'Algolia Search', cat: 'Campus Search', type: 'Instant search', icon: Search },
-              { name: 'WhatsApp', cat: 'Student Messaging', type: 'Two-way chat', icon: MessageSquare },
-              { name: 'Telegram', cat: 'Student Messaging', type: 'Two-way chat', icon: MessageSquare },
-              { name: 'Campus Timetables', cat: 'Scheduling', type: 'Live sync', icon: Server },
-              { name: 'Student Records (SIS)', cat: 'Identity', type: 'Real-time', icon: Zap },
-            ].map((conn, i) => (
-              <div key={i} className="card-stone" style={{ padding: '1.25rem', backgroundColor: 'white', borderRadius: '8px', border: '1px solid #e4e4e7', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ padding: '0.75rem', backgroundColor: '#f4f4f5', borderRadius: '6px' }}>
-                  <conn.icon size={20} style={{ color: '#52525b' }} />
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 600, fontSize: '0.95rem', color: '#0c0c0f' }}>{conn.name}</div>
-                  <div className="mono-sm text-muted" style={{ fontSize: '0.7rem' }}>{conn.cat}</div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.25rem' }}>
-                  <div style={{ width: 8, height: 8, borderRadius: '50%', backgroundColor: 'var(--status-pass)' }} />
-                  <span style={{ fontSize: '0.65rem', color: '#71717a' }}>{conn.type}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-            <Link to="/integrations" style={{ color: 'var(--wl-accent)', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              View all 40+ integrations <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* SECTION 7: CONNECTED SYSTEMS INTEGRATION MATRIX (ADD #7) */}
+      <IntegrationsMatrixSection />
 
       {/* SECTION 7: ROI SIMULATOR (DARK) */}
       <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>

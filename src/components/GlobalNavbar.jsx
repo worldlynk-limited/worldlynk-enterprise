@@ -108,12 +108,16 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
                   OUR PLATFORM
                 </div>
+                <Link to="/journey" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Student Journey Funnel</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>11 stages: Prospect → Enrolment → Retention → Career</div>
+                </Link>
                 <Link to="/platform" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Platform Overview</div>
                   <div style={{ fontSize: '11px', color: '#9494a0' }}>4 simple layers: Connect, Understand, Assist, Control</div>
                 </Link>
                 <Link to="/platform#nova" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Specialist AI Assistants</div>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-cyan)' }}>Specialist AI Assistants</div>
                   <div style={{ fontSize: '11px', color: '#9494a0' }}>24/7 student support &amp; automated staff drafts</div>
                 </Link>
                 <Link to="/how-it-works" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
@@ -131,6 +135,22 @@ export default function GlobalNavbar({ onOpenSearch }) {
               </div>
             )}
           </div>
+
+          <Link
+            to="/journey"
+            style={{
+              fontSize: '13px',
+              fontWeight: '600',
+              color: isActive('/journey') || isActive('/funnel') ? 'var(--wl-accent)' : '#ffffff',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px'
+            }}
+          >
+            <span>Student Journey</span>
+            <span style={{ fontSize: '9px', backgroundColor: 'rgba(255, 107, 0, 0.15)', color: 'var(--wl-accent)', padding: '1px 5px', borderRadius: '3px', border: '1px solid rgba(255, 107, 0, 0.3)' }}>NEW</span>
+          </Link>
 
           <Link
             to="/staff-os"
@@ -390,6 +410,25 @@ export default function GlobalNavbar({ onOpenSearch }) {
             {/* Direct Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>OUR PLATFORM</div>
+              <Link
+                to="/journey"
+                onClick={() => setMobileMenuOpen(false)}
+                style={{
+                  fontSize: '15px',
+                  fontWeight: '700',
+                  color: 'var(--wl-accent)',
+                  padding: '10px 12px',
+                  backgroundColor: 'rgba(255, 107, 0, 0.08)',
+                  borderRadius: '6px',
+                  border: '1px solid rgba(255, 107, 0, 0.25)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <span>Student Journey Funnel</span>
+                <span style={{ fontSize: '10px', backgroundColor: 'var(--wl-accent)', color: '#ffffff', padding: '2px 6px', borderRadius: '3px' }}>11 STAGES</span>
+              </Link>
               <Link
                 to="/platform"
                 onClick={() => setMobileMenuOpen(false)}

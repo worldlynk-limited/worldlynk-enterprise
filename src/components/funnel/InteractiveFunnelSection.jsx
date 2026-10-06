@@ -18,7 +18,7 @@ export default function InteractiveFunnelSection() {
       tagline: 'Discovery across channels',
       whatHappens: 'Prospective student discovers a university, course, scholarship or degree opportunity through the university website, student campaign, educational consultant or partner network.',
       worldlynkRole: 'WorldLynk operates non-invasively at the top of the funnel, providing embeddable web widgets, partner discovery connectors, and verified course catalogs that preserve channel source attribution.',
-      studentAction: 'Browses courses, compares entry requirements, fees, intakes, and UK location details.',
+      studentAction: 'Browses courses, compares entry requirements, fees, intakes, and campus location details.',
       staffAction: 'Recruitment teams gain real-time visibility into channel reach and aggregate market interest without manual spreadsheet imports.',
       aiAction: 'Prospect Discovery Agent answers initial exploratory queries and tailors course recommendations to student background.',
       systemsConnected: 'University Web CMS, Marketing Campaigns, Partner Portals, Google Analytics, CRM Lead Capture'
@@ -100,12 +100,12 @@ export default function InteractiveFunnelSection() {
       zone: 'Enrol & Operate',
       zoneColor: '#38bdf8',
       tagline: 'Visa, housing, finance & travel',
-      whatHappens: 'Student prepares for their transition to the UK: CAS letter issuance, student visa (UKVI) application, booking student accommodation, flights, and campus orientation.',
+      whatHappens: 'Student prepares for their university transition: admissions clearance, student visa sponsorship and processing, booking verified student accommodation, flights, and campus orientation.',
       worldlynkRole: 'WorldLynk Personal AI Agent transitions into pre-arrival mode, integrating verified accommodation inventory, airport arrival schedules, and visa timeline trackers.',
-      studentAction: 'Tracks CAS issuance, reserves vetted student accommodation, and logs travel arrival details in the Student App.',
+      studentAction: 'Tracks visa issuance, reserves vetted student accommodation, and logs travel arrival details in the Student App.',
       staffAction: 'Compliance teams review visa issuance readiness; accommodation teams track arrival dates and room bookings.',
-      aiAction: 'Housing & Visa Prep Agent matches students with verified rooms, issues digital tenancy packs, and monitors UKVI processing times.',
-      systemsConnected: 'UKVI / Home Office Tracking, Accommodation Inventory, Travel & Arrival Logistics Portal'
+      aiAction: 'Housing & Visa Prep Agent matches students with verified rooms, issues digital tenancy packs, and monitors student visa processing milestones.',
+      systemsConnected: 'Visa & Immigration Tracking, Accommodation Inventory, Travel & Arrival Logistics Portal'
     },
     {
       num: '08',
@@ -158,10 +158,10 @@ export default function InteractiveFunnelSection() {
       tagline: 'Jobs, 20h cap & graduate transition',
       whatHappens: 'Student progresses toward graduation, balances part-time work within the legal 20-hour weekly visa limit, builds their CV, and lands graduate employment.',
       worldlynkRole: 'WorldLynk automatically protects the 20h/wk visa work cap, delivers AI CV optimization, voice mock interview preparation, and connects alumni networks.',
-      studentAction: 'Verifies campus work hours, practices interviews with real-time voice feedback, and applies for verified UK graduate scheme vacancies.',
+      studentAction: 'Verifies campus work hours, practices interviews with real-time voice feedback, and applies for verified global and regional graduate scheme vacancies.',
       staffAction: 'Careers service tracks graduate outcomes and employer engagement; compliance teams access 100% audit-proof work logs.',
-      aiAction: 'CV & Career Coach tailors resumes to UK ATS systems; Work-Cap Agent verifies weekly rota hours against Home Office rules.',
-      systemsConnected: 'Careers Service Portal, Employer Job Boards, Home Office Compliance Audit Logs, Alumni SIS'
+      aiAction: 'CV & Career Coach tailors resumes to global enterprise ATS standards; Work-Cap Agent verifies weekly rota hours against student visa employment regulations.',
+      systemsConnected: 'Careers Service Portal, Employer Job Boards, Visa Compliance Audit Logs, Alumni SIS'
     }
   ];
 
@@ -174,7 +174,7 @@ export default function InteractiveFunnelSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #2 · THE FULL 11-STAGE HIGHER EDUCATION FUNNEL
+            END-TO-END HIGHER EDUCATION WORKFLOWS
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
             The Connected Student Journey Funnel

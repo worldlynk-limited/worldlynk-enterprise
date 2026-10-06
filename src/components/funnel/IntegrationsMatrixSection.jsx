@@ -26,7 +26,7 @@ export default function IntegrationsMatrixSection() {
     { name: 'Salesforce Education Cloud', category: 'CRM & Admissions', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Synchronizes prospect inquiries, intent scoring, and recruitment stage changes.', type: 'EDA / Service Cloud' },
     { name: 'HubSpot CRM', category: 'CRM & Admissions', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Lead ingestion, campaign source attribution, and inquiry lifecycle updates.', type: 'Webhooks & REST API' },
     { name: 'UCAS Admissions Connect', category: 'CRM & Admissions', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Applicant tracking, conditional offer tracking, and Clearing verification.', type: 'XML / REST Adapter' },
-    { name: 'Student CRM (UK)', category: 'CRM & Admissions', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Connects enquiry touchpoints and open day attendance into the central journey.', type: 'Direct API Sync' },
+    { name: 'Student CRM Suite', category: 'CRM & Admissions', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Connects enquiry touchpoints and open day attendance into the central journey.', type: 'Direct API Sync' },
 
     // Messaging & Channels
     { name: 'WhatsApp for Education', category: 'Messaging & Access', status: 'LIVE', statusColor: '#10b981', desc: 'Direct two-way student support, friendly tutor check-ins, and verified arrival alerts.', type: 'Meta Business Cloud' },
@@ -39,7 +39,7 @@ export default function IntegrationsMatrixSection() {
     { name: 'Student Accommodation Hubs', category: 'Housing & Finance', status: 'AVAILABLE', statusColor: '#38bdf8', desc: 'Verified student housing inventory matching, digital tenancy agreements, and check-ins.', type: 'PMS Integrator' },
 
     // Compliance & Careers
-    { name: 'UKVI Compliance Logger', category: 'Compliance & Careers', status: 'LIVE', statusColor: '#10b981', desc: 'Automated 20-hour weekly term-time work verification and visa audit trail.', type: 'Immutable Ledger' },
+    { name: 'Visa Compliance & Hours Logger', category: 'Compliance & Careers', status: 'LIVE', statusColor: '#10b981', desc: 'Automated 20-hour weekly term-time work verification and immutable visa compliance audit trail.', type: 'Immutable Ledger' },
     { name: 'Handshake Careers', category: 'Compliance & Careers', status: 'ROADMAP', statusColor: '#f59e0b', desc: 'Graduate job posting ingestion and employer campus interview integration.', type: 'Target Q4 2026' },
     { name: 'Symplicity Career Services', category: 'Compliance & Careers', status: 'ROADMAP', statusColor: '#f59e0b', desc: 'Alumni career tracking, internship management, and employer event feeds.', type: 'Target Q1 2027' }
   ];
@@ -69,7 +69,7 @@ export default function IntegrationsMatrixSection() {
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #7 · CONNECTED SYSTEMS &amp; STATUS
+            ENTERPRISE ECOSYSTEM CONNECTORS
           </div>
           <h2 className="headline-lg" style={{ color: '#0c0c0f', marginBottom: '1rem' }}>
             Works with the systems you already use every day.

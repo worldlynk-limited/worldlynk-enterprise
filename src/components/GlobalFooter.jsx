@@ -98,7 +98,7 @@ export default function GlobalFooter() {
             
             <div className="wl-footer__socials" style={{ marginTop: '24px' }}>
               <span style={{ fontSize: '11px', color: '#686875', fontFamily: 'var(--font-mono)' }}>
-                VERIFIED REGISTRY · ENGLAND &amp; WALES
+                GLOBAL PLATFORM INFRASTRUCTURE · MULTI-JURISDICTION COMPLIANCE
               </span>
             </div>
           </div>
@@ -110,10 +110,10 @@ export default function GlobalFooter() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <img src="/worldlynk-logo.svg" alt="WorldLynk" style={{ height: '16px', width: 'auto', display: 'block' }} />
               <span style={{ fontSize: '10px', color: '#ff6b00', background: 'rgba(255, 107, 0, 0.12)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 107, 0, 0.25)', fontFamily: 'var(--font-mono)' }}>
-                HIGHER EDUCATION AI PLATFORM
+                GLOBAL HIGHER EDUCATION PLATFORM
               </span>
               <span style={{ fontSize: '10px', color: '#9494a0', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 255, 255, 0.1)', fontFamily: 'var(--font-mono)' }}>
-                ZERO MIGRATION · SITS · BANNER · MOODLE
+                ZERO MIGRATION · SITS · BANNER · MOODLE · WORKDAY
               </span>
             </div>
 
@@ -123,19 +123,19 @@ export default function GlobalFooter() {
                 <CheckCircle2 size={13} color="#10b981" /> SOC-2 Type II
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> UK GDPR &amp; DPA 2018
+                <CheckCircle2 size={13} color="#10b981" /> UK &amp; EU GDPR
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
                 <CheckCircle2 size={13} color="#10b981" /> FERPA Compliant
               </span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> Secure Offline QR Passes
+                <CheckCircle2 size={13} color="#10b981" /> ISO 27001 Aligned
               </span>
             </div>
           </div>
 
           <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '11px', color: '#686875', fontFamily: 'var(--font-mono)' }}>
-            © {new Date().getFullYear()} WorldLynk Technologies Ltd. All rights reserved. The trusted AI platform for modern higher education.
+            © {new Date().getFullYear()} WorldLynk Technologies Ltd. All rights reserved. The trusted global AI operating platform for higher education.
           </div>
         </div>
       </div>

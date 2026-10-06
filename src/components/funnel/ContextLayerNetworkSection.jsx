@@ -59,7 +59,7 @@ export default function ContextLayerNetworkSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #4 &amp; ADD #5 · ARCHITECTURE &amp; PERMITTED NETWORK FLOW
+            ENTERPRISE ARCHITECTURE &amp; PERMITTED NETWORK FLOW
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
             One Context Layer. Intelligently Connected Actors.
@@ -108,7 +108,7 @@ export default function ContextLayerNetworkSection() {
           </div>
         </div>
 
-        {/* VIEW 1: NETWORK FLOW (ADD #5) */}
+        {/* VIEW 1: PERMITTED CONSENT NETWORK FLOW */}
         {activeTab === 'network' && (
           <div className="animate-fade-in">
             
@@ -370,7 +370,7 @@ export default function ContextLayerNetworkSection() {
           </div>
         )}
 
-        {/* VIEW 2: 5-TIER ARCHITECTURE STACK (ADD #4) */}
+        {/* VIEW 2: 5-TIER ARCHITECTURE STACK */}
         {activeTab === 'architecture' && (
           <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             

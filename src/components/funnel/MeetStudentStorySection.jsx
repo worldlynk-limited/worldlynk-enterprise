@@ -14,18 +14,18 @@ export default function MeetStudentStorySection() {
       id: 'signal',
       stepNum: '01',
       title: 'Initial Signal',
-      actor: 'Prospective Student (Hyderabad)',
+      actor: 'Prospective International Student',
       actorIcon: MapPin,
       actorColor: '#ff6b00',
       badge: 'Discovery Phase',
-      narrative: 'A prospective student based in Hyderabad searches for UK postgraduate courses and discovers MSc Computer Science at a UK partner university via an approved international portal.',
-      whatUserSees: 'Student views course curriculum, fee structure, English language requirements, and post-study work opportunities directly on the course portal.',
+      narrative: 'An international prospective applicant searches global postgraduate degree programs and discovers MSc Advanced Computer Science at a partner university via an accredited international education portal.',
+      whatUserSees: 'Student views course curriculum, fee structure, international scholarship eligibility, language requirements, and post-study graduate employment pathways directly on the verified course portal.',
       contextTransferred: {
-        prospect_location: 'Hyderabad, India',
-        target_course: 'MSc Computer Science',
+        prospect_origin: 'International Applicant (Global Inquiry)',
+        target_course: 'MSc Advanced Computer Science',
         intake_cycle: 'September 2026',
-        source_channel: 'Verified Education Network',
-        consent_status: 'Explicit consent granted for course inquiries'
+        source_channel: 'Verified Global Education Network',
+        consent_status: 'Explicit consent granted for institutional degree inquiries'
       },
       systemAction: 'WorldLynk logs discovery touchpoint without collecting unpermitted personal trackers.'
     },
@@ -37,15 +37,16 @@ export default function MeetStudentStorySection() {
       actorIcon: Sparkles,
       actorColor: '#ff6b00',
       badge: 'Context Orchestration',
-      narrative: 'WorldLynk securely establishes permitted intent: course preference (MSc CS), target university, September intake, academic background (BTech CSE 74%), and specific tuition deposit questions.',
-      whatUserSees: 'Instant personalized checklist matching Indian 4-year degree requirements to UK Tier 4 CAS admission thresholds.',
+      narrative: 'WorldLynk securely establishes permitted intent: program selection (MSc Advanced CS), target institution, September intake cycle, verified undergraduate credential comparability, and tuition deposit timeline.',
+      whatUserSees: 'Instant personalized guidance matching international bachelor degree equivalence and credential evaluation to university admissions benchmarks.',
       contextTransferred: {
-        academic_background: 'BTech Computer Science (74% aggregate)',
-        english_waiver_candidate: 'CBSE 82% English in Standard XII',
-        budget_range: '£22,000 – £26,000',
+        academic_background: 'Bachelor of Science / Computer Science (First Class Honours Equiv.)',
+        credential_evaluation: 'UK ENIC / Ecctis Comparability Verified',
+        language_proficiency: 'Documented higher education in English medium',
+        budget_range: '£22,000 – £26,000 (Self-funded + Institutional Merit Scholarship)',
         stage: 'Inquiry → Qualified'
       },
-      systemAction: 'Context token generated; student profile remains encrypted and private under UK GDPR standards.'
+      systemAction: 'Context token generated; student profile remains encrypted and private under UK GDPR and international privacy standards.'
     },
     {
       id: 'ai',
@@ -55,10 +56,10 @@ export default function MeetStudentStorySection() {
       actorIcon: Bot,
       actorColor: '#c084fc',
       badge: '24/7 AI Copilot',
-      narrative: 'The student’s personal AI assistant answers technical curriculum questions, explains CAS timeline requirements, and calculates exact deposit dates for the September intake.',
-      whatUserSees: 'Chat response: "Your 4-year BTech with 74% meets entry standards. Your Standard XII English score (82%) makes you eligible for an IELTS waiver with this university."',
+      narrative: 'The student’s personal AI assistant answers technical curriculum questions, explains CAS timeline requirements, and calculates exact deposit confirmation schedules.',
+      whatUserSees: 'Chat response: "Your undergraduate qualification meets entry standards. Your documented academic language history qualifies for direct institutional verification with this university."',
       contextTransferred: {
-        ai_recommendation: 'Direct MSc Application with English Waiver',
+        ai_recommendation: 'Direct MSc Application with Standardized Credential Verification',
         next_step: 'Upload degree transcripts and statement of purpose'
       },
       systemAction: 'AI guidance grounded directly in the university’s published international admissions criteria.'
@@ -72,28 +73,28 @@ export default function MeetStudentStorySection() {
       actorColor: '#38bdf8',
       badge: 'Institutional Workflow',
       narrative: 'Subject to student permission, the university’s international recruitment desk receives an anonymized high-intent prospect signal in the Compass Staff Portal.',
-      whatUserSees: 'Admissions Officer sees: "High-intent prospect: MSc CS (Sept Intake) · Hyderabad market · Ready for credential review."',
+      whatUserSees: 'Admissions Officer sees: "High-readiness international prospect: MSc Advanced CS (Sept Intake) · Global recruitment pipeline · Ready for credential review."',
       contextTransferred: {
-        institution_alert: 'UK University South Asia Regional Desk',
+        institution_alert: 'Global Admissions & International Recruitment Desk',
         intent_score: '94 / 100 (High Readiness)',
         workflow_state: 'Admissions Prospect Lead'
       },
-      systemAction: 'Lead synchronized to university Salesforce Education Cloud with zero duplicate data entry.'
+      systemAction: 'Lead synchronized to university CRM (Salesforce / HubSpot) with zero duplicate data entry.'
     },
     {
       id: 'consultant',
       stepNum: '05',
       title: 'Permitted Consultant Routing',
-      actor: 'Connected Consultant / Human Advisor',
+      actor: 'Accredited International Advisor / Counselor',
       actorIcon: Users,
       actorColor: '#f59e0b',
       badge: 'Consent-Governed Handoff',
-      narrative: 'The student clicks: "I’d like human help reviewing my SOP and visa sponsorship." WorldLynk alerts an accredited, connected regional advisor in Hyderabad with full conversation history.',
-      whatUserSees: 'Advisor reaches out on WhatsApp: "Hi, I see you’ve already checked the MSc CS modules and need help finalizing your statement of purpose for the September intake."',
+      narrative: 'The student clicks: "I’d like human guidance reviewing my statement of purpose and visa documentation." WorldLynk alerts an accredited, connected regional advisor with full permitted conversation history.',
+      whatUserSees: 'Advisor reaches out: "Hello! I see you’ve verified your MSc Advanced CS eligibility and would like guidance finalizing your documentation for the September intake."',
       contextTransferred: {
         student_consent: 'Authorized human advisor contact',
-        advisor_assigned: 'Accredited South Asia Education Partner',
-        handoff_context: 'Course details, transcripts, waiver query attached'
+        advisor_assigned: 'Accredited Global Education Advisory Partner',
+        handoff_context: 'Course details, academic transcripts, and credential evaluation attached'
       },
       systemAction: 'Advisor receives contextual brief without student repeating basic questions.'
     },
@@ -105,12 +106,12 @@ export default function MeetStudentStorySection() {
       actorIcon: FileText,
       actorColor: '#10b981',
       badge: 'Conversion Complete',
-      narrative: 'The student submits their formal application. AI verifies transcript formats and Ecctis comparability. University issues an Unconditional Offer; student accepts and pays deposit.',
-      whatUserSees: 'Offer Letter issued digitally. Student pays deposit securely; instant CAS initiation notice appears.',
+      narrative: 'The student submits their formal application. AI verifies international transcript comparability (Ecctis / UK ENIC benchmarks). University issues an Unconditional Offer; student accepts and pays deposit.',
+      whatUserSees: 'Offer Letter issued digitally. Student pays deposit securely via international payment rails; instant CAS initiation notice appears.',
       contextTransferred: {
-        application_id: 'WL-UK-2026-9921',
+        application_id: 'WL-INTL-2026-9921',
         offer_status: 'Unconditional Offer Issued',
-        deposit_received: '£3,000 Tuition Deposit Verified via Stripe/Flywire',
+        deposit_received: '£3,000 Tuition Deposit Verified via Flywire / Stripe',
         cas_reference: 'CAS-UKVI-773199'
       },
       systemAction: 'SITS:Vision student record created; admissions status automatically toggled to Deposited.'
@@ -124,11 +125,11 @@ export default function MeetStudentStorySection() {
       actorColor: '#38bdf8',
       badge: 'Settlement Readiness',
       narrative: 'The same WorldLynk context now activates pre-arrival mode: student visa biometric appointment reminders, airport welcome slots from Heathrow, and verified student accommodation booking.',
-      whatUserSees: 'Student App displays: "Room Reserved: Riverside Student Hall, En-suite Room 4B. Flight Heathrow landing Sept 18th booked with university pickup."',
+      whatUserSees: 'Student App displays: "Room Reserved: Riverside Student Hall, En-suite Room 4B. International Welcome Bus landing Sept 18th booked with university pickup."',
       contextTransferred: {
         visa_vignette: 'UKVI Student Route Verified',
         accommodation: 'En-suite Tenancy Agreement Digitally Executed',
-        arrival_slot: 'Heathrow Terminal 3 Welcome Bus confirmed'
+        arrival_slot: 'International Airport Welcome Terminal 3 Bus confirmed'
       },
       systemAction: 'Student profile seamlessly transferred into campus operations and accommodation systems.'
     },
@@ -157,8 +158,8 @@ export default function MeetStudentStorySection() {
       actorIcon: ShieldCheck,
       actorColor: '#ff6b00',
       badge: 'Human-in-the-Loop Care',
-      narrative: 'Midway through Term 1, student misses two consecutive morning seminars following a flight back from Diwali. System notices drop in Moodle logins and alerts Senior Tutor with drafted friendly check-in.',
-      whatUserSees: 'Tutor reviews and approves draft. Student receives WhatsApp: "Hi, hope you enjoyed Diwali! Missed you at Cloud Computing — let’s catch up at 2pm."',
+      narrative: 'Midway through Term 1, student misses two consecutive morning seminars following return travel from mid-term break. System notices drop in Moodle logins and alerts Senior Tutor with drafted friendly check-in.',
+      whatUserSees: 'Tutor reviews and approves draft. Student receives WhatsApp: "Hi! Hope your mid-term travel went smoothly. Missed you at Cloud Computing — let’s catch up at 2pm."',
       contextTransferred: {
         signal_type: 'Attendance drop + Moodle inactivity',
         action_taken: 'Senior Tutor Dr. Jenkins approved check-in',
@@ -181,7 +182,7 @@ export default function MeetStudentStorySection() {
         employment_outcome: 'Junior Software Engineer at London FinTech',
         visa_transition: 'Sponsored UK Graduate Route Visa'
       },
-      systemAction: 'Full journey logged from first click in Hyderabad to graduate employment in London.'
+      systemAction: 'Full lifecycle captured from initial global discovery to campus enrolment, academic persistence, and graduate career launch.'
     }
   ];
 
@@ -204,14 +205,14 @@ export default function MeetStudentStorySection() {
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #3 · “MEET A STUDENT” STORY
+            STUDENT JOURNEY CASE STUDY
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
-            From Hyderabad to UK Graduation: The Complete Journey
+            From Global Discovery to Degree &amp; Employment: The Complete Journey
           </h2>
           <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>
-            Follow a real student’s continuous trajectory. See how the same permitted context flows seamlessly 
-            from an initial search in India to application, visa preparation, campus persistence, and graduate employment.
+            Follow an international student’s continuous trajectory. See how the same permitted context flows seamlessly 
+            from global discovery to application, visa preparation, campus persistence, and graduate employment.
           </p>
         </div>
 

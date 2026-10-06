@@ -10,9 +10,6 @@ import {
 } from 'lucide-react';
 
 import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSection';
-import InteractiveFunnelSection from '../components/funnel/InteractiveFunnelSection';
-import MeetStudentStorySection from '../components/funnel/MeetStudentStorySection';
-import ContextLayerNetworkSection from '../components/funnel/ContextLayerNetworkSection';
 import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSection';
 import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
 
@@ -34,13 +31,7 @@ export default function HomePage() {
   const [scenarioProgress, setScenarioProgress] = useState(0);
   const [actionsResolvedCount, setActionsResolvedCount] = useState(4184);
 
-  // State for Section 3: Cascade Simulation
-  const [activeCascadeStep, setActiveCascadeStep] = useState(0);
-
-  // State for Section 4: Architecture Pillars
-  const [activePillarId, setActivePillarId] = useState('fabric');
-
-  // State for Section 5: Dual OS
+  // State for Section: Dual OS
   const [activeOS, setActiveOS] = useState('staff');
 
   // State for Section 7: ROI Simulator
@@ -114,7 +105,7 @@ export default function HomePage() {
       themeColor: '#a855f7',
       themeBg: 'rgba(168, 85, 247, 0.12)',
       speedBadge: 'Secured in 0.4s',
-      triggerText: 'International offer confirmed · Heathrow flight landing Sept 28',
+      triggerText: 'International offer confirmed · International flight arrival Sept 28',
       actionTitle: 'Verified Student Room Reserved',
       actionBadge: 'Booking Confirmed',
       actionIcon: Building,
@@ -175,23 +166,6 @@ export default function HomePage() {
   // --- Data structures ---
 
 
-  const cascadeSteps = [
-    { id: 0, title: 'Missed Class Flagged', time: '09:12:04', loc: 'Lecture Hall EB-02', status: 'FLAGGED', pillClass: 'pill-flagged', narrative: 'Maya Chen misses morning check-in for her CS-5100 seminar. The system notes this is her 3rd consecutive missed lecture.', ledger: '{"event": "attendance_miss", "student_name": "Maya Chen", "module": "CS-5100", "location": "EB-02", "timestamp": "09:12:04"}' },
-    { id: 1, title: 'Course Activity Checked', time: '09:12:05', loc: 'Learning Portal (Moodle)', status: 'CHECKED', pillClass: 'pill-active', narrative: 'The system checks the online course portal and sees Maya has had zero login activity on coursework materials for over 4 days.', ledger: '{"source": "moodle_lms", "query": "student_activity", "inactivity_hours": 114, "coursework_status": "due_soon"}' },
-    { id: 2, title: 'Support Need Identified', time: '09:12:07', loc: 'Nova Campus Coordinator', status: 'IDENTIFIED', pillClass: 'pill-active', narrative: 'The AI reviews her recent schedule, noting she worked late barista shifts over the weekend. It identifies potential burnout before she falls further behind.', ledger: '{"action": "welfare_risk_check", "reason": "attendance_drop_and_workload", "suggested_action": "tutor_check_in"}' },
-    { id: 3, title: 'Staff Review on Compass', time: '09:12:08', loc: 'Staff Portal (Compass)', status: 'WAITING REVIEW', pillClass: 'pill-held', narrative: 'Staff always stay in control. Rather than sending an unapproved notice, the system prepares a friendly check-in draft and makeup lab suggestion for Senior Tutor Dr. Jenkins.', ledger: '{"staff_review_required": true, "assigned_to": "Dr. Jenkins", "suggested_channel": "WhatsApp", "state": "awaiting_approval"}' },
-    { id: 4, title: 'Support Sent & Saved', time: '09:14:22', loc: 'Senior Tutor & Student Records', status: 'RESOLVED', pillClass: 'pill-approved', narrative: 'Dr. Jenkins reviews the brief on Compass and clicks approve. Maya receives a supportive message on WhatsApp, and university records are updated automatically.', ledger: '{"approved_by": "Dr. Jenkins", "action_taken": "whatsapp_welfare_sent", "records_updated": true, "timestamp": "09:14:22"}' }
-  ];
-
-  const architecturePillars = [
-    { id: 'fabric', num: '01', name: 'Connect', desc: 'Plugs directly into your existing SIS, LMS, and campus databases with zero complex migrations or downtime.', tech: ['Works with SITS:Vision & Banner', 'Syncs with Moodle & Canvas', 'Real-time event updates', 'Zero database migrations'], activeColor: '#ff6b00', metrics: { coverage: 98, latency: 12, uptime: 99.99 } },
-    { id: 'graph', num: '02', name: 'Understand', desc: 'Brings student records, timetables, and housing into one unified profile so staff don’t have to jump across multiple tools.', tech: ['Unified student profile', 'Secure cloud storage', 'Instant search across records', 'Privacy-first permissions'], activeColor: '#3b82f6', metrics: { coverage: 100, latency: 18, uptime: 99.95 } },
-    { id: 'nova', num: '03', name: 'Assist', desc: '30 specialized AI assistants work 24/7 to answer student questions, spot drop-out risks early, and prepare routine tasks.', tech: ['30 Focused campus assistants', '24/7 Student chat & guidance', 'Real-time mock interview voice', 'Early alert indicators'], activeColor: '#8b5cf6', metrics: { coverage: 94, latency: 180, uptime: 99.99 } },
-    { id: 'arbiter', num: '04', name: 'Control & Govern', desc: 'A clear staff dashboard where your team reviews, edits, and approves all important actions. Staff always stay in control.', tech: ['Staff review portal (Compass)', 'One-click approvals', 'Complete audit trail', 'Strict UK GDPR & FERPA compliance'], activeColor: '#10b981', metrics: { coverage: 100, latency: 5, uptime: 100 } },
-  ];
-
-  const activePillar = architecturePillars.find(p => p.id === activePillarId) || architecturePillars[0];
-
   // Derived ROI calculations
   const savedStudents = Math.round(cohortSize * (0.082 - 0.024));
   const recoveredRevenue = savedStudents * tuitionFee;
@@ -228,16 +202,41 @@ export default function HomePage() {
                 ))}
               </div>
               <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
-                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 1.8rem', fontSize: '1rem' }}>Book a Live Demo</Link>
-                <a href="#interactive-funnel" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', border: '1px solid rgba(255, 107, 0, 0.4)', background: 'rgba(255, 107, 0, 0.08)', color: '#ff8833', fontWeight: 600 }}>
-                  Explore 11-Stage Funnel
-                </a>
-                <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(255, 255, 255, 0.15)', background: 'rgba(255, 255, 255, 0.04)' }}>
-                  <span style={{ color: '#ffffff', fontWeight: 500 }}>Staff Portal</span> <ExternalLink size={14} color="#a1a1aa" />
-                </a>
-                <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.9rem 1.4rem', fontSize: '0.92rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
-                  <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span> <ExternalLink size={14} color="#38bdf8" />
-                </a>
+                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
+                  Book a Live Demo
+                </Link>
+                <Link 
+                  to="/journey" 
+                  className="btn-secondary" 
+                  style={{ 
+                    padding: '0.9rem 1.6rem', 
+                    fontSize: '0.95rem', 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '0.5rem', 
+                    border: '1px solid rgba(255, 255, 255, 0.15)', 
+                    background: 'rgba(255, 255, 255, 0.04)',
+                    color: '#ffffff'
+                  }}
+                >
+                  <span>Explore Student Journey</span>
+                  <ArrowRight size={16} />
+                </Link>
+              </div>
+
+              <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
+                  <ShieldCheck size={14} style={{ color: '#10b981' }} />
+                  <span>SOC-2 Type II</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
+                  <Lock size={14} style={{ color: '#38bdf8' }} />
+                  <span>UK &amp; EU GDPR Ready</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
+                  <CheckCircle2 size={14} style={{ color: '#ff6b00' }} />
+                  <span>Zero Database Migrations</span>
+                </div>
               </div>
             </div>
             
@@ -639,198 +638,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 1: BEFORE, DURING & AFTER UNIVERSITY (ADD #1) */}
+      {/* CONTINUOUS LIFECYCLE HORIZONS OVERVIEW */}
       <LifecycleOverviewSection />
 
-      {/* SECTION 2: INTERACTIVE 11-STAGE FUNNEL (ADD #2) */}
-      <InteractiveFunnelSection />
-
-      {/* SECTION 3: MEET A STUDENT STORY (ADD #3) */}
-      <MeetStudentStorySection />
-
-      {/* SECTION 4: ONE CONTEXT LAYER & NETWORK FLOW (ADD #4 & ADD #5) */}
-      <ContextLayerNetworkSection />
-
-      {/* SECTION 5: EXPANDED SPECIALIST AI AGENTS (ADD #8) */}
+      {/* AUTONOMOUS SPECIALIST AGENTS */}
       <SpecialistAgentsSection />
-
-      {/* SECTION 3: INCIDENT CASCADE SIMULATION (DARK) */}
-      <section className="section" style={{ backgroundColor: '#09090b', borderTop: '1px solid #1a1a24', borderBottom: '1px solid #1a1a24' }}>
-        <div className="main-container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>HOW IT WORKS IN PRACTICE</div>
-            <h2 className="headline-lg">How a student issue gets resolved in minutes.</h2>
-            <p className="body-md text-secondary" style={{ maxWidth: '600px', margin: '1rem auto 0' }}>See how missed classes and a quiet week online turn into a friendly, helpful check-in — before a student falls behind.</p>
-          </div>
-
-          {/* Cascade Stepper */}
-          <div className="flex gap-sm mb-lg" style={{ overflowX: 'auto', paddingBottom: '1rem' }}>
-            {cascadeSteps.map((step, idx) => (
-              <button 
-                key={step.id}
-                onClick={() => setActiveCascadeStep(idx)}
-                style={{
-                  flex: 1,
-                  minWidth: '180px',
-                  padding: '1rem',
-                  backgroundColor: activeCascadeStep === idx ? '#1a1a24' : 'transparent',
-                  border: activeCascadeStep === idx ? '1px solid var(--wl-accent)' : '1px solid #2a2a35',
-                  borderRadius: '8px',
-                  textAlign: 'left',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  position: 'relative'
-                }}
-              >
-                <div className="mono-sm text-muted mb-sm">STEP 0{idx + 1}</div>
-                <div style={{ fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem', color: activeCascadeStep === idx ? 'white' : '#a1a1aa' }}>{step.title}</div>
-                <div className={`pill ${step.pillClass}`} style={{ fontSize: '0.65rem' }}>{step.status}</div>
-                
-                {/* Connecting Line (except last) */}
-                {idx < cascadeSteps.length - 1 && (
-                  <div style={{ position: 'absolute', right: '-1rem', top: '50%', width: '1rem', height: '1px', backgroundColor: '#2a2a35' }} />
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Detail Panel */}
-          <div className="grid-2 gap-lg" style={{ alignItems: 'stretch' }}>
-            {/* Narrative Card */}
-            <div className="card-dark" style={{ padding: '2rem', backgroundColor: '#131318', border: '1px solid #2a2a35', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-              <div>
-                <div className="flex flex-between mb-md">
-                  <div className="flex gap-sm alignItems-center">
-                    <Clock size={16} className="text-secondary" />
-                    <span className="mono-sm">{cascadeSteps[activeCascadeStep].time}</span>
-                  </div>
-                  <div className="flex gap-sm alignItems-center">
-                    <Building size={16} className="text-secondary" />
-                    <span className="mono-sm text-secondary">{cascadeSteps[activeCascadeStep].loc}</span>
-                  </div>
-                </div>
-                <h3 className="headline-md mb-md">{cascadeSteps[activeCascadeStep].title}</h3>
-                <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>{cascadeSteps[activeCascadeStep].narrative}</p>
-              </div>
-
-              {/* Interactive Action for Step 4 (Index 3) */}
-              {activeCascadeStep === 3 && (
-                <div style={{ marginTop: '2rem', padding: '1rem', backgroundColor: '#1a1a24', border: '1px solid rgba(245, 158, 11, 0.3)', borderRadius: '8px' }}>
-                  <div className="flex gap-sm alignItems-center mb-sm">
-                    <AlertTriangle size={16} style={{ color: '#f59e0b' }} />
-                    <span style={{ color: '#f59e0b', fontWeight: 600, fontSize: '0.9rem' }}>Staff Approval Required</span>
-                  </div>
-                  <button 
-                    className="btn-primary" 
-                    style={{ width: '100%', padding: '0.75rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem' }}
-                    onClick={() => setActiveCascadeStep(4)}
-                  >
-                    Approve Support & Send Message <Check size={16} />
-                  </button>
-                </div>
-              )}
-            </div>
-
-            {/* Activity Log */}
-            <div className="mockup-window" style={{ backgroundColor: '#000', border: '1px solid #333' }}>
-              <div className="mockup-chrome flex flex-between" style={{ padding: '0.5rem 1rem', borderBottom: '1px solid #333', backgroundColor: '#111' }}>
-                <span className="mono-sm text-muted">system_activity_log</span>
-              </div>
-              <div className="mockup-body" style={{ padding: '1.5rem', fontFamily: 'monospace', fontSize: '0.85rem', color: '#a1a1aa', overflowX: 'auto', whiteSpace: 'pre-wrap' }}>
-                <div style={{ color: '#4ade80', marginBottom: '1rem' }}>$ live_events --student "Maya Chen"</div>
-                <div style={{ color: '#e4e4e7' }}>
-                  {JSON.stringify(JSON.parse(cascadeSteps[activeCascadeStep].ledger), null, 2)}
-                </div>
-                <div className="animate-pulse" style={{ marginTop: '1rem', color: 'var(--wl-accent)' }}>_</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: ARCHITECTURE PILLARS (STONE/LIGHT) */}
-      <section className="section section-stone" style={{ backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
-        <div className="main-container">
-          <div className="section-header-left mb-xl">
-            <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>HOW THE PLATFORM WORKS</div>
-            <h2 className="headline-lg" style={{ color: '#0c0c0f' }}>Four simple layers built for higher education.</h2>
-          </div>
-
-          {/* Pipeline layout */}
-          <div className="pipeline grid-4 gap-md mb-xl">
-            {architecturePillars.map(pillar => (
-              <div 
-                key={pillar.id}
-                onClick={() => setActivePillarId(pillar.id)}
-                className={`pipeline-step card-stone ${activePillarId === pillar.id ? 'active' : ''}`}
-                style={{ 
-                  padding: '1.5rem', 
-                  backgroundColor: activePillarId === pillar.id ? 'white' : 'transparent',
-                  border: activePillarId === pillar.id ? `2px solid ${pillar.activeColor}` : '1px solid #d4d4d8',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  boxShadow: activePillarId === pillar.id ? '0 4px 6px -1px rgba(0, 0, 0, 0.1)' : 'none'
-                }}
-              >
-                <div className="mono-sm mb-sm" style={{ color: activePillarId === pillar.id ? pillar.activeColor : '#71717a', fontWeight: 600 }}>LAYER {pillar.num}</div>
-                <h3 className="headline-md" style={{ color: '#0c0c0f', marginBottom: '0.5rem' }}>{pillar.name}</h3>
-                <p className="body-sm" style={{ color: '#52525b', marginBottom: '1rem' }}>{pillar.desc}</p>
-                <div className="flex flex-col gap-xs">
-                  {pillar.tech.map((t, i) => (
-                    <div key={i} className="flex gap-sm alignItems-center">
-                      <Check size={12} style={{ color: activePillarId === pillar.id ? pillar.activeColor : '#a1a1aa' }} />
-                      <span className="mono-sm" style={{ fontSize: '0.7rem', color: '#3f3f46' }}>{t}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Detail Panel */}
-          {activePillar && (
-            <div className="card-stone" style={{ backgroundColor: 'white', padding: '2.5rem', borderRadius: '12px', border: '1px solid #e4e4e7', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05)' }}>
-              <div className="grid-2 gap-lg" style={{ alignItems: 'center' }}>
-                <div>
-                  <h3 className="headline-lg mb-md" style={{ color: '#0c0c0f' }}>{activePillar.name} Layer</h3>
-                  <p className="body-lg mb-lg" style={{ color: '#52525b' }}>How the {activePillar.name} layer connects with your existing university systems to deliver trusted, reliable outcomes.</p>
-                  
-                  <div className="flex flex-col gap-md">
-                    <div>
-                      <div className="flex flex-between mb-xs">
-                        <span className="mono-sm" style={{ fontWeight: 600 }}>Campus System Coverage</span>
-                        <span className="mono-sm">{activePillar.metrics.coverage}%</span>
-                      </div>
-                      <div className="comp-bar-track" style={{ height: '8px', backgroundColor: '#e4e4e7', borderRadius: '4px', overflow: 'hidden' }}>
-                        <div className="comp-bar-fill" style={{ height: '100%', width: `${activePillar.metrics.coverage}%`, backgroundColor: activePillar.activeColor, transition: 'width 0.5s ease' }} />
-                      </div>
-                    </div>
-                    
-                    <div className="grid-2 gap-md mt-md">
-                      <div style={{ padding: '1rem', backgroundColor: '#f4f4f5', borderRadius: '8px' }}>
-                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>RESPONSE SPEED</div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0c0c0f' }}>{activePillar.metrics.latency}ms</div>
-                      </div>
-                      <div style={{ padding: '1rem', backgroundColor: '#f4f4f5', borderRadius: '8px' }}>
-                        <div className="mono-label text-muted mb-xs" style={{ fontSize: '0.7rem' }}>SYSTEM UPTIME</div>
-                        <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0c0c0f' }}>{activePillar.metrics.uptime}%</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem', backgroundColor: '#f4f4f5', borderRadius: '12px', minHeight: '300px' }}>
-                   {activePillar.id === 'fabric' && <Network size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
-                   {activePillar.id === 'graph' && <Database size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
-                   {activePillar.id === 'nova' && <Bot size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
-                   {activePillar.id === 'arbiter' && <Shield size={120} style={{ color: activePillar.activeColor, opacity: 0.8 }} />}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
 
       {/* SECTION 5: DUAL OS COMPARISON (DARK) */}
       <section className="section" style={{ borderBottom: '1px solid #1a1a24' }}>
@@ -983,7 +795,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 7: CONNECTED SYSTEMS INTEGRATION MATRIX (ADD #7) */}
+      {/* ENTERPRISE CONNECTORS INTEGRATION MATRIX */}
       <IntegrationsMatrixSection />
 
       {/* SECTION 7: ROI SIMULATOR (DARK) */}

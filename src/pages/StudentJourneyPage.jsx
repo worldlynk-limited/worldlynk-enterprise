@@ -9,8 +9,6 @@ import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSect
 import InteractiveFunnelSection from '../components/funnel/InteractiveFunnelSection';
 import MeetStudentStorySection from '../components/funnel/MeetStudentStorySection';
 import ContextLayerNetworkSection from '../components/funnel/ContextLayerNetworkSection';
-import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSection';
-import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
@@ -83,25 +81,20 @@ export default function StudentJourneyPage() {
         </div>
       </section>
 
-      {/* ADD #1: LIFECYCLE OVERVIEW (3 ZONES) */}
+      {/* LIFECYCLE HORIZONS OVERVIEW */}
       <LifecycleOverviewSection />
 
-      {/* ADD #2: INTERACTIVE 11-STAGE FUNNEL */}
+      {/* INTERACTIVE 11-STAGE FUNNEL */}
       <InteractiveFunnelSection />
 
-      {/* ADD #3: MEET A STUDENT STORY (HYDERABAD TO UK MSC) */}
+      {/* STUDENT JOURNEY CASE STUDY (GLOBAL APPLICANT LIFECYCLE) */}
       <MeetStudentStorySection />
 
-      {/* ADD #4 & ADD #5: CONTEXT LAYER ARCHITECTURE & NETWORK FLOW */}
+
+      {/* CONTEXT LAYER ARCHITECTURE & NETWORK FLOW */}
       <ContextLayerNetworkSection />
 
-      {/* ADD #8: SPECIALIST AI AGENTS */}
-      <SpecialistAgentsSection />
-
-      {/* ADD #7: INTEGRATIONS MATRIX */}
-      <IntegrationsMatrixSection />
-
-      {/* ADD #6 & FINAL CTA: PRODUCT SURFACES */}
+      {/* PRODUCT SURFACES & CALL TO ACTION */}
       <section className="section" style={{ backgroundColor: '#09090c', borderTop: '1px solid #1a1a24', paddingBottom: '7rem' }}>
         <div className="main-container" style={{ textAlign: 'center', maxWidth: '820px' }}>
           

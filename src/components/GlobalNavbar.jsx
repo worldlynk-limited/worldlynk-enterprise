@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Search, ChevronDown, ExternalLink, ArrowRight, Menu, X, Shield, Bot, Layout, GraduationCap } from 'lucide-react';
+import { Search, ChevronDown, ExternalLink, ArrowRight, Menu, X, Shield, Bot, Layout, GraduationCap, Sparkles } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
@@ -9,6 +9,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
   const [platformDropdown, setPlatformDropdown] = useState(false);
   const [solutionsDropdown, setSolutionsDropdown] = useState(false);
   const [companyDropdown, setCompanyDropdown] = useState(false);
+  const [portalsDropdown, setPortalsDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -16,6 +17,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
     setPlatformDropdown(false);
     setSolutionsDropdown(false);
     setCompanyDropdown(false);
+    setPortalsDropdown(false);
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
@@ -44,10 +46,10 @@ export default function GlobalNavbar({ onOpenSearch }) {
         top: 0,
         left: 0,
         right: 0,
-        height: '56px',
-        backgroundColor: 'rgba(12, 12, 15, 0.94)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
+        height: '60px',
+        backgroundColor: 'rgba(12, 12, 15, 0.88)',
+        backdropFilter: 'blur(20px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(180%)',
         borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
         zIndex: 1000,
         display: 'flex',
@@ -55,15 +57,28 @@ export default function GlobalNavbar({ onOpenSearch }) {
       }}
     >
       <div className="main-container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        
         {/* Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <a href="/" className="wl-navbar__logo">
-            WorldLynk
-          </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <Link
+            to="/"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              textDecoration: 'none'
+            }}
+          >
+            <span style={{ fontSize: '18px', fontWeight: 800, letterSpacing: '-0.3px', color: '#ffffff' }}>
+              WorldLynk
+            </span>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: 'var(--wl-accent)', display: 'inline-block' }} />
+          </Link>
         </div>
 
         {/* Desktop Nav */}
-        <nav className="desktop-nav-links">
+        <nav className="desktop-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '22px' }}>
+          
           {/* Platform Menu */}
           <div
             style={{ position: 'relative' }}
@@ -73,14 +88,15 @@ export default function GlobalNavbar({ onOpenSearch }) {
             <Link
               to="/platform"
               style={{
-                fontSize: '13px',
+                fontSize: '13.5px',
                 fontWeight: '500',
-                color: isActive('/platform') || isActive('/how-it-works') || isActive('/integrations') ? '#ffffff' : '#9494a0',
+                color: isActive('/platform') || isActive('/journey') || isActive('/how-it-works') || isActive('/integrations') ? '#ffffff' : '#9ca3af',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
-                padding: '16px 0',
-                textDecoration: 'none'
+                padding: '18px 0',
+                textDecoration: 'none',
+                transition: 'color 0.15s ease'
               }}
             >
               <span>Platform</span>
@@ -94,87 +110,47 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   top: '100%',
                   left: '-10px',
                   width: '280px',
-                  backgroundColor: '#131318',
+                  backgroundColor: '#13131a',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '4px',
-                  padding: '8px',
-                  boxShadow: '0 12px 32px rgba(0, 0, 0, 0.6)',
+                  borderRadius: '10px',
+                  padding: '10px',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2px',
+                  gap: '4px',
                   zIndex: 1100
                 }}
               >
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
-                  OUR PLATFORM
+                  CAMPUS CAPABILITIES
                 </div>
-                <Link to="/journey" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/journey" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none', backgroundColor: 'rgba(255, 255, 255, 0.02)' }}>
                   <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Student Journey Funnel</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>11 stages: Prospect → Enrolment → Retention → Career</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>11 stages: Prospect → Enrolment → Career</div>
                 </Link>
-                <Link to="/platform" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/platform" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Platform Overview</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>4 simple layers: Connect, Understand, Assist, Control</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>4 core layers: Connect, Understand, Assist, Govern</div>
                 </Link>
-                <Link to="/platform#nova" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-cyan)' }}>Specialist AI Assistants</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>24/7 student support &amp; automated staff drafts</div>
+                <Link to="/platform#nova" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-cyan)' }}>Specialist AI Agents</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>24/7 student guidance &amp; automated staff drafts</div>
                 </Link>
-                <Link to="/how-it-works" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>How It Works</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>5 simple steps from alert to approved resolution</div>
-                </Link>
-                <Link to="/integrations" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/integrations" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Integrations &amp; Connectors</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Connects with SITS, Banner, Moodle &amp; your systems</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SITS, Banner, Moodle, Canvas, Workday</div>
                 </Link>
-                <Link to="/security" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/how-it-works" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>How It Works</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>5 steps from risk alert to staff sign-off</div>
+                </Link>
+                <Link to="/security" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Security &amp; Privacy</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>UK GDPR, FERPA &amp; human-in-the-loop audit logs</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>UK &amp; EU GDPR, FERPA, SOC-2 Type II</div>
                 </Link>
               </div>
             )}
           </div>
-
-          <Link
-            to="/journey"
-            style={{
-              fontSize: '13px',
-              fontWeight: '600',
-              color: isActive('/journey') || isActive('/funnel') ? 'var(--wl-accent)' : '#ffffff',
-              textDecoration: 'none',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '4px'
-            }}
-          >
-            <span>Student Journey</span>
-            <span style={{ fontSize: '9px', backgroundColor: 'rgba(255, 107, 0, 0.15)', color: 'var(--wl-accent)', padding: '1px 5px', borderRadius: '3px', border: '1px solid rgba(255, 107, 0, 0.3)' }}>NEW</span>
-          </Link>
-
-          <Link
-            to="/staff-os"
-            style={{
-              fontSize: '13px',
-              fontWeight: '500',
-              color: isActive('/staff-os') ? '#ffffff' : '#9494a0',
-              textDecoration: 'none'
-            }}
-          >
-            Compass Staff Portal
-          </Link>
-
-          <Link
-            to="/student-os"
-            style={{
-              fontSize: '13px',
-              fontWeight: '500',
-              color: isActive('/student-os') ? '#ffffff' : '#9494a0',
-              textDecoration: 'none'
-            }}
-          >
-            Student App
-          </Link>
 
           {/* Solutions Dropdown */}
           <div
@@ -185,14 +161,15 @@ export default function GlobalNavbar({ onOpenSearch }) {
             <Link
               to="/solutions"
               style={{
-                fontSize: '13px',
+                fontSize: '13.5px',
                 fontWeight: '500',
                 color: isActive('/solutions') || isActive('/outcomes') ? '#ffffff' : '#9494a0',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
-                padding: '16px 0',
-                textDecoration: 'none'
+                padding: '18px 0',
+                textDecoration: 'none',
+                transition: 'color 0.15s ease'
               }}
             >
               <span>Solutions</span>
@@ -206,40 +183,67 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   top: '100%',
                   left: '-10px',
                   width: '260px',
-                  backgroundColor: '#131318',
+                  backgroundColor: '#13131a',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '4px',
-                  padding: '8px',
-                  boxShadow: '0 12px 32px rgba(0, 0, 0, 0.6)',
+                  borderRadius: '10px',
+                  padding: '10px',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2px',
+                  gap: '4px',
                   zIndex: 1100
                 }}
               >
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
                   BY CAMPUS ROLE
                 </div>
-                <Link to="/solutions/vice-chancellor" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/solutions/vice-chancellor" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   Vice-Chancellors &amp; Leadership
                 </Link>
-                <Link to="/solutions/registrars" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/solutions/registrars" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   Academic Registrars
                 </Link>
-                <Link to="/solutions/admissions" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/solutions/admissions" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   International Admissions
                 </Link>
-                <Link to="/solutions/compliance" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/solutions/compliance" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   Visa &amp; Compliance Teams
                 </Link>
                 <div style={{ height: '1px', background: 'rgba(255, 255, 255, 0.08)', margin: '4px 0' }} />
-                <Link to="/outcomes" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ff6b00', fontWeight: '600', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <Link to="/outcomes" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ff6b00', fontWeight: '600', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span>Outcomes &amp; Case Studies</span>
-                  <ArrowRight size={12} />
+                  <ArrowRight size={13} />
                 </Link>
               </div>
             )}
           </div>
+
+          {/* Direct Product Links */}
+          <Link
+            to="/staff-os"
+            style={{
+              fontSize: '13.5px',
+              fontWeight: '500',
+              color: isActive('/staff-os') ? '#ffffff' : '#9ca3af',
+              textDecoration: 'none',
+              transition: 'color 0.15s ease'
+            }}
+          >
+            Staff OS
+          </Link>
+
+          <Link
+            to="/student-os"
+            style={{
+              fontSize: '13.5px',
+              fontWeight: '500',
+              color: isActive('/student-os') ? '#ffffff' : '#9ca3af',
+              textDecoration: 'none',
+              transition: 'color 0.15s ease'
+            }}
+          >
+            Student OS
+          </Link>
 
           {/* Company Dropdown */}
           <div
@@ -249,14 +253,15 @@ export default function GlobalNavbar({ onOpenSearch }) {
           >
             <span
               style={{
-                fontSize: '13px',
+                fontSize: '13.5px',
                 fontWeight: '500',
-                color: isActive('/founders') || isActive('/careers') || isActive('/contact') || isActive('/trust') ? '#ffffff' : '#9494a0',
+                color: isActive('/founders') || isActive('/careers') || isActive('/contact') || isActive('/trust') ? '#ffffff' : '#9ca3af',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
-                padding: '16px 0',
-                cursor: 'pointer'
+                padding: '18px 0',
+                cursor: 'pointer',
+                transition: 'color 0.15s ease'
               }}
             >
               <span>Company</span>
@@ -269,28 +274,28 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   position: 'absolute',
                   top: '100%',
                   right: 0,
-                  width: '200px',
-                  backgroundColor: '#131318',
+                  width: '210px',
+                  backgroundColor: '#13131a',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '4px',
-                  padding: '8px',
-                  boxShadow: '0 12px 32px rgba(0, 0, 0, 0.6)',
+                  borderRadius: '10px',
+                  padding: '10px',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2px',
+                  gap: '4px',
                   zIndex: 1100
                 }}
               >
-                <Link to="/founders" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  Founders &amp; Mission
+                <Link to="/founders" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  Mission &amp; Founders
                 </Link>
-                <Link to="/careers" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
-                  Careers
-                </Link>
-                <Link to="/trust" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/trust" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   Trust &amp; Security Hub
                 </Link>
-                <Link to="/contact" style={{ padding: '6px 8px', borderRadius: '3px', fontSize: '12.5px', color: '#ffffff', textDecoration: 'none' }}>
+                <Link to="/careers" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  Careers
+                </Link>
+                <Link to="/contact" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   Contact Team
                 </Link>
               </div>
@@ -298,9 +303,10 @@ export default function GlobalNavbar({ onOpenSearch }) {
           </div>
         </nav>
 
-        {/* Action Controls & Cmd+K */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {/* Find Button (Visible on all viewports) */}
+        {/* Action Controls */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          
+          {/* Compact Find / Command Palette Trigger */}
           <button
             onClick={onOpenSearch}
             style={{
@@ -308,80 +314,125 @@ export default function GlobalNavbar({ onOpenSearch }) {
               alignItems: 'center',
               gap: '6px',
               padding: '6px 10px',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
-              borderRadius: '4px',
+              backgroundColor: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '6px',
               cursor: 'pointer',
-              color: '#9494a0'
+              color: '#9ca3af',
+              transition: 'all 0.2s ease'
             }}
-            title="Search command center (Ctrl+K)"
+            title="Search command center (⌘K)"
           >
-            <Search size={13} color="#ff6b00" />
-            <span style={{ fontSize: '12px', color: '#e4e4e7', fontWeight: '500' }}>Find</span>
-            <kbd style={{ fontSize: '9px', padding: '1px 5px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '2px', color: '#9494a0' }}>Ctrl+K</kbd>
+            <Search size={13} color="var(--wl-accent)" />
+            <span style={{ fontSize: '12px', color: '#e4e4e7', fontWeight: '500' }}>Search</span>
+            <kbd style={{ fontSize: '9.5px', padding: '1px 5px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '3px', color: '#9ca3af', fontFamily: 'var(--font-mono)' }}>⌘K</kbd>
           </button>
 
           {/* Desktop Only Actions */}
-          <div className="desktop-action-links">
+          <div className="desktop-action-links" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            
+            {/* Live Portals Dropdown */}
+            <div
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setPortalsDropdown(true)}
+              onMouseLeave={() => setPortalsDropdown(false)}
+            >
+              <button
+                type="button"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  padding: '7px 11px',
+                  fontSize: '12.5px',
+                  fontWeight: '500',
+                  color: '#e4e4e7',
+                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  transition: 'background 0.2s'
+                }}
+              >
+                <span>Live Portals</span>
+                <ChevronDown size={12} color="#9ca3af" />
+              </button>
+
+              {portalsDropdown && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    right: 0,
+                    width: '230px',
+                    backgroundColor: '#13131a',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '10px',
+                    padding: '8px',
+                    boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '4px',
+                    zIndex: 1100
+                  }}
+                >
+                  <a
+                    href={COMPASS_BACKEND_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '8px 10px',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      backgroundColor: 'rgba(255, 107, 0, 0.06)',
+                      border: '1px solid rgba(255, 107, 0, 0.2)',
+                      display: 'block'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', color: 'var(--wl-accent)', fontSize: '12.5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span>Compass Staff Portal</span>
+                      <ExternalLink size={12} />
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#9ca3af', marginTop: '2px' }}>Real-time triage &amp; approvals</div>
+                  </a>
+
+                  <a
+                    href={STUDENT_PLATFORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '8px 10px',
+                      borderRadius: '6px',
+                      textDecoration: 'none',
+                      backgroundColor: 'rgba(56, 189, 248, 0.06)',
+                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      display: 'block'
+                    }}
+                  >
+                    <div style={{ fontWeight: '600', color: '#38bdf8', fontSize: '12.5px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span>Student Mobile App</span>
+                      <ExternalLink size={12} />
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#9ca3af', marginTop: '2px' }}>Timetable &amp; 1-tap class check-in</div>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Primary Book Demo CTA */}
             <Link
               to="/demo"
+              className="btn-primary"
               style={{
-                padding: '6px 12px',
-                fontSize: '12px',
-                fontWeight: '500',
-                borderRadius: '4px',
-                color: '#ffffff',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
+                padding: '7px 16px',
+                fontSize: '12.5px',
+                fontWeight: '600',
+                borderRadius: '6px',
                 textDecoration: 'none'
               }}
             >
-              Book Demo
+              Book a Demo
             </Link>
-
-            <a
-              href={STUDENT_PLATFORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '6px 11px',
-                fontSize: '11.5px',
-                fontWeight: '600',
-                borderRadius: '4px',
-                color: '#38bdf8',
-                background: 'rgba(56, 189, 248, 0.08)',
-                border: '1px solid rgba(56, 189, 248, 0.25)',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}
-            >
-              <span>Student App</span>
-              <ExternalLink size={10} color="#38bdf8" />
-            </a>
-
-            <a
-              href={COMPASS_BACKEND_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                padding: '6px 12px',
-                fontSize: '11.5px',
-                fontWeight: '600',
-                borderRadius: '4px',
-                color: '#0c0c0f',
-                background: '#ff6b00',
-                border: '1px solid #ff6b00',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '4px'
-              }}
-            >
-              <span>Compass Portal</span>
-              <ExternalLink size={10} color="#0c0c0f" />
-            </a>
           </div>
 
           {/* Mobile Navigation Toggle Button */}
@@ -392,7 +443,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
             style={{
               background: 'rgba(255, 255, 255, 0.06)',
               border: '1px solid rgba(255, 255, 255, 0.1)',
-              borderRadius: '4px',
+              borderRadius: '6px',
               padding: '7px 9px',
               color: '#ffffff'
             }}
@@ -408,8 +459,8 @@ export default function GlobalNavbar({ onOpenSearch }) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', paddingBottom: '32px' }}>
             
             {/* Direct Links */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>OUR PLATFORM</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>PLATFORM &amp; JOURNEY</div>
               <Link
                 to="/journey"
                 onClick={() => setMobileMenuOpen(false)}
@@ -433,7 +484,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 to="/platform"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
-                  fontSize: '15px',
+                  fontSize: '14.5px',
                   fontWeight: '600',
                   color: '#ffffff',
                   padding: '10px 12px',
@@ -442,13 +493,13 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Platform Overview (4 Layers)
+                Platform Architecture (4 Layers)
               </Link>
               <Link
                 to="/staff-os"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
-                  fontSize: '15px',
+                  fontSize: '14.5px',
                   fontWeight: '600',
                   color: '#ffffff',
                   padding: '10px 12px',
@@ -457,13 +508,13 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Compass Staff Portal
+                Staff OS (Compass Portal)
               </Link>
               <Link
                 to="/student-os"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
-                  fontSize: '15px',
+                  fontSize: '14.5px',
                   fontWeight: '600',
                   color: '#ffffff',
                   padding: '10px 12px',
@@ -472,26 +523,15 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   border: '1px solid rgba(255, 255, 255, 0.06)'
                 }}
               >
-                Student Mobile App
-              </Link>
-              <Link
-                to="/how-it-works"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  fontSize: '14px',
-                  color: '#9494a0',
-                  padding: '8px 12px'
-                }}
-              >
-                How It Works (5 Simple Steps)
+                Student OS (Mobile App)
               </Link>
               <Link
                 to="/integrations"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
-                  fontSize: '14px',
+                  fontSize: '13.5px',
                   color: '#9494a0',
-                  padding: '8px 12px'
+                  padding: '6px 12px'
                 }}
               >
                 Integrations (SITS, Banner, Moodle)
@@ -499,41 +539,38 @@ export default function GlobalNavbar({ onOpenSearch }) {
             </div>
 
             {/* Solutions */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SOLUTIONS BY ROLE</div>
-              <Link to="/solutions" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '6px 12px' }}>
+              <Link to="/solutions" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '5px 12px' }}>
                 Solutions Overview
               </Link>
-              <Link to="/solutions/vice-chancellor" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
+              <Link to="/solutions/vice-chancellor" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13px', color: '#9494a0', padding: '4px 12px' }}>
                 Vice-Chancellors &amp; Leadership
               </Link>
-              <Link to="/solutions/registrars" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
+              <Link to="/solutions/registrars" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13px', color: '#9494a0', padding: '4px 12px' }}>
                 Academic Registrars
               </Link>
-              <Link to="/solutions/compliance" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#9494a0', padding: '4px 12px' }}>
+              <Link to="/solutions/compliance" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13px', color: '#9494a0', padding: '4px 12px' }}>
                 Visa &amp; Compliance Teams
               </Link>
-              <Link to="/outcomes" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#ff6b00', fontWeight: '600', padding: '6px 12px' }}>
+              <Link to="/outcomes" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#ff6b00', fontWeight: '600', padding: '5px 12px' }}>
                 Outcomes &amp; Case Studies
               </Link>
             </div>
 
             {/* Trust & Company */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <div className="mono-label" style={{ fontSize: '10px', color: 'var(--ink-secondary)' }}>TRUST &amp; COMPANY</div>
-              <Link to="/security" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
+              <Link to="/security" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
                 Security &amp; Privacy
               </Link>
-              <Link to="/trust" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
+              <Link to="/trust" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
                 Trust &amp; Procurement
               </Link>
-              <Link to="/founders" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
+              <Link to="/founders" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
                 Founders &amp; Mission
               </Link>
-              <Link to="/careers" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Careers
-              </Link>
-              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '14px', color: '#e4e4e7', padding: '4px 12px' }}>
+              <Link to="/contact" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
                 Contact Team
               </Link>
             </div>
@@ -544,20 +581,11 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 to="/demo"
                 onClick={() => setMobileMenuOpen(false)}
                 className="btn-primary"
-                style={{ width: '100%', textAlign: 'center', padding: '12px' }}
+                style={{ width: '100%', textAlign: 'center', padding: '12px', borderRadius: '6px' }}
               >
                 Book a Demo
               </Link>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                <a
-                  href={STUDENT_PLATFORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary"
-                  style={{ textAlign: 'center', fontSize: '12px', padding: '10px 8px', color: '#38bdf8' }}
-                >
-                  Student App ↗
-                </a>
                 <a
                   href={COMPASS_BACKEND_URL}
                   target="_blank"
@@ -566,6 +594,15 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   style={{ textAlign: 'center', fontSize: '12px', padding: '10px 8px', color: '#ff6b00' }}
                 >
                   Compass Portal ↗
+                </a>
+                <a
+                  href={STUDENT_PLATFORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary"
+                  style={{ textAlign: 'center', fontSize: '12px', padding: '10px 8px', color: '#38bdf8' }}
+                >
+                  Student App ↗
                 </a>
               </div>
             </div>

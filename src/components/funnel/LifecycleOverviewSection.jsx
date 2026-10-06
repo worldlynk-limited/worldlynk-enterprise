@@ -95,7 +95,7 @@ export default function LifecycleOverviewSection() {
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3.5rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #1 · BEFORE, DURING &amp; AFTER UNIVERSITY
+            CONTINUOUS LIFECYCLE ARCHITECTURE
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
             From first interest to student success.

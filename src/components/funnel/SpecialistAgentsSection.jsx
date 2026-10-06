@@ -59,16 +59,16 @@ export default function SpecialistAgentsSection() {
     {
       id: 'pre_arrival',
       name: 'Pre-Arrival & Visa Agent',
-      role: 'UKVI Timelines, Biometrics & Settlement Prep',
+      role: 'Student Visa Timelines, Biometrics & Settlement Prep',
       lifecycleZone: 'Enrol & Operate (Stage 07)',
       tagColor: '#38bdf8',
-      desc: 'Guides international students through the UK student visa process, sends biometric appointment reminders, logs flight arrivals, and schedules university airport welcome buses.',
+      desc: 'Guides international students through the student visa application lifecycle, sends biometric appointment reminders, logs flight arrivals, and coordinates university arrival welcome hubs.',
       trigger: 'Offer accepted and tuition deposit verified in student finance.',
-      reads: ['UKVI Application Timelines', 'Flight Arrival Itineraries', 'Campus Orientation Rota'],
-      actions: ['Generates Visa Readiness Timeline', 'Schedules Airport Welcome Pickup', 'Issues UK Arrival Checklist'],
+      reads: ['Visa Application Timelines', 'Flight Arrival Itineraries', 'Campus Orientation Rota'],
+      actions: ['Generates Visa Readiness Timeline', 'Schedules Airport Welcome Pickup', 'Issues International Arrival Checklist'],
       owner: 'International Student Support',
       channels: ['WorldLynk Student App', 'WhatsApp', 'Email Alerts'],
-      humanControl: 'Complex visa queries automatically routed to in-house Immigration Advisors (OISC-level).',
+      humanControl: 'Complex visa queries automatically routed to certified campus Immigration & Compliance Advisors.',
       icon: Globe
     },
     {
@@ -122,9 +122,9 @@ export default function SpecialistAgentsSection() {
       role: 'Strict 20-Hour Weekly Work Limit Safeguard',
       lifecycleZone: 'Engage & Succeed (Stages 09–11)',
       tagColor: '#10b981',
-      desc: 'Protects international students from inadvertently breaching their UKVI 20-hour weekly term-time work condition. Issues official verification letters to vetted campus employers.',
+      desc: 'Protects international students from inadvertently breaching their 20-hour weekly term-time visa work conditions. Issues official verification letters to vetted campus employers.',
       trigger: 'Student logs campus employment shift or applies for part-time role.',
-      reads: ['Weekly Campus Work Rota', 'Term-Time vs Vacation Dates', 'UKVI Tier 4/Student Route Rules'],
+      reads: ['Weekly Campus Work Rota', 'Term-Time vs Vacation Dates', 'Student Route Visa Regulations'],
       actions: ['Calculates Running Weekly Hours', 'Issues Official Employer Work Letter', 'Generates 100% Audit-Proof Logs'],
       owner: 'Visa Compliance & Student Employment',
       channels: ['Student App', 'Compass Compliance Console'],
@@ -137,10 +137,10 @@ export default function SpecialistAgentsSection() {
       role: 'ATS Tailoring, Mock Interviews & Graduate Jobs',
       lifecycleZone: 'Engage & Succeed (Stage 11)',
       tagColor: '#10b981',
-      desc: 'Helps students prepare for graduate employment by tailoring their CV for UK applicant tracking systems, running voice mock interviews with spoken feedback, and surfacing Graduate Route sponsors.',
+      desc: 'Helps students prepare for global graduate employment by tailoring their CV for enterprise applicant tracking systems, running voice mock interviews with spoken feedback, and surfacing verified post-study work visa sponsors.',
       trigger: 'Student uploads CV, seeks campus job, or enters final degree semester.',
       reads: ['Student Academic CV', 'Target Job Descriptions', 'Visa-Compliant Graduate Roles'],
-      actions: ['Optimizes CV Format for UK ATS', 'Conducts Spoken Voice Mock Interviews', 'Matches Sponsored Graduate Schemes'],
+      actions: ['Optimizes CV Format for Global Enterprise ATS', 'Conducts Spoken Voice Mock Interviews', 'Matches Sponsored Graduate Schemes'],
       owner: 'Careers & Employability Service',
       channels: ['Student App', 'Careers Web Portal'],
       humanControl: 'Careers advisors review student CV portfolios for dedicated 1-on-1 coaching sessions.',
@@ -166,7 +166,7 @@ export default function SpecialistAgentsSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3rem' }}>
           <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
-            ADD #8 · EXPANDED SPECIALIST AI AGENTS
+            AUTONOMOUS CAMPUS SPECIALIST AGENTS
           </div>
           <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
             Role-Specific Agents Built for Campus Workflows

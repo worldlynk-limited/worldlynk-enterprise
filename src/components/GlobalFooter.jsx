@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ShieldCheck, CheckCircle2, Lock, ExternalLink, ArrowUpRight } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
+const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 
 const GridOverlay = ({ variant = 'dark' }) => (
   <div className={`wl-grid-overlay wl-grid-overlay--${variant}`}>
@@ -24,12 +25,36 @@ export default function GlobalFooter() {
   };
 
   return (
-    <footer className="wl-footer" style={{ position: 'relative', overflow: 'hidden' }}>
+    <footer className="wl-footer">
       <GridOverlay variant="dark" />
       
-      <div className="wl-footer__inner" style={{ position: 'relative', zIndex: 2 }}>
-        <div className="wl-footer__top">
-          {/* Column 1: Ecosystem */}
+      <div className="main-container wl-footer__inner">
+        <div className="wl-footer__grid">
+          {/* Column 1: Brand & Enterprise Overview */}
+          <div className="wl-footer__brand-col">
+            <Link to="/" className="wl-footer__brand-logo" aria-label="WorldLynk Home">
+              <img 
+                src="/worldlynk-logo.png" 
+                alt="WorldLynk" 
+                className="wl-footer__logo-img" 
+              />
+            </Link>
+
+            <p className="wl-footer__brand-desc">
+              The autonomous campus operating system for higher education. Unifying institutional SIS, LMS, and attendance data into proactive, real-time student support without migrations.
+            </p>
+
+            <div className="wl-footer__status-badge">
+              <span className="wl-footer__status-dot" />
+              <span>All Systems Operational</span>
+            </div>
+
+            <div className="wl-footer__brand-meta">
+              LONDON, UNITED KINGDOM · GLOBAL HE DEPLOYMENTS
+            </div>
+          </div>
+
+          {/* Column 2: Platform */}
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Platform</h3>
             <ul className="wl-footer__list">
@@ -37,14 +62,14 @@ export default function GlobalFooter() {
               <li><Link to="/platform#nova">Specialist AI Assistants</Link></li>
               <li><Link to="/staff-os">Compass Staff Portal</Link></li>
               <li><Link to="/student-os">Student Mobile App</Link></li>
-              <li><Link to="/how-it-works">How It Works</Link></li>
+              <li><Link to="/how-it-works">Continuous Event Engine</Link></li>
               <li><Link to="/integrations">Integrations Directory</Link></li>
-              <li><a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer">Student App ↗</a></li>
-              <li><a href="https://uniportal-uq1p.onrender.com" target="_blank" rel="noopener noreferrer">Compass Staff Portal ↗</a></li>
+              <li><a href={STUDENT_PLATFORM_URL} target="_blank" rel="noopener noreferrer">Student App ↗</a></li>
+              <li><a href={COMPASS_BACKEND_URL} target="_blank" rel="noopener noreferrer">Staff Console ↗</a></li>
             </ul>
           </div>
           
-          {/* Column 2: Governance & Solutions */}
+          {/* Column 3: Solutions */}
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Solutions</h3>
             <ul className="wl-footer__list">
@@ -53,32 +78,33 @@ export default function GlobalFooter() {
               <li><Link to="/solutions/admissions">International Admissions</Link></li>
               <li><Link to="/solutions/compliance">Visa &amp; Compliance Teams</Link></li>
               <li><Link to="/outcomes">Outcomes &amp; Case Studies</Link></li>
-              <li><Link to="/demo">Book a Demo</Link></li>
+              <li><Link to="/demo">Book an Enterprise Demo</Link></li>
             </ul>
           </div>
 
-          {/* Column 3: Trust & Governance */}
+          {/* Column 4: Trust & Security */}
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Trust &amp; Security</h3>
             <ul className="wl-footer__list">
               <li><Link to="/trust">Trust &amp; Procurement</Link></li>
-              <li><Link to="/security">Security &amp; Privacy</Link></li>
-              <li><Link to="/privacy">UK GDPR &amp; Privacy Policy</Link></li>
+              <li><Link to="/security">Security &amp; Architecture</Link></li>
+              <li><Link to="/privacy">UK &amp; EU GDPR Privacy</Link></li>
               <li><Link to="/accessibility">Accessibility Statement</Link></li>
               <li><Link to="/terms">Terms of Service</Link></li>
               <li><Link to="/founders">Founders &amp; Mission</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Leadership Briefing */}
-          <div className="wl-footer__col wl-footer__col--newsletter">
-            <h3 className="wl-footer__col-title">Higher Education Newsletter</h3>
-            <p style={{ fontSize: '12px', color: '#9494a0', lineHeight: 1.6, margin: '0 0 16px 0' }}>
-              Practical insights on student retention, visa compliance, and saving staff time with AI.
+          {/* Column 5: Leadership Briefing */}
+          <div className="wl-footer__col">
+            <h3 className="wl-footer__col-title">HE Leadership Dispatch</h3>
+            <p className="wl-footer__col-desc">
+              Practical quarterly insights on student retention, compliance automation, and saving staff time with AI.
             </p>
             {subscribed ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#10b981', fontSize: '13px', fontWeight: '500' }}>
-                <CheckCircle2 size={16} /> Subscribed to WorldLynk Insights
+              <div className="wl-footer__subscribed-msg">
+                <CheckCircle2 size={16} /> Subscribed to Executive Dispatch
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="wl-footer__newsletter-form">
@@ -91,56 +117,64 @@ export default function GlobalFooter() {
                   required 
                 />
                 <button type="submit" className="wl-footer__subscribe-btn">
-                  Subscribe
+                  Subscribe to Briefing
                 </button>
               </form>
             )}
             
-            <div className="wl-footer__socials" style={{ marginTop: '24px' }}>
-              <span style={{ fontSize: '11px', color: '#686875', fontFamily: 'var(--font-mono)' }}>
-                GLOBAL PLATFORM INFRASTRUCTURE · MULTI-JURISDICTION COMPLIANCE
-              </span>
+            <div className="wl-footer__newsletter-note">
+              ZERO SPAM · EXCLUSIVELY FOR HIGHER EDUCATION LEADERSHIP
             </div>
           </div>
         </div>
 
         {/* Lower Banner & Compliance Seal */}
-        <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)', paddingTop: '28px', marginTop: '40px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <img src="/worldlynk-logo.svg" alt="WorldLynk" style={{ height: '16px', width: 'auto', display: 'block' }} />
-              <span style={{ fontSize: '10px', color: '#ff6b00', background: 'rgba(255, 107, 0, 0.12)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 107, 0, 0.25)', fontFamily: 'var(--font-mono)' }}>
-                GLOBAL HIGHER EDUCATION PLATFORM
-              </span>
-              <span style={{ fontSize: '10px', color: '#9494a0', background: 'rgba(255, 255, 255, 0.06)', padding: '2px 6px', borderRadius: '2px', border: '1px solid rgba(255, 255, 255, 0.1)', fontFamily: 'var(--font-mono)' }}>
-                ZERO MIGRATION · SITS · BANNER · MOODLE · WORKDAY
-              </span>
-            </div>
-
-            {/* Trust Badges */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap', fontSize: '11px', color: '#9494a0', fontFamily: 'var(--font-mono)' }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> SOC-2 Type II
-              </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> UK &amp; EU GDPR
-              </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> FERPA Compliant
-              </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <CheckCircle2 size={13} color="#10b981" /> ISO 27001 Aligned
-              </span>
-            </div>
+        <div className="wl-footer__middle">
+          <div className="wl-footer__badges">
+            <span className="wl-footer__badge-accent">
+              GLOBAL HIGHER EDUCATION PLATFORM
+            </span>
+            <span className="wl-footer__badge-muted">
+              ZERO MIGRATION · SITS · BANNER · MOODLE · WORKDAY
+            </span>
           </div>
 
-          <div style={{ marginTop: '24px', textAlign: 'center', fontSize: '11px', color: '#686875', fontFamily: 'var(--font-mono)' }}>
+          {/* Trust Badges */}
+          <div className="wl-footer__trust-tags">
+            <span className="wl-footer__trust-tag">
+              <CheckCircle2 size={13} color="#10b981" /> SOC-2 Type II
+            </span>
+            <span className="wl-footer__trust-tag">
+              <CheckCircle2 size={13} color="#10b981" /> UK &amp; EU GDPR
+            </span>
+            <span className="wl-footer__trust-tag">
+              <CheckCircle2 size={13} color="#10b981" /> FERPA Compliant
+            </span>
+            <span className="wl-footer__trust-tag">
+              <CheckCircle2 size={13} color="#10b981" /> ISO 27001 Aligned
+            </span>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright & Quick Legal Links */}
+        <div className="wl-footer__bottom">
+          <div className="wl-footer__copyright">
             © {new Date().getFullYear()} WorldLynk Technologies Ltd. All rights reserved. The trusted global AI operating platform for higher education.
+          </div>
+
+          <div className="wl-footer__legal-links">
+            <Link to="/privacy" className="wl-footer__legal-link">Privacy Policy</Link>
+            <Link to="/terms" className="wl-footer__legal-link">Terms</Link>
+            <Link to="/security" className="wl-footer__legal-link">Security</Link>
+            <Link to="/accessibility" className="wl-footer__legal-link">Accessibility</Link>
+            <Link to="/contact" className="wl-footer__legal-link">Contact</Link>
           </div>
         </div>
       </div>
 
-      <div className="wl-footer__watermark-outline">WORLDLYNK</div>
+      <div className="wl-footer__watermark-bg" aria-hidden="true">
+        WORLDLYNK
+      </div>
     </footer>
   );
 }

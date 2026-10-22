@@ -12,6 +12,9 @@ import {
 import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSection';
 import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSection';
 import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
+import CampusMapAgentGraph from '../components/risely/CampusMapAgentGraph';
+import OneFrontDoorFunnel from '../components/risely/OneFrontDoorFunnel';
+import UnifiedIntelligenceGraph from '../components/risely/UnifiedIntelligenceGraph';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
@@ -637,6 +640,15 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* RISELY BLUEPRINT SECTION 1: THE AGENT GRAPH & FABRIC ARCHITECTURE */}
+      <CampusMapAgentGraph />
+
+      {/* RISELY BLUEPRINT SECTION 2: ONE FRONT DOOR & STUDENT OS SIMULATOR */}
+      <OneFrontDoorFunnel />
+
+      {/* RISELY BLUEPRINT SECTION 3: UNIFIED INTELLIGENCE ACROSS CAMPUS */}
+      <UnifiedIntelligenceGraph />
 
       {/* SECTION: BUILT FOR YOUR WHOLE CAMPUS (LIVELY PHOTO SPOTLIGHT) */}
       <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>

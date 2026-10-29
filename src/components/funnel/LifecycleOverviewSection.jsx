@@ -19,7 +19,7 @@ export default function LifecycleOverviewSection() {
       color: '#ff6b00',
       bgLight: 'rgba(255, 107, 0, 0.08)',
       borderColor: 'rgba(255, 107, 0, 0.35)',
-      image: '/images/student_universities_mockup.png',
+      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&h=700&q=80',
       imageCaption: 'Students explore courses & verify qualification equivalency in seconds',
       description: 'Prospective students get welcoming, instant answers to course and fee questions 24/7. International qualifications are evaluated against university benchmarks, routing qualified applicants directly to admissions staff without lost emails or delays.',
       keyOutcomes: [
@@ -45,10 +45,10 @@ export default function LifecycleOverviewSection() {
       title: 'Arrival & Accommodation',
       subtitle: 'From Offer to Living on Campus',
       tagline: 'Guaranteed housing & smooth visa prep',
-      color: '#38bdf8',
-      bgLight: 'rgba(56, 189, 248, 0.08)',
-      borderColor: 'rgba(56, 189, 248, 0.35)',
-      image: '/images/student_housing_mockup.png',
+      color: '#0284c7',
+      bgLight: 'rgba(2, 132, 199, 0.08)',
+      borderColor: 'rgba(2, 132, 199, 0.35)',
+      image: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1200&h=700&q=80',
       imageCaption: 'Verified campus housing & digital room key issued before landing',
       description: 'The journey continues seamlessly without starting from scratch. Incoming students receive a clear pre-arrival checklist, secure verified campus housing with digital tenancy agreements, and arrive confident and ready for classes.',
       keyOutcomes: [
@@ -95,18 +95,27 @@ export default function LifecycleOverviewSection() {
   const currentZone = zones.find(z => z.id === activeZone) || zones[0];
 
   return (
-    <section className="section" style={{ backgroundColor: '#0e0e12', borderTop: '1px solid #1f1f2a', position: 'relative' }}>
+    <section 
+      className="section section-stone" 
+      style={{ 
+        backgroundColor: 'var(--wl-light)', 
+        color: '#0c0c0f', 
+        borderTop: '1px solid #d4d0ca', 
+        borderBottom: '1px solid #d4d0ca', 
+        position: 'relative' 
+      }}
+    >
       <div className="main-container">
         
         {/* Section Header */}
         <div style={{ textAlign: 'center', maxWidth: '820px', margin: '0 auto 3.5rem' }}>
-          <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
+          <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem', fontWeight: 700 }}>
             CONTINUOUS LIFECYCLE ARCHITECTURE
           </div>
-          <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
+          <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#0c0c0f' }}>
             From first interest to student success.
           </h2>
-          <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>
+          <p className="body-lg" style={{ color: '#52525b', lineHeight: 1.6 }}>
             Most universities lose context the moment a prospect converts into an applicant, or an applicant becomes an enrolled student. 
             WorldLynk operates as a <strong>continuous context layer</strong> across all three chapters of student life.
           </p>
@@ -128,15 +137,17 @@ export default function LifecycleOverviewSection() {
                 key={zone.id}
                 onClick={() => setActiveZone(zone.id)}
                 style={{
-                  backgroundColor: isSelected ? '#161720' : '#121217',
-                  border: isSelected ? `2px solid ${zone.color}` : '1px solid #242432',
-                  borderRadius: '12px',
+                  backgroundColor: '#ffffff',
+                  border: isSelected ? `2px solid ${zone.color}` : '1px solid #d4d0ca',
+                  borderRadius: '14px',
                   padding: '1.75rem',
                   cursor: 'pointer',
                   transition: 'all 0.25s ease',
                   position: 'relative',
                   overflow: 'hidden',
-                  boxShadow: isSelected ? `0 12px 30px -8px ${zone.color}22` : 'none'
+                  boxShadow: isSelected 
+                    ? `0 12px 30px -8px ${zone.color}35, 0 4px 10px rgba(0, 0, 0, 0.05)` 
+                    : '0 2px 8px rgba(0, 0, 0, 0.04)'
                 }}
               >
                 {/* Active Indicator Bar */}
@@ -168,15 +179,15 @@ export default function LifecycleOverviewSection() {
                   >
                     {zone.stepRange}
                   </span>
-                  <span style={{ fontSize: '0.72rem', color: '#71717a', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.72rem', color: '#52525b', fontWeight: 600 }}>
                     {zone.tagline}
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.35rem' }}>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, color: '#0c0c0f', marginBottom: '0.35rem' }}>
                   {zone.title}
                 </h3>
-                <div style={{ fontSize: '0.85rem', color: '#a1a1aa', fontWeight: 500, marginBottom: '1.25rem' }}>
+                <div style={{ fontSize: '0.85rem', color: '#52525b', fontWeight: 500, marginBottom: '1.25rem' }}>
                   {zone.subtitle}
                 </div>
 
@@ -192,12 +203,12 @@ export default function LifecycleOverviewSection() {
         {/* Detailed Zone Breakdown Showcase */}
         <div 
           style={{ 
-            backgroundColor: '#131319', 
-            borderRadius: '14px', 
-            border: `1px solid ${currentZone.borderColor}`,
+            backgroundColor: '#ffffff', 
+            borderRadius: '16px', 
+            border: `1px solid rgba(0, 0, 0, 0.08)`,
             padding: '2.5rem',
             position: 'relative',
-            boxShadow: '0 20px 40px -15px rgba(0, 0, 0, 0.6)'
+            boxShadow: '0 20px 45px -15px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04)'
           }}
         >
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem', alignItems: 'center' }}>
@@ -219,23 +230,23 @@ export default function LifecycleOverviewSection() {
                 </span>
               </div>
 
-              <h3 className="headline-md" style={{ color: '#ffffff', marginBottom: '1rem' }}>
+              <h3 className="headline-md" style={{ color: '#0c0c0f', marginBottom: '1rem' }}>
                 {currentZone.title}: {currentZone.subtitle}
               </h3>
               
-              <p className="body-md text-secondary" style={{ lineHeight: 1.65, marginBottom: '1.75rem' }}>
+              <p className="body-md" style={{ color: '#52525b', lineHeight: 1.65, marginBottom: '1.75rem' }}>
                 {currentZone.description}
               </p>
 
               <div style={{ marginBottom: '1.75rem' }}>
-                <div className="mono-sm text-muted" style={{ marginBottom: '0.75rem', fontWeight: 600 }}>
+                <div className="mono-sm" style={{ color: '#71717a', marginBottom: '0.75rem', fontWeight: 600 }}>
                   KEY INSTITUTIONAL OUTCOMES:
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                   {currentZone.keyOutcomes.map((item, i) => (
                     <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                       <CheckCircle2 size={16} style={{ color: currentZone.color, flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ fontSize: '0.88rem', color: '#e4e4e7', lineHeight: 1.4 }}>{item}</span>
+                      <span style={{ fontSize: '0.88rem', color: '#18181b', lineHeight: 1.4 }}>{item}</span>
                     </div>
                   ))}
                 </div>
@@ -249,7 +260,8 @@ export default function LifecycleOverviewSection() {
                     padding: '0.75rem 1.4rem', 
                     fontSize: '0.88rem',
                     backgroundColor: currentZone.color,
-                    borderColor: currentZone.color
+                    borderColor: currentZone.color,
+                    color: '#ffffff'
                   }}
                 >
                   Explore 11-Stage Student Journey <ArrowRight size={14} />
@@ -257,7 +269,13 @@ export default function LifecycleOverviewSection() {
                 <Link 
                   to="/demo" 
                   className="btn-secondary" 
-                  style={{ padding: '0.75rem 1.4rem', fontSize: '0.88rem', border: '1px solid #2f2f3d', color: '#ffffff' }}
+                  style={{ 
+                    padding: '0.75rem 1.4rem', 
+                    fontSize: '0.88rem', 
+                    border: '1px solid #d4d0ca', 
+                    backgroundColor: '#f4f2ee',
+                    color: '#0c0c0f' 
+                  }}
                 >
                   Book Walkthrough
                 </Link>
@@ -267,9 +285,9 @@ export default function LifecycleOverviewSection() {
             {/* Right: Visual Experience Preview & Stages Included */}
             <div 
               style={{ 
-                backgroundColor: '#181922', 
-                borderRadius: '12px', 
-                border: '1px solid #2a2a38', 
+                backgroundColor: '#f8fafc', 
+                borderRadius: '14px', 
+                border: '1px solid #e2e8f0', 
                 padding: '1.5rem',
                 display: 'flex',
                 flexDirection: 'column',
@@ -278,11 +296,11 @@ export default function LifecycleOverviewSection() {
             >
               {/* Dynamic Zone Image Spotlight */}
               {currentZone.image && (
-                <div style={{ borderRadius: '10px', overflow: 'hidden', border: `1px solid ${currentZone.color}33`, position: 'relative' }}>
+                <div style={{ borderRadius: '10px', overflow: 'hidden', border: `1px solid #e2e8f0`, position: 'relative', boxShadow: '0 4px 14px rgba(0,0,0,0.06)' }}>
                   <img 
                     src={currentZone.image} 
                     alt={currentZone.title} 
-                    style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
+                    style={{ width: '100%', height: '190px', objectFit: 'cover', display: 'block' }}
                   />
                   <div 
                     style={{ 
@@ -290,14 +308,14 @@ export default function LifecycleOverviewSection() {
                       bottom: 0, 
                       left: 0, 
                       right: 0, 
-                      background: 'linear-gradient(to top, rgba(12, 13, 18, 0.95), rgba(12, 13, 18, 0.4))', 
-                      padding: '0.6rem 0.85rem',
+                      background: 'linear-gradient(to top, rgba(12, 13, 18, 0.9) 0%, rgba(12, 13, 18, 0.4) 70%, transparent 100%)', 
+                      padding: '0.65rem 0.85rem',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between'
                     }}
                   >
-                    <span style={{ fontSize: '0.76rem', color: '#ffffff', fontWeight: 600 }}>
+                    <span style={{ fontSize: '0.78rem', color: '#ffffff', fontWeight: 600 }}>
                       {currentZone.imageCaption}
                     </span>
                     <span style={{ fontSize: '0.68rem', color: currentZone.color, fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
@@ -307,8 +325,8 @@ export default function LifecycleOverviewSection() {
                 </div>
               )}
 
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #2a2a38', paddingBottom: '0.5rem' }}>
-                <span className="mono-sm text-muted" style={{ fontWeight: 700 }}>STUDENT STAGES COVERED</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.5rem' }}>
+                <span className="mono-sm" style={{ fontWeight: 700, color: '#52525b' }}>STUDENT STAGES COVERED</span>
                 <span style={{ fontSize: '0.75rem', color: currentZone.color, fontWeight: 700 }}>Continuous Record</span>
               </div>
 
@@ -321,15 +339,16 @@ export default function LifecycleOverviewSection() {
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '0.65rem 0.85rem',
-                      borderRadius: '6px',
-                      backgroundColor: '#121217',
-                      border: '1px solid #23232f',
+                      borderRadius: '8px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #e2e8f0',
                       fontSize: '0.82rem',
-                      color: '#f4f4f5'
+                      color: '#0f172a',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.02)'
                     }}
                   >
                     <span style={{ fontWeight: 600 }}>{stg}</span>
-                    <span style={{ fontSize: '0.68rem', color: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.15rem 0.4rem', borderRadius: '4px' }}>
+                    <span style={{ fontSize: '0.68rem', color: '#059669', backgroundColor: 'rgba(16, 185, 129, 0.1)', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
                       Connected
                     </span>
                   </div>
@@ -339,7 +358,7 @@ export default function LifecycleOverviewSection() {
               {/* Connected Surfaces & Systems Badges */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 <div>
-                  <div className="mono-sm text-muted" style={{ fontSize: '0.7rem', marginBottom: '0.4rem' }}>ACTIVE SURFACES:</div>
+                  <div className="mono-sm" style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: '0.4rem' }}>ACTIVE SURFACES:</div>
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {currentZone.surfaces.map((s, idx) => (
                       <span 
@@ -348,9 +367,9 @@ export default function LifecycleOverviewSection() {
                           fontSize: '0.72rem', 
                           padding: '0.2rem 0.55rem', 
                           borderRadius: '4px', 
-                          backgroundColor: '#20202c', 
-                          color: '#d4d4d8', 
-                          border: '1px solid #2d2d3e' 
+                          backgroundColor: '#ffffff', 
+                          color: '#334155', 
+                          border: '1px solid #cbd5e1' 
                         }}
                       >
                         {s}
@@ -360,7 +379,7 @@ export default function LifecycleOverviewSection() {
                 </div>
 
                 <div>
-                  <div className="mono-sm text-muted" style={{ fontSize: '0.7rem', marginBottom: '0.4rem' }}>CONNECTED INSTITUTIONAL SYSTEMS:</div>
+                  <div className="mono-sm" style={{ fontSize: '0.7rem', color: '#64748b', marginBottom: '0.4rem' }}>CONNECTED INSTITUTIONAL SYSTEMS:</div>
                   <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
                     {currentZone.systems.map((sys, idx) => (
                       <span 

@@ -1,47 +1,70 @@
 import React, { useState } from 'react';
 import { 
-  ArrowRight, Check, ChevronRight, Mic, Sparkles, 
-  GraduationCap, Briefcase, Wallet, BookOpen, Compass, 
-  HeartPulse, ShieldCheck, Clock, CheckCircle2, MessageSquare
+  ArrowRight, Mic, Sparkles, 
+  GraduationCap, Wallet, BookOpen, 
+  MessageSquare, Home, User
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const DEPARTMENTS = [
-  { id: 'admissions', name: 'Admissions', color: '#ff8f3d' },
-  { id: 'finaid', name: 'Financial Aid', color: '#f7a13a' },
-  { id: 'advising', name: 'Advising', color: '#fb923c' },
-  { id: 'registrar', name: 'Registrar', color: '#3ecf8e' },
-  { id: 'bursar', name: 'Bursar', color: '#e6c33a' },
-  { id: 'retention', name: 'Retention', color: '#ea580c' },
-  { id: 'career', name: 'Career', color: '#f97316' },
-  { id: 'advancement', name: 'Advancement', color: '#f59e0b' },
-  { id: 'marketing', name: 'Marketing', color: '#ef8f4a' },
-  { id: 'research', name: 'Research', color: '#5fc7e6' },
-  { id: 'compliance', name: 'Compliance', color: '#fdba74' },
-  { id: 'cont_ed', name: 'Continuing Ed', color: '#4bd0b0' },
-  { id: 'housing', name: 'Housing', color: '#ff6b00' },
-  { id: 'it_help', name: 'IT Help Desk', color: '#7cc6ff' },
-  { id: 'conduct', name: 'Student Conduct', color: '#fb923c' },
-  { id: 'title_ix', name: 'Title IX', color: '#ea580c' },
-  { id: 'library', name: 'Library', color: '#e0b93a' },
-  { id: 'wellness', name: 'Wellness', color: '#ff8f3d' }
+// Exact 5-row structured pills matching the reference design (18 total)
+const PILL_ROWS = [
+  [
+    { id: 'admissions', name: 'Admissions', color: '#38bdf8' },
+    { id: 'finaid', name: 'Financial Aid', color: '#f59e0b' },
+    { id: 'advising', name: 'Advising', color: '#818cf8' },
+    { id: 'registrar', name: 'Registrar', color: '#10b981' }
+  ],
+  [
+    { id: 'bursar', name: 'Bursar', color: '#eab308' },
+    { id: 'retention', name: 'Retention', color: '#f43f5e' },
+    { id: 'career', name: 'Career', color: '#c084fc' },
+    { id: 'advancement', name: 'Advancement', color: '#818cf8' }
+  ],
+  [
+    { id: 'marketing', name: 'Marketing', color: '#f97316' },
+    { id: 'research', name: 'Research', color: '#38bdf8' },
+    { id: 'compliance', name: 'Compliance', color: '#6366f1' }
+  ],
+  [
+    { id: 'cont_ed', name: 'Continuing Ed', color: '#2dd4bf' },
+    { id: 'housing', name: 'Housing', color: '#f43f5e' },
+    { id: 'it_help', name: 'IT Help Desk', color: '#38bdf8' }
+  ],
+  [
+    { id: 'conduct', name: 'Student Conduct', color: '#a855f7' },
+    { id: 'title_ix', name: 'Title IX', color: '#60a5fa' },
+    { id: 'library', name: 'Library', color: '#eab308' },
+    { id: 'wellness', name: 'Wellness', color: '#ec4899' }
+  ]
 ];
 
+const ALL_DEPARTMENTS = PILL_ROWS.flat();
+
 export default function OneFrontDoorFunnel() {
-  const [activeScreen, setActiveScreen] = useState('welcome'); // 'welcome' | 'plan' | 'chat'
   const [hoveredDept, setHoveredDept] = useState(null);
 
   return (
-    <section className="section" style={{ position: 'relative', overflow: 'hidden', padding: '5.5rem 0' }}>
+    <section 
+      className="section section-stone" 
+      style={{ 
+        backgroundColor: 'var(--wl-light)', 
+        color: '#0c0c0f', 
+        position: 'relative', 
+        overflow: 'hidden', 
+        padding: '5.5rem 0',
+        borderTop: '1px solid #d4d0ca',
+        borderBottom: '1px solid #d4d0ca'
+      }}
+    >
       <div className="main-container">
         
         {/* Section Header */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1.5rem', marginBottom: '2.5rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1.5rem', marginBottom: '3rem' }}>
           <div>
-            <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem', letterSpacing: '0.12em' }}>
-              STUDENT OPERATING EXPERIENCE
+            <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem', letterSpacing: '0.12em', fontWeight: 700 }}>
+              + STUDENT OPERATING EXPERIENCE
             </div>
-            <h2 className="headline-lg" style={{ fontFamily: 'var(--wl-font-sans)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1 }}>
+            <h2 className="headline-lg" style={{ fontFamily: 'var(--wl-font-sans)', fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.1, color: '#0c0c0f' }}>
               The student sees all of it as{' '}
               <span className="fd-gradient-text">
                 one front door
@@ -49,7 +72,7 @@ export default function OneFrontDoorFunnel() {
             </h2>
           </div>
 
-          <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+          {/* <div className="fd-header-links" style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
             <Link 
               to="/student-os" 
               style={{ 
@@ -72,7 +95,7 @@ export default function OneFrontDoorFunnel() {
                 alignItems: 'center', 
                 gap: '0.4rem', 
                 fontWeight: 600, 
-                color: '#9ca3af',
+                color: '#52525b',
                 fontSize: '1rem',
                 textDecoration: 'none'
               }}
@@ -80,7 +103,7 @@ export default function OneFrontDoorFunnel() {
               <span>Explore Student OS</span>
               <ArrowRight size={16} />
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Dual Layout: Funnel Diagram (Left) + Phone Simulator (Right) */}
@@ -89,27 +112,34 @@ export default function OneFrontDoorFunnel() {
           {/* LEFT: THE FIBER OPTIC FUNNEL */}
           <div className="fd-funnel-col">
             
-            {/* Department Tags Cloud */}
-            <div className="fd-dept-tags-wrap">
-              {DEPARTMENTS.map(dept => {
-                const isHovered = hoveredDept === dept.id;
-                return (
-                  <span 
-                    key={dept.id} 
-                    onMouseEnter={() => setHoveredDept(dept.id)}
-                    onMouseLeave={() => setHoveredDept(null)}
-                    className="fd-dept-pill"
-                    style={{ 
-                      borderColor: `${dept.color}55`,
-                      transform: isHovered ? 'scale(1.05)' : 'none',
-                      backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.08)' : 'rgba(255, 255, 255, 0.03)'
-                    }}
-                  >
-                    <span className="fd-pill-dot" style={{ backgroundColor: dept.color }} />
-                    <span className="fd-pill-text">{dept.name}</span>
-                  </span>
-                );
-              })}
+            {/* Department 5-Row Clean Pill Funnel (Exact from Reference) */}
+            <div className="fd-dept-rows-wrap">
+              {PILL_ROWS.map((row, rowIdx) => (
+                <div key={rowIdx} className="fd-dept-row">
+                  {row.map(dept => {
+                    const isHovered = hoveredDept === dept.id;
+                    return (
+                      <span 
+                        key={dept.id} 
+                        onMouseEnter={() => setHoveredDept(dept.id)}
+                        onMouseLeave={() => setHoveredDept(null)}
+                        className="fd-dept-pill"
+                        style={{ 
+                          borderColor: isHovered ? dept.color : 'rgba(0, 0, 0, 0.08)',
+                          backgroundColor: '#ffffff',
+                          transform: isHovered ? 'translateY(-2px) scale(1.04)' : 'none',
+                          boxShadow: isHovered 
+                            ? `0 10px 24px -4px ${dept.color}45, 0 2px 6px rgba(0,0,0,0.06)` 
+                            : '0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04)'
+                        }}
+                      >
+                        <span className="fd-pill-dot" style={{ backgroundColor: dept.color }} />
+                        <span className="fd-pill-text">{dept.name}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              ))}
             </div>
 
             {/* SVG Converging Fiber Streams */}
@@ -120,7 +150,7 @@ export default function OneFrontDoorFunnel() {
                 className="fd-stream-svg"
                 aria-hidden="true"
               >
-                {DEPARTMENTS.map((dept, idx) => {
+                {ALL_DEPARTMENTS.map((dept, idx) => {
                   const startX = 11 + idx * 22.2;
                   const isHighlighted = !hoveredDept || hoveredDept === dept.id;
                   return (
@@ -156,7 +186,7 @@ export default function OneFrontDoorFunnel() {
               <div className="fd-portal-anchor">
                 <div className="fd-portal-glow" />
                 <div className="fd-one-stop-btn">
-                  <svg viewBox="0 0 33 35" width="22" height="22" fill="white">
+                  <svg viewBox="0 0 33 35" width="20" height="20" fill="white">
                     <path d="M 7.362 9.962 L 12.989 9.962 C 17.928 1.772 25.619 1.459 30.245 2.334 C 30.995 2.459 31.558 3.022 31.683 3.772 C 32.559 8.399 32.246 16.089 24.055 21.029 L 24.055 26.655 C 24.055 28.218 23.18 29.719 21.805 30.532 L 16.303 33.783 C 15.803 34.033 15.24 34.096 14.802 33.783 C 14.302 33.533 14.052 33.033 14.052 32.47 L 14.052 25.343 C 14.052 23.904 13.489 22.529 12.489 21.529 C 11.489 20.528 10.113 19.966 8.675 19.966 L 1.547 19.966 C 0.985 19.966 0.485 19.715 0.234 19.215 C -0.078 18.778 -0.078 18.215 0.234 17.715 L 3.486 12.213 C 4.298 10.837 5.799 9.962 7.362 9.962 Z" />
                     <circle cx="24" cy="10" r="3" fill="#ffffff" />
                   </svg>
@@ -171,34 +201,9 @@ export default function OneFrontDoorFunnel() {
             </p>
           </div>
 
-          {/* RIGHT: INTERACTIVE REALISTIC IPHONE 16 SIMULATOR */}
+          {/* RIGHT: CLEAN REALISTIC IPHONE SIMULATOR (Chat Content from Reference) */}
           <div className="fd-phone-col">
             
-            {/* Simulator Screen Selector Pill Tabs */}
-            <div className="fd-screen-switcher">
-              <button 
-                type="button" 
-                onClick={() => setActiveScreen('welcome')}
-                className={`fd-switch-tab ${activeScreen === 'welcome' ? 'fd-switch-tab--active' : ''}`}
-              >
-                Today
-              </button>
-              <button 
-                type="button" 
-                onClick={() => setActiveScreen('plan')}
-                className={`fd-switch-tab ${activeScreen === 'plan' ? 'fd-switch-tab--active' : ''}`}
-              >
-                Degree Plan
-              </button>
-              <button 
-                type="button" 
-                onClick={() => setActiveScreen('chat')}
-                className={`fd-switch-tab ${activeScreen === 'chat' ? 'fd-switch-tab--active' : ''}`}
-              >
-                Ask One-Stop
-              </button>
-            </div>
-
             {/* iPhone Chassis */}
             <div className="iphone-chassis">
               {/* Dynamic Island Notch */}
@@ -211,305 +216,115 @@ export default function OneFrontDoorFunnel() {
                 <div className="iphone-status-bar">
                   <span className="iphone-time">9:41</span>
                   <div className="iphone-status-icons">
-                    <span className="signal-bars">●●●●</span>
-                    <span className="battery-icon">100%</span>
+                    <span style={{ fontSize: '11px', letterSpacing: '1px' }}>●●●●</span>
+                    <span style={{ fontSize: '10px', marginLeft: '6px' }}>100%</span>
                   </div>
                 </div>
 
                 {/* App Brand Header */}
                 <div className="iphone-app-header">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <div style={{ width: 14, height: 14, borderRadius: '4px', background: 'linear-gradient(135deg, #ff6b00, #f97316)', display: 'grid', placeItems: 'center' }}>
+                    <div style={{ width: 14, height: 14, borderRadius: '4px', background: 'linear-gradient(135deg, #ff6b00, #ea580c)', display: 'grid', placeItems: 'center' }}>
                       <Sparkles size={8} color="#fff" />
                     </div>
                     <span style={{ fontSize: '12px', fontWeight: 800, color: '#141531' }}>worldlynk</span>
                   </div>
-                  <span style={{ fontSize: '11px', color: '#ea580c', fontWeight: 600 }}>Active Campus ID</span>
+                  <span style={{ fontSize: '10.5px', color: '#ff6b00', fontWeight: 600 }}>Active Campus ID</span>
                 </div>
 
-                {/* SCREEN 1: WELCOME / DASHBOARD */}
-                {activeScreen === 'welcome' && (
-                  <div className="iphone-content-view">
+                {/* Main Screen Area: Direct Interactive Chat (Exact from Reference) */}
+                <div className="iphone-chat-body">
+                  
+                  {/* Agent Header Identity */}
+                  <div className="iphone-agent-header">
+                    <div className="iphone-agent-avatar">
+                      <Sparkles size={14} color="#ffffff" />
+                    </div>
+                    <div>
+                      <div className="iphone-agent-title">Ask</div>
+                      <div className="iphone-agent-subtitle">every office answers here</div>
+                    </div>
+                  </div>
+
+                  {/* Spacer to push conversation to natural view */}
+                  <div style={{ flex: 1 }} />
+
+                  {/* Conversation Message Stack */}
+                  <div className="iphone-messages-stack">
                     
-                    {/* Welcome Header */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginTop: '4px' }}>
-                      <div>
-                        <div style={{ fontSize: '20px', fontWeight: 800, color: '#141531', lineHeight: 1.15 }}>Welcome back</div>
-                        <div style={{ fontSize: '11.5px', color: '#ea580c', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <Sparkles size={11} />
-                          <span>your team handled 4 things while you were away</span>
-                        </div>
-                      </div>
-                      <div className="iphone-avatar-ring">MC</div>
-                    </div>
-
-                    {/* Degree Progress Ring Card */}
-                    <div className="iphone-card" style={{ marginTop: '12px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                        {/* Circular SVG Gauge */}
-                        <div style={{ width: 62, height: 62, position: 'relative', flexShrink: 0 }}>
-                          <svg viewBox="0 0 64 64" width="62" height="62" style={{ transform: 'rotate(-90deg)' }}>
-                            <circle cx="32" cy="32" r="26" fill="none" stroke="#ecebf8" strokeWidth="5.5" />
-                            <circle 
-                              cx="32" 
-                              cy="32" 
-                              r="26" 
-                              fill="none" 
-                              stroke="url(#progressGrad)" 
-                              strokeWidth="5.5" 
-                              strokeLinecap="round" 
-                              strokeDasharray="140 164" 
-                            />
-                            <defs>
-                              <linearGradient id="progressGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stopColor="#ff6b00" />
-                                <stop offset="100%" stopColor="#f97316" />
-                              </linearGradient>
-                            </defs>
-                          </svg>
-                          <span style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', fontSize: '14px', fontWeight: 800, color: '#141531' }}>
-                            85%
-                          </span>
-                        </div>
-
-                        {/* Text */}
-                        <div>
-                          <div style={{ fontSize: '13px', fontWeight: 700, color: '#141531' }}>Degree progress</div>
-                          <div style={{ fontSize: '11.5px', color: '#5b6178', marginTop: '1px' }}>3.42 GPA · 12 credits this term</div>
-                          <span className="iphone-track-tag">
-                            <Check size={11} color="#0a7651" />
-                            <span>on track · May 2027</span>
-                          </span>
-                        </div>
+                    {/* User Question Bubble */}
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <div className="iphone-user-bubble">
+                        Can I drop chem this semester? It is a lot right now.
                       </div>
                     </div>
 
-                    {/* Your Team Bar */}
-                    <div style={{ marginTop: '12px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', fontWeight: 700, color: '#5f6479', padding: '0 2px' }}>
-                        <span>YOUR TEAM</span>
-                        <span style={{ color: '#ea580c' }}>every office</span>
+                    {/* AI Advisor Response 1 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                      <div className="iphone-ai-bubble">
+                        You can. One thing worth knowing first: dropping CHM-151 puts you at 11 credits, which is under full-time.
                       </div>
-                      <div className="iphone-team-row">
-                        {[
-                          { label: 'Advisor', icon: GraduationCap, color: '#f97316', bg: 'rgba(249, 115, 22, 0.12)' },
-                          { label: 'Career', icon: Briefcase, color: '#6ab7ff', bg: 'rgba(106, 183, 255, 0.12)' },
-                          { label: 'Aid', icon: Wallet, color: '#2bbcd4', bg: 'rgba(43, 188, 212, 0.12)' },
-                          { label: 'Study', icon: BookOpen, color: '#ea580c', bg: 'rgba(234, 88, 12, 0.12)' },
-                          { label: 'Nav', icon: Compass, color: '#f7a13a', bg: 'rgba(247, 161, 58, 0.12)' },
-                          { label: 'Well', icon: HeartPulse, color: '#fb5d7a', bg: 'rgba(251, 93, 122, 0.12)' },
-                        ].map(t => {
-                          const Icon = t.icon;
-                          return (
-                            <div key={t.label} className="iphone-team-member">
-                              <div className="iphone-team-bubble" style={{ backgroundColor: t.bg, borderColor: `${t.color}35` }}>
-                                <Icon size={18} color={t.color} />
-                                <span className="iphone-bubble-dot" />
-                              </div>
-                              <span style={{ fontSize: '10px', color: '#5b6178', fontWeight: 500 }}>{t.label}</span>
-                            </div>
-                          );
-                        })}
+                      <div className="iphone-msg-source">
+                        read from your record: current schedule
                       </div>
                     </div>
 
-                    {/* Proactive Action Cards */}
-                    <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      
-                      {/* Card 1: Study Coach */}
-                      <div className="iphone-card">
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                          <div style={{ width: 32, height: 32, borderRadius: '10px', backgroundColor: 'rgba(244, 90, 208, 0.12)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-                            <BookOpen size={16} color="#cf2f9e" />
-                          </div>
-                          <div>
-                            <div style={{ fontSize: '11px', fontWeight: 800, color: '#cf2f9e' }}>Study Coach</div>
-                            <div style={{ fontSize: '12.5px', color: '#3c4258', lineHeight: 1.3, marginTop: '2px' }}>
-                              HISTORY 201 slipped to 88%. A recovery plan is built around your Tuesday block.
-                            </div>
-                            <span 
-                              onClick={() => setActiveScreen('plan')}
-                              style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', marginTop: '6px', fontSize: '11.5px', fontWeight: 700, color: '#141531', cursor: 'pointer' }}
-                            >
-                              <span>See the plan</span>
-                              <ChevronRight size={12} />
-                            </span>
-                          </div>
-                        </div>
+                    {/* AI Advisor Response 2 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                      <div className="iphone-ai-bubble">
+                        One option keeps you full-time: swap CHM-151 for a 3-credit elective on your plan. I can send it to your advisor.
                       </div>
-
-                      {/* Card 2: Financial Aid */}
-                      <div className="iphone-card">
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                          <div style={{ width: 32, height: 32, borderRadius: '10px', backgroundColor: 'rgba(43, 188, 212, 0.12)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-                            <Wallet size={16} color="#1899b4" />
-                          </div>
-                          <div>
-                            <div style={{ fontSize: '11px', fontWeight: 800, color: '#0c7186' }}>Financial Aid</div>
-                            <div style={{ fontSize: '12.5px', color: '#3c4258', lineHeight: 1.3, marginTop: '2px' }}>
-                              A £247 balance blocks transcripts Friday. A payment plan is drafted.
-                            </div>
-                            <button 
-                              type="button"
-                              className="iphone-pill-btn"
-                              style={{ marginTop: '6px' }}
-                            >
-                              Approve it
-                            </button>
-                          </div>
-                        </div>
+                      <div className="iphone-msg-source">
+                        drafted for your advisor to review
                       </div>
-
                     </div>
 
-                    <div style={{ flex: 1 }} />
-
-                    {/* Bottom Input: Ask anything, any office */}
-                    <div 
-                      onClick={() => setActiveScreen('chat')}
-                      className="iphone-bottom-search"
-                    >
-                      <Sparkles size={13} color="#ff6b00" />
-                      <span style={{ fontSize: '12.5px', color: '#6b7280', flex: 1 }}>Ask anything, any office</span>
-                      <div className="iphone-mic-bubble">
-                        <Mic size={12} color="#fff" />
-                      </div>
+                    {/* Routed Status Pill Tag */}
+                    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
+                      <span className="iphone-routed-tag">
+                        <span className="iphone-routed-dot" />
+                        <span>Routed to Advising</span>
+                      </span>
                     </div>
 
                   </div>
-                )}
 
-                {/* SCREEN 2: DEGREE PLAN & COURSE SWAP */}
-                {activeScreen === 'plan' && (
-                  <div className="iphone-content-view">
-                    
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px' }}>
-                      <div style={{ fontSize: '20px', fontWeight: 800, color: '#141531' }}>Degree plan</div>
-                      <span className="iphone-track-tag">12 credits · full-time</span>
+                  {/* Bottom Input Search Pill */}
+                  <div className="iphone-bottom-search">
+                    <div className="iphone-search-dot">
+                      <Sparkles size={9} color="#ffffff" />
                     </div>
-
-                    {/* Spring term card */}
-                    <div className="iphone-card" style={{ marginTop: '10px', padding: '10px 14px' }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px' }}>
-                        <span style={{ fontWeight: 600, color: '#141531' }}>Spring term</span>
-                        <span style={{ fontWeight: 700, color: '#ea580c' }}>85% · May 2027</span>
-                      </div>
-                      <div style={{ height: 6, borderRadius: 4, backgroundColor: '#ecebf8', overflow: 'hidden', marginTop: '8px' }}>
-                        <div style={{ width: '85%', height: '100%', background: 'linear-gradient(90deg, #ff6b00, #f97316)' }} />
-                      </div>
+                    <span style={{ fontSize: '12px', color: '#94a3b8', flex: 1 }}>Ask anything, any office</span>
+                    <div className="iphone-mic-bubble">
+                      <Mic size={12} color="#ffffff" />
                     </div>
-
-                    {/* Courses Stack */}
-                    <div style={{ marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '7px' }}>
-                      
-                      <div style={{ padding: '10px 12px', borderRadius: '12px', border: '1px solid rgba(255, 107, 0, 0.45)', backgroundColor: 'rgba(255, 107, 0, 0.08)' }}>
-                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#141531' }}>PSY-210 · Intro Psychology</div>
-                        <div style={{ fontSize: '11px', color: '#ea580c', marginTop: '2px' }}>swapped in for CHM-151 · seat held</div>
-                      </div>
-
-                      <div className="iphone-card" style={{ padding: '10px 12px' }}>
-                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#141531' }}>GIS-240 · Intro to GIS</div>
-                        <div style={{ fontSize: '11px', color: '#5b6178', marginTop: '2px' }}>the elective aimed at conservation science</div>
-                      </div>
-
-                      <div className="iphone-card" style={{ padding: '10px 12px' }}>
-                        <div style={{ fontSize: '12.5px', fontWeight: 700, color: '#141531' }}>CHM-151 · General Chemistry</div>
-                        <div style={{ fontSize: '11px', color: '#5b6178', marginTop: '2px' }}>moves to fall · prerequisite chain intact</div>
-                      </div>
-
-                      <div className="iphone-card" style={{ padding: '10px 12px', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                        <div style={{ width: 28, height: 28, borderRadius: '8px', backgroundColor: 'rgba(255, 107, 0, 0.15)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
-                          <GraduationCap size={15} color="#ea580c" />
-                        </div>
-                        <div style={{ fontSize: '11.5px', color: '#3c4258', lineHeight: 1.25 }}>
-                          Your advisor sees the same plan and approves the swap.
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div style={{ flex: 1 }} />
-
-                    {/* Action Button */}
-                    <button type="button" className="iphone-wide-btn" style={{ marginBottom: '6px' }}>
-                      Send to my advisor
-                    </button>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', fontSize: '11px', color: '#5b6178', marginBottom: '8px' }}>
-                      <Check size={12} color="#0a7651" />
-                      <span>still graduating May 2027</span>
-                    </div>
-
                   </div>
-                )}
 
-                {/* SCREEN 3: ASK ONE-STOP (CHAT CONVERSATION) */}
-                {activeScreen === 'chat' && (
-                  <div className="iphone-content-view">
-                    
-                    {/* Header */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '6px' }}>
-                      <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b00, #f97316)', display: 'grid', placeItems: 'center' }}>
-                        <Sparkles size={14} color="#fff" />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: '14px', fontWeight: 800, color: '#141531' }}>Ask</div>
-                        <div style={{ fontSize: '10.5px', color: '#5f6479' }}>every office answers here</div>
-                      </div>
-                    </div>
+                </div>
 
-                    <div style={{ flex: 1 }} />
-
-                    {/* Chat Bubble Sequence */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '10px' }}>
-                      
-                      {/* User message */}
-                      <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <div className="iphone-user-bubble">
-                          Can I drop chem this semester? It is a lot right now.
-                        </div>
-                      </div>
-
-                      {/* AI Response 1 */}
-                      <div>
-                        <div className="iphone-ai-bubble">
-                          You can. One thing worth knowing first: dropping CHM-151 puts you at 11 credits, which is under full-time.
-                        </div>
-                        <div style={{ fontSize: '9.5px', color: '#6b7280', paddingLeft: '8px', marginTop: '2px' }}>
-                          read from your record: current schedule
-                        </div>
-                      </div>
-
-                      {/* AI Response 2 */}
-                      <div>
-                        <div className="iphone-ai-bubble">
-                          One option keeps you full-time: swap CHM-151 for a 3-credit elective on your plan. I can send it to your advisor.
-                        </div>
-                        <div style={{ fontSize: '9.5px', color: '#6b7280', paddingLeft: '8px', marginTop: '2px' }}>
-                          drafted for your advisor to review
-                        </div>
-                      </div>
-
-                      {/* Routed Tag */}
-                      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '4px' }}>
-                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', borderRadius: '999px', padding: '3px 10px', fontSize: '10px', fontWeight: 700, color: '#ea580c', backgroundColor: 'rgba(255, 107, 0, 0.12)', border: '1px solid rgba(255, 107, 0, 0.3)' }}>
-                          <span style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: '#ea580c' }} />
-                          <span>Routed to Advising</span>
-                        </span>
-                      </div>
-
-                    </div>
-
-                    {/* Bottom input */}
-                    <div className="iphone-bottom-search">
-                      <Sparkles size={13} color="#ff6b00" />
-                      <span style={{ fontSize: '12.5px', color: '#6b7280', flex: 1 }}>Ask anything, any office</span>
-                      <div className="iphone-mic-bubble">
-                        <Mic size={12} color="#fff" />
-                      </div>
-                    </div>
-
+                {/* Bottom Navigation TabBar (Exact 5 Tabs from Reference) */}
+                <div className="iphone-tab-bar">
+                  <div className="iphone-tab-item">
+                    <Home size={16} />
+                    <span>Home</span>
                   </div>
-                )}
+                  <div className="iphone-tab-item">
+                    <GraduationCap size={16} />
+                    <span>Plan</span>
+                  </div>
+                  <div className="iphone-tab-item iphone-tab-item--active">
+                    <MessageSquare size={16} />
+                    <span>Ask</span>
+                  </div>
+                  <div className="iphone-tab-item">
+                    <Wallet size={16} />
+                    <span>Money</span>
+                  </div>
+                  <div className="iphone-tab-item">
+                    <User size={16} />
+                    <span>Me</span>
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -538,38 +353,54 @@ export default function OneFrontDoorFunnel() {
           align-items: center;
         }
 
-        /* Tags Cloud */
-        .fd-dept-tags-wrap {
+        /* 5-Row Department Funnel Pills Layout */
+        .fd-dept-rows-wrap {
           display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
+          flex-direction: column;
           gap: 10px;
+          align-items: center;
           max-width: 580px;
           margin: 0 auto;
+        }
+
+        .fd-dept-row {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          flex-wrap: wrap;
         }
 
         .fd-dept-pill {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          border-radius: 999px;
-          border: 1px solid;
-          padding: 8px 14px;
-          box-shadow: 0 4px 14px rgba(4, 7, 20, 0.25);
+          gap: 7px;
+          border-radius: 9999px;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          background: #ffffff;
+          padding: 6px 14px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.04);
           cursor: pointer;
-          transition: transform 0.2s, background-color 0.2s;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fd-dept-pill:hover {
+          transform: translateY(-2px) scale(1.04);
+          background: #ffffff;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .fd-pill-dot {
-          width: 8px;
-          height: 8px;
+          width: 7px;
+          height: 7px;
           border-radius: 50%;
+          flex-shrink: 0;
         }
 
         .fd-pill-text {
-          font-size: 13.5px;
+          font-size: 13px;
           font-weight: 600;
-          color: #e5e7eb;
+          color: #1e293b;
+          white-space: nowrap;
         }
 
         /* SVG Streams */
@@ -607,7 +438,7 @@ export default function OneFrontDoorFunnel() {
           position: absolute;
           inset: -20px;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(255, 107, 0, 0.65), transparent 70%);
+          background: radial-gradient(circle, rgba(255, 107, 0, 0.45), transparent 70%);
           filter: blur(20px);
           animation: glowPulse 3s infinite ease-in-out;
         }
@@ -623,11 +454,11 @@ export default function OneFrontDoorFunnel() {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: linear-gradient(135deg, #ff6b00, #f97316);
+          background: linear-gradient(135deg, #ff6b00, #ea580c);
           color: #ffffff;
           padding: 12px 28px;
           border-radius: 999px;
-          box-shadow: 0 20px 50px rgba(255, 107, 0, 0.45);
+          box-shadow: 0 16px 36px rgba(255, 107, 0, 0.38);
           cursor: pointer;
           transition: transform 0.2s;
         }
@@ -644,8 +475,8 @@ export default function OneFrontDoorFunnel() {
 
         .fd-funnel-caption {
           text-align: center;
-          font-size: 16px;
-          color: #9ca3af;
+          font-size: 15px;
+          color: #52525b;
           margin-top: 1.75rem;
           max-width: 460px;
           margin-left: auto;
@@ -660,40 +491,17 @@ export default function OneFrontDoorFunnel() {
           align-items: center;
         }
 
-        .fd-screen-switcher {
-          display: inline-flex;
-          background: #161724;
-          padding: 3px;
-          border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          margin-bottom: 14px;
-        }
-
-        .fd-switch-tab {
-          border: none;
-          background: transparent;
-          color: #9ca3af;
-          padding: 5px 14px;
-          border-radius: 999px;
-          font-size: 12px;
-          font-weight: 600;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-
-        .fd-switch-tab--active {
-          background: #ff6b00;
-          color: #ffffff;
-        }
-
         .iphone-chassis {
           position: relative;
           width: 360px;
           max-width: 100%;
           border-radius: 48px;
-          background: #07061a;
+          background: #09090b;
           padding: 10px;
-          border: 1px solid #3c2415;
+          border: 1px solid rgba(0, 0, 0, 0.14);
+          box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.28), 0 10px 30px -5px rgba(0, 0, 0, 0.12);
+        }
+          border: 1px solid rgba(255, 255, 255, 0.12);
           box-shadow: 0 50px 120px rgba(4, 7, 20, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
 
@@ -713,8 +521,8 @@ export default function OneFrontDoorFunnel() {
           position: relative;
           border-radius: 40px;
           overflow: hidden;
-          background: #f6f7fd;
-          height: 680px;
+          background: #f8fafc;
+          height: 640px;
           display: flex;
           flex-direction: column;
         }
@@ -736,154 +544,158 @@ export default function OneFrontDoorFunnel() {
           align-items: center;
           padding: 4px 22px 8px;
           border-bottom: 1px solid rgba(20, 21, 49, 0.06);
+          background: #ffffff;
           flex-shrink: 0;
         }
 
-        .iphone-content-view {
-          padding: 12px 18px;
+        /* Chat Body */
+        .iphone-chat-body {
+          flex: 1;
           display: flex;
           flex-direction: column;
-          flex: 1;
-          overflow-y: auto;
+          padding: 14px 16px 10px;
+          overflow: hidden;
+          background: #f8fafc;
         }
 
-        .iphone-avatar-ring {
+        .iphone-agent-header {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .iphone-agent-avatar {
           width: 34px;
           height: 34px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #ff6b00, #f97316);
-          color: #fff;
-          font-size: 11.5px;
-          font-weight: 800;
+          background: linear-gradient(135deg, #ff6b00, #ea580c);
           display: grid;
           place-items: center;
-          box-shadow: 0 6px 16px rgba(255, 107, 0, 0.35);
+          box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
         }
 
-        .iphone-card {
-          border-radius: 20px;
-          background: #ffffff;
-          border: 1px solid #e8e9f5;
-          padding: 12px 14px;
-          box-shadow: 0 8px 22px rgba(24, 24, 70, 0.05);
+        .iphone-agent-title {
+          font-size: 15px;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.1;
         }
 
-        .iphone-track-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          margin-top: 6px;
-          border-radius: 999px;
-          padding: 2px 8px;
-          font-size: 10.5px;
-          font-weight: 700;
-          color: #0a7651;
-          background: rgba(62, 207, 142, 0.12);
-          border: 1px solid rgba(62, 207, 142, 0.35);
+        .iphone-agent-subtitle {
+          font-size: 11px;
+          color: #64748b;
+          margin-top: 1px;
         }
 
-        .iphone-team-row {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 6px;
-        }
-
-        .iphone-team-member {
+        .iphone-messages-stack {
           display: flex;
           flex-direction: column;
+          gap: 10px;
+          margin-bottom: 14px;
+        }
+
+        .iphone-user-bubble {
+          max-width: 82%;
+          border-radius: 18px 18px 4px 18px;
+          padding: 10px 14px;
+          font-size: 12.5px;
+          color: #ffffff;
+          background: linear-gradient(135deg, #ff6b00, #ea580c);
+          line-height: 1.4;
+          box-shadow: 0 6px 18px rgba(255, 107, 0, 0.28);
+        }
+
+        .iphone-ai-bubble {
+          max-width: 90%;
+          border-radius: 18px 18px 18px 4px;
+          padding: 11px 14px;
+          font-size: 12px;
+          color: #1e293b;
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          line-height: 1.45;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+        }
+
+        .iphone-msg-source {
+          font-size: 10px;
+          color: #94a3b8;
+          padding-left: 8px;
+          margin-top: 3px;
+        }
+
+        .iphone-routed-tag {
+          display: inline-flex;
           align-items: center;
-          gap: 4px;
-        }
-
-        .iphone-team-bubble {
-          position: relative;
-          width: 38px;
-          height: 38px;
-          border-radius: 12px;
-          border: 1px solid;
-          display: grid;
-          place-items: center;
-        }
-
-        .iphone-bubble-dot {
-          position: absolute;
-          top: -2px;
-          right: -2px;
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
-          background: #3ecf8e;
-          border: 1.5px solid #fff;
-        }
-
-        .iphone-pill-btn {
-          border: none;
-          background: linear-gradient(90deg, #ff6b00, #f97316);
-          color: #fff;
+          gap: 6px;
+          border-radius: 9999px;
+          padding: 4px 14px;
           font-size: 11px;
           font-weight: 700;
-          border-radius: 999px;
-          padding: 4px 12px;
-          box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
-          cursor: pointer;
+          color: #ff6b00;
+          background: rgba(255, 107, 0, 0.1);
+          border: 1px solid rgba(255, 107, 0, 0.25);
         }
 
-        .iphone-wide-btn {
-          width: 100%;
-          border: none;
-          background: linear-gradient(90deg, #ff6b00, #f97316);
-          color: #fff;
-          font-size: 13px;
-          font-weight: 700;
-          border-radius: 999px;
-          padding: 9px 0;
-          text-align: center;
-          box-shadow: 0 8px 22px rgba(255, 107, 0, 0.3);
-          cursor: pointer;
+        .iphone-routed-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #ff6b00;
         }
 
         .iphone-bottom-search {
-          border-radius: 999px;
+          border-radius: 9999px;
           background: #ffffff;
-          border: 1px solid #e4e4f2;
-          box-shadow: 0 8px 20px rgba(24, 24, 70, 0.06);
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
           display: flex;
           align-items: center;
           gap: 8px;
-          padding: 6px 6px 6px 14px;
-          cursor: pointer;
+          padding: 5px 6px 5px 12px;
+        }
+
+        .iphone-search-dot {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, #ff6b00, #ea580c);
+          display: grid;
+          place-items: center;
         }
 
         .iphone-mic-bubble {
           width: 26px;
           height: 26px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #ff6b00, #f97316);
+          background: linear-gradient(135deg, #ff6b00, #ea580c);
           display: grid;
           place-items: center;
         }
 
-        .iphone-user-bubble {
-          max-width: 85%;
-          border-radius: 18px 18px 4px 18px;
-          padding: 8px 12px;
-          font-size: 12px;
-          color: #ffffff;
-          background: linear-gradient(135deg, #ff6b00, #ea580c);
-          line-height: 1.35;
-          box-shadow: 0 6px 18px rgba(255, 107, 0, 0.25);
+        /* 5-Item Tab Bar */
+        .iphone-tab-bar {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          padding: 8px 6px 12px;
+          border-top: 1px solid rgba(20, 21, 49, 0.06);
+          background: #ffffff;
+          flex-shrink: 0;
         }
 
-        .iphone-ai-bubble {
-          max-width: 90%;
-          border-radius: 18px 18px 18px 4px;
-          padding: 8px 12px;
-          font-size: 12px;
-          color: #3c4258;
-          background: #ffffff;
-          border: 1px solid #e8e9f5;
-          line-height: 1.35;
-          box-shadow: 0 6px 18px rgba(24, 24, 70, 0.05);
+        .iphone-tab-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3px;
+          color: #94a3b8;
+          font-size: 10px;
+          font-weight: 500;
+        }
+
+        .iphone-tab-item--active {
+          color: #ff6b00;
+          font-weight: 700;
         }
 
         /* Responsive Breakpoint */
@@ -891,6 +703,68 @@ export default function OneFrontDoorFunnel() {
           .fd-split-grid {
             grid-template-columns: 1fr;
             gap: 2.5rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .fd-header-links {
+            display: none !important;
+          }
+          .fd-dept-rows-wrap {
+            gap: 6px !important;
+            max-width: 100% !important;
+          }
+          .fd-dept-row {
+            gap: 6px !important;
+          }
+          .fd-dept-pill {
+            padding: 4px 10px !important;
+            gap: 5px !important;
+          }
+          .fd-pill-text {
+            font-size: 11px !important;
+          }
+          .fd-pill-dot {
+            width: 5px !important;
+            height: 5px !important;
+          }
+          .fd-svg-stream-wrap {
+            height: 180px !important;
+            margin-top: 1rem !important;
+          }
+          .fd-one-stop-btn {
+            padding: 10px 22px !important;
+          }
+          .fd-btn-label {
+            font-size: 15px !important;
+          }
+          .fd-funnel-caption {
+            font-size: 13.5px !important;
+            line-height: 1.5 !important;
+            margin-top: 1.25rem !important;
+          }
+          .iphone-chassis {
+            max-width: 325px !important;
+            border-radius: 40px !important;
+            padding: 8px !important;
+          }
+          .iphone-screen {
+            height: 540px !important;
+            border-radius: 32px !important;
+          }
+          .iphone-chat-body {
+            padding: 10px 12px 8px !important;
+          }
+          .iphone-user-bubble {
+            font-size: 11.5px !important;
+            padding: 8px 12px !important;
+          }
+          .iphone-ai-bubble {
+            font-size: 11.5px !important;
+            padding: 9px 12px !important;
+          }
+          .iphone-tab-bar {
+            padding: 6px 4px 10px !important;
           }
         }
       `}</style>

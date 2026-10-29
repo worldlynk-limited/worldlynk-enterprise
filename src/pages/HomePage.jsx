@@ -11,10 +11,12 @@ import {
 
 import LifecycleOverviewSection from '../components/funnel/LifecycleOverviewSection';
 import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSection';
-import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
 import CampusMapAgentGraph from '../components/risely/CampusMapAgentGraph';
 import OneFrontDoorFunnel from '../components/risely/OneFrontDoorFunnel';
 import UnifiedIntelligenceGraph from '../components/risely/UnifiedIntelligenceGraph';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
+import HeroMockup3D from '../components/HeroMockup3D';
+import Hero3DBackground from '../components/Hero3DBackground';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
 const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
@@ -28,12 +30,6 @@ const GridOverlay = ({ variant = 'dark' }) => (
 );
 
 export default function HomePage() {
-  // --- Hero Interactive Autonomous Execution Engine ---
-  const [activeScenarioIdx, setActiveScenarioIdx] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [scenarioProgress, setScenarioProgress] = useState(0);
-  const [actionsResolvedCount, setActionsResolvedCount] = useState(4184);
-
   // State for Section: Dual OS
   const [activeOS, setActiveOS] = useState('staff');
 
@@ -41,598 +37,73 @@ export default function HomePage() {
   const [cohortSize, setCohortSize] = useState(15000);
   const [tuitionFee, setTuitionFee] = useState(25000);
 
-  const heroScenarios = [
-    {
-      id: 'retention',
-      tabLabel: 'Student Support',
-      tabCode: '01',
-      category: 'STUDENT WELL-BEING & PERSISTENCE',
-      title: 'Early Support for Struggling Students',
-      student: 'Maya Chen',
-      studentMeta: 'MSc Data Science (ID: 0091-2847)',
-      avatar: 'MC',
-      avatarBg: '#ffedd5',
-      avatarColor: '#c2410c',
-      themeColor: '#10b981',
-      themeBg: 'rgba(16, 185, 129, 0.12)',
-      speedBadge: 'Resolved in 0.3s',
-      triggerText: 'Missed 3 lectures in a row · Inactive on course portal for 5 days',
-      actionTitle: 'Helpful Check-In Message Prepared',
-      actionBadge: 'Ready for Review',
-      actionIcon: MessageSquare,
-      actionBody: '"Hi Maya, Dr. Jenkins from Student Welfare here. Noticed you couldn\'t make CS-5100 this morning. Everything okay? Let\'s grab 10 minutes this afternoon to catch up."',
-      actionOutcome: 'Maya replied: "Yes please, could we do 2:30pm?"',
-      verifications: [
-        'Student records updated',
-        'Visa 20h limit safe',
-        'Tutor 1-on-1 scheduled'
-      ]
-    },
-    {
-      id: 'compliance',
-      tabLabel: 'Visa Work Hours',
-      tabCode: '02',
-      category: 'STUDENT VISA COMPLIANCE',
-      title: 'Automatic 20-Hour Work Cap Check',
-      student: 'Tariq Hassan',
-      studentMeta: 'BSc Finance & Economics (ID: 0074-9912)',
-      avatar: 'TH',
-      avatarBg: '#dbeafe',
-      avatarColor: '#1d4ed8',
-      themeColor: '#38bdf8',
-      themeBg: 'rgba(56, 189, 248, 0.12)',
-      speedBadge: 'Verified Instantly',
-      triggerText: '18h campus shift logged · Checked against 20h/wk student visa limit',
-      actionTitle: 'Work Verification Letter Issued',
-      actionBadge: 'Approved & Active',
-      actionIcon: ShieldCheck,
-      actionBody: 'System automatically confirms student is within legal term-time work limits. Official verification letter generated and sent to student and campus employer.',
-      actionOutcome: 'Shift rota approved · Employer packet sent',
-      verifications: [
-        'Within 20h legal limit',
-        'Student file updated',
-        '100% audit safe'
-      ]
-    },
-    {
-      id: 'housing',
-      tabLabel: 'Student Housing',
-      tabCode: '03',
-      category: 'ACCOMMODATION & ARRIVALS',
-      title: 'Guaranteed Housing & Digital Room Key',
-      student: 'Elena Rostova',
-      studentMeta: 'MSc Business Analytics · Arrival Sept 28',
-      avatar: 'ER',
-      avatarBg: '#f3e8ff',
-      avatarColor: '#7e22ce',
-      themeColor: '#a855f7',
-      themeBg: 'rgba(168, 85, 247, 0.12)',
-      speedBadge: 'Secured in 0.4s',
-      triggerText: 'International offer confirmed · International flight arrival Sept 28',
-      actionTitle: 'Verified Student Room Reserved',
-      actionBadge: 'Booking Confirmed',
-      actionIcon: Building,
-      actionBody: 'Matched with verified student accommodation. Tenancy agreement and deposit confirmed digitally. Digital room access sent straight to student app.',
-      actionOutcome: 'Elena confirmed room booking in Student App',
-      verifications: [
-        'Deposit secured',
-        'Room reserved',
-        'Airport welcome booked'
-      ]
-    },
-    {
-      id: 'logistics',
-      tabLabel: 'Timetable Updates',
-      tabCode: '04',
-      category: 'CAMPUS OPERATIONS & TIMETABLES',
-      title: 'Instant Room Re-Route When Issues Occur',
-      student: '240 Students',
-      studentMeta: 'CS-4010 Advanced Algorithms Cohort',
-      avatar: '240',
-      avatarBg: '#ffedd5',
-      avatarColor: '#ea580c',
-      themeColor: '#f97316',
-      themeBg: 'rgba(249, 115, 22, 0.12)',
-      speedBadge: 'Updated in 0.2s',
-      triggerText: 'Lecture Hall EB-02 heating issue logged 45m before class',
-      actionTitle: 'Moved Class to Great Hall West Wing',
-      actionBadge: 'Sent 08:32 AM',
-      actionIcon: Zap,
-      actionBody: 'Instantly found an available nearby hall with enough seating. Mobile alert and campus walking map sent to all 240 enrolled students.',
-      actionOutcome: '240 timetables updated · Zero missed class time',
-      verifications: [
-        'Timetables updated',
-        'Lecturer confirmed',
-        'Campus team notified'
-      ]
-    }
-  ];
-
-  // Auto-play timer effect
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    const timer = setInterval(() => {
-      setScenarioProgress(prev => {
-        if (prev >= 100) {
-          setActiveScenarioIdx(current => (current + 1) % 4);
-          setActionsResolvedCount(count => count + 1);
-          return 0;
-        }
-        return prev + 1.25; // ~4 second cycle
-      });
-    }, 50);
-    return () => clearInterval(timer);
-  }, [isAutoPlaying]);
-
-  const activeScenario = heroScenarios[activeScenarioIdx];
-
-  // --- Data structures ---
-
-
-  // Derived ROI calculations
-  const savedStudents = Math.round(cohortSize * (0.082 - 0.024));
-  const recoveredRevenue = savedStudents * tuitionFee;
-  const adminHours = Math.round(cohortSize * 3.4);
+  // Defensible, Reconciled UK Higher Education Persistence Model
+  // Net 1.0% cohort retention gain from early cross-system intervention
+  const savedStudents = Math.round(cohortSize * 0.01); // 150 students for 15,000 cohort
+  const recoveredRevenue = savedStudents * tuitionFee; // 150 * £25,000 = £3.75M
+  const adminHours = Math.round(savedStudents * 24); // ~3,600 staff hours salvaged from manual caseload triage
 
   return (
     <div style={{ backgroundColor: 'var(--wl-dark)', color: 'white', minHeight: '100vh', overflowX: 'hidden' }}>
       
       {/* SECTION 1: HERO COMMAND CENTER (DARK) */}
-      <section className="section" style={{ position: 'relative', overflow: 'hidden', paddingTop: '120px' }}>
+      <section className="section hero-main-section">
+        <Hero3DBackground />
         <GridOverlay variant="dark" />
         <div className="main-container" style={{ position: 'relative', zIndex: 10 }}>
-          <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
-            {/* Left Content */}
-            <div>
-              <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '1rem' }}>HIGHER EDUCATION OPERATING PLATFORM</div>
-              <h1 className="headline-xl" style={{ marginBottom: '1.5rem', lineHeight: 1.1 }}>One connected platform for your entire campus.</h1>
-              <p className="body-lg text-secondary" style={{ marginBottom: '1.5rem', maxWidth: '580px', lineHeight: 1.6 }}>
-                Support every student from first inquiry to graduation day. Free your staff from repetitive paperwork, ensure international students are safe and settled, and give university leadership complete confidence.
-              </p>
-              <div className="hero-keywords-container">
-                {[
-                  { label: 'Student Inquiries & Offers', icon: Search },
-                  { label: 'Verified Campus Housing', icon: Building },
-                  { label: 'Daily Timetables & Classes', icon: Clock },
-                  { label: 'Friendly Well-being Checks', icon: Users },
-                  { label: 'Visa Work-Hour Peace of Mind', icon: ShieldCheck },
-                  { label: 'Careers & Graduate Jobs', icon: GraduationCap },
-                ].map(({ label, icon: Icon }) => (
-                  <span key={label} className="hero-keyword-pill">
-                    <Icon size={12} className="hero-keyword-icon" />
-                    <span>{label}</span>
-                  </span>
-                ))}
-              </div>
-              <div className="flex gap-md" style={{ flexWrap: 'wrap', alignItems: 'center' }}>
-                <Link to="/demo" className="btn-primary" style={{ padding: '0.9rem 2rem', fontSize: '1rem' }}>
-                  Book a Live Demo
-                </Link>
-                <Link 
-                  to="/journey" 
-                  className="btn-secondary" 
-                  style={{ 
-                    padding: '0.9rem 1.6rem', 
-                    fontSize: '0.95rem', 
-                    display: 'inline-flex', 
-                    alignItems: 'center', 
-                    gap: '0.5rem', 
-                    border: '1px solid rgba(255, 255, 255, 0.15)', 
-                    background: 'rgba(255, 255, 255, 0.04)',
-                    color: '#ffffff'
-                  }}
-                >
-                  <span>Explore Student Journey</span>
-                  <ArrowRight size={16} />
-                </Link>
-              </div>
-
-              <div style={{ marginTop: '1.25rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
-                  <ShieldCheck size={14} style={{ color: '#10b981' }} />
-                  <span>SOC-2 Type II</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
-                  <Lock size={14} style={{ color: '#38bdf8' }} />
-                  <span>UK &amp; EU GDPR Ready</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#a1a1aa', fontSize: '0.75rem' }}>
-                  <CheckCircle2 size={14} style={{ color: '#ff6b00' }} />
-                  <span>Zero Database Migrations</span>
-                </div>
-              </div>
-            </div>
+          {/* Centered Hero Header matching the reference design */}
+          <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto', paddingTop: '10px' }}>
             
-            {/* Right Hero Visual — Interactive Animated Autonomous Campus Execution Engine */}
-            <div style={{ position: 'relative' }}>
-              {/* Dynamic Ambient Backlight Glow that adapts to the active scenario theme color */}
-              <div 
-                style={{ 
-                  position: 'absolute', 
-                  top: '-40px', 
-                  right: '-30px', 
-                  width: '450px', 
-                  height: '450px', 
-                  background: `radial-gradient(circle, ${activeScenario.themeColor}28 0%, rgba(248, 245, 238, 0.04) 50%, transparent 70%)`, 
-                  filter: 'blur(70px)', 
-                  pointerEvents: 'none',
-                  zIndex: 0,
-                  transition: 'background 0.8s ease'
-                }} 
-              />
-
-              {/* Main Window Casing with FIXED Height (never expands or jitters) */}
-              <div 
-                style={{ 
-                  position: 'relative', 
-                  zIndex: 1, 
-                  backgroundColor: '#12131a', 
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.25)',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  boxShadow: '0 25px 65px -12px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05), 0 0 50px -10px rgba(0, 0, 0, 0.5)',
-                  fontFamily: 'var(--wl-font-sans)',
-                  height: '465px',
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
+            <h1 className="hero-main-headline">
+              Powerfully simple campus intelligence.
+            </h1>
+            
+            <p className="hero-main-subtext">
+              WorldLynk connects SITS, Moodle, and attendance data into one proactive system. Specialized AI assistants research issues and draft interventions, while your staff keep complete control.
+            </p>
+            
+            <div className="hero-cta-group">
+              <Link
+                to="/demo"
+                className="hero-cta-btn hero-cta-btn--primary"
               >
-                {/* 1. Window Chrome / Titlebar (Dark Titanium Chassis) */}
-                <div 
-                  style={{ 
-                    height: '42px',
-                    padding: '0 1rem', 
-                    backgroundColor: '#161720', 
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.08)', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'space-between',
-                    flexShrink: 0
-                  }}
-                >
-                  {/* Traffic Light Buttons */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ff5f56' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#ffbd2e' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#27c93f' }} />
-                    <span className="mono-sm" style={{ color: '#a1a1aa', fontSize: '0.66rem', marginLeft: '0.4rem', letterSpacing: '0.04em', fontWeight: 600 }}>
-                      LIVE CAMPUS EXPERIENCE
-                    </span>
-                  </div>
+                Book a Live Demo
+              </Link>
+              <Link 
+                to="/journey" 
+                className="hero-cta-btn hero-cta-btn--secondary"
+              >
+                <span>Explore Student Journey</span>
+                <ArrowRight size={15} />
+              </Link>
+            </div>
 
-                  {/* Play / Pause Toggle Control & Live Metric */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <button
-                      type="button"
-                      onClick={() => setIsAutoPlaying(prev => !prev)}
-                      title={isAutoPlaying ? "Pause Animation" : "Resume Auto-Play"}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '5px',
-                        backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                        border: '1px solid rgba(255, 255, 255, 0.1)',
-                        padding: '0.2rem 0.55rem',
-                        borderRadius: '6px',
-                        color: '#d4d4d8',
-                        fontSize: '0.65rem',
-                        cursor: 'pointer',
-                        transition: 'all 0.15s ease'
-                      }}
-                    >
-                      {isAutoPlaying ? <Pause size={10} color="#10b981" /> : <Play size={10} color="#ff8833" />}
-                      <span>{isAutoPlaying ? 'Auto-Play' : 'Paused'}</span>
-                    </button>
-
-                    <div 
-                      style={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        gap: '6px', 
-                        backgroundColor: 'rgba(16, 185, 129, 0.12)', 
-                        border: '1px solid rgba(16, 185, 129, 0.25)', 
-                        padding: '0.2rem 0.6rem', 
-                        borderRadius: '12px' 
-                      }}
-                    >
-                      <span className="hero-pulse-dot" style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#10b981', display: 'inline-block', boxShadow: '0 0 6px #10b981' }} />
-                      <span style={{ color: '#10b981', fontSize: '0.66rem', fontWeight: 700, letterSpacing: '0.02em' }}>
-                        {actionsResolvedCount.toLocaleString()} STUDENT REQUESTS RESOLVED TODAY
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 2. THE INNER SCREEN: Clean, Uncluttered Warm Cream Canvas */}
-                <div 
-                  style={{ 
-                    backgroundColor: '#f8f5ee', 
-                    color: '#18181b', 
-                    padding: '0.85rem 1rem', 
-                    flex: 1,
-                    display: 'flex', 
-                    flexDirection: 'column', 
-                    justifyContent: 'space-between',
-                    overflow: 'hidden'
-                  }}
-                >
-                  
-                  {/* Scenario Interactive Navigation Tabs */}
-                  <div 
-                    style={{ 
-                      display: 'grid', 
-                      gridTemplateColumns: 'repeat(4, 1fr)', 
-                      gap: '6px',
-                      flexShrink: 0
-                    }}
-                  >
-                    {heroScenarios.map((sc, idx) => {
-                      const isActive = activeScenarioIdx === idx;
-                      return (
-                        <div
-                          key={sc.id}
-                          onClick={() => {
-                            setActiveScenarioIdx(idx);
-                            setScenarioProgress(0);
-                          }}
-                          style={{
-                            position: 'relative',
-                            padding: '0.35rem 0.5rem',
-                            borderRadius: '6px',
-                            backgroundColor: isActive ? '#ffffff' : 'rgba(0, 0, 0, 0.03)',
-                            border: isActive ? '1px solid #dcd3c4' : '1px solid transparent',
-                            boxShadow: isActive ? '0 2px 5px rgba(0,0,0,0.04)' : 'none',
-                            cursor: 'pointer',
-                            overflow: 'hidden',
-                            transition: 'all 0.2s ease'
-                          }}
-                        >
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2px' }}>
-                            <span style={{ fontSize: '0.62rem', fontWeight: 800, color: isActive ? sc.themeColor : '#a1a1aa' }}>
-                              {sc.tabCode}
-                            </span>
-                            {isActive && (
-                              <span style={{ width: 5, height: 5, borderRadius: '50%', backgroundColor: sc.themeColor }} />
-                            )}
-                          </div>
-                          <div style={{ fontSize: '0.68rem', fontWeight: isActive ? 700 : 500, color: isActive ? '#18181b' : '#71717a', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            {sc.tabLabel}
-                          </div>
-
-                          {/* Animated Progress Bar under active tab */}
-                          {isActive && (
-                            <div 
-                              style={{ 
-                                position: 'absolute', 
-                                bottom: 0, 
-                                left: 0, 
-                                height: '2.5px', 
-                                backgroundColor: sc.themeColor, 
-                                width: `${scenarioProgress}%`,
-                                transition: 'width 0.05s linear'
-                              }} 
-                            />
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* ACTIVE SCENARIO STAGE: Single, Clean, Elevated Card */}
-                  <div 
-                    key={activeScenario.id}
-                    className="hero-scenario-transition"
-                    style={{ 
-                      backgroundColor: '#ffffff', 
-                      borderRadius: '10px', 
-                      border: '1px solid #e5dfd3', 
-                      padding: '0.9rem',
-                      boxShadow: '0 4px 14px rgba(28, 25, 23, 0.05)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'space-between',
-                      flex: 1,
-                      margin: '0.55rem 0',
-                      overflow: 'hidden'
-                    }}
-                  >
-                    {/* Header: Student Profile + Resolution Badge */}
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexShrink: 0 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <div 
-                          style={{ 
-                            width: 32, 
-                            height: 32, 
-                            borderRadius: '50%', 
-                            backgroundColor: activeScenario.avatarBg, 
-                            color: activeScenario.avatarColor, 
-                            fontWeight: 800, 
-                            fontSize: '0.74rem', 
-                            display: 'flex', 
-                            alignItems: 'center', 
-                            justifyContent: 'center',
-                            border: `1px solid ${activeScenario.avatarColor}33`,
-                            flexShrink: 0
-                          }}
-                        >
-                          {activeScenario.avatar}
-                        </div>
-                        <div>
-                          <div style={{ fontSize: '0.84rem', fontWeight: 700, color: '#18181b' }}>
-                            {activeScenario.student}
-                          </div>
-                          <div style={{ fontSize: '0.68rem', color: '#71717a' }}>
-                            {activeScenario.studentMeta}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Speed Badge */}
-                      <div 
-                        style={{ 
-                          display: 'flex', 
-                          alignItems: 'center', 
-                          gap: '5px', 
-                          backgroundColor: activeScenario.themeBg, 
-                          border: `1px solid ${activeScenario.themeColor}44`, 
-                          padding: '0.2rem 0.55rem', 
-                          borderRadius: '6px',
-                          color: activeScenario.themeColor,
-                          fontSize: '0.68rem',
-                          fontWeight: 700
-                        }}
-                      >
-                        <Zap size={11} />
-                        <span>{activeScenario.speedBadge}</span>
-                      </div>
-                    </div>
-
-                    {/* Clean Incident Signal Banner */}
-                    <div 
-                      style={{ 
-                        backgroundColor: '#faf8f5', 
-                        border: '1px solid #e8e2d8', 
-                        borderRadius: '6px', 
-                        padding: '0.45rem 0.65rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        fontSize: '0.71rem',
-                        color: '#44403c',
-                        flexShrink: 0
-                      }}
-                    >
-                      <AlertTriangle size={13} style={{ color: activeScenario.themeColor, flexShrink: 0 }} />
-                      <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        <strong>Trigger:</strong> {activeScenario.triggerText}
-                      </div>
-                    </div>
-
-                    {/* Clean Action Display (Prominent & Readable) */}
-                    <div 
-                      style={{ 
-                        backgroundColor: '#fbfaf8', 
-                        borderRadius: '8px', 
-                        border: '1px solid #e7e2d7', 
-                        padding: '0.65rem 0.8rem',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '5px'
-                      }}
-                    >
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <span style={{ fontSize: '0.68rem', fontWeight: 700, color: '#18181b', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                          {React.createElement(activeScenario.actionIcon, { 
-                            size: 13, 
-                            style: { color: activeScenario.themeColor } 
-                          })}
-                          {activeScenario.actionTitle}
-                        </span>
-                        <span 
-                          style={{ 
-                            fontSize: '0.62rem', 
-                            color: activeScenario.themeColor, 
-                            backgroundColor: activeScenario.themeBg,
-                            padding: '0.1rem 0.4rem',
-                            borderRadius: '4px',
-                            fontWeight: 600 
-                          }}
-                        >
-                          {activeScenario.actionBadge}
-                        </span>
-                      </div>
-
-                      <div 
-                        style={{ 
-                          fontSize: '0.74rem', 
-                          lineHeight: 1.4, 
-                          color: '#27272a',
-                          padding: '0.2rem 0'
-                        }}
-                      >
-                        {activeScenario.actionBody}
-                      </div>
-
-                      <div style={{ fontSize: '0.68rem', color: '#15803d', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <Check size={12} /> {activeScenario.actionOutcome}
-                      </div>
-                    </div>
-
-                    {/* Single Clean Row of System Verifications */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
-                      {activeScenario.verifications.map((v, i) => (
-                        <span 
-                          key={i} 
-                          style={{ 
-                            fontSize: '0.64rem', 
-                            color: '#166534', 
-                            backgroundColor: '#f0fdf4', 
-                            border: '1px solid #bbf7d0', 
-                            padding: '0.2rem 0.5rem', 
-                            borderRadius: '4px', 
-                            fontWeight: 600,
-                            whiteSpace: 'nowrap'
-                          }}
-                        >
-                          ✓ {v}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Bottom Navigation & Live Execution Footer */}
-                  <div 
-                    style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'space-between', 
-                      paddingTop: '0.25rem', 
-                      borderTop: '1px solid #e7e0d3',
-                      fontSize: '0.66rem',
-                      color: '#71717a',
-                      flexShrink: 0
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-                      <Sparkles size={12} style={{ color: 'var(--wl-accent)' }} />
-                      <span>WorldLynk AI: <strong>30 specialist assistants active</strong></span>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setActiveScenarioIdx((activeScenarioIdx + 1) % heroScenarios.length);
-                        setScenarioProgress(0);
-                      }}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        color: activeScenario.themeColor,
-                        fontWeight: 700,
-                        fontSize: '0.66rem',
-                        cursor: 'pointer',
-                        padding: '0.15rem 0.45rem',
-                        borderRadius: '4px',
-                        backgroundColor: '#ffffff',
-                        border: '1px solid #e0d8cc',
-                        boxShadow: '0 1px 3px rgba(0,0,0,0.04)'
-                      }}
-                    >
-                      <span>Next Scenario</span>
-                      <ChevronRight size={11} />
-                    </button>
-                  </div>
-
-                </div>
-
+            {/* Verified Trust Badges */}
+            <div className="hero-trust-row">
+              <div className="hero-trust-badge">
+                <ShieldCheck size={14} style={{ color: '#10b981' }} />
+                <span>SOC-2 Type II</span>
+              </div>
+              <div className="hero-trust-badge">
+                <Lock size={14} style={{ color: '#38bdf8' }} />
+                <span>UK &amp; EU GDPR Ready</span>
+              </div>
+              <div className="hero-trust-badge">
+                <CheckCircle2 size={14} style={{ color: '#ff6b00' }} />
+                <span>Zero Database Migrations</span>
+              </div>
+              <div className="hero-trust-badge">
+                <Activity size={14} style={{ color: '#38bdf8' }} />
+                <span>99.95% SLA Uptime</span>
               </div>
             </div>
           </div>
+
+          {/* 3D REALISTIC HERO MOCKUP (Clean, Multi-Layered Depth, Orbiting Cards) */}
+          <HeroMockup3D />
           
           {/* Institutional Telemetry bar */}
-          <div style={{ marginTop: '4rem', padding: '1rem', borderTop: '1px solid #2a2a35', borderBottom: '1px solid #2a2a35', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+          <div className="hero-telemetry-bar">
             <div className="mono-sm text-muted">STUDENTS SUPPORTED: 15,000+</div>
             <div className="mono-sm text-muted">STUDENT SATISFACTION: 98%</div>
             <div className="mono-sm text-muted">CAMPUS CAPABILITIES: 30 SPECIALISTS</div>
@@ -642,13 +113,13 @@ export default function HomePage() {
       </section>
 
       {/* RISELY BLUEPRINT SECTION 1: THE AGENT GRAPH & FABRIC ARCHITECTURE */}
-      <CampusMapAgentGraph />
+      {/* <CampusMapAgentGraph /> */}
 
       {/* RISELY BLUEPRINT SECTION 2: ONE FRONT DOOR & STUDENT OS SIMULATOR */}
       <OneFrontDoorFunnel />
 
       {/* RISELY BLUEPRINT SECTION 3: UNIFIED INTELLIGENCE ACROSS CAMPUS */}
-      <UnifiedIntelligenceGraph />
+       {/* <UnifiedIntelligenceGraph /> */}
 
       {/* SECTION: BUILT FOR YOUR WHOLE CAMPUS (LIVELY PHOTO SPOTLIGHT) */}
       <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>
@@ -665,18 +136,19 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+          <div className="spotlight-card-grid">
             
             {/* Card 1: University Leadership */}
             <div 
               style={{ 
-                backgroundColor: '#13131a', 
-                borderRadius: '16px', 
-                border: '1px solid #232332', 
+                backgroundColor: '#101118', 
+                borderRadius: '20px', 
+                border: '1px solid rgba(255, 255, 255, 0.08)', 
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: 'transform 0.2s ease, border-color 0.2s ease'
+                boxShadow: '0 16px 40px -10px rgba(0, 0, 0, 0.5)',
+                transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease'
               }}
             >
               <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
@@ -685,38 +157,52 @@ export default function HomePage() {
                   alt="University Leadership & Historic Campus" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #101118 0%, rgba(16, 17, 24, 0.7) 45%, transparent 100%)' }} />
                 <span 
                   style={{ 
                     position: 'absolute', 
                     top: '1rem', 
                     left: '1rem', 
-                    backgroundColor: 'rgba(255, 107, 0, 0.9)', 
+                    backgroundColor: 'rgba(11, 12, 16, 0.78)', 
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
                     color: '#ffffff', 
-                    padding: '0.3rem 0.75rem', 
-                    borderRadius: '20px', 
+                    padding: '0.35rem 0.85rem', 
+                    borderRadius: '9999px', 
                     fontSize: '0.72rem', 
                     fontWeight: 700,
-                    letterSpacing: '0.04em'
+                    letterSpacing: '0.05em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)'
                   }}
                 >
-                  FOR UNIVERSITY LEADERSHIP
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#ff6b00', boxShadow: '0 0 8px #ff6b00' }} />
+                  <span>FOR UNIVERSITY LEADERSHIP</span>
                 </span>
               </div>
-              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+              <div className="spotlight-card-body">
                 <div>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.3, letterSpacing: '-0.015em', marginBottom: '0.85rem' }}>
                     Protect Student Retention &amp; Institutional Revenue
                   </h3>
-                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: '#cbd5e1', fontSize: '0.94rem', lineHeight: 1.65, marginBottom: '1.75rem' }}>
                     Spot drop-out risks before students slip away. Retain cohorts to graduation and safeguard international tuition without painful software replacements or extra admin headcount.
                   </p>
                 </div>
-                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Award size={16} style={{ color: '#ff8833', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.8rem', color: '#ffb27a', fontWeight: 600 }}>
-                    £1.4M+ average protected tuition per 15k cohort
-                  </span>
+                <div style={{ padding: '0.9rem 1.1rem', borderRadius: '12px', backgroundColor: 'rgba(255, 107, 0, 0.08)', border: '1px solid rgba(255, 107, 0, 0.28)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: 34, height: 34, borderRadius: '8px', backgroundColor: 'rgba(255, 107, 0, 0.18)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                    <Award size={18} style={{ color: '#ff6b00' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
+                      £3.75M <span style={{ fontWeight: 500, fontSize: '0.82rem', color: '#fed7aa' }}>protected tuition</span>
+                    </span>
+                    <span style={{ fontSize: '0.74rem', color: '#fed7aa', marginTop: '1px' }}>
+                      Based on 150 saved students at £25k per 15k cohort
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -724,53 +210,68 @@ export default function HomePage() {
             {/* Card 2: Faculty, Academic Tutors & Student Services */}
             <div 
               style={{ 
-                backgroundColor: '#13131a', 
-                borderRadius: '16px', 
-                border: '1px solid #232332', 
+                backgroundColor: '#101118', 
+                borderRadius: '20px', 
+                border: '1px solid rgba(255, 255, 255, 0.08)', 
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: 'transform 0.2s ease, border-color 0.2s ease'
+                boxShadow: '0 16px 40px -10px rgba(0, 0, 0, 0.5)',
+                transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease'
               }}
             >
               <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
                 <img 
-                  src="/images/student_support.png" 
-                  alt="Academic Tutor and Student Support" 
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" 
+                  alt="Academic Tutor and Student Support Session" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #101118 0%, rgba(16, 17, 24, 0.7) 45%, transparent 100%)' }} />
                 <span 
                   style={{ 
                     position: 'absolute', 
                     top: '1rem', 
                     left: '1rem', 
-                    backgroundColor: 'rgba(56, 189, 248, 0.9)', 
-                    color: '#0a0a0f', 
-                    padding: '0.3rem 0.75rem', 
-                    borderRadius: '20px', 
+                    backgroundColor: 'rgba(11, 12, 16, 0.78)', 
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    color: '#ffffff', 
+                    padding: '0.35rem 0.85rem', 
+                    borderRadius: '9999px', 
                     fontSize: '0.72rem', 
                     fontWeight: 700,
-                    letterSpacing: '0.04em'
+                    letterSpacing: '0.05em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)'
                   }}
                 >
-                  FOR TUTORS &amp; STUDENT WELFARE
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }} />
+                  <span>FOR TUTORS &amp; STUDENT WELFARE</span>
                 </span>
               </div>
-              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+              <div className="spotlight-card-body">
                 <div>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.3, letterSpacing: '-0.015em', marginBottom: '0.85rem' }}>
                     Less Repetitive Paperwork, More Quality Mentorship
                   </h3>
-                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: '#cbd5e1', fontSize: '0.94rem', lineHeight: 1.65, marginBottom: '1.75rem' }}>
                     Routine queries, attendance logs, and visa checklists are prepared automatically. Tutors receive thoughtful, ready-to-send welfare messages they can review and approve in seconds.
                   </p>
                 </div>
-                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(56, 189, 248, 0.08)', border: '1px solid rgba(56, 189, 248, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Clock size={16} style={{ color: '#38bdf8', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.8rem', color: '#7dd3fc', fontWeight: 600 }}>
-                    3,400+ staff hours saved from admin every year
-                  </span>
+                <div style={{ padding: '0.9rem 1.1rem', borderRadius: '12px', backgroundColor: 'rgba(56, 189, 248, 0.08)', border: '1px solid rgba(56, 189, 248, 0.28)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: 34, height: 34, borderRadius: '8px', backgroundColor: 'rgba(56, 189, 248, 0.18)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                    <Clock size={18} style={{ color: '#38bdf8' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
+                      3,400+ staff hours <span style={{ fontWeight: 500, fontSize: '0.82rem', color: '#bae6fd' }}>reclaimed</span>
+                    </span>
+                    <span style={{ fontSize: '0.74rem', color: '#bae6fd', marginTop: '1px' }}>
+                      Automates routine queries, case notes &amp; compliance logs
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -778,13 +279,14 @@ export default function HomePage() {
             {/* Card 3: Domestic & International Students */}
             <div 
               style={{ 
-                backgroundColor: '#13131a', 
-                borderRadius: '16px', 
-                border: '1px solid #232332', 
+                backgroundColor: '#101118', 
+                borderRadius: '20px', 
+                border: '1px solid rgba(255, 255, 255, 0.08)', 
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
-                transition: 'transform 0.2s ease, border-color 0.2s ease'
+                boxShadow: '0 16px 40px -10px rgba(0, 0, 0, 0.5)',
+                transition: 'transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease'
               }}
             >
               <div style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
@@ -793,38 +295,52 @@ export default function HomePage() {
                   alt="International Student on Campus" 
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #13131a 0%, transparent 60%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #101118 0%, rgba(16, 17, 24, 0.7) 45%, transparent 100%)' }} />
                 <span 
                   style={{ 
                     position: 'absolute', 
                     top: '1rem', 
                     left: '1rem', 
-                    backgroundColor: 'rgba(16, 185, 129, 0.9)', 
+                    backgroundColor: 'rgba(11, 12, 16, 0.78)', 
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
                     color: '#ffffff', 
-                    padding: '0.3rem 0.75rem', 
-                    borderRadius: '20px', 
+                    padding: '0.35rem 0.85rem', 
+                    borderRadius: '9999px', 
                     fontSize: '0.72rem', 
                     fontWeight: 700,
-                    letterSpacing: '0.04em'
+                    letterSpacing: '0.05em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.4)'
                   }}
                 >
-                  FOR STUDENTS &amp; FAMILIES
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#10b981', boxShadow: '0 0 8px #10b981' }} />
+                  <span>FOR STUDENTS &amp; FAMILIES</span>
                 </span>
               </div>
-              <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
+              <div className="spotlight-card-body">
                 <div>
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.3, letterSpacing: '-0.015em', marginBottom: '0.85rem' }}>
                     A Warm, Confident Welcome From Day One
                   </h3>
-                  <p style={{ color: '#a1a1aa', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  <p style={{ color: '#cbd5e1', fontSize: '0.94rem', lineHeight: 1.65, marginBottom: '1.75rem' }}>
                     From course preparation and verified student accommodation to lecture halls and campus careers — students have a friendly guide in their pocket, available 24/7.
                   </p>
                 </div>
-                <div style={{ padding: '0.85rem 1rem', borderRadius: '8px', backgroundColor: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.25)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <ShieldCheck size={16} style={{ color: '#10b981', flexShrink: 0 }} />
-                  <span style={{ fontSize: '0.8rem', color: '#6ee7b7', fontWeight: 600 }}>
-                    Guaranteed housing &amp; 100% visa work-hour safety
-                  </span>
+                <div style={{ padding: '0.9rem 1.1rem', borderRadius: '12px', backgroundColor: 'rgba(16, 185, 129, 0.08)', border: '1px solid rgba(16, 185, 129, 0.28)', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{ width: 34, height: 34, borderRadius: '8px', backgroundColor: 'rgba(16, 185, 129, 0.18)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                    <ShieldCheck size={18} style={{ color: '#10b981' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: '0.92rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.01em' }}>
+                      100% verified <span style={{ fontWeight: 500, fontSize: '0.82rem', color: '#a7f3d0' }}>onboarding safety</span>
+                    </span>
+                    <span style={{ fontSize: '0.74rem', color: '#a7f3d0', marginTop: '1px' }}>
+                      Guaranteed escrow housing &amp; 20h visa compliance guard
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -837,7 +353,7 @@ export default function HomePage() {
       <LifecycleOverviewSection />
 
       {/* AUTONOMOUS SPECIALIST AGENTS */}
-      <SpecialistAgentsSection />
+      {/* <SpecialistAgentsSection /> */}
 
       {/* SECTION 5: DUAL OS COMPARISON (DARK) */}
       <section className="section" style={{ borderBottom: '1px solid #1a1a24' }}>
@@ -1049,11 +565,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ENTERPRISE CONNECTORS INTEGRATION MATRIX */}
-      <IntegrationsMatrixSection />
-
       {/* SECTION 7: ROI SIMULATOR (DARK) */}
-      <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
+      {/* <section className="section" style={{ borderTop: '1px solid #1a1a24' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <div className="mono-label" style={{ color: 'var(--wl-accent)' }}>MEASURABLE IMPACT</div>
@@ -1061,12 +574,11 @@ export default function HomePage() {
           </div>
 
           <div className="grid-2 gap-xl" style={{ alignItems: 'center' }}>
-            {/* Sliders */}
-            <div className="card-dark" style={{ padding: '2.5rem', backgroundColor: '#131318', borderRadius: '12px', border: '1px solid #2a2a35' }}>
+            <div className="card-elevated" style={{ padding: '2.5rem', borderRadius: '16px' }}>
               <div className="form-group" style={{ marginBottom: '2.5rem' }}>
                 <div className="flex flex-between mb-sm">
                   <label className="form-label" style={{ fontWeight: 600 }}>Total Student Cohort</label>
-                  <span className="mono-sm" style={{ color: 'var(--wl-accent)' }}>{cohortSize.toLocaleString()}</span>
+                  <span className="mono-sm" style={{ color: 'var(--wl-accent)', fontWeight: '700' }}>{cohortSize.toLocaleString()}</span>
                 </div>
                 <input 
                   type="range" 
@@ -1075,14 +587,14 @@ export default function HomePage() {
                   step="500" 
                   value={cohortSize} 
                   onChange={(e) => setCohortSize(parseInt(e.target.value))}
-                  style={{ width: '100%', accentColor: '#ff6b00' }}
+                  className="range-input-premium"
                 />
               </div>
               
               <div className="form-group">
                 <div className="flex flex-between mb-sm">
                   <label className="form-label" style={{ fontWeight: 600 }}>Average Annual Tuition (£)</label>
-                  <span className="mono-sm" style={{ color: 'var(--wl-accent)' }}>£{tuitionFee.toLocaleString()}</span>
+                  <span className="mono-sm" style={{ color: 'var(--wl-accent)', fontWeight: '700' }}>£{tuitionFee.toLocaleString()}</span>
                 </div>
                 <input 
                   type="range" 
@@ -1091,7 +603,7 @@ export default function HomePage() {
                   step="500" 
                   value={tuitionFee} 
                   onChange={(e) => setTuitionFee(parseInt(e.target.value))}
-                  style={{ width: '100%', accentColor: '#ff6b00' }}
+                  className="range-input-premium"
                 />
               </div>
               
@@ -1100,27 +612,26 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Metrics */}
             <div className="grid-2 gap-md">
-              <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--wl-accent)' }}>
+              <div className="card-elevated" style={{ padding: '1.75rem', borderRadius: '14px', borderLeft: '4px solid var(--wl-accent)' }}>
                 <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>STUDENTS RETAINED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>{savedStudents}</div>
                 <div className="body-sm text-secondary">Students flagged &amp; supported</div>
               </div>
               
-              <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--status-pass)' }}>
+              <div className="card-elevated" style={{ padding: '1.75rem', borderRadius: '14px', borderLeft: '4px solid var(--status-pass)' }}>
                 <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>TUITION PROTECTED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>£{(recoveredRevenue / 1000000).toFixed(1)}M</div>
                 <div className="body-sm text-secondary">Protected student tuition</div>
               </div>
               
-              <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid #e4e4e7' }}>
+              <div className="card-elevated" style={{ padding: '1.75rem', borderRadius: '14px', borderLeft: '4px solid #e4e4e7' }}>
                 <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>STAFF HOURS SAVED / YR</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'white', marginBottom: '0.25rem' }}>{(adminHours / 1000).toFixed(1)}k</div>
                 <div className="body-sm text-secondary">Routine tasks automated</div>
               </div>
               
-              <div className="card-dark" style={{ padding: '1.5rem', backgroundColor: '#1a1a24', borderRadius: '8px', border: '1px solid #2a2a35', borderLeft: '4px solid var(--status-pass)' }}>
+              <div className="card-elevated" style={{ padding: '1.75rem', borderRadius: '14px', borderLeft: '4px solid var(--status-pass)' }}>
                 <div className="mono-label text-muted mb-sm" style={{ fontSize: '0.75rem' }}>VISA COMPLIANCE CONFIDENCE</div>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--status-pass)', marginBottom: '0.25rem' }}>100%</div>
                 <div className="body-sm text-secondary">Peace of mind for your team</div>
@@ -1128,43 +639,14 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* SECTION 8: TRUST & CTA (DARK) */}
-      <section className="section" style={{ backgroundColor: '#09090b', borderTop: '1px solid #1a1a24', paddingBottom: '8rem' }}>
-        <div className="main-container" style={{ textAlign: 'center', maxWidth: '800px' }}>
-          <div className="mono-label mb-md" style={{ color: 'var(--wl-accent)' }}>GET STARTED</div>
-          <h2 className="headline-xl mb-lg" style={{ lineHeight: 1.1 }}>Bring modern, trusted AI to your university this term.</h2>
-          <p className="body-lg text-secondary mb-xl" style={{ maxWidth: '600px', margin: '0 auto 2.5rem' }}>
-            Join forward-thinking universities supporting students 24/7 and saving staff hours every week. Book a personalized 20-minute walkthrough.
-          </p>
-          
-          <div className="flex gap-md justify-center mb-xl" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link to="/demo" className="btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>Book a Live Demo</Link>
-            <Link to="/trust" className="btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.1rem', backgroundColor: '#131318', border: '1px solid #2a2a35', color: 'white' }}>Explore Trust &amp; Security</Link>
-          </div>
-          
-          {/* Trust Badges */}
-          <div className="trust-row flex gap-lg justify-center" style={{ flexWrap: 'wrap', opacity: 0.7 }}>
-            <div className="trust-item flex gap-sm alignItems-center">
-              <ShieldCheck size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">SOC-2 Compliant</span>
-            </div>
-            <div className="trust-item flex gap-sm alignItems-center">
-              <Lock size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">UK GDPR Compliant</span>
-            </div>
-            <div className="trust-item flex gap-sm alignItems-center">
-              <FileText size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">FERPA Ready</span>
-            </div>
-            <div className="trust-item flex gap-sm alignItems-center">
-              <Zap size={18} className="text-secondary" />
-              <span className="mono-sm text-secondary">Staff Always in Control</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* SECTION 8: ENTERPRISE TRUST & CTA (LIGHT STONE BG) */}
+      <EnterpriseCTASection 
+        variant="light"
+        title="Bring modern, trusted AI to your university this term."
+        description="Join forward-thinking universities supporting students 24/7 and saving staff hours every week. Book a personalized 20-minute walkthrough."
+      />
 
     </div>
   );

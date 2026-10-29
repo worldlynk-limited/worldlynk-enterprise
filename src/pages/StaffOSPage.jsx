@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   LayoutDashboard,
   Users,
@@ -148,26 +149,26 @@ export default function StaffOSPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── TOP HERO HEADER ─────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                STAFF PORTAL // COMPASS
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                STAFF OS // COMPASS ENTERPRISE WORKBENCH
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 One clear dashboard for campus staff. You always stay in control.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 Compass turns fragmented student emails and portal requests into one organized inbox. AI assistants draft replies, verify requirements, and flag urgent cases. Staff review and approve every key action before anything is sent.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-held)', fontSize: '10px' }}>ACTIONS AWAITING REVIEW</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{heldCount} Pending Staff Review</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{highRiskCount} High Priority</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>{heldCount} Pending Review</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{highRiskCount} High Priority Alerts</div>
               </div>
               <a
                 href={COMPASS_BACKEND_URL}
@@ -185,11 +186,11 @@ export default function StaffOSPage() {
       </section>
 
       {/* ── MAIN WORKBENCH ──────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '32px' }}>
+      <section className="section section-spacious">
         <div className="main-container">
 
           {/* Module Selector Ribbon */}
-          <div className="grid-4 mb-xl">
+          <div className="grid-4 gap-md mb-xl">
             {modules.map((m) => {
               const isSelected = selectedModuleId === m.id;
               const moduleHeld = m.queue.filter(q => q.status === 'HELD').length;
@@ -200,13 +201,11 @@ export default function StaffOSPage() {
                     setSelectedModuleId(m.id);
                     setSelectedStudentId(m.queue[0]?.id || '1');
                   }}
-                  className={`card-dark ${isSelected ? 'card-selected' : ''}`}
+                  className={`card-elevated card-interactive ${isSelected ? 'card-selected' : ''}`}
                   style={{
-                    padding: '16px',
-                    borderRadius: '12px',
-                    cursor: 'pointer',
-                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid var(--border-subtle)',
-                    backgroundColor: isSelected ? '#161622' : '#101016',
+                    padding: '18px',
+                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.08)',
+                    backgroundColor: isSelected ? '#161624' : '#101016',
                     transition: 'all 0.2s ease'
                   }}
                 >
@@ -609,28 +608,16 @@ export default function StaffOSPage() {
       </section>
 
       {/* ── LIVE LAUNCH CALL TO ACTION ──────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '16px', paddingBottom: '64px' }}>
-        <div className="main-container">
-          <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>READY TO EMPOWER YOUR STAFF?</div>
-              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Bring Compass to your university teams.</h2>
-              <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
-                Cut peak-season backlogs, keep visa tracking audit-ready, and give advisors hours back each week—all while staff retain 100% control over decisions.
-              </p>
-            </div>
-            <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
-              <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.85rem 1.6rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <span>Launch Compass Portal</span>
-                <ExternalLink size={15} />
-              </a>
-              <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
-                Book a Live Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EnterpriseCTASection 
+        eyebrow="READY TO EMPOWER YOUR STAFF?"
+        title="Bring Compass to your university advising teams."
+        description="Cut peak-season registration backlogs, keep Tier-4 visa compliance spotless, and give advisors hours back each week—all while staff retain 100% control over decisions."
+        primaryText="Schedule Compass Staff Walkthrough"
+        primaryLink="/demo"
+        secondaryText="Launch Live Compass Console"
+        secondaryLink={COMPASS_BACKEND_URL}
+        secondaryIsExternal={true}
+      />
 
       {/* ── MODAL: AUDIT LOG ───────────────────────────── */}
       {showLedgerModal && (

@@ -9,7 +9,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  optimizeDeps: {
+    include: ['framer-motion', '@radix-ui/react-slot', 'class-variance-authority', 'clsx', 'tailwind-merge'],
+  },
   server: {
     port: 5174,
+    host: true,
+    allowedHosts: true,
   },
 });

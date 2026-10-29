@@ -17,6 +17,7 @@ import {
   Download,
   FileText
 } from 'lucide-react';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 
 const ROLES = [
   {
@@ -139,7 +140,7 @@ export default function CareersPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
         <div className="main-container">
           <div className="flex-between flex-wrap gap-md">
             <div>
@@ -155,7 +156,7 @@ export default function CareersPage() {
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '18px', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>OPEN POSITIONS</div>
                 <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{ROLES.length} Open Roles</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>London HQ &amp; Remote UK</div>
@@ -165,8 +166,8 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ── DEPARTMENT FILTER BAR ───────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '32px', paddingBottom: '32px' }}>
+      {/* ── DEPARTMENT FILTER BAR & OPEN ROLES ───────────────────── */}
+      <section className="section section-spacious">
         <div className="main-container">
           
           <div className="flex gap-xs mb-xl flex-wrap">
@@ -174,17 +175,7 @@ export default function CareersPage() {
               <button
                 key={dept}
                 onClick={() => setSelectedDept(dept)}
-                className="tab-btn"
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: '8px',
-                  backgroundColor: selectedDept === dept ? 'var(--accent-orange)' : '#13131c',
-                  color: selectedDept === dept ? '#ffffff' : 'var(--text-secondary)',
-                  border: '1px solid var(--border-subtle)',
-                  fontSize: '12px',
-                  fontWeight: selectedDept === dept ? '700' : '500',
-                  cursor: 'pointer'
-                }}
+                className={`tab-pill-premium ${selectedDept === dept ? 'tab-pill-premium--active' : ''}`}
               >
                 {dept} ({dept === 'All' ? ROLES.length : ROLES.filter(r => r.dept === dept).length})
               </button>
@@ -196,12 +187,10 @@ export default function CareersPage() {
             {filteredRoles.map((role) => (
               <div
                 key={role.id}
-                className="card-dark"
+                className="card-elevated card-interactive"
                 style={{
-                  padding: '28px',
-                  borderRadius: '14px',
-                  border: '1px solid var(--border-subtle)',
-                  backgroundColor: '#13131c',
+                  padding: '30px',
+                  borderRadius: '16px',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between'
@@ -213,7 +202,7 @@ export default function CareersPage() {
                     <span className="pill pill-approved" style={{ fontSize: '9px' }}>{role.type}</span>
                   </div>
 
-                  <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#ffffff', margin: '4px 0 6px 0' }}>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#ffffff', margin: '6px 0 8px 0' }}>
                     {role.title}
                   </h3>
 
@@ -222,7 +211,7 @@ export default function CareersPage() {
                     <span>💰 {role.salary}</span>
                   </div>
 
-                  <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                  <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.55 }}>
                     {role.desc}
                   </p>
 
@@ -239,7 +228,7 @@ export default function CareersPage() {
                   </div>
                 </div>
 
-                <div className="flex-between mt-sm" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '16px' }}>
+                <div className="flex-between mt-sm" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '18px' }}>
                   <button
                     onClick={() => setActiveRoleForApply(role)}
                     className="btn-primary btn-sm"
@@ -255,7 +244,7 @@ export default function CareersPage() {
           </div>
 
           {/* ── CAMPUS & TEAM CULTURE BANNER ──────────────────────── */}
-          <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '16px', overflow: 'hidden' }}>
             <div className="responsive-grid-split">
               <div style={{ position: 'relative', minHeight: '260px' }}>
                 <img
@@ -290,9 +279,9 @@ export default function CareersPage() {
 
           <div className="grid-3 mb-3xl">
             {BENEFITS.map((b, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div key={idx} className="card-elevated" style={{ padding: '26px', borderRadius: '14px' }}>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', marginBottom: '8px' }}>{b.title}</h4>
-                <p className="body-sm text-secondary" style={{ lineHeight: 1.5 }}>{b.desc}</p>
+                <p className="body-sm text-secondary" style={{ lineHeight: 1.55 }}>{b.desc}</p>
               </div>
             ))}
           </div>
@@ -306,23 +295,33 @@ export default function CareersPage() {
             <p className="section-desc">We respect your time. Total turnaround from first interview to offer is under 14 calendar days.</p>
           </div>
 
-          <div className="grid-4 mb-3xl">
+          <div className="grid-4">
             {[
               { num: '01', title: 'Application Review', desc: 'Our engineering founders personally review every CV and Github portfolio within 48 hours.' },
               { num: '02', title: 'Technical Architecture', desc: '45-minute discussion covering distributed systems, multi-agent concepts, or higher-ed operations.' },
               { num: '03', title: 'Hands-on Sandbox', desc: 'A paid, real-world practical challenge matching actual day-to-day problems we solve.' },
               { num: '04', title: 'Founders Alignment', desc: 'Meet our Founder Jaswanth Thummala and discuss vision, compensation, equity, and start date.' }
             ].map((step, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
+              <div key={idx} className="card-elevated" style={{ padding: '24px', borderRadius: '14px' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>STAGE {step.num}</span>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff', margin: '4px 0 8px 0' }}>{step.title}</h4>
-                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.45 }}>{step.desc}</p>
+                <h4 style={{ fontSize: '1.1rem', fontWeight: '800', color: '#ffffff', margin: '6px 0 8px 0' }}>{step.title}</h4>
+                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.5 }}>{step.desc}</p>
               </div>
             ))}
           </div>
 
         </div>
       </section>
+
+      {/* ── ENTERPRISE CTA SECTION ───────────────────────────────── */}
+      <EnterpriseCTASection 
+        title="Don't see an exact match for your background?"
+        description="We are always eager to meet exceptional distributed systems engineers, EdTech architects, and higher education leaders. Send a portfolio or note to our founders."
+        primaryButtonText="Reach Out to Engineering"
+        primaryButtonLink="/contact"
+        secondaryButtonText="Explore Campus Platform"
+        secondaryButtonLink="/platform"
+      />
 
       {/* ── MODAL: JOB APPLICATION FORM ────────────────────────────── */}
       {activeRoleForApply && (

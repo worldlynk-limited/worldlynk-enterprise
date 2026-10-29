@@ -14,6 +14,7 @@ import {
   ExternalLink,
   MessageSquare
 } from 'lucide-react';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 
 const DEPARTMENTS = [
   {
@@ -83,7 +84,7 @@ export default function ContactPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
         <div className="main-container">
           <div className="flex-between flex-wrap gap-md">
             <div>
@@ -99,7 +100,7 @@ export default function ContactPage() {
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '18px', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>SLA COMMITMENT</div>
                 <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>Under 4 Hours</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Typical Response Time</div>
@@ -110,7 +111,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── MAIN WORKSPACE: ROUTING TABS & FORM ─────────────────── */}
-      <section className="section" style={{ paddingTop: '32px', paddingBottom: '40px' }}>
+      <section className="section section-spacious">
         <div className="main-container">
 
           {/* Department Selector Cards */}
@@ -121,21 +122,19 @@ export default function ContactPage() {
                 <div
                   key={dept.id}
                   onClick={() => setSelectedDeptId(dept.id)}
-                  className={`card-dark ${isSelected ? 'card-selected' : ''}`}
+                  className={`card-elevated card-interactive ${isSelected ? 'card-selected' : ''}`}
                   style={{
-                    padding: '18px',
-                    borderRadius: '12px',
-                    cursor: 'pointer',
+                    padding: '20px',
+                    borderRadius: '14px',
                     border: isSelected ? '2px solid var(--accent-orange)' : '1px solid var(--border-subtle)',
-                    backgroundColor: isSelected ? '#161622' : '#101016',
-                    transition: 'all 0.2s ease'
+                    backgroundColor: isSelected ? '#161624' : '#111118'
                   }}
                 >
                   <div className="mono-label mb-xs" style={{ fontSize: '9px', color: isSelected ? 'var(--accent-orange)' : 'var(--text-muted)' }}>
                     {dept.lead}
                   </div>
-                  <h4 style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff', marginBottom: '6px' }}>{dept.title}</h4>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>{dept.email}</div>
+                  <h4 style={{ fontSize: '13.5px', fontWeight: '700', color: '#ffffff', marginBottom: '6px' }}>{dept.title}</h4>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{dept.email}</div>
                 </div>
               );
             })}
@@ -145,14 +144,14 @@ export default function ContactPage() {
           <div className="responsive-grid-split">
             
             {/* Form Column */}
-            <div className="card-dark" style={{ padding: '32px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '36px', borderRadius: '16px' }}>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '4px' }}>
                 INQUIRY ROUTED TO // {selectedDept.lead}
               </div>
-              <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '8px' }}>
+              <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginBottom: '8px' }}>
                 {selectedDept.title}
               </h3>
-              <p className="body-sm text-secondary mb-lg">
+              <p className="body-sm text-secondary mb-lg" style={{ lineHeight: 1.55 }}>
                 {selectedDept.desc}
               </p>
 
@@ -251,22 +250,22 @@ export default function ContactPage() {
 
             {/* Offices & Direct Desks Column */}
             <div className="flex flex-col gap-md">
-              <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div className="card-elevated" style={{ padding: '26px', borderRadius: '16px' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS HUBS &amp; OFFICES</span>
                 <h4 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0 16px 0' }}>Global Headquarters</h4>
 
                 <div className="flex flex-col gap-md">
                   {OFFICES.map((off, idx) => (
-                    <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '10px', border: '1px solid #1a1a26' }}>
+                    <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '16px', borderRadius: '12px', border: '1px solid #1a1a26' }}>
                       <div className="flex-between mb-xs">
-                        <span style={{ fontSize: '12.5px', fontWeight: '700', color: '#ffffff' }}>{off.city}</span>
+                        <span style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>{off.city}</span>
                         <span className="pill pill-approved" style={{ fontSize: '8.5px' }}>{off.type}</span>
                       </div>
-                      <div className="mono-sm text-secondary" style={{ fontSize: '11px', lineHeight: 1.4 }}>
+                      <div className="mono-sm text-secondary" style={{ fontSize: '11px', lineHeight: 1.45 }}>
                         {off.address}
                       </div>
-                      <div className="mono-sm text-muted mt-xs" style={{ fontSize: '10px', display: 'flex', alignItems: 'center', gap: '5px' }}>
-                        <Phone size={11} color="var(--text-muted)" />
+                      <div className="mono-sm text-muted mt-xs" style={{ fontSize: '10.5px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <Phone size={12} color="var(--text-muted)" />
                         <span>{off.phone}</span>
                       </div>
                     </div>
@@ -274,12 +273,12 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="card-dark" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div className="card-elevated" style={{ padding: '22px', borderRadius: '14px' }}>
                 <div className="flex gap-xs alignItems-center mb-xs">
                   <ShieldCheck size={16} color="var(--status-pass)" />
                   <span className="mono-label" style={{ color: 'var(--status-pass)' }}>24/7 CAMPUS SUPPORT DESK</span>
                 </div>
-                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.45 }}>
+                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.5 }}>
                   Partner institutions have access to our round-the-clock emergency support line during peak Welcome Week enrollment and critical compliance deadlines.
                 </p>
               </div>
@@ -289,6 +288,12 @@ export default function ContactPage() {
 
         </div>
       </section>
+
+      {/* ── ENTERPRISE CTA SECTION ───────────────────────────────── */}
+      <EnterpriseCTASection 
+        title="Ready to evaluate WorldLynk for your institution?"
+        description="Book a dedicated briefing with our leadership and systems engineering desk, or test the staff console live."
+      />
 
     </div>
   );

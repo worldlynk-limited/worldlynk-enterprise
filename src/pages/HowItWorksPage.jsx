@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   Clock,
   ArrowRight,
@@ -267,26 +268,26 @@ export default function HowItWorksPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                HOW WORLDLYNK WORKS
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                HOW WORLDLYNK WORKS // AUTONOMOUS WORKFLOWS WITH HUMAN OVERSIGHT
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 One clear system. Every campus team stays in sync.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 No more messy spreadsheets or lost email threads between admissions, tutoring, and visa teams. See how WorldLynk connects everyday campus events with smart, timely actions—all while staff stay in total control.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>FAST RESOLUTION</div>
-                <div style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '2px' }}>Under 3 Minutes</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>From Flagged Issue to Staff Review</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Under 3 Minutes</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>From Flagged Issue to Staff Review</div>
               </div>
               <Link to="/platform" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 <span>Explore Platform Overview</span>
@@ -298,11 +299,11 @@ export default function HowItWorksPage() {
       </section>
 
       {/* ── THE 5-STAGE CONTINUOUS OPERATING LOOP ────────────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW IT WORKS IN 5 SIMPLE STEPS</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
               <span>Connect</span>
               <ArrowRight size={20} color="var(--accent-orange)" />
               <span>Understand</span>
@@ -313,12 +314,12 @@ export default function HowItWorksPage() {
               <ArrowRight size={20} color="var(--accent-orange)" />
               <span>Act &amp; Complete</span>
             </h2>
-            <p className="section-desc">
+            <p className="section-desc" style={{ maxWidth: '720px', lineHeight: 1.6 }}>
               Whether a student misses a lecture, logs extra work hours, or needs housing support, WorldLynk follows a simple, transparent process.
             </p>
           </div>
 
-          <div className="grid-auto mb-3xl">
+          <div className="grid-auto mb-xl">
             {[
               { num: '01', title: 'CONNECT', sub: 'Zero-Migration Sync', desc: 'WorldLynk reads updates from your existing student records, timetables, and learning management systems with zero migration.', color: 'var(--accent-orange)' },
               { num: '02', title: 'UNDERSTAND', sub: 'Policies & Work Caps', desc: 'AI assistants check university rules, assignment deadlines, and visa regulations so nothing slips through the cracks.', color: 'var(--accent-cyan)' },
@@ -326,58 +327,58 @@ export default function HowItWorksPage() {
               { num: '04', title: 'APPROVE', sub: 'Staff Review & Confirmation', desc: 'Every important decision stops at your staff portal. A named team member reviews the details and approves with one click.', color: 'var(--status-held)' },
               { num: '05', title: 'ACT & COMPLETE', sub: 'Safely Update Records', desc: 'Once approved, messages are sent to the student and records are safely updated with a complete audit history.', color: 'var(--status-pass)' }
             ].map((stage, i) => (
-              <div key={i} className="card-dark" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)', position: 'relative' }}>
+              <div key={i} className="card-elevated" style={{ padding: '24px', borderLeft: `3px solid ${stage.color}` }}>
                 <span className="mono-label" style={{ color: stage.color }}>STEP {stage.num}</span>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '4px 0', color: '#ffffff' }}>{stage.title}</h3>
-                <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginBottom: '8px' }}>{stage.sub}</div>
-                <p className="body-sm" style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{stage.desc}</p>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '6px 0', color: '#ffffff' }}>{stage.title}</h3>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginBottom: '10px' }}>{stage.sub}</div>
+                <p className="body-sm" style={{ fontSize: '12.5px', color: 'var(--text-secondary)', lineHeight: 1.55 }}>{stage.desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* ── INTERACTIVE EVENT CASCADE SIMULATOR ─────────────────── */}
+      {/* ── INTERACTIVE EVENT CASCADE SIMULATOR ─────────────────── */}
+      <section className="section section-spacious">
+        <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE WALKTHROUGH</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
               See how common campus issues get resolved.
             </h2>
-            <p className="section-desc">
+            <p className="section-desc" style={{ maxWidth: '720px', lineHeight: 1.6 }}>
               Choose a scenario below to see how AI assistants prepare solutions and staff make the final call in minutes.
             </p>
           </div>
 
           {/* Scenario Selector Ribbon */}
           <div className="flex gap-sm mb-lg flex-wrap">
-            {SCENARIOS.map((sc, idx) => (
-              <button
-                key={sc.id}
-                onClick={() => {
-                  setSelectedScenarioIdx(idx);
-                  setActiveStepIdx(0);
-                }}
-                className="tab-btn"
-                style={{
-                  padding: '8px 16px',
-                  borderRadius: '8px',
-                  backgroundColor: selectedScenarioIdx === idx ? 'var(--accent-orange)' : '#161622',
-                  color: selectedScenarioIdx === idx ? '#ffffff' : 'var(--text-secondary)',
-                  border: '1px solid var(--border-subtle)',
-                  fontSize: '12px',
-                  fontWeight: '700'
-                }}
-              >
-                {sc.name.split(':')[0]} // {sc.tag}
-              </button>
-            ))}
+            {SCENARIOS.map((sc, idx) => {
+              const isSelected = selectedScenarioIdx === idx;
+              return (
+                <button
+                  key={sc.id}
+                  onClick={() => {
+                    setSelectedScenarioIdx(idx);
+                    setActiveStepIdx(0);
+                  }}
+                  className={`tab-pill-premium ${isSelected ? 'tab-pill-premium--active' : ''}`}
+                >
+                  <span>{sc.name.split(':')[0]}</span>
+                  <span style={{ opacity: 0.6 }}>·</span>
+                  <span style={{ fontSize: '0.78rem' }}>{sc.tag}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Scenario Overview Card */}
-          <div className="card-dark mb-xl" style={{ padding: '20px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
+          <div className="card-elevated mb-xl" style={{ padding: '24px', backgroundColor: '#13131b' }}>
             <div className="flex-between flex-wrap gap-sm">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>{scenario.tag}</span>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '2px' }}>{scenario.name}</h3>
-                <p className="body-sm text-secondary" style={{ marginTop: '4px' }}>{scenario.summary}</p>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>{scenario.name}</h3>
+                <p className="body-sm text-secondary" style={{ marginTop: '4px', lineHeight: 1.5 }}>{scenario.summary}</p>
               </div>
               <span className="pill pill-approved">5-STEP RESOLUTION</span>
             </div>
@@ -387,7 +388,7 @@ export default function HowItWorksPage() {
           <div className="responsive-grid-split">
             
             {/* Timeline Stepper */}
-            <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated" style={{ padding: '24px' }}>
               <span className="mono-label" style={{ color: 'var(--text-muted)' }}>INCIDENT TIME SEQUENCE (CLICK STEP TO INSPECT)</span>
               
               <div className="flex flex-col gap-sm mt-md">
@@ -399,11 +400,11 @@ export default function HowItWorksPage() {
                       onClick={() => setActiveStepIdx(idx)}
                       style={{
                         backgroundColor: isCurrent ? 'rgba(255,107,0,0.1)' : '#101016',
-                        border: isCurrent ? '2px solid var(--accent-orange)' : '1px solid var(--border-hairline)',
+                        border: isCurrent ? '2px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.06)',
                         borderRadius: '10px',
-                        padding: '14px',
+                        padding: '16px',
                         cursor: 'pointer',
-                        transition: 'all 0.15s ease'
+                        transition: 'all 0.18s ease'
                       }}
                     >
                       <div className="flex-between mb-xs">
@@ -412,9 +413,9 @@ export default function HowItWorksPage() {
                           {st.status}
                         </span>
                       </div>
-                      <div style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>{st.action}</div>
-                      <div className="mono-sm text-secondary" style={{ fontSize: '10px', marginTop: '2px' }}>{st.office} · Assistant: {st.actor}</div>
-                      <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '6px', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: '13.5px', fontWeight: '700', color: '#ffffff' }}>{st.action}</div>
+                      <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '2px' }}>{st.office} · Assistant: {st.actor}</div>
+                      <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '6px', lineHeight: 1.5 }}>
                         {st.desc}
                       </p>
                     </div>
@@ -424,23 +425,23 @@ export default function HowItWorksPage() {
             </div>
 
             {/* Right: Live Packet & Ledger Hash Inspector */}
-            <div className="card-dark" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#13131c' }}>
               <div className="flex-between mb-sm">
                 <div>
                   <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STEP DETAILS &amp; RESOLUTION BRIEF</span>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '4px 0 0 0' }}>Step {activeStepIdx + 1}: {step.action}</h3>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', margin: '4px 0 0 0', color: '#ffffff' }}>Step {activeStepIdx + 1}: {step.action}</h3>
                 </div>
                 {scenario.studentPhoto && (
                   <img
                     src={scenario.studentPhoto}
                     alt={scenario.studentName}
-                    style={{ width: '44px', height: '44px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-orange)' }}
+                    style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-orange)' }}
                   />
                 )}
               </div>
 
-              <div style={{ backgroundColor: '#0d0d12', padding: '14px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
-                <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
+              <div style={{ backgroundColor: '#0d0d12', padding: '16px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
+                <div className="mono-sm" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
                   <div><strong>STUDENT:</strong> <span style={{ color: '#ffffff' }}>{scenario.studentName}</span></div>
                   <div><strong>TIME:</strong> <span style={{ color: '#ffffff' }}>{step.time}</span></div>
                   <div><strong>CAMPUS AREA:</strong> <span style={{ color: '#ffffff' }}>{step.office}</span></div>
@@ -450,14 +451,14 @@ export default function HowItWorksPage() {
               </div>
 
               <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '8px' }}>SUMMARY FOR ADVISORS &amp; STAFF</div>
-              <div style={{ backgroundColor: '#060609', padding: '16px', borderRadius: '10px', border: '1px solid #1a1a24', marginBottom: '16px' }}>
+              <div style={{ backgroundColor: '#060609', padding: '16px', borderRadius: '10px', border: '1px solid #1a1a24', marginBottom: '18px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {step.humanSummary && Object.entries(step.humanSummary).map(([key, value], idx) => (
-                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #14141e', paddingBottom: '6px' }}>
+                    <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #14141e', paddingBottom: '8px' }}>
                       <span className="mono-sm text-secondary" style={{ fontSize: '11px', textTransform: 'capitalize' }}>
                         {key.replace(/([A-Z])/g, ' $1')}:
                       </span>
-                      <span style={{ fontSize: '11.5px', fontWeight: '600', color: key.toLowerCase().includes('risk') || key.toLowerCase().includes('breach') ? 'var(--accent-orange)' : '#ffffff' }}>
+                      <span style={{ fontSize: '12px', fontWeight: '600', color: key.toLowerCase().includes('risk') || key.toLowerCase().includes('breach') ? 'var(--accent-orange)' : '#ffffff' }}>
                         {value}
                       </span>
                     </div>
@@ -466,9 +467,9 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Staff Control Guarantee */}
-              <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
+              <div style={{ backgroundColor: '#181824', padding: '16px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
                 <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>STAFF ALWAYS IN CONTROL</div>
-                <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.45 }}>
+                <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>
                   AI assistants handle the research and drafting, but your university staff always make the final decision. No critical change to a student record or visa status happens without staff approval.
                 </p>
               </div>
@@ -478,6 +479,18 @@ export default function HowItWorksPage() {
 
         </div>
       </section>
+
+      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      <EnterpriseCTASection 
+        eyebrow="SEE YOUR CAMPUS WORKFLOWS IN ACTION"
+        title="Ready to see WorldLynk configured for your university?"
+        description="Book a 30-minute interactive walkthrough. We will demonstrate how your institution's specific retention, attendance, and Tier-4 compliance workflows are handled seamlessly in Compass."
+        primaryText="Schedule Campus Walkthrough"
+        primaryLink="/demo"
+        secondaryText="View Platform Architecture"
+        secondaryLink="/platform"
+        secondaryIsExternal={false}
+      />
 
     </div>
   );

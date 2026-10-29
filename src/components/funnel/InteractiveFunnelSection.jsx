@@ -168,18 +168,29 @@ export default function InteractiveFunnelSection() {
   const currentStage = stages[selectedStageIdx];
 
   return (
-    <section id="interactive-funnel" className="section" style={{ backgroundColor: '#09090c', borderTop: '1px solid #1a1a24', position: 'relative' }}>
+    <section 
+      id="interactive-funnel" 
+      className="section section-stone" 
+      style={{ 
+        backgroundColor: 'var(--wl-light)', 
+        color: '#0c0c0f', 
+        borderTop: '1px solid #d4d0ca', 
+        borderBottom: '1px solid #d4d0ca', 
+        position: 'relative',
+        padding: '5.5rem 0'
+      }}
+    >
       <div className="main-container">
         
         {/* Header */}
         <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto 3rem' }}>
-          <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
+          <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem', fontWeight: 700 }}>
             THE 11 STAGES OF STUDENT LIFE
           </div>
-          <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#ffffff' }}>
+          <h2 className="headline-lg" style={{ marginBottom: '1rem', color: '#0c0c0f' }}>
             Every step from application to graduation, fully connected.
           </h2>
-          <p className="body-lg text-secondary" style={{ lineHeight: 1.6 }}>
+          <p className="body-lg" style={{ color: '#52525b', lineHeight: 1.6 }}>
             See how admissions teams, tutors, housing managers, and careers staff work together smoothly without lost emails or manual spreadsheets. 
             Click any stage below to see how it works for students and staff.
           </p>
@@ -206,14 +217,14 @@ export default function InteractiveFunnelSection() {
                   minWidth: '135px',
                   flex: 1,
                   padding: '0.85rem 0.65rem',
-                  borderRadius: '8px',
-                  backgroundColor: isActive ? '#181924' : '#111116',
-                  border: isActive ? `2px solid ${stg.zoneColor}` : '1px solid #23232f',
+                  borderRadius: '10px',
+                  backgroundColor: '#ffffff',
+                  border: isActive ? '2px solid #ff6b00' : '1px solid #d4d0ca',
                   textAlign: 'left',
                   cursor: 'pointer',
                   position: 'relative',
                   transition: 'all 0.2s ease',
-                  boxShadow: isActive ? `0 4px 15px -4px ${stg.zoneColor}44` : 'none'
+                  boxShadow: isActive ? '0 6px 18px -4px rgba(255, 107, 0, 0.25)' : '0 1px 3px rgba(0, 0, 0, 0.04)'
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
@@ -222,7 +233,7 @@ export default function InteractiveFunnelSection() {
                       fontSize: '0.72rem', 
                       fontWeight: 800, 
                       fontFamily: 'var(--font-mono)', 
-                      color: isActive ? stg.zoneColor : '#71717a' 
+                      color: isActive ? '#ff6b00' : '#64748b' 
                     }}
                   >
                     STAGE {stg.num}
@@ -233,8 +244,8 @@ export default function InteractiveFunnelSection() {
                         width: 6, 
                         height: 6, 
                         borderRadius: '50%', 
-                        backgroundColor: stg.zoneColor,
-                        boxShadow: `0 0 6px ${stg.zoneColor}` 
+                        backgroundColor: '#ff6b00',
+                        boxShadow: '0 0 6px rgba(255, 107, 0, 0.6)' 
                       }} 
                     />
                   )}
@@ -244,7 +255,7 @@ export default function InteractiveFunnelSection() {
                   style={{ 
                     fontSize: '0.82rem', 
                     fontWeight: isActive ? 700 : 600, 
-                    color: isActive ? '#ffffff' : '#a1a1aa',
+                    color: isActive ? '#0c0c0f' : '#475569',
                     lineHeight: 1.25,
                     marginBottom: '4px',
                     whiteSpace: 'nowrap',
@@ -258,7 +269,7 @@ export default function InteractiveFunnelSection() {
                 <div 
                   style={{ 
                     fontSize: '0.64rem', 
-                    color: stg.zoneColor,
+                    color: isActive ? '#ea580c' : '#64748b',
                     fontWeight: 600,
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
@@ -275,19 +286,19 @@ export default function InteractiveFunnelSection() {
         {/* Selected Stage Detail Showcase Card */}
         <div 
           style={{ 
-            backgroundColor: '#12131b', 
+            backgroundColor: '#ffffff', 
             borderRadius: '16px', 
-            border: '1px solid #282838', 
+            border: '1px solid #d4d0ca', 
             overflow: 'hidden',
-            boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.7)'
+            boxShadow: '0 15px 35px -10px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.03)'
           }}
         >
           {/* Top Banner / Summary */}
           <div 
             style={{ 
               padding: '1.75rem 2rem', 
-              backgroundColor: '#171823', 
-              borderBottom: '1px solid #282838',
+              backgroundColor: '#f8fafc', 
+              borderBottom: '1px solid #e2e8f0',
               display: 'flex',
               flexWrap: 'wrap',
               justifyContent: 'space-between',
@@ -302,21 +313,21 @@ export default function InteractiveFunnelSection() {
                     fontFamily: 'var(--font-mono)', 
                     fontSize: '0.78rem', 
                     fontWeight: 800, 
-                    color: currentStage.zoneColor,
-                    backgroundColor: `${currentStage.zoneColor}18`,
-                    border: `1px solid ${currentStage.zoneColor}44`,
+                    color: '#ff6b00',
+                    backgroundColor: 'rgba(255, 107, 0, 0.08)',
+                    border: '1px solid rgba(255, 107, 0, 0.25)',
                     padding: '0.2rem 0.6rem',
                     borderRadius: '4px'
                   }}
                 >
                   FUNNEL STAGE {currentStage.num}
                 </span>
-                <span style={{ fontSize: '0.8rem', color: '#a1a1aa', fontWeight: 600 }}>
-                  Lifecycle Zone: <strong style={{ color: '#ffffff' }}>{currentStage.zone}</strong>
+                <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
+                  Lifecycle Zone: <strong style={{ color: '#0c0c0f' }}>{currentStage.zone}</strong>
                 </span>
               </div>
 
-              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#ffffff' }}>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0c0c0f' }}>
                 {currentStage.name}
               </h3>
             </div>
@@ -331,9 +342,9 @@ export default function InteractiveFunnelSection() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  backgroundColor: '#20202c',
-                  border: '1px solid #323246',
-                  color: selectedStageIdx === 0 ? '#4b5563' : '#e4e4e7',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid #d4d0ca',
+                  color: selectedStageIdx === 0 ? '#94a3b8' : '#0c0c0f',
                   padding: '0.45rem 0.9rem',
                   borderRadius: '6px',
                   fontSize: '0.8rem',
@@ -352,7 +363,7 @@ export default function InteractiveFunnelSection() {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
-                  backgroundColor: currentStage.zoneColor,
+                  backgroundColor: '#ff6b00',
                   border: 'none',
                   color: '#ffffff',
                   padding: '0.45rem 0.9rem',
@@ -373,22 +384,22 @@ export default function InteractiveFunnelSection() {
             {/* Top 2 Narrative Cards: What Happens & WorldLynk Role */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
               
-              <div style={{ backgroundColor: '#161722', padding: '1.5rem', borderRadius: '10px', border: '1px solid #282838' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '1.5rem', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.65rem' }}>
-                  <Eye size={16} style={{ color: currentStage.zoneColor }} />
-                  <span className="mono-sm text-muted" style={{ fontWeight: 700 }}>WHAT HAPPENS AT THIS STAGE</span>
+                  <Eye size={16} style={{ color: '#ff6b00' }} />
+                  <span className="mono-sm" style={{ fontWeight: 700, color: '#475569' }}>WHAT HAPPENS AT THIS STAGE</span>
                 </div>
-                <p style={{ fontSize: '0.92rem', color: '#e4e4e7', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.92rem', color: '#1e293b', lineHeight: 1.6 }}>
                   {currentStage.whatHappens}
                 </p>
               </div>
 
-              <div style={{ backgroundColor: '#161722', padding: '1.5rem', borderRadius: '10px', border: `1px solid ${currentStage.zoneColor}44` }}>
+              <div style={{ backgroundColor: '#fff7ed', padding: '1.5rem', borderRadius: '10px', border: '1px solid rgba(255, 107, 0, 0.22)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.65rem' }}>
-                  <Sparkles size={16} style={{ color: currentStage.zoneColor }} />
-                  <span className="mono-sm" style={{ color: currentStage.zoneColor, fontWeight: 700 }}>WORLDLYNK ORCHESTRATION ROLE</span>
+                  <Sparkles size={16} style={{ color: '#ea580c' }} />
+                  <span className="mono-sm" style={{ color: '#ea580c', fontWeight: 700 }}>WORLDLYNK ORCHESTRATION ROLE</span>
                 </div>
-                <p style={{ fontSize: '0.92rem', color: '#e4e4e7', lineHeight: 1.6 }}>
+                <p style={{ fontSize: '0.92rem', color: '#1e293b', lineHeight: 1.6 }}>
                   {currentStage.worldlynkRole}
                 </p>
               </div>
@@ -399,45 +410,45 @@ export default function InteractiveFunnelSection() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
               
               {/* Perspective 1: Student Surface */}
-              <div style={{ backgroundColor: '#151620', padding: '1.25rem', borderRadius: '8px', border: '1px solid #242533' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '1.25rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
-                  <Users size={16} style={{ color: '#38bdf8' }} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#38bdf8' }}>STUDENT EXPERIENCE</span>
+                  <Users size={16} style={{ color: '#2563eb' }} />
+                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#2563eb' }}>STUDENT EXPERIENCE</span>
                 </div>
-                <p style={{ fontSize: '0.86rem', color: '#d4d4d8', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.86rem', color: '#334155', lineHeight: 1.55 }}>
                   {currentStage.studentAction}
                 </p>
               </div>
 
               {/* Perspective 2: University & Staff Surface */}
-              <div style={{ backgroundColor: '#151620', padding: '1.25rem', borderRadius: '8px', border: '1px solid #242533' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '1.25rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
                   <Compass size={16} style={{ color: '#ff6b00' }} />
                   <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#ff6b00' }}>STAFF WORKFLOW (COMPASS)</span>
                 </div>
-                <p style={{ fontSize: '0.86rem', color: '#d4d4d8', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.86rem', color: '#334155', lineHeight: 1.55 }}>
                   {currentStage.staffAction}
                 </p>
               </div>
 
               {/* Perspective 3: AI Specialist Agent */}
-              <div style={{ backgroundColor: '#151620', padding: '1.25rem', borderRadius: '8px', border: '1px solid #242533' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '1.25rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
-                  <Bot size={16} style={{ color: '#a855f7' }} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#a855f7' }}>AI SPECIALIST AGENT</span>
+                  <Bot size={16} style={{ color: '#0284c7' }} />
+                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#0284c7' }}>AI SPECIALIST AGENT</span>
                 </div>
-                <p style={{ fontSize: '0.86rem', color: '#d4d4d8', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.86rem', color: '#334155', lineHeight: 1.55 }}>
                   {currentStage.aiAction}
                 </p>
               </div>
 
               {/* Perspective 4: Connected Systems */}
-              <div style={{ backgroundColor: '#151620', padding: '1.25rem', borderRadius: '8px', border: '1px solid #242533' }}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '1.25rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '0.75rem' }}>
-                  <Database size={16} style={{ color: '#10b981' }} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#10b981' }}>CONNECTED SYSTEMS</span>
+                  <Database size={16} style={{ color: '#059669' }} />
+                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: '#059669' }}>CONNECTED SYSTEMS</span>
                 </div>
-                <p style={{ fontSize: '0.86rem', color: '#d4d4d8', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '0.86rem', color: '#334155', lineHeight: 1.55 }}>
                   {currentStage.systemsConnected}
                 </p>
               </div>
@@ -450,8 +461,8 @@ export default function InteractiveFunnelSection() {
           <div 
             style={{ 
               padding: '1rem 2rem', 
-              backgroundColor: '#0f1016', 
-              borderTop: '1px solid #20212e',
+              backgroundColor: '#f1f5f9', 
+              borderTop: '1px solid #e2e8f0',
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -459,20 +470,21 @@ export default function InteractiveFunnelSection() {
               gap: '12px'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: '#9ca3af' }}>
-              <ShieldCheck size={15} style={{ color: '#10b981' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.78rem', color: '#475569' }}>
+              <ShieldCheck size={15} style={{ color: '#059669' }} />
               <span>Permission Guardrail: Student consent strictly required for external party handoffs. Zero automatic leakage.</span>
             </div>
             
             <a 
               href="#meet-student-story" 
               style={{ 
-                color: 'var(--wl-accent)', 
+                color: '#ff6b00', 
                 fontSize: '0.82rem', 
                 fontWeight: 700,
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '4px'
+                gap: '4px',
+                textDecoration: 'none'
               }}
             >
               See how this unfolds for a real student <ChevronRight size={14} />

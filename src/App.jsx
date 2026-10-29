@@ -33,6 +33,7 @@ import TermsPage from './pages/TermsPage';
 import TrustHubPage from './pages/TrustHubPage';
 import IntegrationsPage from './pages/IntegrationsPage';
 import StudentJourneyPage from './pages/StudentJourneyPage';
+import ResponsibleAIPage from './pages/ResponsibleAIPage';
 
 export default function App() {
   const [cmdOpen, setCmdOpen] = useState(false);
@@ -80,6 +81,7 @@ export default function App() {
 
           {/* Trust & Procurement */}
           <Route path="/trust" element={<TrustHubPage />} />
+          <Route path="/responsible-ai" element={<ResponsibleAIPage />} />
 
           {/* Catch-all */}
           <Route path="*" element={<HomePage />} />

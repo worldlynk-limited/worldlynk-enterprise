@@ -5,7 +5,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function IntegrationsMatrixSection() {
+export default function IntegrationsMatrixSection({ isFullPage = false, onRequestCustom }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -63,7 +63,16 @@ export default function IntegrationsMatrixSection() {
   });
 
   return (
-    <section id="integrations-matrix" className="section section-stone" style={{ backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
+    <section 
+      id="integrations-matrix" 
+      className="section section-stone" 
+      style={{ 
+        backgroundColor: 'var(--wl-light)', 
+        color: '#0c0c0f',
+        paddingTop: isFullPage ? '110px' : '5rem',
+        borderBottom: '1px solid #d4d0ca'
+      }}
+    >
       <div className="main-container">
         
         {/* Section Header */}
@@ -228,23 +237,47 @@ export default function IntegrationsMatrixSection() {
           ))}
         </div>
 
-        {/* View All Integrations Link */}
-        <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
-          <Link 
-            to="/integrations" 
-            style={{ 
-              color: 'var(--wl-accent)', 
-              fontWeight: 700, 
-              fontSize: '0.95rem',
-              display: 'inline-flex', 
-              alignItems: 'center', 
-              gap: '6px' 
-            }}
-          >
-            <span>Explore all 40+ connectors in our Integrations Directory</span>
-            <ArrowRight size={16} />
-          </Link>
-        </div>
+        {/* Action Link / Custom Connector */}
+        {isFullPage ? (
+          onRequestCustom && (
+            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+              <button 
+                type="button"
+                onClick={onRequestCustom}
+                className="btn-primary"
+                style={{ 
+                  display: 'inline-flex', 
+                  alignItems: 'center', 
+                  gap: '8px',
+                  padding: '0.85rem 1.8rem',
+                  fontSize: '0.92rem',
+                  borderRadius: '9999px',
+                  cursor: 'pointer'
+                }}
+              >
+                <span>Request Bespoke Campus Connector</span>
+                <ArrowRight size={15} />
+              </button>
+            </div>
+          )
+        ) : (
+          <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+            <Link 
+              to="/integrations" 
+              style={{ 
+                color: 'var(--wl-accent)', 
+                fontWeight: 700, 
+                fontSize: '0.95rem',
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '6px' 
+              }}
+            >
+              <span>Explore all 40+ connectors in our Integrations Directory</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

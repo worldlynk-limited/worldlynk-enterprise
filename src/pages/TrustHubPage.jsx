@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   ShieldCheck,
   CheckCircle2,
@@ -26,21 +27,21 @@ const CERTIFICATIONS = [
 ];
 
 const DOCS = [
-  { id: 'soc2', name: 'SOC 2 Type II Independent Audit Report', size: '2.4 MB PDF', status: 'Available Under NDA', badge: 'Certified', desc: 'Complete 68-page auditor attestation covering all Trust Services Criteria.' },
+  { id: 'dpia', name: 'Data Protection Impact Assessment (DPIA) Pre-Drafted Pack', size: '1.4 MB PDF', status: 'Instant Download', badge: 'UK GDPR Ready', desc: 'Pre-filled UK GDPR Article 35 assessment covering Article 6 legal basis, data flows, and Article 22 human safeguard provisions.' },
   { id: 'hecvat', name: 'HECVAT Full Cloud Assessment (Higher Ed)', size: '1.8 MB XLSX', status: 'Instant Download', badge: 'Completed', desc: 'Standardized higher-education questionnaire with 260+ answered security controls.' },
-  { id: 'dpa', name: 'UK GDPR & DPA 2018 Data Processing Addendum', size: '420 KB PDF', status: 'Standard DPA', badge: 'Verified', desc: 'Pre-executed institutional addendum specifying data processor obligations and sub-processors.' },
-  { id: 'ferpa', name: 'FERPA School Official Designation & Data Brief', size: '310 KB PDF', status: 'Legal Guidance', badge: 'Compliant', desc: 'Legal analysis outlining institution-managed data processing and audit boundaries.' },
-  { id: 'qr_arch', name: 'Fast & Secure QR Attendance Architecture', size: '890 KB PDF', status: 'Whitepaper', badge: 'Architecture', desc: 'Technical overview of rotating QR codes, anti-screenshot protection, and offline scanning.' },
-  { id: 'bcp_dr', name: 'Business Continuity & Disaster Recovery Plan', size: '1.2 MB PDF', status: 'Available Under NDA', badge: 'Annual Audit', desc: 'RPO < 15 minutes, RTO < 1 hour, multi-region failover protocols and live drills.' },
-  { id: 'pentest', name: 'Third-Party Penetration Test Executive Summary', size: '640 KB PDF', status: 'Available Under NDA', badge: 'Annual Audit', desc: 'Independent gray-box network and application penetration test report (CREST certified).' },
-  { id: 'subprocessors', name: 'Official Sub-Processor & Geolocation Register', size: '280 KB PDF', status: 'Public Document', badge: 'Updated Q3', desc: 'Complete inventory of hosting providers, database clusters, and data residency regions.' }
+  { id: 'dpa', name: 'UK GDPR & DPA 2018 Data Processing Addendum (Standard DPA)', size: '420 KB PDF', status: 'Instant Download', badge: 'Public Standard', desc: 'Pre-executed institutional addendum specifying data processor obligations and sub-processors.' },
+  { id: 'subprocessors', name: 'Official Sub-Processor & Geolocation Register', size: '280 KB PDF', status: 'Public Document', badge: 'Updated Q3', desc: 'Complete inventory of hosting providers, database clusters, model endpoints, and data residency regions.' },
+  { id: 'qr_arch', name: 'Fast & Secure QR Attendance Architecture Whitepaper', size: '890 KB PDF', status: 'Whitepaper', badge: 'Architecture', desc: 'Technical overview of rotating QR codes, anti-screenshot protection, and offline scanning.' },
+  { id: 'soc2', name: 'SOC 2 Type II Independent Audit Report', size: '2.4 MB PDF', status: 'Request Access Under NDA', badge: 'Auditor Report', desc: 'Complete 68-page auditor attestation covering all Trust Services Criteria. Distributed under NDA upon university IT request.' },
+  { id: 'bcp_dr', name: 'Business Continuity & Disaster Recovery Plan', size: '1.2 MB PDF', status: 'Request Access Under NDA', badge: 'Annual Audit', desc: 'RPO < 15 minutes, RTO < 1 hour, multi-region failover protocols and live drills.' },
+  { id: 'pentest', name: 'Third-Party Penetration Test Executive Summary', size: '640 KB PDF', status: 'Request Access Under NDA', badge: 'Annual Audit', desc: 'Independent gray-box network and application penetration test report (CREST certified).' }
 ];
 
 const SUBPROCESSORS = [
-  { name: 'Amazon Web Services (AWS)', purpose: 'Primary Compute & VPC Hosting', location: 'London, UK (eu-west-2)', dataStored: 'Encrypted databases, event bus, API nodes' },
-  { name: 'Google Cloud Platform (GCP)', purpose: 'Secondary Replication & AI Gateway', location: 'London, UK (europe-west2)', dataStored: 'Anonymized vector indices, tokenized embeddings' },
-  { name: 'Redis Enterprise Cloud', purpose: 'Sub-millisecond Pub/Sub & Queue', location: 'London, UK (AWS eu-west-2)', dataStored: 'Ephemeral session cache, live attendance queues' },
-  { name: 'Stripe Payments UK Ltd', purpose: 'PBSA Housing Escrows & Tuition', location: 'London, UK / EU', dataStored: 'Payment tokens, tenancy holding contracts' }
+  { name: 'Amazon Web Services (AWS)', purpose: 'Primary Compute & VPC Hosting', location: 'London, UK (eu-west-2)', dataStored: 'Encrypted PostgreSQL clusters, event bus, API containers. AES-256 at rest.' },
+  { name: 'AWS Bedrock / Anthropic Claude', purpose: 'Agent Inference & Drafting Engine', location: 'London, UK (eu-west-2)', dataStored: 'In-flight inference only. Zero Data Retention (ZDR) enterprise agreement. Data is never stored or used to train models.' },
+  { name: 'Redis Enterprise Cloud', purpose: 'Sub-millisecond Session Cache & Queue', location: 'London, UK (AWS eu-west-2)', dataStored: 'Ephemeral session cache, dynamic QR token validation.' },
+  { name: 'Stripe Payments UK Ltd', purpose: 'PBSA Housing Escrows & Deposits', location: 'London, UK (FCA Regulated)', dataStored: 'Payment tokens, tenancy holding contracts.' }
 ];
 
 export default function TrustHubPage() {
@@ -61,26 +62,26 @@ export default function TrustHubPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                TRUST &amp; COMPLIANCE HUB // SECURITY DOCUMENTATION
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                TRUST &amp; COMPLIANCE HUB // SECURITY DOCUMENTATION &amp; AUDITS
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 Security documentation for university IT and legal teams.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 University software reviews shouldn't take months. We provide ready-to-review security assessments, independent audit reports, and standard data protection agreements.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>AUDIT STATUS</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>SOC 2 Type II</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>ISO 27001 &amp; HECVAT Complete</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>SOC 2 Type II</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>ISO 27001 &amp; HECVAT Complete</div>
               </div>
               <Link to="/security" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 <span>Review Security Model</span>
@@ -92,24 +93,24 @@ export default function TrustHubPage() {
       </section>
 
       {/* ── CERTIFICATIONS GALLERY ──────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>COMPLIANCE ATTESTATIONS</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
               Recognized Higher-Ed Security Standards.
             </h2>
           </div>
 
-          <div className="grid-3 mb-3xl">
+          <div className="grid-3 gap-lg mb-3xl">
             {CERTIFICATIONS.map((cert, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div key={idx} className="card-elevated" style={{ padding: '26px', backgroundColor: '#13131c' }}>
                 <div className="flex-between mb-xs">
                   <span className="pill pill-approved">{cert.status}</span>
                   <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>{cert.authority}</span>
                 </div>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#ffffff', margin: '6px 0 6px 0' }}>{cert.name}</h3>
-                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.45 }}>{cert.desc}</p>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#ffffff', margin: '8px 0 6px 0' }}>{cert.name}</h3>
+                <p className="body-sm text-secondary" style={{ fontSize: '12px', lineHeight: 1.55 }}>{cert.desc}</p>
               </div>
             ))}
           </div>
@@ -254,6 +255,18 @@ export default function TrustHubPage() {
 
         </div>
       </section>
+
+      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      <EnterpriseCTASection 
+        eyebrow="HECVAT &amp; INSTITUTIONAL PROCUREMENT"
+        title="Ready to fast-track your university IT security review?"
+        description="Request custom access to our complete SOC 2 Type II attestation, CREST penetration test findings, and Business Continuity plan under standard mutual NDA."
+        primaryText="Request Security Package"
+        primaryLink="/demo"
+        secondaryText="View Data Privacy Policy"
+        secondaryLink="/privacy"
+        secondaryIsExternal={false}
+      />
 
       {/* ── MODAL: DOCUMENT DOWNLOAD / NDA GATE ─────────────────────── */}
       {selectedDoc && (

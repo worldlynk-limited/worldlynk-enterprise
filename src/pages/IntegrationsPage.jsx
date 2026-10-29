@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
+import IntegrationsMatrixSection from '../components/funnel/IntegrationsMatrixSection';
 import {
   Database,
   Building,
@@ -226,45 +228,19 @@ export default function IntegrationsPage() {
   return (
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
-      {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
-        <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                INTEGRATIONS CATALOG // WORKS WITH YOUR CURRENT TOOLS
-              </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
-                Connect smoothly with your campus tools.
-              </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
-                WorldLynk works alongside your existing university software. Connect your student information systems, learning platforms, payments, and messaging tools without changing your existing databases or rewriting code.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>CONNECTOR STACK</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>14 Production Connectors</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Sub-18ms Average Latency</div>
-              </div>
-              <button onClick={() => setShowCustomModal(true)} className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>Request Custom Integration</span>
-                <ArrowRight size={13} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── HERO INTEGRATIONS MATRIX SECTION ──────────────────────── */}
+      <IntegrationsMatrixSection 
+        isFullPage={true} 
+        onRequestCustom={() => setShowCustomModal(true)} 
+      />
 
       {/* ── FILTER & SEARCH RIBBON ──────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '32px', paddingBottom: '40px' }}>
+      {/* <section className="section section-spacious">
         <div className="main-container">
           
-          <div className="flex-between flex-wrap gap-md mb-xl" style={{ backgroundColor: '#13131c', padding: '14px 20px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
-            {/* Search Box */}
-            <div style={{ position: 'relative', width: '300px', maxWidth: '100%' }}>
-              <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
+          <div className="flex-between flex-wrap gap-md mb-xl" style={{ backgroundColor: '#13131c', padding: '16px 22px', borderRadius: '14px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+            <div style={{ position: 'relative', width: '320px', maxWidth: '100%' }}>
+              <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
                 type="text"
                 placeholder="Search connectors, SIS, LMS..."
@@ -272,18 +248,17 @@ export default function IntegrationsPage() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{
                   width: '100%',
-                  padding: '8px 12px 8px 32px',
+                  padding: '9px 14px 9px 36px',
                   backgroundColor: '#191924',
-                  border: '1px solid var(--border-hairline)',
-                  borderRadius: '6px',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '8px',
                   color: '#ffffff',
-                  fontSize: '12px',
+                  fontSize: '12.5px',
                   outline: 'none'
                 }}
               />
             </div>
 
-            {/* Category Tabs */}
             <div className="flex gap-xs flex-wrap">
               {[
                 { id: 'All', label: 'All Ecosystem' },
@@ -296,17 +271,8 @@ export default function IntegrationsPage() {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className="tab-btn"
-                  style={{
-                    padding: '6px 12px',
-                    borderRadius: '6px',
-                    backgroundColor: selectedCategory === cat.id ? 'var(--accent-orange)' : '#191924',
-                    color: selectedCategory === cat.id ? '#ffffff' : 'var(--text-secondary)',
-                    border: '1px solid var(--border-subtle)',
-                    fontSize: '11.5px',
-                    fontWeight: selectedCategory === cat.id ? '700' : '500',
-                    cursor: 'pointer'
-                  }}
+                  className={`tab-pill-premium ${selectedCategory === cat.id ? 'tab-pill-premium--active' : ''}`}
+                  style={{ padding: '7px 14px', fontSize: '11.5px' }}
                 >
                   {cat.label}
                 </button>
@@ -314,51 +280,47 @@ export default function IntegrationsPage() {
             </div>
           </div>
 
-          {/* Connectors Grid */}
-          <div className="grid-2 gap-md mb-3xl">
+          <div className="grid-2 gap-lg mb-3xl">
             {filteredConnectors.map((c) => {
               const IconComp = c.icon;
               return (
                 <div
                   key={c.id}
                   onClick={() => setActiveConnector(c)}
-                  className="card-dark card-hover"
+                  className="card-elevated card-interactive"
                   style={{
-                    padding: '24px',
-                    borderRadius: '12px',
-                    border: '1px solid var(--border-subtle)',
-                    backgroundColor: '#13131c',
-                    cursor: 'pointer',
+                    padding: '28px',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    backgroundColor: '#13131c'
                   }}
                 >
                   <div>
                     <div className="flex-between mb-sm">
                       <div className="flex gap-sm alignItems-center">
-                        <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: 'rgba(255,107,0,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-orange)' }}>
+                        <div style={{ width: '42px', height: '42px', borderRadius: '10px', backgroundColor: 'rgba(255,107,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-orange)' }}>
                           <IconComp size={20} />
                         </div>
                         <div>
-                          <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: '#ffffff', margin: 0 }}>{c.name}</h3>
-                          <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>{c.categoryLabel}</div>
+                          <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>{c.name}</h3>
+                          <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{c.categoryLabel}</div>
                         </div>
                       </div>
                       <span className="pill pill-approved">{c.status}</span>
                     </div>
 
-                    <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.5 }}>
+                    <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6, fontSize: '12.5px' }}>
                       {c.desc}
                     </p>
                   </div>
 
-                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '12px' }}>
-                    <div className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-cyan)' }}>
+                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '14px' }}>
+                    <div className="mono-sm" style={{ fontSize: '11px', color: 'var(--accent-cyan)' }}>
                        Latency: {c.latency} · {c.type}
                      </div>
-                     <span className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-orange)', display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
-                       Inspect Specs <ArrowRight size={11} />
+                     <span className="mono-sm" style={{ fontSize: '11px', color: 'var(--accent-orange)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontWeight: '600' }}>
+                       Inspect Specs <ArrowRight size={12} />
                      </span>
                    </div>
                  </div>
@@ -366,14 +328,13 @@ export default function IntegrationsPage() {
              })}
            </div>
 
-           {/* Bespoke Campus Connector Callout */}
-           <div className="card-dark flex-between flex-wrap gap-md" style={{ padding: '32px 36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
+           <div className="card-elevated flex-between flex-wrap gap-md mb-xl" style={{ padding: '36px', backgroundColor: '#13131b' }}>
              <div>
                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; CUSTOM CAMPUS SYSTEMS</span>
-               <h3 style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '4px' }}>
+               <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginTop: '6px', color: '#ffffff' }}>
                  Need an integration for a custom or in-house database?
                </h3>
-               <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px' }}>
+               <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
                  Our engineering team builds certified integrations for custom on-premises SQL databases, legacy campus setups, and proprietary student housing backends in under 3 weeks.
                </p>
              </div>
@@ -384,7 +345,19 @@ export default function IntegrationsPage() {
            </div>
 
         </div>
-      </section>
+      </section> */}
+
+      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      <EnterpriseCTASection 
+        eyebrow="READY TO CONNECT YOUR CAMPUS?"
+        title="Check system compatibility for your university."
+        description="Book an integration audit with our systems architects. We will inspect your SITS, Banner, Canvas, or Moodle APIs and confirm connectivity in under 48 hours."
+        primaryText="Request Integration Architecture Review"
+        primaryLink="/demo"
+        secondaryText="View Security &amp; Data Isolation"
+        secondaryLink="/security"
+        secondaryIsExternal={false}
+      />
 
       {/* ── MODAL: CONNECTOR TECH SPECS DRAWER ─────────────────────── */}
       {activeConnector && (

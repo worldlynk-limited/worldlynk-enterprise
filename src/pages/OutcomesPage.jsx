@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   TrendingUp,
   ShieldCheck,
@@ -133,26 +134,26 @@ export default function OutcomesPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                MEASURABLE CAMPUS IMPACT
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                MEASURABLE CAMPUS IMPACT // INSTITUTIONAL ROI &amp; RETENTION
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 Real impact for students. Real savings for universities.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 Losing an international student costs a university up to £28,000 in lost tuition and administrative overhead. WorldLynk helps institutions protect student retention, save thousands of staff hours, and keep visa compliance audit-ready.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>PROVEN SAVINGS</div>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>£3.8M Avg. Protected</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>Per 5,000 Students</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>£3.8M Avg. Protected</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Per 5,000 Students Monitored</div>
               </div>
               <Link to="/demo" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 <span>Estimate Your Savings</span>
@@ -164,26 +165,26 @@ export default function OutcomesPage() {
       </section>
 
       {/* ── INTERACTIVE MULTI-VARIABLE RETENTION SIMULATOR ────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE SAVINGS ESTIMATOR</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
               Estimate your university's retention impact.
             </h2>
-            <p className="section-desc">
+            <p className="section-desc" style={{ maxWidth: '720px', lineHeight: 1.6 }}>
               Select your cohort size, average tuition fee, and current dropout rates to see estimated tuition protected and staff hours saved.
             </p>
           </div>
 
-          <div className="card-dark mb-3xl" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
-            <div className="responsive-grid-split-equal" style={{ alignItems: 'center' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '38px', backgroundColor: '#13131c' }}>
+            <div className="responsive-grid-split-equal" style={{ alignItems: 'center', gap: '2.5rem' }}>
               
               {/* Sliders Input Column */}
               <div className="flex flex-col gap-lg">
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>Monitored International Cohort</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Monitored International Cohort</label>
                     <span className="mono-sm" style={{ color: 'var(--accent-orange)', fontWeight: '700' }}>{cohortSize.toLocaleString()} students</span>
                   </div>
                   <input
@@ -193,9 +194,9 @@ export default function OutcomesPage() {
                     step="500"
                     value={cohortSize}
                     onChange={(e) => setCohortSize(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: 'var(--accent-orange)', cursor: 'pointer' }}
+                    style={{ width: '100%', cursor: 'pointer' }}
                   />
-                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10px' }}>
+                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10.5px' }}>
                     <span>1,000</span>
                     <span>12,500</span>
                     <span>25,000</span>
@@ -204,7 +205,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>Average Annual Tuition Fee (£)</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Average Annual Tuition Fee (£)</label>
                     <span className="mono-sm" style={{ color: 'var(--accent-emerald)', fontWeight: '700' }}>£{tuitionFee.toLocaleString()}</span>
                   </div>
                   <input
@@ -214,9 +215,9 @@ export default function OutcomesPage() {
                     step="1000"
                     value={tuitionFee}
                     onChange={(e) => setTuitionFee(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: 'var(--accent-emerald)', cursor: 'pointer' }}
+                    style={{ width: '100%', cursor: 'pointer' }}
                   />
-                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10px' }}>
+                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10.5px' }}>
                     <span>£14,000</span>
                     <span>£26,000</span>
                     <span>£38,000</span>
@@ -225,7 +226,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>Baseline Dropout Rate</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Baseline Dropout Rate</label>
                     <span className="mono-sm" style={{ color: 'var(--status-fail)', fontWeight: '700' }}>{baselineDropoutPct}%</span>
                   </div>
                   <input
@@ -235,9 +236,9 @@ export default function OutcomesPage() {
                     step="0.5"
                     value={baselineDropoutPct}
                     onChange={(e) => setBaselineDropoutPct(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: 'var(--status-fail)', cursor: 'pointer' }}
+                    style={{ width: '100%', cursor: 'pointer' }}
                   />
-                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10px' }}>
+                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10.5px' }}>
                     <span>5.0%</span>
                     <span>10.0%</span>
                     <span>15.0%</span>
@@ -246,7 +247,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12px' }}>With WorldLynk Support</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>With WorldLynk Support</label>
                     <span className="mono-sm" style={{ color: 'var(--status-pass)', fontWeight: '700' }}>{mitigatedDropoutPct}%</span>
                   </div>
                   <input
@@ -256,9 +257,9 @@ export default function OutcomesPage() {
                     step="0.1"
                     value={mitigatedDropoutPct}
                     onChange={(e) => setMitigatedDropoutPct(Number(e.target.value))}
-                    style={{ width: '100%', accentColor: 'var(--status-pass)', cursor: 'pointer' }}
+                    style={{ width: '100%', cursor: 'pointer' }}
                   />
-                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10px' }}>
+                  <div className="flex-between mono-sm text-muted mt-xs" style={{ fontSize: '10.5px' }}>
                     <span>1.5%</span>
                     <span>3.5%</span>
                     <span>6.0%</span>
@@ -267,40 +268,40 @@ export default function OutcomesPage() {
               </div>
 
               {/* Live Forecast Dashboard */}
-              <div style={{ backgroundColor: '#0d0d14', padding: '28px', borderRadius: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div style={{ backgroundColor: '#0d0d14', padding: '32px', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ESTIMATED TUITION PROTECTED</span>
                 
-                <div style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '4px', lineHeight: 1.1 }}>
+                <div style={{ fontSize: '3.2rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '6px', lineHeight: 1.1 }}>
                   £{(protectedRevenue / 1000000).toFixed(2)}M
                 </div>
-                <div className="mono-sm text-secondary mt-xs" style={{ fontSize: '11px' }}>
+                <div className="mono-sm text-secondary mt-xs" style={{ fontSize: '11.5px' }}>
                   Tuition Protected per Academic Year
                 </div>
 
-                <div className="grid-2 gap-sm mt-lg">
-                  <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '10px', border: '1px solid #232332' }}>
+                <div className="grid-2 gap-md mt-lg">
+                  <div style={{ backgroundColor: '#14141e', padding: '16px', borderRadius: '12px', border: '1px solid #232332' }}>
                     <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STUDENTS RETAINED</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--status-pass)', marginTop: '2px' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--status-pass)', marginTop: '4px' }}>
                       {savedStudents} Students
                     </div>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>Staying enrolled and thriving</div>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '9.5px', marginTop: '2px' }}>Staying enrolled and thriving</div>
                   </div>
 
-                  <div style={{ backgroundColor: '#14141e', padding: '14px', borderRadius: '10px', border: '1px solid #232332' }}>
+                  <div style={{ backgroundColor: '#14141e', padding: '16px', borderRadius: '12px', border: '1px solid #232332' }}>
                     <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STAFF HOURS SAVED</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--accent-cyan)', marginTop: '2px' }}>
+                    <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--accent-cyan)', marginTop: '4px' }}>
                       {adminHoursSaved.toLocaleString()} hrs
                     </div>
-                    <div className="mono-sm text-secondary" style={{ fontSize: '9px', marginTop: '2px' }}>Given back to direct mentoring</div>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '9.5px', marginTop: '2px' }}>Given back to direct mentoring</div>
                   </div>
                 </div>
 
                 {/* Comparative Visual Bars */}
-                <div className="flex flex-col gap-sm mt-lg" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '16px' }}>
+                <div className="flex flex-col gap-sm mt-lg" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '18px' }}>
                   <div>
-                    <div className="flex-between mono-sm mb-xs" style={{ fontSize: '10.5px' }}>
+                    <div className="flex-between mono-sm mb-xs" style={{ fontSize: '11px' }}>
                       <span>Current Losses ({baselineDropoutPct}% Dropout)</span>
-                      <span style={{ color: 'var(--status-fail)' }}>{baselineDropouts} students (£{((baselineDropouts * tuitionFee) / 1000000).toFixed(1)}M)</span>
+                      <span style={{ color: 'var(--status-fail)', fontWeight: '600' }}>{baselineDropouts} students (£{((baselineDropouts * tuitionFee) / 1000000).toFixed(1)}M)</span>
                     </div>
                     <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
                       <div style={{ width: '100%', height: '100%', backgroundColor: 'var(--status-fail)' }} />
@@ -308,9 +309,9 @@ export default function OutcomesPage() {
                   </div>
 
                   <div>
-                    <div className="flex-between mono-sm mb-xs" style={{ fontSize: '10.5px' }}>
+                    <div className="flex-between mono-sm mb-xs" style={{ fontSize: '11px' }}>
                       <span>WorldLynk Protected ({mitigatedDropoutPct}% Dropout)</span>
-                      <span style={{ color: 'var(--status-pass)' }}>{worldlynkDropouts} students (Saved {savedStudents})</span>
+                      <span style={{ color: 'var(--status-pass)', fontWeight: '600' }}>{worldlynkDropouts} students (Saved {savedStudents})</span>
                     </div>
                     <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
                       <div style={{ width: `${(mitigatedDropoutPct / baselineDropoutPct) * 100}%`, height: '100%', backgroundColor: 'var(--status-pass)' }} />
@@ -326,32 +327,32 @@ export default function OutcomesPage() {
           {/* ── COMPARATIVE BENCHMARKING TABLE ───────────────────────── */}
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW WORLDLYNK COMPARES</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
               WorldLynk compared to legacy software and manual workflows.
             </h2>
-            <p className="section-desc">
+            <p className="section-desc" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
               See why modern universities choose WorldLynk over multi-year CRM implementations and fragmented spreadsheets.
             </p>
           </div>
 
-          <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden' }}>
             <div style={{ overflowX: 'auto' }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12.5px' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                    <th style={{ padding: '14px 20px', width: '28%' }}>FEATURE / CRITERION</th>
-                    <th style={{ padding: '14px 20px', width: '28%', color: 'var(--accent-orange)' }}>WORLDLYNK ENTERPRISE</th>
-                    <th style={{ padding: '14px 20px', width: '22%' }}>LEGACY CAMPUS CRM</th>
-                    <th style={{ padding: '14px 20px', width: '22%' }}>MANUAL SPREADSHEETS</th>
+                    <th style={{ padding: '16px 20px', width: '28%' }}>FEATURE / CRITERION</th>
+                    <th style={{ padding: '16px 20px', width: '28%', color: 'var(--accent-orange)' }}>WORLDLYNK ENTERPRISE</th>
+                    <th style={{ padding: '16px 20px', width: '22%' }}>LEGACY CAMPUS CRM</th>
+                    <th style={{ padding: '16px 20px', width: '22%' }}>MANUAL SPREADSHEETS</th>
                   </tr>
                 </thead>
                 <tbody>
                   {BENCHMARKS.map((b, idx) => (
                     <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#13131c' : '#111118' }}>
-                      <td style={{ padding: '14px 20px', fontWeight: '700', color: '#ffffff' }}>{b.criterion}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--accent-orange)', fontWeight: '600' }}>✓ {b.worldlynk}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{b.legacyCrm}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--text-muted)' }}>{b.statusQuo}</td>
+                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#ffffff' }}>{b.criterion}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--accent-orange)', fontWeight: '600' }}>✓ {b.worldlynk}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>{b.legacyCrm}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--text-muted)' }}>{b.statusQuo}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -362,68 +363,80 @@ export default function OutcomesPage() {
           {/* ── 4 IN-DEPTH INSTITUTIONAL CASE STUDIES ─────────────────── */}
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INSTITUTIONAL CASE STUDIES</span>
-            <h2 className="headline-lg" style={{ marginTop: '4px' }}>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
               Trusted by leading UK and international universities.
             </h2>
           </div>
 
-          <div className="grid-2 mb-3xl">
+          <div className="grid-2 gap-lg mb-xl">
             {CASE_STUDIES.map((cs, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c', display: 'flex', flexDirection: 'column' }}>
+              <div key={idx} className="card-elevated card-interactive" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
                 {cs.image && (
-                  <div style={{ position: 'relative', height: '140px', width: '100%', overflow: 'hidden' }}>
+                  <div style={{ position: 'relative', height: '160px', width: '100%', overflow: 'hidden' }}>
                     <img
                       src={cs.image}
                       alt={cs.institution}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(19, 19, 28, 0.95) 0%, rgba(19, 19, 28, 0.3) 60%, transparent 100%)' }} />
-                    <div style={{ position: 'absolute', bottom: '10px', left: '20px', right: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                    <div style={{ position: 'absolute', bottom: '12px', left: '20px', right: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                       <span className="pill pill-approved" style={{ fontSize: '9px' }}>VERIFIED PARTNER</span>
-                      <span className="mono-sm" style={{ fontSize: '10.5px', color: '#ffffff', fontWeight: '700' }}>{cs.cohort}</span>
+                      <span className="mono-sm" style={{ fontSize: '11px', color: '#ffffff', fontWeight: '700' }}>{cs.cohort}</span>
                     </div>
                   </div>
                 )}
 
-                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                <div style={{ padding: '28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div className="flex-between mb-sm">
                     <div>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff' }}>{cs.institution}</h3>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#ffffff' }}>{cs.institution}</h3>
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{cs.metric}</div>
-                      <div className="mono-sm text-muted" style={{ fontSize: '9px' }}>{cs.metricLabel}</div>
+                      <div style={{ fontSize: '1.6rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{cs.metric}</div>
+                      <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>{cs.metricLabel}</div>
                     </div>
                   </div>
 
-                <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', borderLeft: '3px solid var(--status-fail)', margin: '12px 0' }}>
-                  <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-fail)' }}>THE CHALLENGE</div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.45 }}>{cs.challenge}</p>
-                </div>
+                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-fail)', margin: '14px 0' }}>
+                    <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-fail)' }}>THE CHALLENGE</div>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{cs.challenge}</p>
+                  </div>
 
-                <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', borderLeft: '3px solid var(--status-pass)', marginBottom: '16px' }}>
-                  <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>THE DEPLOYMENT</div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.45 }}>{cs.solution}</p>
-                </div>
+                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)', marginBottom: '18px' }}>
+                    <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>THE DEPLOYMENT</div>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{cs.solution}</p>
+                  </div>
 
-                <div style={{ marginTop: 'auto' }}>
-                  <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '6px' }}>KEY OUTCOMES MEASURED</div>
-                  <div className="flex flex-col gap-xs">
-                    {cs.results.map((r, ri) => (
-                      <div key={ri} className="flex gap-xs alignItems-center mono-sm" style={{ fontSize: '11px', color: '#ffffff' }}>
-                        <CheckCircle2 size={12} color="var(--accent-emerald)" />
-                        <span>{r}</span>
-                      </div>
-                    ))}
+                  <div style={{ marginTop: 'auto' }}>
+                    <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '8px' }}>KEY OUTCOMES MEASURED</div>
+                    <div className="flex flex-col gap-xs">
+                      {cs.results.map((r, ri) => (
+                        <div key={ri} className="flex gap-xs alignItems-center mono-sm" style={{ fontSize: '11.5px', color: '#ffffff' }}>
+                          <CheckCircle2 size={13} color="var(--accent-emerald)" style={{ flexShrink: 0 }} />
+                          <span>{r}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
         </div>
       </section>
+
+      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      <EnterpriseCTASection 
+        eyebrow="INSTITUTIONAL PERSISTENCE &amp; ROI"
+        title="Estimate the retention dividend for your university."
+        description="Schedule a customized retention audit. We will analyze your historical dropout, visa, and enrollment metrics to calculate your university's exact ROI with WorldLynk."
+        primaryText="Schedule Institutional ROI Workshop"
+        primaryLink="/demo"
+        secondaryText="View Solutions by Persona"
+        secondaryLink="/solutions"
+        secondaryIsExternal={false}
+      />
 
     </div>
   );

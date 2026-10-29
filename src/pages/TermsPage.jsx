@@ -37,7 +37,7 @@ export default function TermsPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
         <div className="main-container">
           <div className="flex-between flex-wrap gap-md">
             <div>
@@ -53,7 +53,7 @@ export default function TermsPage() {
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '16px', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
                 <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>CONTRACT JURISDICTION</div>
                 <div style={{ fontSize: '1.2rem', fontWeight: '800', marginTop: '2px' }}>England &amp; Wales</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>High Court of Justice, London</div>
@@ -68,12 +68,12 @@ export default function TermsPage() {
       </section>
 
       {/* ── LEGAL DUAL-COLUMN LAYOUT ────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+      <section className="section section-spacious">
         <div className="main-container">
           <div className="responsive-grid-legal">
             
             {/* Sticky Sidebar Navigation */}
-            <div style={{ position: 'sticky', top: '100px', backgroundColor: '#13131c', padding: '18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated" style={{ position: 'sticky', top: '100px', padding: '20px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
               <div className="mono-label mb-sm" style={{ color: 'var(--accent-orange)' }}>ARTICLES INDEX</div>
               <div className="flex flex-col gap-xs">
                 {CLAUSES.map((c) => (
@@ -85,10 +85,10 @@ export default function TermsPage() {
                       background: 'none',
                       border: 'none',
                       padding: '8px 10px',
-                      borderRadius: '6px',
+                      borderRadius: '8px',
                       fontSize: '11px',
                       color: activeClause === c.id ? 'var(--accent-orange)' : 'var(--text-secondary)',
-                      backgroundColor: activeClause === c.id ? 'rgba(255,107,0,0.1)' : 'transparent',
+                      backgroundColor: activeClause === c.id ? 'rgba(255,107,0,0.12)' : 'transparent',
                       fontWeight: activeClause === c.id ? '700' : '500',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease'
@@ -101,7 +101,7 @@ export default function TermsPage() {
             </div>
 
             {/* Main Contract Articles */}
-            <div className="card-dark" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            <div className="card-elevated" style={{ padding: '40px', borderRadius: '16px', border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '32px' }}>
               
               <section id="provision">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ARTICLE 01</span>

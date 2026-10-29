@@ -8,16 +8,18 @@ const STUDENT_PLATFORM_URL = "https://worldlynk.co.uk";
 export default function GlobalNavbar({ onOpenSearch }) {
   const [platformDropdown, setPlatformDropdown] = useState(false);
   const [solutionsDropdown, setSolutionsDropdown] = useState(false);
+  const [trustDropdown, setTrustDropdown] = useState(false);
   const [companyDropdown, setCompanyDropdown] = useState(false);
-  const [portalsDropdown, setPortalsDropdown] = useState(false);
+  const [loginDropdown, setLoginDropdown] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setPlatformDropdown(false);
     setSolutionsDropdown(false);
+    setTrustDropdown(false);
     setCompanyDropdown(false);
-    setPortalsDropdown(false);
+    setLoginDropdown(false);
     setMobileMenuOpen(false);
   }, [location.pathname]);
 
@@ -218,32 +220,66 @@ export default function GlobalNavbar({ onOpenSearch }) {
             )}
           </div>
 
-          {/* Direct Product Links */}
-          <Link
-            to="/staff-os"
-            style={{
-              fontSize: '13.5px',
-              fontWeight: '500',
-              color: isActive('/staff-os') ? '#ffffff' : '#9ca3af',
-              textDecoration: 'none',
-              transition: 'color 0.15s ease'
-            }}
+          {/* Trust & Governance in Primary Nav */}
+          <div
+            style={{ position: 'relative' }}
+            onMouseEnter={() => setTrustDropdown(true)}
+            onMouseLeave={() => setTrustDropdown(false)}
           >
-            Staff OS
-          </Link>
+            <Link
+              to="/trust"
+              style={{
+                fontSize: '13.5px',
+                fontWeight: '500',
+                color: isActive('/trust') || isActive('/security') || isActive('/responsible-ai') ? '#ffffff' : '#9ca3af',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '4px',
+                padding: '18px 0',
+                textDecoration: 'none',
+                transition: 'color 0.15s ease'
+              }}
+            >
+              <span>Trust &amp; Security</span>
+              <ChevronDown size={13} color="#9494a0" />
+            </Link>
 
-          <Link
-            to="/student-os"
-            style={{
-              fontSize: '13.5px',
-              fontWeight: '500',
-              color: isActive('/student-os') ? '#ffffff' : '#9ca3af',
-              textDecoration: 'none',
-              transition: 'color 0.15s ease'
-            }}
-          >
-            Student OS
-          </Link>
+            {trustDropdown && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '100%',
+                  left: '-10px',
+                  width: '270px',
+                  backgroundColor: '#13131a',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  borderRadius: '10px',
+                  padding: '10px',
+                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                  zIndex: 1100
+                }}
+              >
+                <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
+                  INSTITUTIONAL ASSURANCE
+                </div>
+                <Link to="/trust" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '600', color: '#38bdf8' }}>Trust &amp; Procurement Hub</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SOC-2, HECVAT, DPA &amp; sub-processor register</div>
+                </Link>
+                <Link to="/responsible-ai" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Responsible AI Framework</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Explainable risk index, bias checks &amp; DPIA</div>
+                </Link>
+                <Link to="/security" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>Security Architecture</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Zero model training, UK AWS residency &amp; RBAC</div>
+                </Link>
+              </div>
+            )}
+          </div>
 
           {/* Company Dropdown */}
           <div
@@ -331,11 +367,11 @@ export default function GlobalNavbar({ onOpenSearch }) {
           {/* Desktop Only Actions */}
           <div className="desktop-action-links" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             
-            {/* Live Portals Dropdown */}
+            {/* Utility Log in Dropdown */}
             <div
               style={{ position: 'relative' }}
-              onMouseEnter={() => setPortalsDropdown(true)}
-              onMouseLeave={() => setPortalsDropdown(false)}
+              onMouseEnter={() => setLoginDropdown(true)}
+              onMouseLeave={() => setLoginDropdown(false)}
             >
               <button
                 type="button"
@@ -354,11 +390,11 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   transition: 'background 0.2s'
                 }}
               >
-                <span>Live Portals</span>
+                <span>Log in</span>
                 <ChevronDown size={12} color="#9ca3af" />
               </button>
 
-              {portalsDropdown && (
+              {loginDropdown && (
                 <div
                   style={{
                     position: 'absolute',

@@ -35,7 +35,7 @@ export default function PrivacyPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
         <div className="main-container">
           <div className="flex-between flex-wrap gap-md">
             <div>
@@ -51,7 +51,7 @@ export default function PrivacyPage() {
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '16px', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>ICO REGISTERED</div>
                 <div style={{ fontSize: '1.2rem', fontWeight: '800', marginTop: '2px' }}>ZA891402</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>UK Data Protection Act 2018</div>
@@ -66,12 +66,12 @@ export default function PrivacyPage() {
       </section>
 
       {/* ── LEGAL DUAL-COLUMN LAYOUT ────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '40px' }}>
+      <section className="section section-spacious">
         <div className="main-container">
           <div className="responsive-grid-legal">
             
             {/* Sticky Sidebar Navigation */}
-            <div style={{ position: 'sticky', top: '100px', backgroundColor: '#13131c', padding: '18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated" style={{ position: 'sticky', top: '100px', padding: '20px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
               <div className="mono-label mb-sm" style={{ color: 'var(--accent-orange)' }}>SECTION INDEX</div>
               <div className="flex flex-col gap-xs">
                 {SECTIONS.map((s) => (
@@ -83,10 +83,10 @@ export default function PrivacyPage() {
                       background: 'none',
                       border: 'none',
                       padding: '8px 10px',
-                      borderRadius: '6px',
+                      borderRadius: '8px',
                       fontSize: '11.5px',
                       color: activeSec === s.id ? 'var(--accent-orange)' : 'var(--text-secondary)',
-                      backgroundColor: activeSec === s.id ? 'rgba(255,107,0,0.1)' : 'transparent',
+                      backgroundColor: activeSec === s.id ? 'rgba(255,107,0,0.12)' : 'transparent',
                       fontWeight: activeSec === s.id ? '700' : '500',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease'
@@ -99,7 +99,7 @@ export default function PrivacyPage() {
             </div>
 
             {/* Main Legal Content Articles */}
-            <div className="card-dark" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            <div className="card-elevated" style={{ padding: '40px', borderRadius: '16px', border: '1px solid var(--border-subtle)', display: 'flex', flexDirection: 'column', gap: '32px' }}>
               
               <section id="designation">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 01</span>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   Building,
   GraduationCap,
@@ -178,26 +179,26 @@ export default function SolutionsPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                SOLUTIONS FOR YOUR CAMPUS TEAMS
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                SOLUTIONS BY BUYER &amp; CAMPUS ROLE
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 Built for every team across your university.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '780px' }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 Whether you're protecting student retention, clearing registrar queues, guiding international arrivals, or supporting tutors, WorldLynk gives your teams the tools to work faster and with complete confidence.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>ACTIVE VIEW</div>
-                <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '2px' }}>{activeSector.shortRole}</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{activeSector.roiPill}</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>{activeSector.shortRole}</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{activeSector.roiPill}</div>
               </div>
               <button onClick={() => setShowBriefingModal(true)} className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                 <Download size={13} />
@@ -209,57 +210,45 @@ export default function SolutionsPage() {
       </section>
 
       {/* ── STAKEHOLDER NAVIGATION BAR ──────────────────────────── */}
-      <section className="section" style={{ paddingTop: '32px', paddingBottom: '32px' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
         <div className="main-container">
-          <div className="flex gap-xs mb-xl" style={{ overflowX: 'auto', paddingBottom: '8px' }}>
+          
+          {/* Persona Pills */}
+          <div className="flex gap-xs mb-xl" style={{ overflowX: 'auto', paddingBottom: '10px', flexWrap: 'wrap' }}>
             {SECTORS.map((s, idx) => {
               const isSelected = activeIdx === idx;
               return (
                 <button
                   key={idx}
                   onClick={() => setActiveIdx(idx)}
-                  className="tab-btn"
-                  style={{
-                    padding: '12px 16px',
-                    borderRadius: '10px',
-                    backgroundColor: isSelected ? 'var(--accent-orange)' : '#13131c',
-                    color: isSelected ? '#ffffff' : 'var(--text-secondary)',
-                    border: '1px solid var(--border-subtle)',
-                    fontSize: '12.5px',
-                    fontWeight: isSelected ? '700' : '500',
-                    cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    gap: '2px'
-                  }}
+                  className={`tab-pill-premium ${isSelected ? 'tab-pill-premium--active' : ''}`}
+                  style={{ padding: '10px 18px' }}
                 >
-                  <span className="mono-sm" style={{ fontSize: '9px', opacity: 0.8 }}>0{idx + 1} // STAKEHOLDER</span>
-                  <span>{s.role.split('&')[0]}</span>
+                  <span className="mono-sm" style={{ opacity: 0.65, fontSize: '10px' }}>0{idx + 1}</span>
+                  <span style={{ fontWeight: isSelected ? '700' : '500' }}>{s.shortRole}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Detailed Sector Spotlight Card */}
-          <div className="card-dark mb-3xl" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '38px', backgroundColor: '#13131c' }}>
             <div className="responsive-grid-split">
               
               {/* Left Column: Challenges & Resolution */}
               <div>
                 <span className="pill pill-active mb-sm">{activeSector.role}</span>
-                <h2 className="headline-lg" style={{ margin: '8px 0 16px 0', lineHeight: 1.2 }}>
+                <h2 className="headline-lg" style={{ margin: '8px 0 16px 0', lineHeight: 1.2, color: '#ffffff' }}>
                   {activeSector.headline}
                 </h2>
-                <p className="body-md text-secondary mb-xl">
+                <p className="body-md text-secondary mb-xl" style={{ lineHeight: 1.65 }}>
                   {activeSector.thesis}
                 </p>
 
                 {/* Challenge List */}
-                <div style={{ backgroundColor: '#101016', padding: '18px', borderRadius: '12px', borderLeft: '3px solid var(--status-fail)', marginBottom: '20px' }}>
-                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-fail)', marginBottom: '6px' }}>THE CHALLENGE</div>
-                  <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '12.5px', lineHeight: 1.6 }}>
+                <div style={{ backgroundColor: '#101016', padding: '20px', borderRadius: '12px', borderLeft: '3px solid var(--status-fail)', marginBottom: '22px' }}>
+                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-fail)', marginBottom: '8px' }}>THE CHALLENGE</div>
+                  <ul style={{ paddingLeft: '18px', color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6 }}>
                     {activeSector.challenges.map((c, i) => (
                       <li key={i} style={{ marginBottom: '6px' }}>{c}</li>
                     ))}
@@ -267,14 +256,14 @@ export default function SolutionsPage() {
                 </div>
 
                 {/* Resolution */}
-                <div style={{ backgroundColor: '#101016', padding: '18px', borderRadius: '12px', borderLeft: '3px solid var(--status-pass)', marginBottom: '24px' }}>
-                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-pass)', marginBottom: '6px' }}>HOW WORLDLYNK HELPS</div>
-                  <p style={{ fontSize: '13px', color: '#ffffff', lineHeight: 1.5 }}>
+                <div style={{ backgroundColor: '#101016', padding: '20px', borderRadius: '12px', borderLeft: '3px solid var(--status-pass)', marginBottom: '26px' }}>
+                  <div className="mono-label" style={{ fontSize: '9.5px', color: 'var(--status-pass)', marginBottom: '8px' }}>HOW WORLDLYNK HELPS</div>
+                  <p style={{ fontSize: '13.5px', color: '#ffffff', lineHeight: 1.6 }}>
                     {activeSector.worldlynkSol}
                   </p>
                 </div>
 
-                <div className="flex gap-sm">
+                <div className="flex gap-sm" style={{ flexWrap: 'wrap' }}>
                   <Link to="/demo" className="btn-primary">
                     See {activeSector.shortRole} Solutions ➔
                   </Link>
@@ -288,35 +277,35 @@ export default function SolutionsPage() {
               <div className="flex flex-col gap-lg">
                 {/* Photographic Campus Spotlight Banner */}
                 {activeSector.image && (
-                  <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', height: '180px', border: '1px solid var(--border-subtle)' }}>
+                  <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden', height: '200px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                     <img
                       src={activeSector.image}
                       alt={activeSector.role}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(19, 19, 28, 0.95) 0%, rgba(19, 19, 28, 0.2) 60%, transparent 100%)' }} />
-                    <div style={{ position: 'absolute', bottom: '12px', left: '16px', right: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                    <div style={{ position: 'absolute', bottom: '14px', left: '16px', right: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                       <span className="pill pill-approved" style={{ fontSize: '9px' }}>CAMPUS PROVEN</span>
-                      <span className="mono-sm" style={{ fontSize: '10px', color: '#ffffff', fontWeight: '700' }}>{activeSector.shortRole} Workflow</span>
+                      <span className="mono-sm" style={{ fontSize: '11px', color: '#ffffff', fontWeight: '700' }}>{activeSector.shortRole} Workflow</span>
                     </div>
                   </div>
                 )}
 
                 {/* Metric Hero Card */}
-                <div style={{ backgroundColor: '#0d0d14', padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)' }}>
+                <div style={{ backgroundColor: '#0d0d14', padding: '24px', borderRadius: '14px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>KEY OUTCOME</div>
                   <div style={{ fontSize: '2.8rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '4px', lineHeight: 1 }}>
                     {activeSector.metric}
                   </div>
-                  <div className="body-sm text-secondary mt-sm" style={{ lineHeight: 1.4 }}>
+                  <div className="body-sm text-secondary mt-sm" style={{ lineHeight: 1.5 }}>
                     {activeSector.metricLabel}
                   </div>
                 </div>
 
                 {/* KPI Breakdown */}
-                <div className="grid-3">
+                <div className="grid-3 gap-sm">
                   {activeSector.kpis.map((kpi, ki) => (
-                    <div key={ki} style={{ backgroundColor: '#101016', padding: '14px', borderRadius: '10px', border: '1px solid var(--border-hairline)' }}>
+                    <div key={ki} style={{ backgroundColor: '#101016', padding: '14px', borderRadius: '10px', border: '1px solid rgba(255, 255, 255, 0.06)' }}>
                       <div className="mono-sm text-secondary" style={{ fontSize: '10px' }}>{kpi.label}</div>
                       <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#ffffff', marginTop: '4px' }}>{kpi.val}</div>
                     </div>
@@ -324,11 +313,11 @@ export default function SolutionsPage() {
                 </div>
 
                 {/* Executive Testimonial Quote */}
-                <div style={{ backgroundColor: '#181822', padding: '20px', borderRadius: '12px', border: '1px solid #29293a', position: 'relative' }}>
-                  <p style={{ fontSize: '13px', fontStyle: 'italic', color: 'rgba(255,255,255,0.9)', lineHeight: 1.5 }}>
+                <div style={{ backgroundColor: '#181824', padding: '20px', borderRadius: '12px', border: '1px solid #29293a', position: 'relative' }}>
+                  <p style={{ fontSize: '13px', fontStyle: 'italic', color: 'rgba(255,255,255,0.92)', lineHeight: 1.6 }}>
                     {activeSector.quote}
                   </p>
-                  <div className="mono-sm text-muted mt-sm" style={{ fontSize: '10.5px' }}>
+                  <div className="mono-sm text-muted mt-sm" style={{ fontSize: '11px' }}>
                     — {activeSector.quoteAuthor}
                   </div>
                 </div>
@@ -337,8 +326,68 @@ export default function SolutionsPage() {
             </div>
           </div>
 
+          {/* ── ALL STAKEHOLDERS COMPARISON MATRIX ───────────────── */}
+          <div className="section-header-left mb-xl">
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INSTITUTIONAL COVERAGE</span>
+            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
+              How WorldLynk supports your entire campus leadership.
+            </h2>
+            <p className="section-desc" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
+              Compare how each campus department leverages WorldLynk's connected data layer to eliminate silos and protect retention.
+            </p>
+          </div>
+
+          <div className="grid-3 gap-lg mb-xl">
+            {SECTORS.map((s, idx) => (
+              <div 
+                key={idx} 
+                onClick={() => setActiveIdx(idx)}
+                className={`card-elevated card-interactive ${activeIdx === idx ? 'card-selected' : ''}`}
+                style={{ 
+                  padding: '24px', 
+                  backgroundColor: '#12121a',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  border: activeIdx === idx ? '2px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.08)'
+                }}
+              >
+                <div className="flex-between mb-sm">
+                  <span className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>0{idx + 1} // {s.shortRole.toUpperCase()}</span>
+                  <span className="pill pill-approved" style={{ fontSize: '8.5px' }}>{s.roiPill}</span>
+                </div>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', marginBottom: '8px' }}>
+                  {s.role}
+                </h3>
+                <p className="body-sm text-secondary mb-md" style={{ fontSize: '12px', lineHeight: 1.55 }}>
+                  {s.headline}
+                </p>
+                <div style={{ marginTop: 'auto', paddingTop: '14px', borderTop: '1px solid rgba(255, 255, 255, 0.06)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <div style={{ fontSize: '1.3rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{s.metric}</div>
+                    <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>Key Impact</div>
+                  </div>
+                  <span style={{ fontSize: '11px', color: 'var(--accent-cyan)', fontWeight: '600' }}>
+                    Inspect Persona ➔
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
+
+      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      <EnterpriseCTASection 
+        eyebrow="TAILORED INSTITUTIONAL SOLUTIONS"
+        title="Ready to see WorldLynk tailored for your university?"
+        description="Connect with our higher education solutions specialists. We'll walk through the exact workflows, integrations, and compliance requirements for your campus."
+        primaryText="Book Role-Based Campus Walkthrough"
+        primaryLink="/demo"
+        secondaryText="Calculate Institutional Outcomes"
+        secondaryLink="/outcomes"
+        secondaryIsExternal={false}
+      />
 
       {/* ── MODAL: EXECUTIVE BRIEFING DOWNLOAD ──────────────────── */}
       {showBriefingModal && (

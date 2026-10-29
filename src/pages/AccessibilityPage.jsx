@@ -44,7 +44,7 @@ export default function AccessibilityPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
         <div className="main-container">
           <div className="flex-between flex-wrap gap-md">
             <div>
@@ -60,7 +60,7 @@ export default function AccessibilityPage() {
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '220px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '16px', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>CONFORMANCE LEVEL</div>
                 <div style={{ fontSize: '1.3rem', fontWeight: '800', marginTop: '2px' }}>WCAG 2.1 AA</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>VPAT Document Available</div>
@@ -75,7 +75,7 @@ export default function AccessibilityPage() {
       </section>
 
       {/* ── VPAT CONFORMANCE TABLE ──────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '40px', paddingBottom: '32px' }}>
+      <section className="section section-spacious">
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>VOLUNTARY PRODUCT ACCESSIBILITY TEMPLATE</span>
@@ -87,26 +87,26 @@ export default function AccessibilityPage() {
             </p>
           </div>
 
-          <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '16px', overflow: 'hidden' }}>
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                 <thead>
                   <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                    <th style={{ padding: '14px 20px', width: '25%' }}>CRITERION</th>
-                    <th style={{ padding: '14px 20px', width: '15%' }}>CONFORMANCE</th>
-                    <th style={{ padding: '14px 20px', width: '20%' }}>LEVEL OF SUPPORT</th>
-                    <th style={{ padding: '14px 20px', width: '40%' }}>TECHNICAL REMARKS</th>
+                    <th style={{ padding: '16px 20px', width: '25%' }}>CRITERION</th>
+                    <th style={{ padding: '16px 20px', width: '15%' }}>CONFORMANCE</th>
+                    <th style={{ padding: '16px 20px', width: '20%' }}>LEVEL OF SUPPORT</th>
+                    <th style={{ padding: '16px 20px', width: '40%' }}>TECHNICAL REMARKS</th>
                   </tr>
                 </thead>
                 <tbody>
                   {VPAT_CRITERIA.map((c, idx) => (
                     <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#13131c' : '#101016' }}>
-                      <td style={{ padding: '14px 20px', fontWeight: '700', color: '#ffffff' }}>{c.rule}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{c.level}</td>
-                      <td style={{ padding: '14px 20px', color: 'var(--status-pass)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#ffffff' }}>{c.rule}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>{c.level}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--status-pass)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <Check size={13} /> {c.support}
                       </td>
-                      <td style={{ padding: '14px 20px', color: 'var(--text-secondary)', lineHeight: 1.45 }}>{c.notes}</td>
+                      <td style={{ padding: '16px 20px', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{c.notes}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -124,13 +124,13 @@ export default function AccessibilityPage() {
 
           <div className="grid-2 gap-md mb-3xl">
             {COMPATIBILITY.map((item, idx) => (
-              <div key={idx} className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div key={idx} className="card-elevated" style={{ padding: '26px', borderRadius: '14px' }}>
                 <div className="flex-between mb-xs">
                   <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>{item.tech}</h3>
                   <span className="pill pill-approved">{item.rating}</span>
                 </div>
                 <div className="mono-sm text-secondary mb-sm" style={{ fontSize: '10.5px' }}>{item.version}</div>
-                <p className="body-sm text-secondary" style={{ lineHeight: 1.5 }}>{item.notes}</p>
+                <p className="body-sm text-secondary" style={{ lineHeight: 1.55 }}>{item.notes}</p>
               </div>
             ))}
           </div>
@@ -143,10 +143,10 @@ export default function AccessibilityPage() {
             </h2>
           </div>
 
-          <div className="card-dark mb-3xl" style={{ padding: '24px', borderRadius: '14px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '26px', borderRadius: '16px' }}>
             <div className="grid-2 gap-md">
               {KEYBOARD_SHORTCUTS.map((sc, idx) => (
-                <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '14px 18px', borderRadius: '8px', border: '1px solid #1f1f2e', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '14px 18px', borderRadius: '10px', border: '1px solid #1f1f2e', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono-sm" style={{ color: 'var(--accent-orange)', fontWeight: '700', fontSize: '12px' }}>{sc.key}</span>
                   <span className="body-sm text-secondary" style={{ fontSize: '12px' }}>{sc.action}</span>
                 </div>
@@ -155,13 +155,13 @@ export default function AccessibilityPage() {
           </div>
 
           {/* ── ASSISTANCE & FEEDBACK DESK ──────────────────────────── */}
-          <div className="card-dark flex-between flex-wrap gap-md" style={{ padding: '32px 36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131b' }}>
+          <div className="card-elevated flex-between flex-wrap gap-md" style={{ padding: '36px 40px', borderRadius: '16px' }}>
             <div>
               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ACCESSIBILITY COORDINATOR</span>
               <h3 style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '4px' }}>
                 Need an accommodation or have accessibility feedback?
               </h3>
-              <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '640px' }}>
+              <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '640px', lineHeight: 1.55 }}>
                 We are committed to resolving digital accessibility barriers immediately. Our accessibility team responds within 2 business days.
               </p>
               <div className="mono-sm text-muted mt-sm" style={{ fontSize: '11px' }}>

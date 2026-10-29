@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
   Home,
   Calendar,
@@ -122,26 +123,26 @@ export default function StudentOSPage() {
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '80px', paddingBottom: '40px', borderBottom: '1px solid var(--border-hairline)' }}>
+      <section className="page-hero-banner">
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md">
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
-                STUDENT MOBILE APP // WORLDLYNK
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+            <div style={{ maxWidth: '780px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+                STUDENT OS // CAMPUS MOBILE SUPER-APP
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '12px', maxWidth: '820px', lineHeight: 1.15 }}>
+              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
                 One simple mobile app for students. No more jumping between 10 portals.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '720px' }}>
-                International students often have to manage 10+ different websites—course portals, visa emails, bank statements, and accommodation forms. WorldLynk unifies your timetable, weekly work hours, verified housing, and pre-arrival checklists into one friendly mobile app powered by helpful AI assistants.
+              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
+                International students often have to manage 10+ different websites—course portals, visa emails, bank statements, and accommodation forms. WorldLynk unifies timetables, weekly work hours, verified housing, and pre-arrival checklists into one friendly mobile app powered by helpful AI assistants.
               </p>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
-              <div className="card-dark" style={{ padding: '16px', border: '1px solid var(--border-subtle)' }}>
+              <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SAMPLE STUDENT PROFILE</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: '700', marginTop: '4px' }}>Maya Chen</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>MSc Data Science · Year 1</div>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Maya Chen</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>MSc Data Science · Year 1</div>
                 <div className="flex gap-xs mt-sm">
                   <span className="pill pill-approved" style={{ fontSize: '9px' }}>CAS: E2948102A</span>
                   <span className="pill pill-active" style={{ fontSize: '9px' }}>Student Visa</span>
@@ -818,28 +819,16 @@ export default function StudentOSPage() {
       </section>
 
       {/* ── LIVE LAUNCH CALL TO ACTION ──────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '16px', paddingBottom: '64px' }}>
-        <div className="main-container">
-          <div className="card-glass glow-orange" style={{ padding: '36px', borderRadius: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '24px' }}>
-            <div>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)' }}>GET STARTED WITH WORLDLYNK</div>
-              <h2 className="headline-md" style={{ marginTop: '4px', marginBottom: '8px' }}>Give your students an effortless campus experience.</h2>
-              <p className="body-sm text-secondary" style={{ maxWidth: '640px' }}>
-                Help international students navigate university life with confidence—from visa checklists and course timetables to accommodation and part-time work tracking.
-              </p>
-            </div>
-            <div className="flex gap-md" style={{ flexWrap: 'wrap' }}>
-              <a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ padding: '0.85rem 1.6rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <span>Launch Student App</span>
-                <ExternalLink size={15} />
-              </a>
-              <Link to="/demo" className="btn-secondary" style={{ padding: '0.85rem 1.6rem' }}>
-                Book a Live Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EnterpriseCTASection 
+        eyebrow="GET STARTED WITH WORLDLYNK"
+        title="Give your students an effortless campus experience."
+        description="Help international and domestic students navigate university life with confidence—from visa checklists and course timetables to verified accommodation and part-time work tracking."
+        primaryText="Schedule Campus App Demo"
+        primaryLink="/demo"
+        secondaryText="Launch Live Student App"
+        secondaryLink="https://worldlynk.co.uk"
+        secondaryIsExternal={true}
+      />
 
       {/* ── MODAL: EXPORT CAS AUDIT DOSSIER ───────────────────────── */}
       {showCertificateModal && (

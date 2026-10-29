@@ -79,7 +79,7 @@ export default function HomePage() {
             </div>
 
             {/* Verified Trust Badges */}
-            <div className="hero-trust-row">
+            {/* <div className="hero-trust-row">
               <div className="hero-trust-badge">
                 <ShieldCheck size={14} style={{ color: '#10b981' }} />
                 <span>SOC-2 Type II</span>
@@ -96,7 +96,7 @@ export default function HomePage() {
                 <Activity size={14} style={{ color: '#38bdf8' }} />
                 <span>99.95% SLA Uptime</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* 3D REALISTIC HERO MOCKUP (Clean, Multi-Layered Depth, Orbiting Cards) */}

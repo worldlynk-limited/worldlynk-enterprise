@@ -38,10 +38,10 @@ const INITIAL_MODULES = [
     thesis: 'QR check-ins verify student attendance in real time and flag absences before they become critical.',
     stats: '98.6% On-Time Check-Ins · Zero Proxy Scans · Real-Time Sync',
     queue: [
-      { id: '1', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: 'Missed Lecture (CS-5100, EB-02)', action: 'Makeup lab slot reserved; tutor alert drafted', evidence: 'Attendance Log + Timetable', owner: 'Senior Tutor (Dr. Jenkins)', risk: 78, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Missed 2nd consecutive lecture. Work schedule cross-referenced: barista shift logged previous evening.', hash: 'rec_8b4f7a2d' },
-      { id: '2', student: 'Liam O’Connor', avatar: 'LO', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80', course: 'BSc Computer Science', signal: '3 Consecutive Absences Flagged', action: 'Triggered wellness check-in outreach', evidence: 'Attendance Records', owner: 'Student Success (S. Patel)', risk: 89, status: 'HELD', gpa: '2.84', sitsId: '0084-3912', cas: 'Domestic UK', workHours: '0h', email: 'l.oconnor@rhul.ac.uk', phone: '+44 7700 900881', notes: 'Zero learning portal logins in 7 days. Personal tutor notification prepared.', hash: 'rec_3c7efa21' },
-      { id: '3', student: 'Zara Ahmed', avatar: 'ZA', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80', course: 'MEng Robotics', signal: 'Late Check-in (Over 15m)', action: 'Recorded partial attendance per faculty policy', evidence: 'Classroom QR Timestamp', owner: 'System Auto-Rule', risk: 24, status: 'APPROVED', gpa: '3.91', sitsId: '0093-1104', cas: 'E2849102C', workHours: '8h', email: 'z.ahmed@rhul.ac.uk', phone: '+44 7700 900332', notes: 'Scanned 16 minutes after lecture start. Standard faculty late policy applied.', hash: 'rec_1a9bce43' },
-      { id: '4', student: 'Carlos Gomez', avatar: 'CG', photo: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80', course: 'BSc International Business', signal: 'Seminar Section Clashing', action: 'Shifted to Thursday morning lab group', evidence: 'Timetable Sync', owner: 'Timetable Officer', risk: 32, status: 'APPROVED', gpa: '3.40', sitsId: '0089-4820', cas: 'E2049182D', workHours: '12h', email: 'c.gomez@rhul.ac.uk', phone: '+44 7700 900719', notes: 'Conflict resolved in records system. Student notified via WhatsApp.', hash: 'rec_9d4ebb72' }
+      { id: '1', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: 'Missed Lecture (CS-5100, EB-02)', action: 'Makeup lab slot reserved; tutor alert drafted', evidence: 'Attendance Log + Timetable', owner: 'Senior Tutor (Dr. Jenkins)', risk: 78, status: 'HELD', standing: 'Distinction (74.2%)', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Missed 2nd consecutive lecture. Work schedule cross-referenced: barista shift logged previous evening.', hash: 'rec_8b4f7a2d' },
+      { id: '2', student: 'Liam O’Connor', avatar: 'LO', photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80', course: 'BSc Computer Science', signal: '3 Consecutive Absences Flagged', action: 'Triggered wellness check-in outreach', evidence: 'Attendance Records', owner: 'Student Success (S. Patel)', risk: 89, status: 'HELD', standing: 'Upper Second (2:1, 64.5%)', sitsId: '0084-3912', cas: 'Domestic UK', workHours: '0h', email: 'l.oconnor@rhul.ac.uk', phone: '+44 7700 900881', notes: 'Zero learning portal logins in 7 days. Personal tutor notification prepared.', hash: 'rec_3c7efa21' },
+      { id: '3', student: 'Zara Ahmed', avatar: 'ZA', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80', course: 'MEng Robotics', signal: 'Late Check-in (Over 15m)', action: 'Recorded partial attendance per faculty policy', evidence: 'Classroom QR Timestamp', owner: 'System Auto-Rule', risk: 24, status: 'APPROVED', standing: 'First Class (76.8%)', sitsId: '0093-1104', cas: 'E2849102C', workHours: '8h', email: 'z.ahmed@rhul.ac.uk', phone: '+44 7700 900332', notes: 'Scanned 16 minutes after lecture start. Standard faculty late policy applied.', hash: 'rec_1a9bce43' },
+      { id: '4', student: 'Carlos Gomez', avatar: 'CG', photo: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80', course: 'BSc International Business', signal: 'Seminar Section Clashing', action: 'Shifted to Thursday morning lab group', evidence: 'Timetable Sync', owner: 'Timetable Officer', risk: 32, status: 'APPROVED', standing: 'Upper Second (2:1, 66.0%)', sitsId: '0089-4820', cas: 'E2049182D', workHours: '12h', email: 'c.gomez@rhul.ac.uk', phone: '+44 7700 900719', notes: 'Conflict resolved in records system. Student notified via WhatsApp.', hash: 'rec_9d4ebb72' }
     ]
   },
   {
@@ -51,8 +51,8 @@ const INITIAL_MODULES = [
     thesis: 'Brings together timetables, upcoming coursework deadlines, student work hours, and tutor office hours into one view.',
     stats: 'Unified Calendar · Automatic Clash Detection · Work Cap Alerts',
     queue: [
-      { id: '14', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: 'Assessment Clash: CS-5100 & CS-5200', action: 'Staged 48h staggered deadline proposal', evidence: 'Course Timetable Matrix', owner: 'Module Lead (Prof. Davis)', risk: 72, status: 'HELD', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Two major 40% courseworks scheduled for same Friday 17:00 deadline. Tutor extension ready.', hash: 'rec_6e1b99a0' },
-      { id: '15', student: 'Tariq Hassan', avatar: 'TH', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', course: 'BSc Finance', signal: 'Exam Period Overload (3 in 36h)', action: 'Alternative exam session allocated', evidence: 'Exam Timetable Optimizer', owner: 'Registry Exam Lead', risk: 64, status: 'APPROVED', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'Re-spaced Corporate Finance exam to Tuesday morning per university fairness guidelines.', hash: 'rec_2d8c55f4' }
+      { id: '14', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: 'Assessment Clash: CS-5100 & CS-5200', action: 'Staged 48h staggered deadline proposal', evidence: 'Course Timetable Matrix', owner: 'Module Lead (Prof. Davis)', risk: 72, status: 'HELD', standing: 'Distinction (74.2%)', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Two major 40% courseworks scheduled for same Friday 17:00 deadline. Tutor extension ready.', hash: 'rec_6e1b99a0' },
+      { id: '15', student: 'Tariq Hassan', avatar: 'TH', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', course: 'BSc Finance', signal: 'Exam Period Overload (3 in 36h)', action: 'Alternative exam session allocated', evidence: 'Exam Timetable Optimizer', owner: 'Registry Exam Lead', risk: 64, status: 'APPROVED', standing: 'Upper Second (2:1, 61.5%)', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'Re-spaced Corporate Finance exam to Tuesday morning per university fairness guidelines.', hash: 'rec_2d8c55f4' }
     ]
   },
   {
@@ -62,9 +62,9 @@ const INITIAL_MODULES = [
     thesis: 'Answers applicant questions 24/7, organizes transcripts, and prepares visa paperwork for staff review.',
     stats: '1,420 Inquiries Handled · 284 Visa Drafts Ready · Instant Responses',
     queue: [
-      { id: '5', student: 'Jin-Woo Park', avatar: 'JP', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80', course: 'BSc Software Eng', signal: 'Missing A-Level Math Equivalent', action: 'Drafted international qualification equivalence brief', evidence: 'Transcripts PDF + CRM', owner: 'Admissions Officer (K. Bell)', risk: 45, status: 'HELD', gpa: '3.65', sitsId: '0088-1249', cas: 'E1948201B', workHours: '0h', email: 'jw.park@applicant.ac.uk', phone: '+82 10 5555 0192', notes: 'Korean CSAT Mathematics score 138/140 evaluates to A* grade per UK ENIC guidance.', hash: 'rec_7f2a88e1' },
-      { id: '6', student: 'Aisha Al-Mansoor', avatar: 'AM', photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', course: 'MSc Artificial Intelligence', signal: 'CAS Visa Sponsorship Stage', action: 'Financial maintenance 28-day bank audit passed', evidence: 'Bank Statement + CAS Registry', owner: 'Compliance Lead (M. Thorne)', risk: 12, status: 'APPROVED', gpa: '3.88', sitsId: '0095-2018', cas: 'E3094819A', workHours: '0h', email: 'a.almansoor@rhul.ac.uk', phone: '+971 50 123 4567', notes: '£15,400 held continuously over 31 days. Ready for official visa system upload.', hash: 'rec_4e1b99a0' },
-      { id: '7', student: 'Mateo Rossi', avatar: 'MR', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', course: 'BA Design & Media', signal: 'Offer Acceptance Follow-up', action: 'Drafted accommodation deposit reminder via WhatsApp', evidence: 'Applicant Portal + Payment Link', owner: 'Admissions Assistant', risk: 38, status: 'APPROVED', gpa: '3.20', sitsId: '0092-4819', cas: 'Domestic EU', workHours: '0h', email: 'm.rossi@rhul.ac.uk', phone: '+39 02 5555 1928', notes: 'Secure deposit link generated with 7-day expiry.', hash: 'rec_2d8c55f4' }
+      { id: '5', student: 'Jin-Woo Park', avatar: 'JP', photo: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80', course: 'BSc Software Eng', signal: 'Missing A-Level Math Equivalent', action: 'Drafted international qualification equivalence brief', evidence: 'Transcripts PDF + CRM', owner: 'Admissions Officer (K. Bell)', risk: 45, status: 'HELD', standing: 'A*A*A (Predicted Equivalence)', sitsId: '0088-1249', cas: 'E1948201B', workHours: '0h', email: 'jw.park@applicant.ac.uk', phone: '+82 10 5555 0192', notes: 'Korean CSAT Mathematics score 138/140 evaluates to A* grade per UK ENIC guidance.', hash: 'rec_7f2a88e1' },
+      { id: '6', student: 'Aisha Al-Mansoor', avatar: 'AM', photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80', course: 'MSc Artificial Intelligence', signal: 'CAS Visa Sponsorship Stage', action: 'Financial maintenance 28-day bank audit passed', evidence: 'Bank Statement + CAS Registry', owner: 'Compliance Lead (M. Thorne)', risk: 12, status: 'APPROVED', standing: 'Distinction (78.0%)', sitsId: '0095-2018', cas: 'E3094819A', workHours: '0h', email: 'a.almansoor@rhul.ac.uk', phone: '+971 50 123 4567', notes: '£15,400 held continuously over 31 days. Ready for official visa system upload.', hash: 'rec_4e1b99a0' },
+      { id: '7', student: 'Mateo Rossi', avatar: 'MR', photo: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80', course: 'BA Design & Media', signal: 'Offer Acceptance Follow-up', action: 'Drafted accommodation deposit reminder via WhatsApp', evidence: 'Applicant Portal + Payment Link', owner: 'Admissions Assistant', risk: 38, status: 'APPROVED', standing: 'Upper Second (2:1, 65.0%)', sitsId: '0092-4819', cas: 'Domestic EU', workHours: '0h', email: 'm.rossi@rhul.ac.uk', phone: '+39 02 5555 1928', notes: 'Secure deposit link generated with 7-day expiry.', hash: 'rec_2d8c55f4' }
     ]
   },
   {
@@ -74,9 +74,9 @@ const INITIAL_MODULES = [
     thesis: 'Spots when students fall behind on attendance or coursework weeks early so advisors can check in quickly.',
     stats: '4,200 Students Supported · 32 Suggested Check-Ins · 89% Retention Rate',
     queue: [
-      { id: '8', student: 'Tariq Hassan', avatar: 'TH', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', course: 'BSc Finance', signal: 'No Learning Portal Activity in 5 Days', action: 'Compiled course resource digest and study guide', evidence: 'Learning Management System Sync', owner: 'Academic Advisor (J. Ward)', risk: 82, status: 'HELD', gpa: '2.95', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'No portal activity since last Tuesday. Quantitative Methods assignment overdue by 48h.', hash: 'rec_5c9f11b2' },
-      { id: '9', student: 'Elena Rostova', avatar: 'ER', photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80', course: 'MSc Data Analytics', signal: 'Coursework Deadline Missed', action: 'Drafted extension request questionnaire', evidence: 'Canvas Gradebook', owner: 'Module Lead (Prof. Davis)', risk: 65, status: 'HELD', gpa: '3.50', sitsId: '0091-8841', cas: 'E2849102X', workHours: '10h', email: 'e.rostova@rhul.ac.uk', phone: '+44 7700 900994', notes: 'Submitted extenuating circumstances form. Medical verification requested.', hash: 'rec_6a3b44c8' },
-      { id: '10', student: 'Kwame Mensah', avatar: 'KM', photo: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80', course: 'BSc Economics', signal: 'Attendance & Grades Recovered', action: 'Archived check-in case as resolved', evidence: 'Attendance & Portal Activity', owner: 'Student Success Desk', risk: 15, status: 'APPROVED', gpa: '3.62', sitsId: '0085-1928', cas: 'Domestic UK', workHours: '12h', email: 'k.mensah@rhul.ac.uk', phone: '+44 7700 900228', notes: 'Attended tutor office hour and completed 3 catch-up modules.', hash: 'rec_8e2c77d3' }
+      { id: '8', student: 'Tariq Hassan', avatar: 'TH', photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80', course: 'BSc Finance', signal: 'No Learning Portal Activity in 5 Days', action: 'Compiled course resource digest and study guide', evidence: 'Learning Management System Sync', owner: 'Academic Advisor (J. Ward)', risk: 82, status: 'HELD', standing: 'Upper Second (2:1, 61.5%)', sitsId: '0074-9912', cas: 'E3091841C', workHours: '14h', email: 't.hassan@rhul.ac.uk', phone: '+44 7700 900551', notes: 'No portal activity since last Tuesday. Quantitative Methods assignment overdue by 48h.', hash: 'rec_5c9f11b2' },
+      { id: '9', student: 'Elena Rostova', avatar: 'ER', photo: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80', course: 'MSc Data Analytics', signal: 'Coursework Deadline Missed', action: 'Drafted extension request questionnaire', evidence: 'Canvas Gradebook', owner: 'Module Lead (Prof. Davis)', risk: 65, status: 'HELD', standing: 'Merit (67.0%)', sitsId: '0091-8841', cas: 'E2849102X', workHours: '10h', email: 'e.rostova@rhul.ac.uk', phone: '+44 7700 900994', notes: 'Submitted extenuating circumstances form. Medical verification requested.', hash: 'rec_6a3b44c8' },
+      { id: '10', student: 'Kwame Mensah', avatar: 'KM', photo: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80', course: 'BSc Economics', signal: 'Attendance & Grades Recovered', action: 'Archived check-in case as resolved', evidence: 'Attendance & Portal Activity', owner: 'Student Success Desk', risk: 15, status: 'APPROVED', standing: 'First Class (72.0%)', sitsId: '0085-1928', cas: 'Domestic UK', workHours: '12h', email: 'k.mensah@rhul.ac.uk', phone: '+44 7700 900228', notes: 'Attended tutor office hour and completed 3 catch-up modules.', hash: 'rec_8e2c77d3' }
     ]
   },
   {
@@ -86,9 +86,9 @@ const INITIAL_MODULES = [
     thesis: 'Helps international students track their legal 20-hour weekly work cap and avoid accidental visa breaches.',
     stats: '100% Audit-Ready · Zero Work-Hour Breaches · Instant Staff Alerts',
     queue: [
-      { id: '11', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: '16h Work Shift Logged', action: 'Calendar conflict with lab resolved automatically', evidence: 'Shift Rota + Academic Calendar', owner: 'Visa Compliance Officer', risk: 78, status: 'APPROVED', gpa: '3.72', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Within legal 20h limit. Extra shift offer flagged to protect student coursework time.', hash: 'rec_7e1a22d0' },
-      { id: '12', student: 'David Kim', avatar: 'DK', photo: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80', course: 'MEng Mechanical Eng', signal: 'Approaching 19.5h Work Margin', action: 'Delivered work limit notice via message', evidence: 'Student Work Calendar Feed', owner: 'Compliance Officer (M. Thorne)', risk: 88, status: 'APPROVED', gpa: '3.44', sitsId: '0087-9912', cas: 'E1948201Z', workHours: '19.5h', email: 'd.kim@rhul.ac.uk', phone: '+44 7700 900447', notes: 'Scheduled 19.5 hours at campus dining hall. Student notified of 30-minute remaining legal limit.', hash: 'rec_9a3d11c4' },
-      { id: '13', student: 'Ananya Sharma', avatar: 'AS', photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80', course: 'LLM International Law', signal: 'Term Break Started', action: 'Activated full-time vacation work allowance', evidence: 'University Term Dates Registry', owner: 'Compliance System Guard', risk: 10, status: 'APPROVED', gpa: '3.80', sitsId: '0094-1182', cas: 'E2849102Q', workHours: '0h', email: 'a.sharma@rhul.ac.uk', phone: '+44 7700 900663', notes: 'Official reading week verified. Vacation work allowance active until Oct 29.', hash: 'rec_3f5c88a1' }
+      { id: '11', student: 'Maya Chen', avatar: 'MC', photo: '/images/aspiring_student.jpg', course: 'MSc Data Science', signal: '16h Work Shift Logged', action: 'Calendar conflict with lab resolved automatically', evidence: 'Shift Rota + Academic Calendar', owner: 'Visa Compliance Officer', risk: 78, status: 'APPROVED', standing: 'Distinction (74.2%)', sitsId: '0091-2847', cas: 'E2948102A', workHours: '16h', email: 'm.chen@rhul.ac.uk', phone: '+44 7700 900142', notes: 'Within legal 20h limit. Extra shift offer flagged to protect student coursework time.', hash: 'rec_7e1a22d0' },
+      { id: '12', student: 'David Kim', avatar: 'DK', photo: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80', course: 'MEng Mechanical Eng', signal: 'Approaching 19.5h Work Margin', action: 'Delivered work limit notice via message', evidence: 'Student Work Calendar Feed', owner: 'Compliance Officer (M. Thorne)', risk: 88, status: 'APPROVED', standing: 'First Class (71.5%)', sitsId: '0087-9912', cas: 'E1948201Z', workHours: '19.5h', email: 'd.kim@rhul.ac.uk', phone: '+44 7700 900447', notes: 'Scheduled 19.5 hours at campus dining hall. Student notified of 30-minute remaining legal limit.', hash: 'rec_9a3d11c4' },
+      { id: '13', student: 'Ananya Sharma', avatar: 'AS', photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80', course: 'LLM International Law', signal: 'Term Break Started', action: 'Activated full-time vacation work allowance', evidence: 'University Term Dates Registry', owner: 'Compliance System Guard', risk: 10, status: 'APPROVED', standing: 'Distinction (75.0%)', sitsId: '0094-1182', cas: 'E2849102Q', workHours: '0h', email: 'a.sharma@rhul.ac.uk', phone: '+44 7700 900663', notes: 'Official reading week verified. Vacation work allowance active until Oct 29.', hash: 'rec_3f5c88a1' }
     ]
   }
 ];
@@ -103,6 +103,12 @@ export default function StaffOSPage() {
   const [interventionNote, setInterventionNote] = useState('');
   const [interventionChannel, setInterventionChannel] = useState('whatsapp');
   const [showLedgerModal, setShowLedgerModal] = useState(false);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const showNotification = (msg) => {
+    setToastMessage(msg);
+    setTimeout(() => setToastMessage(null), 3500);
+  };
 
   const selectedModule = modules.find(m => m.id === selectedModuleId) || modules[0];
   const allQueue = selectedModule.queue;
@@ -148,6 +154,33 @@ export default function StaffOSPage() {
   return (
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
+      {/* ── TOAST NOTIFICATION ── */}
+      {toastMessage && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '28px',
+            right: '28px',
+            backgroundColor: '#0c0c0f',
+            color: '#ffffff',
+            padding: '14px 20px',
+            borderRadius: '10px',
+            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            fontSize: '13px',
+            fontWeight: '600',
+            border: '1px solid rgba(255, 107, 0, 0.4)',
+            animation: 'fadeIn 0.2s ease-out'
+          }}
+        >
+          <CheckCircle2 size={18} color="var(--accent-orange)" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
+
       {/* ── TOP HERO HEADER ─────────────────────────────────────── */}
       <section className="page-hero-banner">
         <div className="main-container">
@@ -458,7 +491,7 @@ export default function StaffOSPage() {
                     <div className="grid-2 gap-sm" style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px' }}>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>STUDENT ID:</strong> {selectedStudent.sitsId}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>VISA / CAS:</strong> {selectedStudent.cas}</div>
-                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CURRENT GPA:</strong> {selectedStudent.gpa}</div>
+                      <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>DEGREE STANDING:</strong> {selectedStudent.standing || 'Upper Second (2:1)'}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>WORK LOGGED:</strong> {selectedStudent.workHours} / 20h limit</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>EMAIL:</strong> {selectedStudent.email}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>PHONE:</strong> {selectedStudent.phone}</div>
@@ -491,14 +524,17 @@ export default function StaffOSPage() {
                     {selectedStudent.status === 'HELD' ? (
                       <div className="flex gap-sm mt-xs">
                         <button
-                          onClick={() => handleApproveStudent(selectedStudent.id)}
+                          onClick={() => {
+                            handleApproveStudent(selectedStudent.id);
+                            showNotification(`Approved action for ${selectedStudent.student}. Synced to SITS.`);
+                          }}
                           className="btn-primary"
                           style={{ flex: 1, padding: '10px', fontSize: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
                         >
                           <CheckCircle2 size={15} /> Approve &amp; Sync with Records
                         </button>
                         <button
-                          onClick={() => alert(`Escalated case for: ${selectedStudent.student}`)}
+                          onClick={() => showNotification(`Case for ${selectedStudent.student} escalated to Senior Faculty Panel.`)}
                           className="btn-secondary"
                           style={{ padding: '10px', fontSize: '12px' }}
                         >
@@ -573,7 +609,7 @@ export default function StaffOSPage() {
 
                     <button
                       onClick={() => {
-                        alert(`Message dispatched to ${selectedStudent.student} via ${interventionChannel}!`);
+                        showNotification(`Message dispatched to ${selectedStudent.student} via ${interventionChannel}! Case resolved.`);
                         handleApproveStudent(selectedStudent.id);
                       }}
                       className="btn-primary btn-sm"

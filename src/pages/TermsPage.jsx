@@ -109,7 +109,7 @@ export default function TermsPage() {
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ARTICLE 01</span>
                 <h2 style={{ fontSize: '1.35rem', fontWeight: '800', margin: '4px 0 10px 0' }}>1. Provision of Campus Operating Services</h2>
                 <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
-                  WorldLynk Inc. ("WorldLynk") provides autonomous orchestration software, agent execution frameworks, dynamic QR attendance systems, and staff queue terminals ("Services") to subscribing higher education institutions ("Subscriber"). Access is granted on a multi-year subscription basis subject to an executed Institutional Order Form and these Terms.
+                  WorldLynk UK Limited (trading as WorldLynk Enterprise, registered in England and Wales) ("WorldLynk") provides governed AI orchestration software, human-in-the-loop decision-support pipelines, dynamic QR attendance systems, and staff queue terminals ("Services") to subscribing higher education institutions ("Subscriber"). Access is granted on a multi-year subscription basis subject to an executed Institutional Order Form, Data Processing Addendum (DPA), and these Terms.
                 </p>
               </section>
 

@@ -26,7 +26,11 @@ import {
   FileCode,
   HardDrive,
   Mic,
-  Radio
+  Radio,
+  Play,
+  Share2,
+  AlertTriangle,
+  UserCheck
 } from 'lucide-react';
 
 const COMPASS_BACKEND_URL = "https://uniportal-uq1p.onrender.com";
@@ -221,35 +225,75 @@ const LAYERS = [
   }
 ];
 
-const CONNECTORS = [
-  { name: 'SITS:Vision (Tribal)', category: 'Student Information System', type: 'Two-Way Bi-directional', status: 'Production', icon: Database, latency: '8ms' },
-  { name: 'Ellucian Banner', category: 'Student Information System', type: 'REST & Ethos API', status: 'Production', icon: Database, latency: '14ms' },
-  { name: 'Moodle LMS', category: 'Learning Management', type: 'Official University Proxy', status: 'Production', icon: Cpu, latency: '12ms' },
-  { name: 'Canvas LMS', category: 'Learning Management', type: 'LTI 1.3 & Webhook Sync', status: 'Production', icon: Cpu, latency: '10ms' },
-  { name: 'Stripe Connect', category: 'Billing & Escrows', type: 'Verified PBSA Payments', status: 'Production', icon: Lock, latency: '45ms' },
-  { name: 'Algolia Search', category: 'Discovery Engine', type: 'Instant Student Search', status: 'Production', icon: Zap, latency: '16ms' },
-  { name: 'WhatsApp (Verified)', category: 'Messaging Gateway', type: 'Official Student Outreach', status: 'Production', icon: MessageSquare, latency: '60ms' },
-  { name: 'Telegram Bot API', category: 'Messaging Gateway', type: 'Student Group Outreach', status: 'Production', icon: Globe, latency: '55ms' },
-  { name: 'Campus Task Queue', category: 'Background Tasks', type: 'Automated Event Workers', status: 'Production', icon: Layers, latency: '2ms' },
-  { name: 'Cloud Student Store', category: 'Secure Data Layer', type: 'Encrypted Multi-Tenant', status: 'Production', icon: Database, latency: '18ms' }
+const SIMULATION_EVENTS = [
+  {
+    id: 'work-shift',
+    title: 'Work Shift Logged',
+    badge: 'UKVI 20h Sentinel',
+    desc: 'Maya logs a 4.0h barista shift at Costa Coffee campus branch.',
+    flow: [
+      { layer: '01 Connect', action: 'CDC event received from Campus Retail till' },
+      { layer: '02 Understand', action: 'In-memory graph updates: 16.0h + 4.0h = 20.0h hard ceiling' },
+      { layer: '03 Assist', action: 'Nova AI triggers compliance guardrail: 0.0h buffer left' },
+      { layer: '04 Control', action: 'Compass alerts Senior Tutor & updates student mobile app' }
+    ]
+  },
+  {
+    id: 'absence',
+    title: 'Unverified Absence',
+    badge: 'Retention Sentinel',
+    desc: 'Maya is flagged absent for Tuesday 09:00 CS-5100 seminar.',
+    flow: [
+      { layer: '01 Connect', action: 'EB-02 Dynamic QR check-in window closes at 09:15' },
+      { layer: '02 Understand', action: 'Profile attendance drops to 78%; unverified absence count = 2' },
+      { layer: '03 Assist', action: 'Nova AI analyzes schedule & identifies Friday 14:00 makeup lab' },
+      { layer: '04 Control', action: 'Compass queues draft WhatsApp check-in for Dr. Jenkins approval' }
+    ]
+  },
+  {
+    id: 'cas-prep',
+    title: 'CAS Generation',
+    badge: 'Registrar Automation',
+    desc: 'Jin-Woo Park submits foreign high school diploma and bank statement.',
+    flow: [
+      { layer: '01 Connect', action: 'UCAS Web-Link pushes application docs into ingestion queue' },
+      { layer: '02 Understand', action: 'Zero-copy token vault shields bank details; verifies £14,200 balance' },
+      { layer: '03 Assist', action: 'Nova AI maps credential to UK ENIC standard (Distinction equivalent)' },
+      { layer: '04 Control', action: 'Compass outputs pre-cleared CAS certificate for 1-click Registrar sign-off' }
+    ]
+  }
 ];
 
 export default function PlatformPage() {
   const [selectedStudentIdx, setSelectedStudentIdx] = useState(0);
   const [activeLayerId, setActiveLayerId] = useState('fabric');
   const [detailTab, setDetailTab] = useState('sits'); // sits, moodle, stripe, attendance
+  const [activeSimulationId, setActiveSimulationId] = useState('work-shift');
+
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const targetId = window.location.hash.replace('#', '');
+      const el = document.getElementById(targetId);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 120);
+      }
+    }
+  }, []);
 
   const student = STUDENTS[selectedStudentIdx];
   const activeLayer = LAYERS.find(l => l.id === activeLayerId) || LAYERS[0];
+  const activeSimulation = SIMULATION_EVENTS.find(s => s.id === activeSimulationId) || SIMULATION_EVENTS[0];
 
   return (
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="page-hero-banner">
+      <section className="page-hero-banner" style={{ borderBottom: '1px solid #d8d4cd', paddingBottom: '3.5rem' }}>
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
-            <div style={{ maxWidth: '780px' }}>
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'flex-start' }}>
+            <div style={{ maxWidth: '800px' }}>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
                 PLATFORM ARCHITECTURE // ZERO-MIGRATION DATA UNIFICATION
               </div>
@@ -259,23 +303,39 @@ export default function PlatformPage() {
               <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 Universities don't need another disruptive, multi-year IT overhaul. WorldLynk plugs directly into your existing SITS:Vision, Banner, Canvas, and Moodle systems — bringing everything together in real time while your current tools stay in place.
               </p>
+
+              {/* Institutional Framework Seals */}
+              <div className="flex gap-md flex-wrap mt-lg pt-md" style={{ borderTop: '1px solid #d8d4cd' }}>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11px', color: '#475569' }}>
+                  <Zap size={14} color="var(--accent-orange)" />
+                  <span>Sub-12ms Change Data Capture (CDC)</span>
+                </div>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11px', color: '#475569' }}>
+                  <ShieldCheck size={14} color="var(--status-pass)" />
+                  <span>Zero Database Schema Alterations Required</span>
+                </div>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11px', color: '#475569' }}>
+                  <Lock size={14} color="#0284c7" />
+                  <span>Deterministic In-Memory PII Tokenization Vault</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
-              <div className="card-elevated" style={{ padding: '20px' }}>
-                <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>SYSTEM PERFORMANCE</div>
+              <div className="card-elevated" style={{ padding: '20px', border: '1px solid #d8d4cd', borderRadius: '14px', backgroundColor: '#ffffff' }}>
+                <div className="mono-label" style={{ color: '#0284c7', fontSize: '10px' }}>SYSTEM PERFORMANCE</div>
                 <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Instant Live Sync</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>100% Reliable &amp; Fully Audited</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>14,200 events/sec · 99.99% Uptime</div>
               </div>
               <div className="flex flex-col gap-xs">
                 <div className="flex gap-xs">
-                  <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', border: '1px solid rgba(255, 107, 0, 0.35)', background: 'rgba(255, 107, 0, 0.08)' }}>
-                    <span style={{ color: '#ff8833', fontWeight: 600 }}>Staff Portal</span>
-                    <ExternalLink size={11} color="#ff8833" />
+                  <a href={COMPASS_BACKEND_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                    <span>Staff Portal</span>
+                    <ExternalLink size={11} />
                   </a>
-                  <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px', border: '1px solid rgba(56, 189, 248, 0.35)', background: 'rgba(56, 189, 248, 0.08)' }}>
-                    <span style={{ color: '#38bdf8', fontWeight: 600 }}>Student App</span>
-                    <ExternalLink size={11} color="#38bdf8" />
+                  <a href={STUDENT_PLATFORM_URL} target="_blank" rel="noreferrer" className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '5px' }}>
+                    <span>Student App</span>
+                    <ExternalLink size={11} />
                   </a>
                 </div>
                 <Link to="/demo" className="btn-primary btn-sm" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
@@ -288,8 +348,90 @@ export default function PlatformPage() {
         </div>
       </section>
 
+      {/* ── LIVE INTERACTIVE DATA PIPELINE SIMULATOR ───────────────── */}
+      <section className="section" style={{ paddingTop: '36px', paddingBottom: '30px' }}>
+        <div className="main-container">
+          
+          <div className="card-elevated" style={{ padding: '28px', border: '1px solid #d8d4cd', borderRadius: '16px', backgroundColor: '#ffffff' }}>
+            <div className="flex-between flex-wrap gap-sm mb-md">
+              <div>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE DATA PIPELINE // END-TO-END EVENT FLOW</span>
+                <h3 className="headline-sm" style={{ marginTop: '2px', color: '#0c0c0f' }}>
+                  See how an event travels through WorldLynk's 4 layers
+                </h3>
+              </div>
+              
+              {/* Event Switcher Chips */}
+              <div className="flex gap-xs flex-wrap">
+                {SIMULATION_EVENTS.map((sim) => {
+                  const isActive = activeSimulationId === sim.id;
+                  return (
+                    <button
+                      key={sim.id}
+                      onClick={() => setActiveSimulationId(sim.id)}
+                      style={{
+                        padding: '6px 12px',
+                        borderRadius: '8px',
+                        fontSize: '11.5px',
+                        fontWeight: isActive ? '700' : '500',
+                        cursor: 'pointer',
+                        backgroundColor: isActive ? '#0c0c0f' : '#f8fafc',
+                        color: isActive ? '#ffffff' : '#334155',
+                        border: isActive ? '1px solid #0c0c0f' : '1px solid #e2e8f0',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
+                    >
+                      <Play size={10} color={isActive ? 'var(--accent-orange)' : '#64748b'} />
+                      <span>{sim.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <p className="body-sm text-secondary mb-lg" style={{ lineHeight: 1.5 }}>
+              <strong>Scenario:</strong> {activeSimulation.desc}
+            </p>
+
+            {/* 4-Stage Horizontal Flow Diagram */}
+            <div className="grid-4 gap-sm">
+              {activeSimulation.flow.map((step, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    backgroundColor: '#f8fafc',
+                    borderRadius: '12px',
+                    padding: '16px',
+                    border: '1.5px solid #e2e8f0',
+                    position: 'relative'
+                  }}
+                >
+                  <div className="flex-between mb-xs">
+                    <span className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>
+                      STEP 0{idx + 1}
+                    </span>
+                    <span className="pill pill-approved" style={{ fontSize: '8px' }}>
+                      {step.layer.split(' ')[1]}
+                    </span>
+                  </div>
+                  <div style={{ fontSize: '12px', fontWeight: '800', color: '#0c0c0f', marginBottom: '6px' }}>
+                    {step.layer}
+                  </div>
+                  <div className="body-sm text-secondary" style={{ fontSize: '11.5px', lineHeight: 1.45 }}>
+                    {step.action}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* ── 4-LAYER OPERATIONAL ARCHITECTURE TABS ───────────────── */}
-      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+      <section className="section" style={{ paddingTop: '20px', paddingBottom: '60px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW THE PLATFORM WORKS</span>
@@ -302,7 +444,7 @@ export default function PlatformPage() {
           </div>
 
           {/* Layer Selector Cards */}
-          <div className="grid-4 mb-xl">
+          <div className="grid-4 gap-md mb-xl">
             {LAYERS.map((layer) => {
               const isSelected = activeLayerId === layer.id;
               return (
@@ -311,32 +453,36 @@ export default function PlatformPage() {
                   onClick={() => setActiveLayerId(layer.id)}
                   className={`card-elevated card-interactive ${isSelected ? 'card-selected' : ''}`}
                   style={{
-                    padding: '22px',
-                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(15, 23, 42, 0.08)',
-                    backgroundColor: isSelected ? '#ffffff' : '#f4f1ee'
+                    padding: '24px',
+                    borderRadius: '14px',
+                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid #d8d4cd',
+                    backgroundColor: isSelected ? '#ffffff' : '#ffffff',
+                    cursor: 'pointer',
+                    boxShadow: isSelected ? '0 8px 24px rgba(255, 107, 0, 0.12)' : 'none',
+                    transition: 'all 0.2s ease'
                   }}
                 >
                   <div className="flex-between mb-xs">
                     <span className="mono-label" style={{ color: isSelected ? 'var(--accent-orange)' : 'var(--text-muted)' }}>LAYER {layer.num}</span>
                     <span className="pill pill-approved" style={{ fontSize: '8.5px' }}>ONLINE</span>
                   </div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '6px 0', color: '#0c0c0f' }}>{layer.name.split('//')[0]}</h3>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginBottom: '8px' }}>{layer.tag}</div>
-                  <div className="mono-sm" style={{ fontSize: '9.5px', color: 'var(--accent-cyan)' }}>{layer.benchmarks.split('·')[0]}</div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: '6px 0', color: '#0c0c0f' }}>{layer.name.split('//')[0]}</h3>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginBottom: '8px' }}>{layer.tag}</div>
+                  <div className="mono-sm" style={{ fontSize: '10px', color: '#0284c7' }}>{layer.benchmarks.split('·')[0]}</div>
                 </div>
               );
             })}
           </div>
 
           {/* Detailed Layer Workbench */}
-          <div className="card-elevated" style={{ padding: '36px', backgroundColor: '#ffffff' }}>
+          <div className="card-elevated" style={{ padding: '36px', backgroundColor: '#ffffff', border: '1px solid #d8d4cd', borderRadius: '16px' }}>
             <div className="flex-between flex-wrap gap-md mb-lg">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>{activeLayer.tag}</span>
-                <h3 className="headline-md" style={{ margin: '6px 0' }}>{activeLayer.name}</h3>
+                <h3 className="headline-md" style={{ margin: '6px 0', color: '#0c0c0f' }}>{activeLayer.name}</h3>
                 <p className="body-md text-secondary" style={{ maxWidth: '780px', lineHeight: 1.6 }}>{activeLayer.desc}</p>
               </div>
-              <div className="mono-sm text-secondary" style={{ backgroundColor: '#f4f1ee', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-hairline)' }}>
+              <div className="mono-sm text-secondary" style={{ backgroundColor: '#f8fafc', padding: '12px 16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                 <strong>SYSTEMS SUPPORTED:</strong> <span style={{ color: '#0c0c0f' }}>{activeLayer.tech}</span>
               </div>
             </div>
@@ -344,28 +490,28 @@ export default function PlatformPage() {
             <div className="grid-2 gap-xl" style={{ alignItems: 'start' }}>
               {/* Features List */}
               <div>
-                <span className="mono-label" style={{ color: 'var(--text-muted)' }}>KEY CAPABILITIES</span>
+                <span className="mono-label" style={{ color: '#475569' }}>KEY CAPABILITIES</span>
                 <div className="flex flex-col gap-sm mt-sm">
                   {activeLayer.features.map((feat, idx) => (
-                    <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', backgroundColor: '#ffffff', padding: '14px', borderRadius: '10px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
-                      <CheckCircle2 size={16} color="var(--accent-emerald)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ fontSize: '13px', color: '#27272a', lineHeight: 1.5 }}>{feat}</span>
+                    <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', backgroundColor: '#f8fafc', padding: '14px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
+                      <CheckCircle2 size={16} color="var(--status-pass)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <span style={{ fontSize: '13px', color: '#1e293b', lineHeight: 1.5 }}>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Technical Benchmarks & Topology Box */}
-              <div style={{ backgroundColor: '#f4f1ee', padding: '24px', borderRadius: '14px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
-                <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>GUARANTEED STANDARDS &amp; SAFETY</span>
+              <div style={{ backgroundColor: '#f8fafc', padding: '24px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+                <span className="mono-label" style={{ color: '#0284c7' }}>GUARANTEED STANDARDS &amp; SAFETY</span>
                 <div className="mono-sm mt-md" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--text-secondary)' }}>
                   <div><strong>REAL-TIME PERFORMANCE:</strong> <span style={{ color: '#0c0c0f' }}>{activeLayer.benchmarks}</span></div>
-                  <div><strong>ZERO LOST UPDATES:</strong> <span style={{ color: 'var(--accent-emerald)' }}>All student updates queued safely and delivered reliably</span></div>
+                  <div><strong>ZERO LOST UPDATES:</strong> <span style={{ color: 'var(--status-pass)' }}>All student updates queued safely and delivered reliably</span></div>
                   <div><strong>ZERO SYSTEM DISRUPTION:</strong> <span style={{ color: 'var(--status-pass)' }}>No changes or alterations required on your existing campus databases</span></div>
                   <div><strong>PRIVACY &amp; SECURITY:</strong> <span style={{ color: '#0c0c0f' }}>Strict institutional encryption compliant with UK GDPR and higher education standards</span></div>
                 </div>
 
-                <div style={{ marginTop: '24px', paddingTop: '18px', borderTop: '1px solid var(--border-hairline)' }}>
+                <div style={{ marginTop: '24px', paddingTop: '18px', borderTop: '1px solid #e2e8f0' }}>
                   <Link to="/demo" className="btn-secondary btn-sm" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
                     <span>Schedule an Architectural Walkthrough</span>
                     <ArrowRight size={13} />
@@ -378,7 +524,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── UNIFIED STUDENT RECORD MOCKUP ───────────────── */}
-      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+      <section className="section" style={{ paddingTop: '20px', paddingBottom: '70px', borderBottom: '1px solid #d8d4cd' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>UNIFIED STUDENT RECORD</span>
@@ -390,8 +536,8 @@ export default function PlatformPage() {
             </p>
           </div>
 
-          <div className="mockup-window mb-xl" style={{ border: '1px solid rgba(15, 23, 42, 0.08)', borderRadius: '14px', overflow: 'hidden' }}>
-            <div className="mockup-chrome flex-between flex-wrap gap-sm" style={{ padding: '14px 20px', backgroundColor: '#ffffff', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+          <div className="mockup-window mb-xl" style={{ border: '1px solid #cbd5e1', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#ffffff', boxShadow: '0 8px 30px rgba(0, 0, 0, 0.06)' }}>
+            <div className="mockup-chrome flex-between flex-wrap gap-sm" style={{ padding: '14px 20px', backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0' }}>
               <div className="flex gap-sm alignItems-center">
                 <div className="mockup-dots">
                   <span className="mockup-dot mockup-dot-red" />
@@ -416,8 +562,8 @@ export default function PlatformPage() {
               </div>
             </div>
 
-            <div className="mockup-body" style={{ padding: '28px', backgroundColor: '#f4f1ee' }}>
-              <div className="flex-between flex-wrap gap-md mb-lg" style={{ paddingBottom: '18px', borderBottom: '1px solid #d8d4cd' }}>
+            <div className="mockup-body" style={{ padding: '28px', backgroundColor: '#f8fafc' }}>
+              <div className="flex-between flex-wrap gap-md mb-lg" style={{ paddingBottom: '18px', borderBottom: '1px solid #e2e8f0' }}>
                 <div className="flex gap-md alignItems-center">
                   <img
                     src={student.photo}
@@ -431,170 +577,68 @@ export default function PlatformPage() {
                     }}
                   />
                   <div>
-                    <div className="mono-label" style={{ color: 'var(--accent-cyan)' }}>STUDENT DOSSIER</div>
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px' }}>{student.name}</h3>
-                    <div className="mono-sm text-secondary">{student.course} · {student.status}</div>
+                    <div className="flex gap-xs alignItems-center">
+                      <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>STUDENT DOSSIER</span>
+                      <span className="pill pill-approved" style={{ fontSize: '8px' }}>Active Profile</span>
+                    </div>
+                    <div style={{ fontSize: '1.4rem', fontWeight: '800', marginTop: '2px', color: '#0c0c0f' }}>{student.name}</div>
+                    <div className="mono-sm text-secondary" style={{ fontSize: '11.5px', marginTop: '2px' }}>
+                      {student.course} · {student.status}
+                    </div>
                   </div>
                 </div>
 
-                <div style={{ textAlign: 'right' }}>
-                  <span className="pill pill-approved"><CheckCircle2 size={12} style={{ marginRight: '4px' }} /> ALL CAMPUS SYSTEMS CONNECTED</span>
-                  <div className="mono-sm text-muted mt-xs">Latest Note: {student.recentSignal}</div>
+                <div className="mono-sm text-secondary" style={{ backgroundColor: '#ffffff', padding: '10px 16px', borderRadius: '8px', border: '1px solid #e2e8f0', maxWidth: '420px', fontSize: '11px', lineHeight: 1.45 }}>
+                  <span style={{ color: 'var(--accent-orange)', fontWeight: '700' }}>Recent Signal:</span> {student.recentSignal}
                 </div>
               </div>
 
-              {/* 4 Connected Systems Grid */}
-              <div className="grid-4 mb-xl">
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STUDENT RECORD (SITS)</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>ID: {student.sitsId}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Tutor: {student.tutor}</div>
-                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Official Record Synced</div>
+              {/* 4 Connected Cards Grid */}
+              <div className="grid-4 gap-md mb-lg">
+                <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>STUDENT RECORD (SITS)</div>
+                  <div style={{ fontSize: '12px', fontWeight: '800', margin: '4px 0', color: '#0c0c0f' }}>ID: {student.sitsId}</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>{student.details.sits.status}</div>
+                  <div className="mono-sm" style={{ fontSize: '10px', color: 'var(--status-pass)', marginTop: '8px' }}>✓ SITS Bi-directional Synced</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>LEARNING PORTAL (MOODLE)</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>User: {student.moodleUser}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.moodle.coursework}</div>
-                  <div className="pill pill-active" style={{ marginTop: '8px', fontSize: '9px' }}>Coursework In Progress</div>
+                <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>COURSE PORTAL (MOODLE)</div>
+                  <div style={{ fontSize: '12px', fontWeight: '800', margin: '4px 0', color: '#0c0c0f' }}>User: {student.moodleUser}</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>{student.details.moodle.coursework}</div>
+                  <div className="mono-sm" style={{ fontSize: '10px', color: '#0284c7', marginTop: '8px' }}>✓ Last Login: {student.details.moodle.lastLogin}</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VERIFIED HOUSING</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>{student.details.stripe.residence.split('(')[0]}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Rent: {student.details.stripe.rent}</div>
-                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Deposit Protected</div>
+                <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>VERIFIED PBSA HOUSING</div>
+                  <div style={{ fontSize: '12px', fontWeight: '800', margin: '4px 0', color: '#0c0c0f' }}>{student.details.stripe.residence.split('(')[0]}</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Rent: {student.details.stripe.rent}</div>
+                  <div className="mono-sm" style={{ fontSize: '10px', color: 'var(--status-pass)', marginTop: '8px' }}>✓ Escrow Deposit Protected</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
-                  <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>ATTENDANCE &amp; VISA</div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>CAS: {student.cas}</div>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.attendance.verification}</div>
-                  <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Within 20h Work Cap</div>
+                <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                  <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>UKVI ATTENDANCE &amp; VISA</div>
+                  <div style={{ fontSize: '12px', fontWeight: '800', margin: '4px 0', color: '#0c0c0f' }}>CAS: {student.cas}</div>
+                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>{student.details.attendance.status}</div>
+                  <div className="mono-sm" style={{ fontSize: '10px', color: 'var(--accent-orange)', marginTop: '8px' }}>✓ Within 20h Work Cap</div>
                 </div>
               </div>
 
-              {/* Friendly Tabbed Detail Inspector (No Raw JSON) */}
-              <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
-                <div className="flex-between mb-md flex-wrap gap-sm" style={{ borderBottom: '1px solid #d8d4cd', paddingBottom: '12px' }}>
-                  <div className="flex gap-xs" style={{ flexWrap: 'wrap' }}>
-                    {[
-                      { id: 'sits', label: 'Student Records (SITS)' },
-                      { id: 'moodle', label: 'Learning Portal (LMS)' },
-                      { id: 'stripe', label: 'Housing & Tenancy' },
-                      { id: 'attendance', label: 'Attendance & Visa Margin' }
-                    ].map((tab) => (
-                      <button
-                        key={tab.id}
-                        onClick={() => setDetailTab(tab.id)}
-                        className={`tab-pill-premium ${detailTab === tab.id ? 'tab-pill-premium--active' : ''}`}
-                        style={{ padding: '6px 14px', fontSize: '11.5px' }}
-                      >
-                        {tab.label}
-                      </button>
-                    ))}
-                  </div>
-                  <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>Live Sync via Sovereign Campus Connector</span>
-                </div>
-
-                {detailTab === 'sits' && (
-                  <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>OFFICIAL ENROLMENT STATUS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.sits.status}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.sits.enrolment}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>ASSIGNED TUTOR</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.sits.tutor}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Faculty of Computing</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>FEES &amp; SPONSORSHIP</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.sits.feeStatus}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>CAS: {student.cas}</div>
-                    </div>
-                  </div>
-                )}
-
-                {detailTab === 'moodle' && (
-                  <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>PORTAL ENGAGEMENT</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.moodle.status}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Last seen: {student.details.moodle.lastLogin}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>COURSEWORK PROGRESS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.moodle.coursework}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>On track for Term 1</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>ADVISOR RECOMMENDATION</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.moodle.alert}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Ready for tutor approval</div>
-                    </div>
-                  </div>
-                )}
-
-                {detailTab === 'stripe' && (
-                  <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>BOOKING STATUS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.stripe.status}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.stripe.escrow}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>VERIFIED HALL OF RESIDENCE</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.stripe.residence}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Rate: {student.details.stripe.rent}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>FRAUD PROTECTION</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-cyan)' }}>100% Scam-Free Guarantee</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Verified partner property</div>
-                    </div>
-                  </div>
-                )}
-
-                {detailTab === 'attendance' && (
-                  <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>ATTENDANCE SUMMARY</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.attendance.status}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.attendance.verification}</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>NEXT ACTION</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.attendance.action}</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Waiting for tutor sign-off</div>
-                    </div>
-                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
-                      <div className="mono-label" style={{ fontSize: '9px' }}>VISA SPONSOR STATUS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>Fully Compliant</div>
-                      <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Meets sponsor requirements</div>
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── AGENT GRAPH // LIVING OPERATIONAL MAP ──────────────── */}
-      <section id="agent-graph" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+      {/* ── AGENT GRAPH SECTION ──────────────────────────────────── */}
+      <section id="agent-graph" className="section section-spacious" style={{ borderBottom: '1px solid #d8d4cd' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
-            <div className="flex gap-xs alignItems-center mb-xs">
-              <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>LAYER 02 // AGENT GRAPH</span>
-              <span className="pill pill-approved" style={{ fontSize: '9px' }}>LIVING TOPOLOGY · ZERO-HALLUCINATION MAP</span>
-            </div>
+            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CAMPUS AGENT NETWORK</span>
             <h2 className="headline-lg" style={{ marginTop: '6px' }}>
-              The Institutional Operational Graph
+              30 Specialized AI Assistants Working in Concert.
             </h2>
-            <p className="section-desc" style={{ maxWidth: '780px', lineHeight: 1.6 }}>
-              Existing campus architectures leave each office trapped in isolated records. WorldLynk constructs a live relational topology connecting students, degree milestones, LMS engagement, Tier-4 work margins, and accommodation contracts into one operational graph.
+            <p className="section-desc" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
+              Inspect how the Campus Coordinator routes student inquiries and staff workflows to domain-specific assistants under full human governance.
             </p>
           </div>
 
@@ -602,206 +646,15 @@ export default function PlatformPage() {
         </div>
       </section>
 
-      {/* ── DEDICATED NOVA AI INFRASTRUCTURE SPECIFICATION ─────── */}
-      <section id="nova" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
-        <div className="main-container">
-          <div className="section-header-left mb-xl">
-            <div className="flex gap-xs alignItems-center mb-xs">
-              <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SPECIALIST AI ASSISTANTS // HOW THEY WORK</span>
-              <span className="pill pill-approved" style={{ fontSize: '9px' }}>ENTERPRISE READY</span>
-            </div>
-            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
-              How WorldLynk's AI assistants work together.
-            </h2>
-            <p className="section-desc" style={{ maxWidth: '720px', lineHeight: 1.6 }}>
-              Nova coordinates 30 specialized AI assistants across student support, admissions, attendance, and careers — working smoothly in the background while always keeping staff in control.
-            </p>
-          </div>
-
-          {/* Quick Specs Ribbon */}
-          <div className="grid-4 gap-md mb-xl">
-            <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-orange)' }}>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>SPECIALIZED ASSISTANTS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>30 Assistants</div>
-              <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Trained on campus workflows</div>
-            </div>
-            <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-cyan)' }}>
-              <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STRUCTURED WORKFLOWS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>12 Workflows</div>
-              <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Consistent and reliable steps</div>
-            </div>
-            <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-emerald)' }}>
-              <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VOICE PRACTICE</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Real-Time</div>
-              <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Natural spoken interview prep</div>
-            </div>
-            <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-purple)' }}>
-              <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>CHANNELS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Every Channel</div>
-              <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Web · WhatsApp · Telegram · Mobile</div>
-            </div>
-          </div>
-
-          {/* 4 Architectural Pillars of Nova */}
-          <div className="grid-2 gap-lg mb-xl">
-            {/* Card 1: Supervisor & Agent Topology */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
-              <div className="flex gap-sm alignItems-center mb-sm">
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(255,107,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-orange)' }}>
-                  <Bot size={22} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Campus Coordinator &amp; Specialized Assistants</h3>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Intelligent routing &amp; secure student verification</div>
-                </div>
-              </div>
-              <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
-                The campus coordinator understands student questions in natural language, verifies their student profile securely, and routes their request to the right specialized assistant.
-              </p>
-              <div className="flex flex-col gap-xs">
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
-                  <strong style={{ color: 'var(--accent-orange)' }}>Admissions &amp; Academics:</strong> <span className="text-secondary">Course recommendations · Admissions briefs · Course deadlines</span>
-                </div>
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
-                  <strong style={{ color: 'var(--accent-cyan)' }}>Careers &amp; Visa Rules:</strong> <span className="text-secondary">Job match · CV feedback · Visa 20h limit checker · Mock interview prep</span>
-                </div>
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
-                  <strong style={{ color: 'var(--accent-emerald)' }}>Student Life &amp; Housing:</strong> <span className="text-secondary">Verified student housing · Campus food &amp; services · Daily planner · Event matching</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2: 12 Deterministic DAG Workflows */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
-              <div className="flex gap-sm alignItems-center mb-sm">
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(56,189,248,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-cyan)' }}>
-                  <GitBranch size={22} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>12 Structured Campus Workflows</h3>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Reliable, predictable step-by-step processes</div>
-                </div>
-              </div>
-              <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
-                Important university policies follow clear, predictable rules. Critical workflows follow structured steps with complete audit logs and built-in checks so you get dependable results every time.
-              </p>
-              <div className="grid-2 gap-xs">
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>New student onboarding</span>
-                </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>Housing reservation matching</span>
-                </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>Visa work-cap check</span>
-                </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>CV analysis &amp; feedback</span>
-                </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>Targeted graduate CV coach</span>
-                </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Check size={14} color="var(--accent-cyan)" /> <span>AI mock interview coaching</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3: Nova Voice AI Engine */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
-              <div className="flex gap-sm alignItems-center mb-sm">
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(16,185,129,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-emerald)' }}>
-                  <Mic size={22} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Real-Time Voice AI for Student Practice</h3>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Instant spoken dialogue · Natural pronunciation practice</div>
-                </div>
-              </div>
-              <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
-                Fast, natural voice streaming allows students to practice job interviews, speak through visa questions, and get spoken coaching anytime on their mobile phone.
-              </p>
-              <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
-                <div className="mono-sm" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
-                  <div><strong>VOICE SPEED:</strong> <span style={{ color: '#0c0c0f' }}>Instant, conversational audio with zero awkward lag</span></div>
-                  <div><strong>ACCURACY:</strong> <span style={{ color: '#0c0c0f' }}>Accurate recognition across international accents</span></div>
-                  <div><strong>FEEDBACK:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Helpful coaching on clarity, pacing, and answers</span></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 4: Omni-Channel Bridges & Standard MCP */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
-              <div className="flex gap-sm alignItems-center mb-sm">
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(192,132,252,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)' }}>
-                  <Radio size={22} />
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Multi-Channel Support (WhatsApp, Web &amp; Mobile)</h3>
-                  <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Meets students on the channels they already use</div>
-                </div>
-              </div>
-              <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
-                WorldLynk reaches students where they spend their time. Safe verification using official university email ensures that only verified students receive assistance.
-              </p>
-              <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
-                <div className="mono-sm" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
-                  <div><strong>POPULAR CHANNELS:</strong> <span style={{ color: '#0c0c0f' }}>Official WhatsApp · Mobile Student App · Web Portal</span></div>
-                  <div><strong>STUDENT SECURITY:</strong> <span style={{ color: 'var(--accent-purple)' }}>Verified official university email login</span></div>
-                  <div><strong>DATA PRIVACY:</strong> <span style={{ color: '#0c0c0f' }}>Fully compliant with UK GDPR &amp; university data standards</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── ZERO-MIGRATION CONNECTOR DIRECTORY ────────────────── */}
-      <section className="section section-spacious">
-        <div className="main-container">
-          <div className="section-header-left mb-xl">
-            <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CONNECTOR CATALOG</span>
-            <h2 className="headline-lg" style={{ marginTop: '6px' }}>
-              Plug directly into the tools you already use.
-            </h2>
-            <p className="section-desc" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
-              Pre-built connectors for the software and databases your university already relies upon.
-            </p>
-          </div>
-
-          <div className="grid-auto mb-3xl">
-            {CONNECTORS.map((c, i) => {
-              const ConnectorIcon = c.icon;
-              return (
-                <div key={i} className="connector-tile card-interactive" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(15, 23, 42, 0.08)', borderRadius: '12px', padding: '18px' }}>
-                  <div className="connector-icon" style={{ background: 'rgba(255,107,0,0.12)', color: 'var(--accent-orange)' }}>
-                    <ConnectorIcon size={18} />
-                  </div>
-                  <div>
-                    <div className="connector-name" style={{ color: '#0c0c0f', fontWeight: '700' }}>{c.name}</div>
-                    <div className="connector-desc text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{c.category} · {c.type}</div>
-                  </div>
-                  <div style={{ marginLeft: 'auto', textAlign: 'right' }}>
-                    <span className="pill pill-approved">{c.status}</span>
-                    <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9px' }}>Latency: {c.latency}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ── BOTTOM CONVERSION CTA ────────────────────────────── */}
+      {/* ── ENTERPRISE CTA SECTION ───────────────────────────────── */}
       <EnterpriseCTASection 
-        eyebrow="ZERO-MIGRATION ARCHITECTURE DEPLOYMENT"
-        title="Experience WorldLynk on your campus data."
-        description="Schedule an architectural deep dive with our engineering team. We'll show you how WorldLynk connects SITS:Vision, Banner, Canvas, and attendance in real time with zero changes to your existing databases."
-        primaryText="Schedule Technical Architecture Review"
+        eyebrow="ARCHITECTURE &amp; EVALUATION"
+        title="Ready to evaluate WorldLynk's zero-migration architecture?"
+        description="Book a dedicated technical session with our systems engineering team, or test our live SITS:Vision connector sandbox."
+        primaryText="Schedule Technical Walkthrough"
         primaryLink="/demo"
-        secondaryText="Explore Integration Specs"
-        secondaryLink="/integrations"
-        secondaryIsExternal={false}
+        secondaryText="Explore Compass Staff Portal"
+        secondaryLink="/staff-os"
       />
 
     </div>

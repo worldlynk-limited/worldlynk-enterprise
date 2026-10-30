@@ -156,51 +156,83 @@ export default function TrustHubPage() {
   };
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-light)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="page-hero-banner">
+      <section className="section" style={{ paddingTop: '80px', paddingBottom: '36px', borderBottom: '1px solid #d8d4cd' }}>
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
-            <div style={{ maxWidth: '780px' }}>
-              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'flex-start' }}>
+            <div style={{ maxWidth: '820px' }}>
+              <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '8px' }}>
                 TRUST, SECURITY &amp; COMPLIANCE HUB // AUDITS, DATA RESIDENCY &amp; AI ETHICS
               </div>
-              <h1 className="headline-xl" style={{ marginBottom: '16px', lineHeight: 1.12, textWrap: 'balance' }}>
+              <h1 className="headline-xl" style={{ marginBottom: '14px', lineHeight: 1.12, textWrap: 'balance' }}>
                 Enterprise trust and governance for Higher Education.
               </h1>
-              <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
+              <p className="body-lg text-secondary" style={{ maxWidth: '740px', lineHeight: 1.65 }}>
                 A single authoritative center for university CIOs, CISOs, DPOs, and Academic Registrars: third-party security audits, UK GDPR compliance packages, cryptographic PII protection, and human-governed AI ethics.
               </p>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
-              <div className="card-elevated" style={{ padding: '20px' }}>
-                <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>AUDIT STATUS</div>
-                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>SOC 2 Type II</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>ISO 27001 · HECVAT · UK GDPR</div>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '260px' }}>
+              <div className="card-elevated" style={{ padding: '20px', borderLeft: '3px solid var(--accent-emerald)', backgroundColor: '#ffffff' }}>
+                <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '10px' }}>AUDIT &amp; ACCREDITATION</div>
+                <div style={{ fontSize: '1.35rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>SOC 2 Type II Certified</div>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>ISO 27001 · HECVAT · UK GDPR Article 22</div>
               </div>
               <Link to="/demo" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                <span>Request Security Review</span>
+                <span>Request University DPO Briefing</span>
                 <ArrowRight size={13} />
               </Link>
             </div>
           </div>
+
+          {/* ── SECURITY CREDENTIALS RIBBON ── */}
+          <div
+            style={{
+              marginTop: '32px',
+              backgroundColor: '#ffffff',
+              borderRadius: '12px',
+              border: '1px solid #d8d4cd',
+              padding: '16px 24px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '12px'
+            }}
+          >
+            <div className="flex gap-md alignItems-center flex-wrap">
+              <span className="mono-sm" style={{ fontSize: '11px', fontWeight: '700', color: 'var(--accent-emerald)' }}>
+                ✓ UK Sovereign Cloud (AWS eu-west-2 London)
+              </span>
+              <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>
+                · Zero Foundation Model Training Guarantee
+              </span>
+              <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>
+                · 99.98% Monthly Uptime SLA
+              </span>
+            </div>
+            <span className="mono-sm" style={{ fontSize: '10.5px', color: '#71717a' }}>
+              Cryptographic Seal: <strong style={{ color: '#0c0c0f' }}>SHA-256: 7f8a...991e</strong>
+            </span>
+          </div>
+
         </div>
       </section>
 
       {/* ── SECTION NAV TABS ──────────────────────────────────── */}
-      <div style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)', backgroundColor: '#f4f1ee', position: 'sticky', top: '60px', zIndex: 100 }}>
+      <div style={{ borderBottom: '1px solid #d8d4cd', backgroundColor: '#ffffff', position: 'sticky', top: '60px', zIndex: 100 }}>
         <div className="main-container" style={{ display: 'flex', gap: '8px', overflowX: 'auto', padding: '10px 0' }}>
           <button
             onClick={() => setActiveTab('certifications')}
             style={{
-              padding: '10px 18px',
+              padding: '9px 18px',
               borderRadius: '8px',
-              fontSize: '13px',
+              fontSize: '12.5px',
               fontWeight: activeTab === 'certifications' ? '700' : '500',
-              backgroundColor: activeTab === 'certifications' ? 'rgba(255, 107, 0, 0.15)' : 'transparent',
-              color: activeTab === 'certifications' ? '#ff6b00' : '#71717a',
+              backgroundColor: activeTab === 'certifications' ? 'rgba(255, 107, 0, 0.1)' : 'transparent',
+              color: activeTab === 'certifications' ? '#ff6b00' : '#4b5563',
               border: activeTab === 'certifications' ? '1px solid #ff6b00' : '1px solid transparent',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -216,12 +248,12 @@ export default function TrustHubPage() {
           <button
             onClick={() => setActiveTab('privacy')}
             style={{
-              padding: '10px 18px',
+              padding: '9px 18px',
               borderRadius: '8px',
-              fontSize: '13px',
+              fontSize: '12.5px',
               fontWeight: activeTab === 'privacy' ? '700' : '500',
-              backgroundColor: activeTab === 'privacy' ? 'rgba(255, 107, 0, 0.15)' : 'transparent',
-              color: activeTab === 'privacy' ? '#ff6b00' : '#71717a',
+              backgroundColor: activeTab === 'privacy' ? 'rgba(255, 107, 0, 0.1)' : 'transparent',
+              color: activeTab === 'privacy' ? '#ff6b00' : '#4b5563',
               border: activeTab === 'privacy' ? '1px solid #ff6b00' : '1px solid transparent',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -237,12 +269,12 @@ export default function TrustHubPage() {
           <button
             onClick={() => setActiveTab('governance')}
             style={{
-              padding: '10px 18px',
+              padding: '9px 18px',
               borderRadius: '8px',
-              fontSize: '13px',
+              fontSize: '12.5px',
               fontWeight: activeTab === 'governance' ? '700' : '500',
-              backgroundColor: activeTab === 'governance' ? 'rgba(255, 107, 0, 0.15)' : 'transparent',
-              color: activeTab === 'governance' ? '#ff6b00' : '#71717a',
+              backgroundColor: activeTab === 'governance' ? 'rgba(255, 107, 0, 0.1)' : 'transparent',
+              color: activeTab === 'governance' ? '#ff6b00' : '#4b5563',
               border: activeTab === 'governance' ? '1px solid #ff6b00' : '1px solid transparent',
               cursor: 'pointer',
               whiteSpace: 'nowrap',
@@ -259,7 +291,7 @@ export default function TrustHubPage() {
 
       {/* ── TAB 1: CERTIFICATIONS & PROCUREMENT DOCS ─────────────── */}
       {activeTab === 'certifications' && (
-        <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <section className="section section-spacious" style={{ borderBottom: '1px solid #d8d4cd' }}>
           <div className="main-container">
             <div className="section-header-left mb-xl">
               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>COMPLIANCE ATTESTATIONS</span>
@@ -270,7 +302,7 @@ export default function TrustHubPage() {
 
             <div className="grid-3 gap-lg mb-3xl">
               {CERTIFICATIONS.map((cert, idx) => (
-                <div key={idx} className="card-elevated" style={{ padding: '26px', backgroundColor: '#ffffff' }}>
+                <div key={idx} className="card-elevated" style={{ padding: '26px', backgroundColor: '#ffffff', borderRadius: '14px', border: '1px solid #d8d4cd' }}>
                   <div className="flex-between mb-xs">
                     <span className="pill pill-approved">{cert.status}</span>
                     <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>{cert.authority}</span>
@@ -296,15 +328,16 @@ export default function TrustHubPage() {
               {DOCS.map((doc) => (
                 <div
                   key={doc.id}
-                  className="card-dark"
+                  className="card-elevated"
                   style={{
                     padding: '24px',
                     borderRadius: '12px',
-                    border: '1px solid var(--border-subtle)',
+                    border: '1px solid #d8d4cd',
                     backgroundColor: '#ffffff',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.02)'
                   }}
                 >
                   <div>
@@ -321,8 +354,8 @@ export default function TrustHubPage() {
                     </p>
                   </div>
 
-                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid var(--border-hairline)', paddingTop: '12px' }}>
-                    <span className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-orange)' }}>
+                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid #e5e5e5', paddingTop: '12px' }}>
+                    <span className="mono-sm" style={{ fontSize: '10.5px', color: 'var(--accent-orange)', fontWeight: '600' }}>
                       {doc.status}
                     </span>
                     <button
@@ -348,24 +381,24 @@ export default function TrustHubPage() {
               </p>
             </div>
 
-            <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid #d8d4cd', backgroundColor: '#ffffff' }}>
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
-                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                      <th style={{ padding: '14px 20px' }}>SUB-PROCESSOR</th>
-                      <th style={{ padding: '14px 20px' }}>CORE PURPOSE</th>
-                      <th style={{ padding: '14px 20px' }}>DATA RESIDENCY REGION</th>
-                      <th style={{ padding: '14px 20px' }}>DATA SCOPE STORED</th>
+                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid #d8d4cd', color: '#4b5563' }}>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>SUB-PROCESSOR</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>CORE PURPOSE</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>DATA RESIDENCY REGION</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>DATA SCOPE STORED</th>
                     </tr>
                   </thead>
                   <tbody>
                     {SUBPROCESSORS.map((sp, idx) => (
-                      <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f4f1ee' }}>
+                      <tr key={idx} style={{ borderBottom: '1px solid #e5e5e5', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f9f8f6' }}>
                         <td style={{ padding: '14px 20px', fontWeight: '700', color: '#0c0c0f' }}>{sp.name}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{sp.purpose}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--accent-emerald)', fontWeight: '600' }}>✓ {sp.location}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-muted)' }}>{sp.dataStored}</td>
+                        <td style={{ padding: '14px 20px', color: '#4b5563' }}>{sp.purpose}</td>
+                        <td style={{ padding: '14px 20px', color: 'var(--accent-emerald)', fontWeight: '700' }}>✓ {sp.location}</td>
+                        <td style={{ padding: '14px 20px', color: '#71717a' }}>{sp.dataStored}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -378,7 +411,7 @@ export default function TrustHubPage() {
 
       {/* ── TAB 2: DATA PRIVACY & PII REDACTION ─────────────────── */}
       {activeTab === 'privacy' && (
-        <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <section className="section section-spacious" style={{ borderBottom: '1px solid #d8d4cd' }}>
           <div className="main-container">
             <div className="section-header-left mb-xl">
               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE DATA PROTECTION SIMULATOR</span>
@@ -390,18 +423,18 @@ export default function TrustHubPage() {
               </p>
             </div>
 
-            <div className="card-elevated mb-3xl" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
-              <div className="flex-between mb-md">
+            <div className="card-elevated mb-3xl" style={{ padding: '28px', backgroundColor: '#ffffff', borderRadius: '16px', border: '1px solid #d8d4cd', boxShadow: '0 8px 30px rgba(0,0,0,0.03)' }}>
+              <div className="flex-between mb-md flex-wrap gap-sm">
                 <div>
-                  <span className="mono-sm text-secondary">SIMULATION VIEW</span>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '700', color: '#0c0c0f', marginTop: '2px' }}>
+                  <span className="mono-sm text-secondary" style={{ fontSize: '11px' }}>SIMULATION VIEW</span>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0c0c0f', marginTop: '2px' }}>
                     {tokenized ? 'Shielded Payload (Sent to Nova Reasoning Engine)' : 'Raw Campus Database Record (Stored in UK VPC)'}
                   </h3>
                 </div>
                 <button
                   onClick={() => setTokenized(!tokenized)}
                   className="btn-primary btn-sm"
-                  style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                 >
                   <RefreshCw size={13} />
                   <span>{tokenized ? 'View Raw Campus Record' : 'Tokenize & Strip PII'}</span>
@@ -409,13 +442,15 @@ export default function TrustHubPage() {
               </div>
 
               <pre style={{
-                backgroundColor: '#f4f1ee',
+                backgroundColor: '#131318',
                 padding: '20px',
-                borderRadius: '8px',
+                borderRadius: '10px',
                 overflowX: 'auto',
-                fontSize: '12px',
+                fontSize: '11.5px',
                 color: tokenized ? '#10b981' : '#f59e0b',
-                border: '1px solid var(--border-hairline)'
+                border: '1px solid #2a2a35',
+                lineHeight: 1.6,
+                fontFamily: 'var(--font-mono)'
               }}>
                 {JSON.stringify(tokenized ? TOKENIZED_PAYLOAD : RAW_STUDENT_DATA, null, 2)}
               </pre>
@@ -432,27 +467,27 @@ export default function TrustHubPage() {
               </p>
             </div>
 
-            <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid #d8d4cd', backgroundColor: '#ffffff' }}>
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
-                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                      <th style={{ padding: '14px 20px' }}>TRANSACTION HASH</th>
-                      <th style={{ padding: '14px 20px' }}>ACTION TYPE</th>
-                      <th style={{ padding: '14px 20px' }}>ACTOR / AGENT</th>
-                      <th style={{ padding: '14px 20px' }}>HUMAN APPROVER</th>
-                      <th style={{ padding: '14px 20px' }}>TIMESTAMP</th>
-                      <th style={{ padding: '14px 20px' }}>STATUS</th>
+                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid #d8d4cd', color: '#4b5563' }}>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>TRANSACTION HASH</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>ACTION TYPE</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>ACTOR / AGENT</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>HUMAN APPROVER</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>TIMESTAMP</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>STATUS</th>
                     </tr>
                   </thead>
                   <tbody>
                     {AUDIT_LEDGER_ROWS.map((row, idx) => (
-                      <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f4f1ee' }}>
-                        <td style={{ padding: '14px 20px', fontFamily: 'monospace', color: '#ff6b00' }}>{row.hash}</td>
+                      <tr key={idx} style={{ borderBottom: '1px solid #e5e5e5', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f9f8f6' }}>
+                        <td style={{ padding: '14px 20px', fontFamily: 'var(--font-mono)', color: 'var(--accent-orange)', fontWeight: '600' }}>{row.hash}</td>
                         <td style={{ padding: '14px 20px', fontWeight: '700', color: '#0c0c0f' }}>{row.action}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{row.actor}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{row.approver}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-muted)' }}>{row.time}</td>
+                        <td style={{ padding: '14px 20px', color: '#4b5563' }}>{row.actor}</td>
+                        <td style={{ padding: '14px 20px', color: '#4b5563' }}>{row.approver}</td>
+                        <td style={{ padding: '14px 20px', color: '#71717a' }}>{row.time}</td>
                         <td style={{ padding: '14px 20px' }}>
                           <span className="pill pill-approved">{row.status}</span>
                         </td>
@@ -468,7 +503,7 @@ export default function TrustHubPage() {
 
       {/* ── TAB 3: RESPONSIBLE AI & ARTICLE 22 GOVERNANCE ───────── */}
       {activeTab === 'governance' && (
-        <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
+        <section className="section section-spacious" style={{ borderBottom: '1px solid #d8d4cd' }}>
           <div className="main-container">
             <div className="section-header-left mb-xl">
               <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ETHICAL GOVERNANCE PILLARS</span>
@@ -482,7 +517,7 @@ export default function TrustHubPage() {
 
             <div className="grid-2 gap-lg mb-3xl">
               {ETHICAL_PILLARS.map((pillar, idx) => (
-                <div key={idx} className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
+                <div key={idx} className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff', borderRadius: '14px', border: '1px solid #d8d4cd' }}>
                   <span className="pill pill-approved mb-sm">{pillar.badge}</span>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0c0c0f', margin: '8px 0 8px 0' }}>{pillar.title}</h3>
                   <p className="body-sm text-secondary" style={{ lineHeight: 1.6 }}>{pillar.desc}</p>
@@ -501,26 +536,26 @@ export default function TrustHubPage() {
               </p>
             </div>
 
-            <div className="card-dark mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
+            <div className="card-elevated mb-3xl" style={{ padding: '0', borderRadius: '14px', overflow: 'hidden', border: '1px solid #d8d4cd', backgroundColor: '#ffffff' }}>
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
-                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
-                      <th style={{ padding: '14px 20px' }}>OPERATIONAL FACTOR</th>
-                      <th style={{ padding: '14px 20px' }}>MODEL WEIGHT</th>
-                      <th style={{ padding: '14px 20px' }}>DATA SOURCE</th>
-                      <th style={{ padding: '14px 20px' }}>DESCRIPTION</th>
-                      <th style={{ padding: '14px 20px' }}>FAIRNESS SAFEGUARD</th>
+                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid #d8d4cd', color: '#4b5563' }}>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>OPERATIONAL FACTOR</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>MODEL WEIGHT</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>DATA SOURCE</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>DESCRIPTION</th>
+                      <th style={{ padding: '14px 20px', fontWeight: '700' }}>FAIRNESS SAFEGUARD</th>
                     </tr>
                   </thead>
                   <tbody>
                     {RISK_FACTORS.map((rf, idx) => (
-                      <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f4f1ee' }}>
+                      <tr key={idx} style={{ borderBottom: '1px solid #e5e5e5', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f9f8f6' }}>
                         <td style={{ padding: '14px 20px', fontWeight: '700', color: '#0c0c0f' }}>{rf.factor}</td>
                         <td style={{ padding: '14px 20px', fontWeight: '800', color: '#ff6b00' }}>{rf.weight}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-secondary)' }}>{rf.source}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--text-muted)' }}>{rf.description}</td>
-                        <td style={{ padding: '14px 20px', color: 'var(--accent-emerald)' }}>✓ {rf.safeguard}</td>
+                        <td style={{ padding: '14px 20px', color: '#4b5563' }}>{rf.source}</td>
+                        <td style={{ padding: '14px 20px', color: '#71717a' }}>{rf.description}</td>
+                        <td style={{ padding: '14px 20px', color: 'var(--accent-emerald)', fontWeight: '600' }}>✓ {rf.safeguard}</td>
                       </tr>
                     ))}
                   </tbody>

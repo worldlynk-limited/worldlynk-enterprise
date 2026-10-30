@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import GlobalNavbar from './components/GlobalNavbar';
 import GlobalFooter from './components/GlobalFooter';
 import CommandPaletteModal from './components/CommandPaletteModal';
@@ -20,12 +20,47 @@ import PrivacyPage from './pages/PrivacyPage';
 import AccessibilityPage from './pages/AccessibilityPage';
 import TermsPage from './pages/TermsPage';
 
+const ROUTE_TITLES = {
+  '/': 'The AI Infrastructure for Modern Universities',
+  '/platform': 'Platform Architecture & Sovereign Data Mesh',
+  '/staff-os': 'Compass Staff OS — Triage & Approvals Workbench',
+  '/student-os': 'Student Mobile Super-App & 20h Work Cap Tracker',
+  '/solutions': 'Campus Solutions by Executive Role',
+  '/outcomes': 'Institutional ROI & Student Retention Benchmarks',
+  '/integrations': 'Connectors & Bi-Directional SITS/Banner Mesh',
+  '/trust': 'Trust, Security & Governance Hub (UK GDPR / OfS)',
+  '/demo': 'Request Technical Demonstration & Architecture Review',
+  '/contact': 'Contact Higher Education Enterprise Specialists',
+  '/privacy': 'Institutional Privacy Notice & DPA Specification',
+  '/accessibility': 'Accessibility Statement (WCAG 2.1 AA Compliance)',
+  '/terms': 'Institutional Terms of Service & SLA'
+};
+
+function RouteTitleManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const path = location.pathname;
+    let title = 'The AI Infrastructure for Modern Universities';
+    if (ROUTE_TITLES[path]) {
+      title = ROUTE_TITLES[path];
+    } else if (path.startsWith('/solutions/')) {
+      title = 'Campus Solutions by Role';
+    }
+    document.title = `WorldLynk Enterprise — ${title}`;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
+
+  return null;
+}
+
 export default function App() {
   const [cmdOpen, setCmdOpen] = useState(false);
 
   return (
     <SmoothScrollProvider>
       <div className="app-layout">
+        <RouteTitleManager />
         {/* Architectural Blueprint Grid */}
         <div className="blueprint-grid-bg" />
 

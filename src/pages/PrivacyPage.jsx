@@ -107,7 +107,7 @@ export default function PrivacyPage() {
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 01</span>
                 <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>1. Institutional Processor Designation</h2>
                 <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
-                  WorldLynk Inc. ("WorldLynk") processes personal data exclusively on behalf of subscribing Higher Education institutions ("Data Controllers"). Under the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018 (DPA 2018), and the United States Family Educational Rights and Privacy Act (FERPA, 34 CFR Part 99), WorldLynk qualifies as a designated School Official performing institutional services under the direct operational control of the university registrar.
+                  WorldLynk UK Limited (trading as WorldLynk Enterprise, registered in England and Wales) ("WorldLynk") processes personal data exclusively on behalf of subscribing Higher Education institutions ("Data Controllers"). Under the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018 (DPA 2018), and the United States Family Educational Rights and Privacy Act (FERPA, 34 CFR Part 99), WorldLynk qualifies as a designated School Official performing institutional services under the direct operational control of the university registrar.
                 </p>
               </section>
 
@@ -182,7 +182,7 @@ export default function PrivacyPage() {
                 <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>8. Data Protection Officer (DPO)</h2>
                 <div style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                   <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
-                    <div><strong>OFFICER:</strong> Data Protection Officer, WorldLynk Inc.</div>
+                    <div><strong>OFFICER:</strong> Data Protection Officer, WorldLynk UK Limited</div>
                     <div><strong>EMAIL:</strong> dpo@worldlynk.com</div>
                     <div><strong>POSTAL ADDRESS:</strong> 14 Chancery Lane, Holborn, London WC2A 1LG, United Kingdom</div>
                     <div><strong>SUPERVISORY AUTHORITY:</strong> UK Information Commissioner's Office (ICO)</div>

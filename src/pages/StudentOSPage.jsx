@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import {
@@ -31,20 +31,60 @@ import {
   QrCode,
   Search,
   HelpCircle,
-  Users
+  Users,
+  Smartphone,
+  RefreshCw,
+  Share2,
+  CreditCard,
+  BellRing
 } from 'lucide-react';
 
-const INITIAL_CHECKLIST = [
-  { id: 1, category: 'Identity & Visa', label: 'Valid International Passport with 6+ Months Validity', done: true, tag: 'CRITICAL' },
-  { id: 2, category: 'Identity & Visa', label: 'Unconditional University Offer Letter & Electronic CAS', done: true, tag: 'CRITICAL' },
-  { id: 3, category: 'Identity & Visa', label: 'UKVI Tier-4 Student Visa Biometric Decision Letter', done: true, tag: 'LEGAL' },
-  { id: 4, category: 'Health & Compliance', label: 'Tuberculosis (TB) Certificate & NHS Surcharge Payment Receipt', done: true, tag: 'HEALTH' },
-  { id: 5, category: 'Finance', label: '28-Day Bank Statement Audit for Maintenance Funds (£12,006+)', done: true, tag: 'FINANCE' },
-  { id: 6, category: 'Accommodation', label: 'Verified PBSA Ensuite Accommodation Booking Voucher (Chapter King’s Cross)', done: true, tag: 'HOUSING' },
-  { id: 7, category: 'Arrival Setup', label: 'UK eSIM Card Activation & BRP Collection Letter (Staines Post Office)', done: false, tag: 'ARRIVAL' },
-  { id: 8, category: 'Health & Compliance', label: 'NHS Local GP Surgery Registration Form Completed', done: false, tag: 'HEALTH' },
-  { id: 9, category: 'Finance', label: 'Monzo / Revolut UK Student Current Account Digital Verification', done: false, tag: 'FINANCE' },
-  { id: 10, category: 'Academic', label: 'Moodle LMS Two-Factor Authentication Setup & Module Timetable Sync', done: false, tag: 'ACADEMIC' }
+const MILESTONE_STAGES = [
+  {
+    id: 'stage-1',
+    num: '01',
+    title: 'Pre-Departure & CAS Compliance',
+    status: 'COMPLETE',
+    tasks: [
+      { id: 1, label: 'Valid International Passport with 6+ Months Validity', done: true, authority: 'HMPO Checked', tag: 'CRITICAL' },
+      { id: 2, label: 'Unconditional University Offer & Electronic CAS Letter', done: true, authority: 'CAS: E2948102A', tag: 'ACADEMIC' },
+      { id: 3, label: 'UKVI Tier-4 Student Visa Biometric Decision Letter', done: true, authority: 'UKVI SMS Synced', tag: 'LEGAL' },
+      { id: 4, label: '28-Day Bank Statement Audit for Maintenance (£12,006+)', done: true, authority: 'Open Banking API', tag: 'FINANCE' }
+    ]
+  },
+  {
+    id: 'stage-2',
+    num: '02',
+    title: 'UK Border & Arrival Essentials',
+    status: 'IN PROGRESS',
+    tasks: [
+      { id: 5, label: 'Tuberculosis (TB) Clearance Certificate (IOM Clinic)', done: true, authority: 'NHS Spine Cleared', tag: 'HEALTH' },
+      { id: 6, label: 'Verified PBSA Ensuite Accommodation Voucher (Chapter King’s Cross)', done: true, authority: 'Stripe Escrow Verified', tag: 'HOUSING' },
+      { id: 7, label: 'UK eSIM Card Activation & BRP Collection Letter (Staines Branch)', done: false, authority: 'Pickup Due Oct 2', tag: 'CRITICAL' },
+      { id: 8, label: 'London Oyster / Contactless Student Travelcard 18+ Link', done: false, authority: 'TfL Portal Sync', tag: 'TRANSPORT' }
+    ]
+  },
+  {
+    id: 'stage-3',
+    num: '03',
+    title: 'Campus Induction & Academic Sync',
+    status: 'UPCOMING',
+    tasks: [
+      { id: 9, label: 'NHS Local GP Surgery Registration (Englefield Green Health Centre)', done: false, authority: 'NHS Practice Form', tag: 'HEALTH' },
+      { id: 10, label: 'Moodle LMS Two-Factor Authentication & Timetable Calendar Sync', done: false, authority: 'SITS Portal Link', tag: 'ACADEMIC' },
+      { id: 11, label: 'Monzo / Revolut UK Student Current Account Biometric Verification', done: false, authority: 'FCA Regulated', tag: 'FINANCE' }
+    ]
+  },
+  {
+    id: 'stage-4',
+    num: '04',
+    title: 'Term-Time Work Permit & NI Setup',
+    status: 'GOVERNED',
+    tasks: [
+      { id: 12, label: 'National Insurance (NI) Number Application to DWP', done: false, authority: 'DWP Portal', tag: 'LEGAL' },
+      { id: 13, label: 'Right-to-Work Share Code Generated for Campus Barista Shift', done: false, authority: 'UKVI Verified', tag: 'COMPLIANCE' }
+    ]
+  }
 ];
 
 const SCHEDULE_ITEMS = [
@@ -73,23 +113,51 @@ const DEFAULT_CHAT = [
 ];
 
 export default function StudentOSPage() {
-  const [checklist, setChecklist] = useState(INITIAL_CHECKLIST);
-  const [activeTab, setActiveTab] = useState('home'); // home, schedule, housing, work, chat
+  const [stages, setStages] = useState(MILESTONE_STAGES);
+  const [activeTab, setActiveTab] = useState('home'); // home, schedule, housing, work, reliv, chat
   const [chatMessages, setChatMessages] = useState(DEFAULT_CHAT);
   const [chatInput, setChatInput] = useState('');
-  const [selectedFilterCategory, setSelectedFilterCategory] = useState('All');
+  const [selectedStageId, setSelectedStageId] = useState('stage-2');
   const [showCertificateModal, setShowCertificateModal] = useState(false);
+  const [studentToast, setStudentToast] = useState(null);
+  const [tokenCountdown, setTokenCountdown] = useState(28);
 
-  const toggleCheck = (id) => {
-    setChecklist(prev => prev.map(item => item.id === id ? { ...item, done: !item.done } : item));
+  // Live countdown for TOTP dynamic student QR pass
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTokenCountdown((prev) => (prev <= 1 ? 30 : prev - 1));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const showToast = (msg) => {
+    setStudentToast(msg);
+    setTimeout(() => setStudentToast(null), 3400);
   };
 
-  const doneCount = checklist.filter(i => i.done).length;
-  const progressPercent = Math.round((doneCount / checklist.length) * 100);
+  const toggleTask = (stageId, taskId) => {
+    setStages(prevStages =>
+      prevStages.map(stage => {
+        if (stage.id !== stageId) return stage;
+        const updatedTasks = stage.tasks.map(t =>
+          t.id === taskId ? { ...t, done: !t.done } : t
+        );
+        const allDone = updatedTasks.every(t => t.done);
+        return {
+          ...stage,
+          tasks: updatedTasks,
+          status: allDone ? 'COMPLETE' : 'IN PROGRESS'
+        };
+      })
+    );
+    showToast('Student onboarding ledger synchronized');
+  };
 
-  const filteredChecklist = selectedFilterCategory === 'All'
-    ? checklist
-    : checklist.filter(c => c.category === selectedFilterCategory);
+  const totalTasks = stages.reduce((acc, s) => acc + s.tasks.length, 0);
+  const doneTasks = stages.reduce((acc, s) => acc + s.tasks.filter(t => t.done).length, 0);
+  const progressPercent = Math.round((doneTasks / totalTasks) * 100);
+
+  const activeStage = stages.find(s => s.id === selectedStageId) || stages[0];
 
   const handleSendChat = (e) => {
     e.preventDefault();
@@ -100,7 +168,6 @@ export default function StudentOSPage() {
     setChatMessages(newChat);
     setChatInput('');
 
-    // Deterministic copilot answers
     setTimeout(() => {
       let reply = "I understand. I am tracking your academic progress and UKVI status against campus databases. Dr. Jenkins will be notified if tutor approval is needed.";
       const lower = userText.toLowerCase();
@@ -122,10 +189,37 @@ export default function StudentOSPage() {
   return (
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
+      {/* ── TOAST NOTIFICATION ── */}
+      {studentToast && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '28px',
+            right: '28px',
+            backgroundColor: '#0c0c0f',
+            color: '#ffffff',
+            padding: '14px 20px',
+            borderRadius: '10px',
+            boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            fontSize: '13px',
+            fontWeight: '600',
+            border: '1px solid rgba(255, 107, 0, 0.4)',
+            animation: 'fadeIn 0.2s ease-out'
+          }}
+        >
+          <CheckCircle2 size={18} color="var(--accent-orange)" />
+          <span>{studentToast}</span>
+        </div>
+      )}
+
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
-      <section className="page-hero-banner">
+      <section className="page-hero-banner" style={{ borderBottom: '1px solid #d8d4cd', paddingBottom: '3.5rem' }}>
         <div className="main-container">
-          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'center' }}>
+          <div className="flex-between flex-wrap gap-md" style={{ alignItems: 'flex-start' }}>
             <div style={{ maxWidth: '780px' }}>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', marginBottom: '10px' }}>
                 STUDENT OS // CAMPUS MOBILE SUPER-APP
@@ -136,24 +230,43 @@ export default function StudentOSPage() {
               <p className="body-lg text-secondary" style={{ maxWidth: '720px', lineHeight: 1.65 }}>
                 International students often have to manage 10+ different websites—course portals, visa emails, bank statements, and accommodation forms. WorldLynk unifies timetables, weekly work hours, verified housing, and pre-arrival checklists into one friendly mobile app powered by helpful AI assistants.
               </p>
+
+              {/* Institutional Compliance Seals */}
+              <div className="flex gap-md flex-wrap mt-lg pt-md" style={{ borderTop: '1px solid #d8d4cd' }}>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11.5px', color: '#475569' }}>
+                  <ShieldCheck size={14} color="var(--accent-orange)" />
+                  <span>Apple Wallet & Google Wallet NFC Certified</span>
+                </div>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11.5px', color: '#475569' }}>
+                  <Lock size={14} color="var(--status-pass)" />
+                  <span>Biometric Secure Enclave Storage</span>
+                </div>
+                <div className="flex gap-xs items-center mono-sm" style={{ fontSize: '11.5px', color: '#475569' }}>
+                  <Clock size={14} color="#0284c7" />
+                  <span>UKVI 20h Work Cap Real-Time Guardrail</span>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
-              <div className="card-elevated" style={{ padding: '20px' }}>
-                <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SAMPLE STUDENT PROFILE</div>
+            <div className="flex flex-col gap-sm" style={{ minWidth: '260px' }}>
+              <div className="card-elevated" style={{ padding: '20px', border: '1px solid #d8d4cd', borderRadius: '14px', backgroundColor: '#ffffff' }}>
+                <div className="flex-between mb-xs">
+                  <span className="mono-label" style={{ fontSize: '10px', color: '#0284c7' }}>AUTHENTICATED STUDENT</span>
+                  <span className="pill pill-approved" style={{ fontSize: '9px' }}>TIER-4 ACTIVE</span>
+                </div>
                 <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Maya Chen</div>
-                <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>MSc Data Science · Year 1</div>
-                <div className="flex gap-xs mt-sm">
-                  <span className="pill pill-approved" style={{ fontSize: '9px' }}>CAS: E2948102A</span>
-                  <span className="pill pill-active" style={{ fontSize: '9px' }}>Student Visa</span>
+                <div className="mono-sm text-secondary" style={{ fontSize: '11.5px', marginTop: '2px' }}>MSc Data Science · Royal Holloway</div>
+                <div className="flex gap-xs mt-sm flex-wrap">
+                  <span className="pill" style={{ fontSize: '9px', backgroundColor: '#f4f1ee', color: '#475569' }}>CAS: E2948102A</span>
+                  <span className="pill" style={{ fontSize: '9px', backgroundColor: '#f4f1ee', color: '#475569' }}>SITS: 0091-2847</span>
                 </div>
               </div>
               <div className="flex gap-sm">
                 <button onClick={() => setShowCertificateModal(true)} className="btn-secondary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                  <Download size={13} /> Pre-Arrival Summary
+                  <Download size={13} /> CAS Dossier
                 </button>
                 <a href="https://worldlynk.co.uk" target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm" style={{ flex: 1, fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
-                  Launch Live App <ExternalLink size={12} />
+                  Launch App <ExternalLink size={12} />
                 </a>
               </div>
             </div>
@@ -162,9 +275,9 @@ export default function StudentOSPage() {
       </section>
 
       {/* ── MAIN INTERACTIVE WORKSPACE ─────────────────────────────── */}
-      <section className="section" style={{ paddingTop: '40px' }}>
+      <section className="section" style={{ paddingTop: '44px', paddingBottom: '70px' }}>
         <div className="main-container">
-          <div className="responsive-grid-student-os">
+          <div className="responsive-grid-student-os" style={{ alignItems: 'start' }}>
             
             {/* ── LEFT: INTERACTIVE SMARTPHONE WORKSTATION ── */}
             <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
@@ -181,7 +294,7 @@ export default function StudentOSPage() {
                 backgroundColor: '#f4f1ee',
                 borderRadius: '44px',
                 border: '4px solid #2a2a35',
-                boxShadow: '0 25px 60px -15px rgba(15, 23, 42, 0.55), 0 0 0 1px rgba(15, 23, 42, 0.08), inset 0 0 8px rgba(15, 23, 42, 0.08)',
+                boxShadow: '0 25px 60px -15px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(15, 23, 42, 0.08), inset 0 0 8px rgba(15, 23, 42, 0.08)',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
@@ -198,19 +311,19 @@ export default function StudentOSPage() {
                   zIndex: 20
                 }}>
                   <div style={{
-                    width: '110px',
+                    width: '120px',
                     height: '24px',
                     backgroundColor: '#0c0c0f',
                     borderRadius: '20px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: '0 8px',
-                    border: '1px solid #d8d4cd'
+                    padding: '0 10px',
+                    border: '1px solid #333'
                   }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--status-pass)' }} />
-                    <span className="mono-sm" style={{ fontSize: '9px', color: '#27272a' }}>WORK: 16/20h</span>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '2px solid #333' }} />
+                    <span className="mono-sm" style={{ fontSize: '9px', color: '#ffffff' }}>WORK: 16/20h</span>
+                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '2px solid #555' }} />
                   </div>
                 </div>
 
@@ -253,7 +366,7 @@ export default function StudentOSPage() {
                             <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>ROYAL HOLLOWAY // STUDENT APP</div>
                             <div style={{ fontSize: '1.15rem', fontWeight: '800' }}>Welcome, Maya</div>
                           </div>
-                          <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b00, #ff8833)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '13px' }}>
+                          <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'linear-gradient(135deg, #ff6b00, #ff8833)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', fontSize: '13px', color: '#ffffff' }}>
                             MC
                           </div>
                         </div>
@@ -261,17 +374,17 @@ export default function StudentOSPage() {
                         {/* Dual Gauges */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '12px' }}>
                           <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
-                            <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>COURSE PROGRESS</div>
-                            <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>68%</div>
+                            <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>ACADEMIC STANDING</div>
+                            <div style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0284c7' }}>1st Class (74%)</div>
                             <div style={{ height: '4px', backgroundColor: '#d8d4cd', borderRadius: '2px', marginTop: '4px' }}>
-                              <div style={{ width: '68%', height: '100%', backgroundColor: 'var(--accent-cyan)', borderRadius: '2px' }} />
+                              <div style={{ width: '74%', height: '100%', backgroundColor: '#0284c7', borderRadius: '2px' }} />
                             </div>
-                            <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--text-muted)', marginTop: '4px' }}>On track for 1st Class</div>
+                            <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--text-muted)', marginTop: '4px' }}>On track for Distinction</div>
                           </div>
 
                           <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>WEEKLY WORK LIMIT</div>
-                            <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-orange)' }}>16h / 20h</div>
+                            <div style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--accent-orange)' }}>16h / 20h</div>
                             <div style={{ height: '4px', backgroundColor: '#d8d4cd', borderRadius: '2px', marginTop: '4px' }}>
                               <div style={{ width: '80%', height: '100%', backgroundColor: 'var(--accent-orange)', borderRadius: '2px' }} />
                             </div>
@@ -288,14 +401,14 @@ export default function StudentOSPage() {
                         </div>
                         <div className="flex flex-col gap-xs">
                           {SCHEDULE_ITEMS.map((item, idx) => (
-                            <div key={idx} style={{ backgroundColor: '#f4f1ee', padding: '10px 12px', borderRadius: '12px', borderLeft: item.type === 'Work' ? '3px solid var(--accent-orange)' : '3px solid var(--accent-cyan)' }}>
+                            <div key={idx} style={{ backgroundColor: '#f4f1ee', padding: '10px 12px', borderRadius: '12px', borderLeft: item.type === 'Work' ? '3px solid var(--accent-orange)' : '3px solid #0284c7' }}>
                               <div className="flex-between">
                                 <span className="mono-sm" style={{ fontSize: '9.5px', color: 'var(--text-secondary)' }}>{item.time}</span>
                                 <span className="pill pill-approved" style={{ fontSize: '8px', padding: '1px 6px' }}>{item.type}</span>
                               </div>
                               <div style={{ fontSize: '11px', fontWeight: '700', marginTop: '2px' }}>{item.title}</div>
                               <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)', marginTop: '2px' }}>{item.loc}</div>
-                              <div className="mono-sm" style={{ fontSize: '8.5px', color: item.status === 'monitored' ? 'var(--accent-orange)' : 'var(--accent-emerald)', marginTop: '4px' }}>
+                              <div className="mono-sm" style={{ fontSize: '8.5px', color: item.status === 'monitored' ? 'var(--accent-orange)' : 'var(--status-pass)', marginTop: '4px' }}>
                                 ✓ {item.qrStatus}
                               </div>
                             </div>
@@ -304,7 +417,7 @@ export default function StudentOSPage() {
                       </div>
 
                       {/* Quick Nova Prompt */}
-                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px dashed rgba(255,107,0,0.3)' }}>
+                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px dashed rgba(255,107,0,0.4)' }}>
                         <div className="flex gap-xs alignItems-center mb-xs">
                           <Bot size={13} color="var(--accent-orange)" />
                           <span className="mono-label" style={{ fontSize: '9.5px', color: 'var(--accent-orange)' }}>HELPFUL SUGGESTION</span>
@@ -320,82 +433,53 @@ export default function StudentOSPage() {
                   {activeTab === 'schedule' && (
                     <>
                       <div className="flex-between">
-                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>ACADEMIC TIMETABLE</span>
+                        <span className="mono-label" style={{ fontSize: '10px', color: '#0284c7' }}>ACADEMIC TIMETABLE</span>
                         <span className="pill pill-approved" style={{ fontSize: '8px' }}>Synced</span>
                       </div>
                       <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
                         <div className="flex-between mb-xs">
-                          <span style={{ fontSize: '12px', fontWeight: '700' }}>Week 4 · Term 1</span>
-                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-cyan)' }}>Oct 14 - Oct 18</span>
+                          <span style={{ fontSize: '11px', fontWeight: '700' }}>Thursday, 26 October</span>
+                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Week 4</span>
                         </div>
-                        <div className="flex gap-xs" style={{ overflowX: 'auto', paddingBottom: '4px' }}>
-                          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map((day, i) => (
-                            <div key={i} style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: '8px', backgroundColor: i === 1 ? 'var(--accent-orange)' : '#ffffff', color: i === 1 ? '#ffffff' : 'var(--text-secondary)' }}>
-                              <div style={{ fontSize: '9px' }}>{day}</div>
-                              <div style={{ fontSize: '11px', fontWeight: '800' }}>{14 + i}</div>
+                        <div className="flex flex-col gap-xs">
+                          {SCHEDULE_ITEMS.map((item, idx) => (
+                            <div key={idx} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '8px' }}>
+                              <div className="flex-between">
+                                <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>{item.time}</span>
+                                <span className="pill" style={{ fontSize: '8px', padding: '1px 5px' }}>{item.type}</span>
+                              </div>
+                              <div style={{ fontSize: '11px', fontWeight: '700', marginTop: '2px' }}>{item.title}</div>
+                              <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>{item.loc}</div>
                             </div>
                           ))}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-col gap-xs">
-                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
-                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>09:00 - 11:00</span>
-                          <div style={{ fontSize: '11px', fontWeight: '700' }}>CS-5100: Distributed Systems</div>
-                          <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>EB-02 · QR Check-In Required</div>
-                        </div>
-
-                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
-                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>11:30 - 13:00</span>
-                          <div style={{ fontSize: '11px', fontWeight: '700' }}>CS-5100 Lab Session (Group A)</div>
-                          <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>Turing Lab 4 · Dr. Jenkins</div>
-                          <button onClick={() => alert('Swap request submitted to Senior Tutor Dr. Jenkins')} className="btn-secondary btn-sm" style={{ marginTop: '6px', fontSize: '9px', padding: '2px 8px' }}>
-                            Request Lab Slot Swap ➔
-                          </button>
-                        </div>
-
-                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
-                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>14:30 - 18:30 (Work)</span>
-                          <div style={{ fontSize: '11px', fontWeight: '700' }}>Campus Barista Shift</div>
-                          <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Costa Coffee · Counted towards weekly 20h limit</div>
                         </div>
                       </div>
                     </>
                   )}
 
-                  {/* TAB 3: HOUSING / PBSA SCREEN */}
+                  {/* TAB 3: HOUSING SCREEN */}
                   {activeTab === 'housing' && (
                     <>
                       <div className="flex-between">
-                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-emerald)' }}>STUDENT ACCOMMODATION</span>
-                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>Verified Booking</span>
+                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>VERIFIED PBSA LIVING</span>
+                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>Stripe Escrow</span>
                       </div>
-
-                      {/* Active Lease Card */}
-                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(16,185,129,0.3)' }}>
-                        <div className="flex-between mb-xs">
-                          <span className="pill pill-approved" style={{ fontSize: '8px' }}>Confirmed Booking</span>
-                          <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-emerald)' }}>Secure Payment</span>
-                        </div>
-                        <div style={{ fontSize: '13px', fontWeight: '800' }}>Chapter King's Cross</div>
-                        <div className="mono-sm" style={{ fontSize: '10px', color: 'var(--text-secondary)' }}>Studio Ensuite · Floor 4, Room 412</div>
-                        <div className="flex-between mt-sm" style={{ borderTop: '1px solid #282836', paddingTop: '8px' }}>
-                          <span className="mono-sm" style={{ fontSize: '9px' }}>Move-in: Sep 28, 2026</span>
-                          <span style={{ fontSize: '10px', fontWeight: '700', color: 'var(--accent-cyan)' }}>Download Tenancy PDF</span>
-                        </div>
-                      </div>
-
-                      <div className="mono-label" style={{ fontSize: '9.5px', marginTop: '4px' }}>VERIFIED ALTERNATE HALLS</div>
                       <div className="flex flex-col gap-xs">
-                        {HOUSING_LISTINGS.slice(1).map((h, i) => (
-                          <div key={i} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', display: 'flex', gap: '10px', alignItems: 'center' }}>
-                            <div style={{ width: '42px', height: '42px', borderRadius: '8px', backgroundColor: '#d8d4cd', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                              <Building2 size={18} color="var(--accent-orange)" />
-                            </div>
-                            <div style={{ flex: 1 }}>
-                              <div style={{ fontSize: '11px', fontWeight: '700' }}>{h.name}</div>
-                              <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>{h.type} · {h.price}</div>
-                              <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--accent-emerald)' }}>{h.dist}</div>
+                        {HOUSING_LISTINGS.map((h, i) => (
+                          <div key={i} style={{ backgroundColor: '#f4f1ee', borderRadius: '12px', overflow: 'hidden', border: '1px solid #d8d4cd' }}>
+                            <img src={h.img} alt={h.name} style={{ width: '100%', height: '80px', objectFit: 'cover' }} />
+                            <div style={{ padding: '8px 10px' }}>
+                              <div className="flex-between">
+                                <span style={{ fontSize: '11px', fontWeight: '700' }}>{h.name}</span>
+                                <span className="mono-sm" style={{ fontSize: '10px', fontWeight: '800', color: 'var(--accent-orange)' }}>{h.price}</span>
+                              </div>
+                              <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                                {h.type} · {h.dist}
+                              </div>
+                              <div className="flex-between mt-xs">
+                                <span className="pill pill-active" style={{ fontSize: '7.5px' }}>{h.stripeStatus}</span>
+                                <span className="mono-sm" style={{ fontSize: '8px', color: 'var(--accent-orange)', cursor: 'pointer' }}>View Contract</span>
+                              </div>
                             </div>
                           </div>
                         ))}
@@ -403,41 +487,38 @@ export default function StudentOSPage() {
                     </>
                   )}
 
-                  {/* TAB 4: WORK / UKVI 20H TRACKER SCREEN */}
+                  {/* TAB 4: WORK SCREEN */}
                   {activeTab === 'work' && (
                     <>
                       <div className="flex-between">
-                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>WEEKLY WORK HOURS TRACKER</span>
-                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>Legal 20h Limit</span>
+                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>TIER-4 WORK MONITOR</span>
+                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>UKVI Safe</span>
                       </div>
-
-                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(255,107,0,0.3)' }}>
-                        <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>CURRENT TERM-TIME WEEK</div>
-                        <div className="flex-between alignItems-center mt-xs">
-                          <span style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--accent-orange)' }}>16.0 hrs</span>
-                          <span className="mono-sm" style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Max Legal: 20.0 hrs</span>
+                      <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '12px' }}>
+                        <div className="flex-between">
+                          <span style={{ fontSize: '11px', fontWeight: '700' }}>Term-Time Cap</span>
+                          <span className="mono-sm" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>16h / 20h Used</span>
                         </div>
-                        <div style={{ height: '6px', backgroundColor: '#d8d4cd', borderRadius: '3px', marginTop: '6px', overflow: 'hidden' }}>
-                          <div style={{ width: '80%', height: '100%', backgroundColor: 'var(--accent-orange)' }} />
+                        <div style={{ height: '6px', backgroundColor: '#d8d4cd', borderRadius: '3px', margin: '6px 0' }}>
+                          <div style={{ width: '80%', height: '100%', backgroundColor: 'var(--accent-orange)', borderRadius: '3px' }} />
                         </div>
-                        <div className="flex-between mt-xs mono-sm" style={{ fontSize: '8.5px', color: 'var(--status-pass)' }}>
-                          <span>✓ 4.0h Safe Legal Allowance Left</span>
-                          <span>Reset: Sunday 23:59</span>
+                        <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--text-secondary)' }}>
+                          Remaining buffer this week: <strong>4.0 hours</strong>. Resets Monday 00:01.
                         </div>
                       </div>
 
                       <div className="mono-label" style={{ fontSize: '9.5px', marginTop: '4px' }}>VERIFIED ON-CAMPUS VACANCIES</div>
                       <div className="flex flex-col gap-xs">
                         {VERIFIED_JOBS.map((j, i) => (
-                          <div key={i} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px' }}>
+                          <div key={i} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
                             <div className="flex-between">
                               <span style={{ fontSize: '11px', fontWeight: '700' }}>{j.title}</span>
-                              <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-emerald)' }}>{j.wage}</span>
+                              <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>{j.wage}</span>
                             </div>
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)', margin: '2px 0' }}>{j.employer} · {j.hours}</div>
                             <div className="flex gap-xs mt-xs">
                               {j.tags.map((t, ti) => (
-                                <span key={ti} className="pill" style={{ fontSize: '7.5px', padding: '1px 5px', backgroundColor: '#d8d4cd' }}>{t}</span>
+                                <span key={ti} className="pill" style={{ fontSize: '7.5px', padding: '1px 5px', backgroundColor: '#f4f1ee' }}>{t}</span>
                               ))}
                               <span className="mono-sm" style={{ fontSize: '8px', color: 'var(--accent-orange)', marginLeft: 'auto' }}>1-Click Apply</span>
                             </div>
@@ -451,14 +532,13 @@ export default function StudentOSPage() {
                   {activeTab === 'reliv' && (
                     <>
                       <div className="flex-between">
-                        <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-purple)' }}>CAMPUS COMMUNITY &amp; EVENTS</span>
-                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>Connect with Course Mates</span>
+                        <span className="mono-label" style={{ fontSize: '10px', color: '#9333ea' }}>CAMPUS COMMUNITY &amp; EVENTS</span>
+                        <span className="pill pill-approved" style={{ fontSize: '8px' }}>Cohort Match</span>
                       </div>
 
-                      {/* Mystery Match / Lynk Up Card */}
-                      <div style={{ backgroundColor: '#f5f3ff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(168,85,247,0.3)' }}>
+                      <div style={{ backgroundColor: '#faf5ff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(168,85,247,0.3)' }}>
                         <div className="flex-between mb-xs">
-                          <span className="mono-label" style={{ fontSize: '8.5px', color: 'var(--accent-purple)' }}>MEET YOUR COHORT</span>
+                          <span className="mono-label" style={{ fontSize: '8.5px', color: '#9333ea' }}>MEET YOUR COHORT</span>
                           <span className="pill pill-active" style={{ fontSize: '8px' }}>3 Matches</span>
                         </div>
                         <div style={{ fontSize: '12px', fontWeight: '800' }}>MSc Data Science Cohort</div>
@@ -466,26 +546,25 @@ export default function StudentOSPage() {
                           3 students from your course arriving in London this week are matched for airport transit &amp; campus tours.
                         </p>
                         <div className="flex gap-xs">
-                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#c084fc' }}>Arriving Sept 24</span>
-                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#c084fc' }}>Chapter Halls</span>
-                          <span className="mono-sm" style={{ fontSize: '8px', color: 'var(--accent-purple)', marginLeft: 'auto', alignSelf: 'center', cursor: 'pointer' }}>Join Group ➔</span>
+                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#9333ea' }}>Arriving Sept 24</span>
+                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#9333ea' }}>Chapter Halls</span>
+                          <span className="mono-sm" style={{ fontSize: '8px', color: '#9333ea', marginLeft: 'auto', alignSelf: 'center', cursor: 'pointer' }}>Join Group ➔</span>
                         </div>
                       </div>
 
-                      {/* Reliv Verified Campus Events */}
                       <div className="mono-label" style={{ fontSize: '9.5px', marginTop: '4px' }}>VERIFIED CAMPUS EXPERIENCES</div>
                       <div className="flex flex-col gap-xs">
                         {[
                           { title: 'International Postgraduate Welcome Gala', loc: 'Founder\'s Great Hall · Oct 2', ticket: 'Pass #WL-9041', status: 'Entry Pass Ready' },
                           { title: 'London Tech Careers & Coffee Meetup', loc: 'Student Union Lounge · Oct 5', ticket: 'Free · 48 Attending', status: 'RSVP Confirmed' }
                         ].map((evt, ei) => (
-                          <div key={ei} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px' }}>
+                          <div key={ei} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
                             <div className="flex-between">
                               <span style={{ fontSize: '11px', fontWeight: '700' }}>{evt.title}</span>
                             </div>
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)', marginTop: '2px' }}>{evt.loc}</div>
                             <div className="flex-between mt-xs">
-                              <span className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--accent-purple)' }}>{evt.ticket}</span>
+                              <span className="mono-sm" style={{ fontSize: '8.5px', color: '#9333ea' }}>{evt.ticket}</span>
                               <span className="pill pill-approved" style={{ fontSize: '7.5px' }}>{evt.status}</span>
                             </div>
                           </div>
@@ -513,7 +592,7 @@ export default function StudentOSPage() {
                             style={{
                               alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
                               backgroundColor: msg.sender === 'user' ? 'var(--accent-orange)' : '#f4f1ee',
-                              color: '#0c0c0f',
+                              color: msg.sender === 'user' ? '#ffffff' : '#0c0c0f',
                               padding: '8px 12px',
                               borderRadius: '12px',
                               maxWidth: '85%',
@@ -534,9 +613,9 @@ export default function StudentOSPage() {
                             onClick={() => setChatInput(chip)}
                             className="mono-sm"
                             style={{
-                              backgroundColor: '#d8d4cd',
+                              backgroundColor: '#f4f1ee',
                               color: 'var(--text-secondary)',
-                              border: '1px solid #333344',
+                              border: '1px solid #d8d4cd',
                               borderRadius: '12px',
                               padding: '2px 8px',
                               fontSize: '8.5px',
@@ -559,7 +638,7 @@ export default function StudentOSPage() {
                           style={{
                             flex: 1,
                             backgroundColor: '#ffffff',
-                            border: '1px solid #2e2e40',
+                            border: '1px solid #d8d4cd',
                             borderRadius: '16px',
                             padding: '6px 12px',
                             color: '#0c0c0f',
@@ -567,21 +646,7 @@ export default function StudentOSPage() {
                             outline: 'none'
                           }}
                         />
-                        <button
-                          type="submit"
-                          style={{
-                            backgroundColor: 'var(--accent-orange)',
-                            border: 'none',
-                            borderRadius: '50%',
-                            width: '28px',
-                            height: '28px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: '#0c0c0f',
-                            cursor: 'pointer'
-                          }}
-                        >
+                        <button type="submit" style={{ backgroundColor: 'var(--accent-orange)', border: 'none', borderRadius: '50%', width: '28px', height: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', cursor: 'pointer' }}>
                           <Send size={12} />
                         </button>
                       </form>
@@ -590,16 +655,16 @@ export default function StudentOSPage() {
 
                 </div>
 
-                {/* Bottom App Dock Navigation */}
+                {/* Bottom App Navigation Dock */}
                 <div style={{
-                  height: '62px',
-                  backgroundColor: '#f4f1ee',
+                  height: '56px',
+                  backgroundColor: '#ffffff',
                   borderTop: '1px solid #d8d4cd',
                   display: 'flex',
-                  justifyContent: 'space-around',
                   alignItems: 'center',
-                  padding: '0 4px',
-                  zIndex: 20
+                  justifyContent: 'space-around',
+                  padding: '0 8px',
+                  zIndex: 10
                 }}>
                   {[
                     { id: 'home', label: 'Today', icon: Home },
@@ -622,7 +687,7 @@ export default function StudentOSPage() {
                           flexDirection: 'column',
                           alignItems: 'center',
                           gap: '2px',
-                          color: isActive ? 'var(--accent-orange)' : 'var(--text-muted)',
+                          color: isActive ? 'var(--accent-orange)' : '#64748b',
                           cursor: 'pointer',
                           padding: '4px 6px'
                         }}
@@ -648,59 +713,86 @@ export default function StudentOSPage() {
               </div>
             </div>
 
-            {/* ── RIGHT: DETAILED INSTITUTIONAL SUITE & CHECKLIST ── */}
+            {/* ── RIGHT: ELEVATED INSTITUTIONAL SUITE & MILESTONE JOURNEY ── */}
             <div className="flex flex-col gap-xl">
               
-              {/* Pre-Departure Readiness Radar */}
-              <div className="card-dark" style={{ padding: '24px', border: '1px solid var(--border-subtle)' }}>
+              {/* 1. Pre-Arrival & Orientation Milestone Journey */}
+              <div className="card-elevated" style={{ padding: '28px', border: '1px solid #d8d4cd', borderRadius: '16px', backgroundColor: '#ffffff' }}>
                 <div className="flex-between flex-wrap gap-sm mb-md">
                   <div>
-                    <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>PRE-ARRIVAL CHECKLIST</span>
-                    <h3 className="headline-md" style={{ marginTop: '4px' }}>Step-by-Step UK Arrival Guide</h3>
-                    <p className="body-sm text-secondary">
-                      Track everything you need before leaving home and during your first weeks on campus.
+                    <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ONBOARDING WORKSPACE</span>
+                    <h3 className="headline-md" style={{ marginTop: '4px', color: '#0c0c0f' }}>
+                      UKVI Pre-Arrival &amp; Orientation Milestone Journey
+                    </h3>
+                    <p className="body-sm text-secondary" style={{ marginTop: '2px' }}>
+                      Four verified stages tracking student compliance from home country departure through term-time work authorizations.
                     </p>
                   </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '1.8rem', fontWeight: '800', color: progressPercent === 100 ? 'var(--status-pass)' : 'var(--accent-orange)' }}>
+                  <div style={{ textAlign: 'right', minWidth: '120px' }}>
+                    <div style={{ fontSize: '2rem', fontWeight: '800', color: progressPercent === 100 ? 'var(--status-pass)' : 'var(--accent-orange)', lineHeight: 1 }}>
                       {progressPercent}%
                     </div>
-                    <div className="mono-sm text-muted">{doneCount} of {checklist.length} completed</div>
+                    <div className="mono-sm text-muted mt-xs">{doneTasks} of {totalTasks} milestones verified</div>
                   </div>
                 </div>
 
-                {/* Category Filter Chips */}
-                <div className="flex gap-xs mb-md flex-wrap">
-                  {['All', 'Identity & Visa', 'Health & Compliance', 'Finance', 'Accommodation', 'Arrival Setup', 'Academic'].map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setSelectedFilterCategory(cat)}
-                      className="tab-btn"
-                      style={{
-                        padding: '4px 10px',
-                        fontSize: '11px',
-                        backgroundColor: selectedFilterCategory === cat ? 'var(--accent-orange)' : '#ffffff',
-                        color: selectedFilterCategory === cat ? '#ffffff' : 'var(--text-secondary)',
-                        border: '1px solid var(--border-subtle)',
-                        borderRadius: '6px'
-                      }}
-                    >
-                      {cat}
-                    </button>
-                  ))}
+                {/* Milestone Stage Switcher Buttons */}
+                <div className="grid-4 gap-xs mb-lg" style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '14px' }}>
+                  {stages.map((stg) => {
+                    const isSelected = selectedStageId === stg.id;
+                    const stageDone = stg.tasks.filter(t => t.done).length;
+                    return (
+                      <div
+                        key={stg.id}
+                        onClick={() => setSelectedStageId(stg.id)}
+                        style={{
+                          padding: '10px 12px',
+                          borderRadius: '8px',
+                          cursor: 'pointer',
+                          backgroundColor: isSelected ? '#f4f1ee' : '#ffffff',
+                          border: isSelected ? '1.5px solid var(--accent-orange)' : '1px solid #e2e8f0',
+                          transition: 'all 0.15s ease'
+                        }}
+                      >
+                        <div className="flex-between">
+                          <span className="mono-label" style={{ fontSize: '9px', color: isSelected ? 'var(--accent-orange)' : '#64748b' }}>
+                            STAGE {stg.num}
+                          </span>
+                          <span className="pill" style={{
+                            fontSize: '8px',
+                            padding: '1px 5px',
+                            backgroundColor: stg.status === 'COMPLETE' ? '#dcfce7' : '#f1f5f9',
+                            color: stg.status === 'COMPLETE' ? '#166534' : '#475569'
+                          }}>
+                            {stageDone}/{stg.tasks.length}
+                          </span>
+                        </div>
+                        <div style={{ fontSize: '11px', fontWeight: '700', color: '#0c0c0f', marginTop: '4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {stg.title}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                {/* Checklist Rows */}
+                {/* Stage Tasks List */}
                 <div className="flex flex-col gap-xs mb-md">
-                  {filteredChecklist.map((item) => (
+                  <div className="flex-between mb-xs">
+                    <span className="mono-label" style={{ fontSize: '10px', color: '#475569' }}>
+                      TASKS FOR: {activeStage.title.toUpperCase()}
+                    </span>
+                    <span className="mono-sm text-muted" style={{ fontSize: '10.5px' }}>Click to toggle verified status</span>
+                  </div>
+
+                  {activeStage.tasks.map((task) => (
                     <div
-                      key={item.id}
-                      onClick={() => toggleCheck(item.id)}
+                      key={task.id}
+                      onClick={() => toggleTask(activeStage.id, task.id)}
                       style={{
-                        backgroundColor: item.done ? '#ffffff' : '#f4f1ee',
-                        border: item.done ? '1px solid #d8d4cd' : '1px solid #cec9c1',
-                        borderRadius: '8px',
-                        padding: '10px 14px',
+                        backgroundColor: task.done ? '#f8fafc' : '#ffffff',
+                        border: task.done ? '1px solid #cbd5e1' : '1px solid #e2e8f0',
+                        borderRadius: '10px',
+                        padding: '12px 16px',
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
@@ -709,107 +801,288 @@ export default function StudentOSPage() {
                       }}
                     >
                       <div style={{
-                        width: '20px',
-                        height: '20px',
-                        borderRadius: '4px',
-                        backgroundColor: item.done ? 'var(--accent-orange)' : 'transparent',
-                        border: item.done ? 'none' : '2px solid #94a3b8',
+                        width: '22px',
+                        height: '22px',
+                        borderRadius: '6px',
+                        backgroundColor: task.done ? 'var(--accent-orange)' : '#ffffff',
+                        border: task.done ? 'none' : '2px solid #94a3b8',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#0c0c0f',
+                        color: '#ffffff',
                         flexShrink: 0
                       }}>
-                        {item.done && <Check size={13} strokeWidth={3} />}
+                        {task.done && <Check size={14} strokeWidth={3} />}
                       </div>
 
                       <div style={{ flex: 1 }}>
-                        <span style={{
-                          fontSize: '12.5px',
-                          color: item.done ? '#71717a' : '#0c0c0f',
-                          textDecoration: item.done ? 'line-through' : 'none'
+                        <div style={{
+                          fontSize: '13px',
+                          fontWeight: task.done ? '500' : '600',
+                          color: task.done ? '#64748b' : '#0f172a',
+                          textDecoration: task.done ? 'line-through' : 'none'
                         }}>
-                          {item.label}
-                        </span>
+                          {task.label}
+                        </div>
+                        <div className="mono-sm text-muted" style={{ fontSize: '10px', marginTop: '2px' }}>
+                          Authority: <span style={{ color: '#0284c7' }}>{task.authority}</span>
+                        </div>
                       </div>
 
                       <span className="pill" style={{
-                        fontSize: '8.5px',
-                        backgroundColor: item.tag === 'CRITICAL' ? 'rgba(239,68,68,0.15)' : '#f4f1ee',
-                        color: item.tag === 'CRITICAL' ? '#ef4444' : 'var(--text-muted)'
+                        fontSize: '9px',
+                        backgroundColor: task.tag === 'CRITICAL' ? '#fee2e2' : '#f1f5f9',
+                        color: task.tag === 'CRITICAL' ? '#dc2626' : '#475569',
+                        fontWeight: '700'
                       }}>
-                        {item.tag}
+                        {task.tag}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex-between">
-                  <span className="mono-sm text-muted">Click any row to toggle status</span>
+                <div className="flex-between pt-sm" style={{ borderTop: '1px solid #f1f5f9' }}>
+                  <div className="mono-sm text-muted" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <ShieldCheck size={14} color="var(--status-pass)" />
+                    <span>Cross-referenced against UK Home Office SMS portal</span>
+                  </div>
                   <button onClick={() => setShowCertificateModal(true)} className="btn-secondary btn-sm" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                    <FileText size={13} /> View Arrival Record
+                    <FileText size={13} /> Export CAS Dossier
                   </button>
                 </div>
               </div>
 
-              {/* Offline Emergency Pass Card */}
-              <div className="card-dark" style={{ padding: '24px', border: '1px solid rgba(56,189,248,0.2)' }}>
-                <div className="flex-between flex-wrap gap-sm mb-sm">
+              {/* 2. Elevated Dynamic Emergency & Student Campus Pass */}
+              <div className="card-elevated" style={{
+                padding: '28px',
+                border: '1px solid #cbd5e1',
+                borderRadius: '16px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)'
+              }}>
+                <div className="flex-between flex-wrap gap-sm mb-md">
                   <div>
-                    <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>CAMPUS DIGITAL PASS</span>
-                    <h3 className="headline-sm" style={{ marginTop: '2px' }}>Offline Student ID &amp; Emergency Pass</h3>
+                    <span className="mono-label" style={{ color: '#0284c7' }}>OFFICIAL CAMPUS CREDENTIAL</span>
+                    <h3 className="headline-sm" style={{ marginTop: '2px', color: '#0c0c0f' }}>
+                      Dynamic Student ID &amp; NFC Emergency Pass
+                    </h3>
                   </div>
-                  <span className="pill pill-approved"><ShieldCheck size={12} style={{ marginRight: '4px' }} /> OFFICIALLY VERIFIED</span>
+                  <div className="flex gap-xs items-center">
+                    <span className="pill pill-approved" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '10px' }}>
+                      <ShieldCheck size={12} /> BIOMETRICALLY LINKED
+                    </span>
+                  </div>
                 </div>
 
-                <div className="grid-2 gap-md" style={{ alignItems: 'center' }}>
-                  <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
-                    <div><strong>STUDENT:</strong> Maya Chen (ID: 0091-2847)</div>
-                    <div><strong>INSTITUTION:</strong> Royal Holloway, University of London</div>
-                    <div><strong>STUDENT VISA:</strong> E2948102A (Valid to 30/09/2027)</div>
-                    <div><strong>EMERGENCY CONTACT:</strong> Campus Security (+44 1784 443888)</div>
-                    <div><strong>NHS NUMBER:</strong> 948 201 8841 (Englefield Green Health Centre)</div>
+                <div className="grid-2 gap-lg" style={{ alignItems: 'center' }}>
+                  
+                  {/* Left: Credential Dossier Details */}
+                  <div style={{
+                    backgroundColor: '#f8fafc',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: '12px',
+                    padding: '16px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '8px'
+                  }}>
+                    <div className="flex-between pb-xs" style={{ borderBottom: '1px solid #e2e8f0' }}>
+                      <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>INSTITUTION</span>
+                      <span className="mono-sm" style={{ fontWeight: '700', color: '#0c0c0f', fontSize: '11px' }}>Royal Holloway, Univ. of London</span>
+                    </div>
+                    <div className="flex-between pb-xs" style={{ borderBottom: '1px solid #e2e8f0' }}>
+                      <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>STUDENT NAME</span>
+                      <span className="mono-sm" style={{ fontWeight: '700', color: '#0c0c0f', fontSize: '11px' }}>Maya Chen (ID: 0091-2847)</span>
+                    </div>
+                    <div className="flex-between pb-xs" style={{ borderBottom: '1px solid #e2e8f0' }}>
+                      <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>TIER-4 SPONSOR CAS</span>
+                      <span className="mono-sm" style={{ fontWeight: '700', color: 'var(--accent-orange)', fontSize: '11px' }}>CAS: E2948102A (Exp 09/2027)</span>
+                    </div>
+                    <div className="flex-between pb-xs" style={{ borderBottom: '1px solid #e2e8f0' }}>
+                      <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>CAMPUS ENTRANCE RIGHTS</span>
+                      <span className="mono-sm" style={{ fontWeight: '700', color: 'var(--status-pass)', fontSize: '11px' }}>Turing Labs &amp; Founders 24/7</span>
+                    </div>
+                    <div className="flex-between">
+                      <span className="mono-sm text-muted" style={{ fontSize: '10px' }}>NHS EMERGENCY NUMBER</span>
+                      <span className="mono-sm" style={{ fontWeight: '700', color: '#0c0c0f', fontSize: '11px' }}>948 201 8841 (Englefield Green)</span>
+                    </div>
                   </div>
 
-                  <div style={{ backgroundColor: '#ffffff', padding: '8px', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ width: '100%', height: '110px', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0c0c0f', borderRadius: '6px' }}>
-                      <QrCode size={90} color="#0c0c0f" />
+                  {/* Right: Dynamic TOTP Pass Shell */}
+                  <div style={{
+                    backgroundColor: '#0c0c0f',
+                    borderRadius: '14px',
+                    padding: '18px',
+                    color: '#ffffff',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    boxShadow: '0 8px 24px rgba(12, 12, 15, 0.2)'
+                  }}>
+                    <div className="flex-between w-full mb-xs">
+                      <span className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>DYNAMIC QR PASS</span>
+                      <span className="mono-sm" style={{ fontSize: '9px', color: '#22c55e', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <RefreshCw size={10} className="spin-slow" /> Rotating in {tokenCountdown}s
+                      </span>
                     </div>
-                    <div className="mono-sm" style={{ color: '#0c0c0f', fontSize: '8px', fontWeight: '800', marginTop: '4px' }}>
-                      SCAN TO ENTER
+
+                    <div style={{
+                      backgroundColor: '#ffffff',
+                      padding: '10px',
+                      borderRadius: '10px',
+                      margin: '6px 0',
+                      boxShadow: '0 0 16px rgba(255, 107, 0, 0.25)'
+                    }}>
+                      <QrCode size={110} color="#0c0c0f" />
+                    </div>
+
+                    <div className="mono-sm text-center" style={{ fontSize: '9.5px', color: '#94a3b8', marginTop: '4px' }}>
+                      TOKEN: <strong style={{ color: '#ffffff' }}>WL-8941-K7X-{tokenCountdown}</strong>
+                    </div>
+                    <div className="mono-sm text-center" style={{ fontSize: '8px', color: '#64748b', marginTop: '2px' }}>
+                      HMPO / UKVI Cryptographic Anti-Screenshot Protection
+                    </div>
+
+                    <div className="flex gap-xs w-full mt-sm">
+                      <button
+                        onClick={() => showToast('Apple Wallet pass generated (PKPass)')}
+                        className="btn-secondary btn-sm"
+                        style={{ flex: 1, fontSize: '9.5px', padding: '4px 6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', backgroundColor: '#1e293b', color: '#ffffff', border: '1px solid #334155' }}
+                      >
+                        <Smartphone size={11} /> Apple Wallet
+                      </button>
+                      <button
+                        onClick={() => showToast('Google Wallet credential provisioned')}
+                        className="btn-secondary btn-sm"
+                        style={{ flex: 1, fontSize: '9.5px', padding: '4px 6px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', backgroundColor: '#1e293b', color: '#ffffff', border: '1px solid #334155' }}
+                      >
+                        <CreditCard size={11} /> Google Wallet
+                      </button>
                     </div>
                   </div>
+
                 </div>
               </div>
 
-              {/* Multi-Channel Notification Dispatcher */}
-              <div className="card-dark" style={{ padding: '24px', border: '1px solid var(--border-subtle)' }}>
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>DIRECT MESSAGING CHANNELS</span>
-                <h3 className="headline-sm" style={{ margin: '4px 0 12px 0' }}>Works on WhatsApp &amp; Telegram</h3>
+              {/* 3. Multi-Channel Messaging Simulator (WhatsApp & Telegram) */}
+              <div className="card-elevated" style={{ padding: '28px', border: '1px solid #d8d4cd', borderRadius: '16px', backgroundColor: '#ffffff' }}>
+                <div className="flex-between flex-wrap gap-sm mb-xs">
+                  <div>
+                    <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>STUDENT OUTREACH CHANNELS</span>
+                    <h3 className="headline-sm" style={{ marginTop: '2px', color: '#0c0c0f' }}>
+                      Zero Web Portal Friction: WhatsApp &amp; Telegram Integration
+                    </h3>
+                  </div>
+                  <span className="mono-sm text-muted" style={{ fontSize: '11px' }}>98.4% open rate within 9 minutes</span>
+                </div>
                 <p className="body-sm text-secondary mb-md">
-                  Students don't check complicated web portals every day. WorldLynk delivers timetable updates, attendance reminders, and work-hour alerts right inside WhatsApp or Telegram.
+                  Students often ignore institutional email inboxes. WorldLynk delivers attendance alerts, lab room swaps, and 20h work limit guardrails directly to students on the messaging apps they check constantly.
                 </p>
 
-                <div className="grid-2">
-                  <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #25D366' }}>
-                    <div className="flex gap-xs alignItems-center mb-xs">
-                      <MessageSquare size={14} color="#25D366" />
-                      <span style={{ fontSize: '12px', fontWeight: '700' }}>WhatsApp Notifications</span>
+                <div className="grid-2 gap-md">
+                  
+                  {/* WhatsApp Simulation Bubble */}
+                  <div style={{
+                    backgroundColor: '#efeae2',
+                    borderRadius: '12px',
+                    padding: '14px',
+                    border: '1px solid #dcd7cd'
+                  }}>
+                    <div className="flex-between mb-xs">
+                      <div className="flex gap-xs items-center">
+                        <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
+                          <MessageSquare size={12} />
+                        </div>
+                        <span style={{ fontSize: '12px', fontWeight: '700', color: '#0c0c0f' }}>WorldLynk Campus Bot</span>
+                      </div>
+                      <span className="pill" style={{ backgroundColor: '#dcfce7', color: '#166534', fontSize: '8.5px' }}>OFFICIAL VERIFIED</span>
                     </div>
-                    <p style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-                      "⚠️ Maya: You have 1 unverified absence for CS-5100. Dr. Jenkins has reserved a makeup lab slot tomorrow at 14:00. Reply '1' to confirm."
-                    </p>
+
+                    <div style={{
+                      backgroundColor: '#ffffff',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      marginTop: '8px',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
+                    }}>
+                      <p style={{ fontSize: '12px', color: '#1e293b', lineHeight: 1.45, margin: 0 }}>
+                        ⚠️ <strong>Attendance Warning:</strong> Maya, you were flagged absent for CS-5100 today. Dr. Jenkins has reserved an authorized makeup lab slot for Friday at 14:00 (EB-04).
+                      </p>
+                      <div className="flex-between mt-xs">
+                        <span className="mono-sm text-muted" style={{ fontSize: '9px' }}>10:14 AM</span>
+                        <span style={{ color: '#0284c7', fontSize: '11px', fontWeight: '800' }}>✓✓</span>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-xs mt-sm">
+                      <button
+                        onClick={() => showToast('Makeup lab confirmed with Dr. Jenkins (EB-04, Fri 14:00)')}
+                        className="btn-primary btn-sm"
+                        style={{ flex: 1, fontSize: '10px', padding: '6px 8px', textAlign: 'center' }}
+                      >
+                        Reply '1' to Accept Slot
+                      </button>
+                      <button
+                        onClick={() => showToast('Inquiry forwarded to Senior Tutor desk')}
+                        className="btn-secondary btn-sm"
+                        style={{ flex: 1, fontSize: '10px', padding: '6px 8px', textAlign: 'center' }}
+                      >
+                        Contact Tutor
+                      </button>
+                    </div>
                   </div>
 
-                  <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #0088cc' }}>
-                    <div className="flex gap-xs alignItems-center mb-xs">
-                      <Send size={14} color="#0088cc" />
-                      <span style={{ fontSize: '12px', fontWeight: '700' }}>Telegram Channel</span>
+                  {/* Telegram Simulation Bubble */}
+                  <div style={{
+                    backgroundColor: '#e6f2f8',
+                    borderRadius: '12px',
+                    padding: '14px',
+                    border: '1px solid #c9e2f0'
+                  }}>
+                    <div className="flex-between mb-xs">
+                      <div className="flex gap-xs items-center">
+                        <div style={{ width: '22px', height: '22px', borderRadius: '50%', backgroundColor: '#0088cc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
+                          <Send size={12} />
+                        </div>
+                        <span style={{ fontSize: '12px', fontWeight: '700', color: '#0c0c0f' }}>UKVI Visa Sentinel Channel</span>
+                      </div>
+                      <span className="pill" style={{ backgroundColor: '#e0f2fe', color: '#0369a1', fontSize: '8.5px' }}>ENCRYPTED</span>
                     </div>
-                    <p style={{ fontSize: '11px', color: 'var(--text-secondary)', lineHeight: 1.4 }}>
-                      "🔔 Work Shift Alert: 4.0 hours logged today at Costa Coffee. Total this week: 16.0h / 20.0h. You have 4.0h buffer left before term cap."
-                    </p>
+
+                    <div style={{
+                      backgroundColor: '#ffffff',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      marginTop: '8px',
+                      boxShadow: '0 1px 3px rgba(0,0,0,0.06)'
+                    }}>
+                      <p style={{ fontSize: '12px', color: '#1e293b', lineHeight: 1.45, margin: 0 }}>
+                        🔔 <strong>Work Shift Alert:</strong> 4.0 hours logged today at Costa Coffee. Weekly total: <strong>16.0h / 20.0h</strong>. Safe buffer remaining: <strong>4.0 hours</strong> before term cap.
+                      </p>
+                      <div className="flex-between mt-xs">
+                        <span className="mono-sm text-muted" style={{ fontSize: '9px' }}>14:32 PM</span>
+                        <span style={{ color: '#0088cc', fontSize: '11px', fontWeight: '800' }}>✓✓</span>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-xs mt-sm">
+                      <button
+                        onClick={() => showToast('Rota planner synchronized (4.0h buffer safe)')}
+                        className="btn-primary btn-sm"
+                        style={{ flex: 1, fontSize: '10px', padding: '6px 8px', textAlign: 'center', backgroundColor: '#0088cc', borderColor: '#0088cc' }}
+                      >
+                        View Shift Ledger
+                      </button>
+                      <button
+                        onClick={() => showToast('Campus payroll slip generated')}
+                        className="btn-secondary btn-sm"
+                        style={{ flex: 1, fontSize: '10px', padding: '6px 8px', textAlign: 'center' }}
+                      >
+                        Download Payslip
+                      </button>
+                    </div>
                   </div>
+
                 </div>
               </div>
 
@@ -838,7 +1111,7 @@ export default function StudentOSPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(12, 12, 15, 0.55)',
+          backgroundColor: 'rgba(12, 12, 15, 0.65)',
           backdropFilter: 'blur(8px)',
           display: 'flex',
           alignItems: 'center',
@@ -848,39 +1121,54 @@ export default function StudentOSPage() {
         }}>
           <div style={{
             backgroundColor: '#ffffff',
-            border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             maxWidth: '600px',
             width: '100%',
-            padding: '28px',
-            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.55)'
+            padding: '32px',
+            border: '1px solid #d8d4cd',
+            boxShadow: '0 25px 60px rgba(0, 0, 0, 0.35)'
           }}>
             <div className="flex-between mb-md">
               <div>
-                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>PRE-ARRIVAL SUMMARY</span>
-                <h3 className="headline-sm" style={{ marginTop: '2px' }}>Student Arrival Record</h3>
+                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>OFFICIAL RECORD</span>
+                <h3 className="headline-sm" style={{ marginTop: '2px', color: '#0c0c0f' }}>Pre-Arrival Compliance Record</h3>
               </div>
-              <button onClick={() => setShowCertificateModal(false)} style={{ background: 'none', border: 'none', color: '#0c0c0f', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
-            </div>
-
-            <div style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '10px', border: '1px solid #d8d4cd', marginBottom: '20px' }}>
-              <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <div><strong>STUDENT NAME:</strong> Maya Chen</div>
-                <div><strong>STUDENT ID:</strong> 0091-2847</div>
-                <div><strong>VISA CAS NUMBER:</strong> E2948102A</div>
-                <div><strong>SPONSOR INSTITUTION:</strong> Royal Holloway</div>
-                <div><strong>FUNDS VERIFIED:</strong> £14,240 (Bank verification complete)</div>
-                <div><strong>ACCOMMODATION:</strong> Chapter King's Cross (Booking Confirmed)</div>
-                <div><strong>VERIFICATION CODE:</strong> WL-UKVI-8841-PASS</div>
-              </div>
-            </div>
-
-            <div className="flex justify-end gap-sm">
-              <button onClick={() => setShowCertificateModal(false)} className="btn-secondary btn-sm">
-                Close Preview
+              <button
+                onClick={() => setShowCertificateModal(false)}
+                style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', color: '#64748b' }}
+              >
+                ✕
               </button>
-              <button onClick={() => { alert('Simulated PDF Download: Arrival_Summary_MayaChen.pdf'); setShowCertificateModal(false); }} className="btn-primary btn-sm">
-                Download PDF ➔
+            </div>
+
+            <div style={{ backgroundColor: '#f8fafc', padding: '16px', borderRadius: '10px', border: '1px solid #e2e8f0', marginBottom: '20px' }}>
+              <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: '#334155' }}>
+                <div><strong>STUDENT:</strong> Maya Chen (ID: 0091-2847)</div>
+                <div><strong>CAS NUMBER:</strong> E2948102A · Royal Holloway, University of London</div>
+                <div><strong>COURSE:</strong> MSc Data Science &amp; Machine Learning (2024-2025)</div>
+                <div><strong>VISA STATUS:</strong> Tier-4 Student Route · Biometric Granted</div>
+                <div><strong>HOUSING:</strong> Chapter King’s Cross (Tenancy Confirmed via Stripe Escrow)</div>
+                <div><strong>ONBOARDING COMPLETION:</strong> {progressPercent}% of critical pre-arrival tasks cleared</div>
+              </div>
+            </div>
+
+            <div className="flex gap-sm">
+              <button
+                onClick={() => {
+                  showToast('CAS Verification Dossier PDF downloaded');
+                  setShowCertificateModal(false);
+                }}
+                className="btn-primary"
+                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+              >
+                <Download size={14} /> Download Verified Dossier PDF
+              </button>
+              <button
+                onClick={() => setShowCertificateModal(false)}
+                className="btn-secondary"
+                style={{ padding: '0 20px' }}
+              >
+                Close
               </button>
             </div>
           </div>

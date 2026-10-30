@@ -118,17 +118,18 @@ const CASE_STUDIES = [
 ];
 
 export default function OutcomesPage() {
-  const [cohortSize, setCohortSize] = useState(6500);
-  const [tuitionFee, setTuitionFee] = useState(22500);
-  const [baselineDropoutPct, setBaselineDropoutPct] = useState(8.5);
-  const [mitigatedDropoutPct, setMitigatedDropoutPct] = useState(3.4);
+  const [cohortSize, setCohortSize] = useState(15000);
+  const [tuitionFee, setTuitionFee] = useState(25000);
+  const [baselineDropoutPct, setBaselineDropoutPct] = useState(6.5);
+  const [mitigatedDropoutPct, setMitigatedDropoutPct] = useState(5.5);
 
-  // Financial model calculations
+  // Reconciled Institutional Financial Model:
+  // 1.0% net cohort retention gain through early cross-system intervention
   const baselineDropouts = Math.round(cohortSize * (baselineDropoutPct / 100));
   const worldlynkDropouts = Math.round(cohortSize * (mitigatedDropoutPct / 100));
   const savedStudents = baselineDropouts - worldlynkDropouts;
   const protectedRevenue = savedStudents * tuitionFee;
-  const adminHoursSaved = Math.round(cohortSize * 3.4);
+  const adminHoursSaved = Math.round(savedStudents * 24);
 
   return (
     <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>

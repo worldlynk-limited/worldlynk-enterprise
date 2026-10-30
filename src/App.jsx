@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import GlobalNavbar from './components/GlobalNavbar';
 import GlobalFooter from './components/GlobalFooter';
 import CommandPaletteModal from './components/CommandPaletteModal';
 import NovaChatWidget from './components/NovaChatWidget';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, [pathname]);
-
-  return null;
-}
+import { SmoothScrollProvider } from './components/SmoothScroll';
 
 import HomePage from './pages/HomePage';
 import PlatformPage from './pages/PlatformPage';
@@ -21,79 +12,72 @@ import StaffOSPage from './pages/StaffOSPage';
 import StudentOSPage from './pages/StudentOSPage';
 import SolutionsPage from './pages/SolutionsPage';
 import OutcomesPage from './pages/OutcomesPage';
-import SecurityPage from './pages/SecurityPage';
+import IntegrationsPage from './pages/IntegrationsPage';
+import TrustHubPage from './pages/TrustHubPage';
 import DemoPage from './pages/DemoPage';
-import HowItWorksPage from './pages/HowItWorksPage';
-import FoundersPage from './pages/FoundersPage';
-import CareersPage from './pages/CareersPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import AccessibilityPage from './pages/AccessibilityPage';
 import TermsPage from './pages/TermsPage';
-import TrustHubPage from './pages/TrustHubPage';
-import IntegrationsPage from './pages/IntegrationsPage';
-import StudentJourneyPage from './pages/StudentJourneyPage';
-import ResponsibleAIPage from './pages/ResponsibleAIPage';
 
 export default function App() {
   const [cmdOpen, setCmdOpen] = useState(false);
 
   return (
-    <div className="app-layout">
-      {/* Scroll restoration on route change */}
-      <ScrollToTop />
+    <SmoothScrollProvider>
+      <div className="app-layout">
+        {/* Architectural Blueprint Grid */}
+        <div className="blueprint-grid-bg" />
 
-      {/* Architectural Blueprint Grid */}
-      <div className="blueprint-grid-bg" />
+        {/* Global Navigation with Cmd+K trigger */}
+        <GlobalNavbar onOpenSearch={() => setCmdOpen(true)} />
 
-      {/* Global Navigation with Cmd+K trigger */}
-      <GlobalNavbar onOpenSearch={() => setCmdOpen(true)} />
+        {/* Main Routed Content */}
+        <main style={{ flex: 1, minHeight: '80vh', position: 'relative', zIndex: 1 }}>
+          <Routes>
+            {/* Core Product & Architecture Pages */}
+            <Route path="/" element={<HomePage />} />
+            <Route path="/platform" element={<PlatformPage />} />
+            <Route path="/staff-os" element={<StaffOSPage />} />
+            <Route path="/student-os" element={<StudentOSPage />} />
+            <Route path="/solutions" element={<SolutionsPage />} />
+            <Route path="/solutions/:role" element={<SolutionsPage />} />
+            <Route path="/outcomes" element={<OutcomesPage />} />
+            <Route path="/integrations" element={<IntegrationsPage />} />
 
-      {/* Main Routed Content */}
-      <main style={{ flex: 1, minHeight: '80vh', position: 'relative', zIndex: 1 }}>
-        <Routes>
-          {/* Core Pages */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/platform" element={<PlatformPage />} />
-          <Route path="/staff-os" element={<StaffOSPage />} />
-          <Route path="/student-os" element={<StudentOSPage />} />
-          <Route path="/solutions" element={<SolutionsPage />} />
-          <Route path="/solutions/:role" element={<SolutionsPage />} />
-          <Route path="/outcomes" element={<OutcomesPage />} />
-          <Route path="/security" element={<SecurityPage />} />
-          <Route path="/demo" element={<DemoPage />} />
+            {/* Trust, Governance & Procurement */}
+            <Route path="/trust" element={<TrustHubPage />} />
 
-          {/* Platform Sub-Pages */}
-          <Route path="/journey" element={<StudentJourneyPage />} />
-          <Route path="/funnel" element={<StudentJourneyPage />} />
-          <Route path="/how-it-works" element={<HowItWorksPage />} />
-          <Route path="/integrations" element={<IntegrationsPage />} />
+            {/* Engagement & Campus Inquiries */}
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/demo" element={<DemoPage />} />
 
-          {/* Company Pages */}
-          <Route path="/founders" element={<FoundersPage />} />
-          <Route path="/careers" element={<CareersPage />} />
-          <Route path="/contact" element={<ContactPage />} />
+            {/* Legal & Standards */}
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
+            <Route path="/terms" element={<TermsPage />} />
 
-          {/* Legal Pages */}
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/accessibility" element={<AccessibilityPage />} />
-          <Route path="/terms" element={<TermsPage />} />
+            {/* Redirects for Consolidated & Legacy Routes */}
+            <Route path="/security" element={<Navigate to="/trust" replace />} />
+            <Route path="/responsible-ai" element={<Navigate to="/trust" replace />} />
+            <Route path="/journey" element={<Navigate to="/platform" replace />} />
+            <Route path="/funnel" element={<Navigate to="/platform" replace />} />
+            <Route path="/how-it-works" element={<Navigate to="/platform" replace />} />
+            <Route path="/founders" element={<Navigate to="/contact" replace />} />
+            <Route path="/careers" element={<Navigate to="/contact" replace />} />
 
-          {/* Trust & Procurement */}
-          <Route path="/trust" element={<TrustHubPage />} />
-          <Route path="/responsible-ai" element={<ResponsibleAIPage />} />
+            {/* Catch-all fallback */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
 
-          {/* Catch-all */}
-          <Route path="*" element={<HomePage />} />
-        </Routes>
-      </main>
+        {/* Global Mega Footer */}
+        <GlobalFooter />
 
-      {/* Global Mega Footer */}
-      <GlobalFooter />
-
-      {/* Global Interactive Tools */}
-      <CommandPaletteModal isOpen={cmdOpen} onClose={setCmdOpen} />
-      <NovaChatWidget />
-    </div>
+        {/* Global Interactive Tools */}
+        <CommandPaletteModal isOpen={cmdOpen} onClose={setCmdOpen} />
+        <NovaChatWidget />
+      </div>
+    </SmoothScrollProvider>
   );
 }

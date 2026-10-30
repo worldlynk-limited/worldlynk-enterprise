@@ -70,10 +70,10 @@ export default function HomePage() {
                 Book a Live Demo
               </Link>
               <Link 
-                to="/journey" 
+                to="/platform" 
                 className="hero-cta-btn hero-cta-btn--secondary"
               >
-                <span>Explore Student Journey</span>
+                <span>Explore Platform Architecture</span>
                 <ArrowRight size={15} />
               </Link>
             </div>

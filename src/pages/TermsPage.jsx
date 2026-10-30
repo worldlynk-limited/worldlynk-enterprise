@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSmoothScroll } from '../components/SmoothScroll';
 import {
   FileText,
   ShieldCheck,
@@ -27,14 +28,15 @@ const CLAUSES = [
 
 export default function TermsPage() {
   const [activeClause, setActiveClause] = useState('provision');
+  const { scrollTo: smoothScrollTo } = useSmoothScroll();
 
   const scrollTo = (id) => {
     setActiveClause(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    smoothScrollTo(id, { offset: -80 });
   };
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
@@ -125,7 +127,7 @@ export default function TermsPage() {
                 <p className="body-md text-secondary mb-sm" style={{ lineHeight: 1.6 }}>
                   WorldLynk commits to <strong>99.95% monthly uptime</strong> for all production APIs, dynamic QR attendance validators, and webhook gateways.
                 </p>
-                <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '8px', border: '1px solid #232332' }}>
+                <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                   <div className="mono-sm" style={{ fontSize: '10.5px', display: 'flex', flexDirection: 'column', gap: '4px', color: 'var(--text-secondary)' }}>
                     <div>• 99.0% - 99.94% Uptime: 10% Monthly Service Credit</div>
                     <div>• 95.0% - 98.99% Uptime: 25% Monthly Service Credit</div>

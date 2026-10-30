@@ -226,7 +226,7 @@ export default function IntegrationsPage() {
   });
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO INTEGRATIONS MATRIX SECTION ──────────────────────── */}
       <IntegrationsMatrixSection 
@@ -238,7 +238,7 @@ export default function IntegrationsPage() {
       {/* <section className="section section-spacious">
         <div className="main-container">
           
-          <div className="flex-between flex-wrap gap-md mb-xl" style={{ backgroundColor: '#13131c', padding: '16px 22px', borderRadius: '14px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <div className="flex-between flex-wrap gap-md mb-xl" style={{ backgroundColor: '#ffffff', padding: '16px 22px', borderRadius: '14px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
             <div style={{ position: 'relative', width: '320px', maxWidth: '100%' }}>
               <Search size={15} style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
               <input
@@ -249,10 +249,10 @@ export default function IntegrationsPage() {
                 style={{
                   width: '100%',
                   padding: '9px 14px 9px 36px',
-                  backgroundColor: '#191924',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid rgba(15, 23, 42, 0.08)',
                   borderRadius: '8px',
-                  color: '#ffffff',
+                  color: '#0c0c0f',
                   fontSize: '12.5px',
                   outline: 'none'
                 }}
@@ -293,7 +293,7 @@ export default function IntegrationsPage() {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
-                    backgroundColor: '#13131c'
+                    backgroundColor: '#ffffff'
                   }}
                 >
                   <div>
@@ -303,7 +303,7 @@ export default function IntegrationsPage() {
                           <IconComp size={20} />
                         </div>
                         <div>
-                          <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>{c.name}</h3>
+                          <h3 style={{ fontSize: '1.2rem', fontWeight: '800', color: '#0c0c0f', margin: 0 }}>{c.name}</h3>
                           <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{c.categoryLabel}</div>
                         </div>
                       </div>
@@ -315,7 +315,7 @@ export default function IntegrationsPage() {
                     </p>
                   </div>
 
-                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '14px' }}>
+                  <div className="flex-between mt-sm" style={{ borderTop: '1px solid rgba(15, 23, 42, 0.08)', paddingTop: '14px' }}>
                     <div className="mono-sm" style={{ fontSize: '11px', color: 'var(--accent-cyan)' }}>
                        Latency: {c.latency} · {c.type}
                      </div>
@@ -328,10 +328,10 @@ export default function IntegrationsPage() {
              })}
            </div>
 
-           <div className="card-elevated flex-between flex-wrap gap-md mb-xl" style={{ padding: '36px', backgroundColor: '#13131b' }}>
+           <div className="card-elevated flex-between flex-wrap gap-md mb-xl" style={{ padding: '36px', backgroundColor: '#ffffff' }}>
              <div>
                <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ON-PREMISES &amp; CUSTOM CAMPUS SYSTEMS</span>
-               <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginTop: '6px', color: '#ffffff' }}>
+               <h3 style={{ fontSize: '1.35rem', fontWeight: '800', marginTop: '6px', color: '#0c0c0f' }}>
                  Need an integration for a custom or in-house database?
                </h3>
                <p className="body-sm text-secondary mt-xs" style={{ maxWidth: '680px', lineHeight: 1.6 }}>
@@ -367,7 +367,7 @@ export default function IntegrationsPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(12, 12, 15, 0.55)',
           backdropFilter: 'blur(8px)',
           display: 'flex',
           alignItems: 'center',
@@ -376,25 +376,25 @@ export default function IntegrationsPage() {
           padding: '20px'
         }}>
           <div style={{
-            backgroundColor: '#13131a',
+            backgroundColor: '#ffffff',
             border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             maxWidth: '640px',
             width: '100%',
             padding: '28px',
-            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.9)'
+            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.55)'
           }}>
             <div className="flex-between mb-md">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>CONNECTOR TECHNICAL SPECIFICATION</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>{activeConnector.name}</h3>
               </div>
-              <button onClick={() => setActiveConnector(null)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+              <button onClick={() => setActiveConnector(null)} style={{ background: 'none', border: 'none', color: '#0c0c0f', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                 <X size={18} />
               </button>
             </div>
 
-            <div style={{ backgroundColor: '#0d0d12', padding: '16px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '16px' }}>
+            <div style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '10px', border: '1px solid #d8d4cd', marginBottom: '16px' }}>
               <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
                 <div><strong>CATEGORY:</strong> {activeConnector.categoryLabel}</div>
                 <div><strong>INTEGRATION TYPE:</strong> {activeConnector.type}</div>
@@ -405,7 +405,7 @@ export default function IntegrationsPage() {
             </div>
 
             <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '6px' }}>SAMPLE PAYLOAD SCHEMA</div>
-            <div style={{ backgroundColor: '#060609', padding: '14px', borderRadius: '8px', border: '1px solid #1a1a24', marginBottom: '20px' }}>
+            <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', border: '1px solid #d8d4cd', marginBottom: '20px' }}>
               <pre style={{ margin: 0, fontSize: '11px', color: 'var(--accent-cyan)', fontFamily: 'var(--wl-font-mono)', lineHeight: 1.5, overflowX: 'auto' }}>
                 {JSON.stringify(activeConnector.schemaSample, null, 2)}
               </pre>
@@ -432,7 +432,7 @@ export default function IntegrationsPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.85)',
+          backgroundColor: 'rgba(12, 12, 15, 0.55)',
           backdropFilter: 'blur(8px)',
           display: 'flex',
           alignItems: 'center',
@@ -441,20 +441,20 @@ export default function IntegrationsPage() {
           padding: '20px'
         }}>
           <div style={{
-            backgroundColor: '#13131a',
+            backgroundColor: '#ffffff',
             border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             maxWidth: '560px',
             width: '100%',
             padding: '28px',
-            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.9)'
+            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.55)'
           }}>
             <div className="flex-between mb-md">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTEGRATION ENGINEERING</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>Request Bespoke Campus Adaptor</h3>
               </div>
-              <button onClick={() => setShowCustomModal(false)} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+              <button onClick={() => setShowCustomModal(false)} style={{ background: 'none', border: 'none', color: '#0c0c0f', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                 <X size={18} />
               </button>
             </div>

@@ -146,7 +146,7 @@ export default function StaffOSPage() {
   const highRiskCount = allQueue.filter(s => s.risk > 70).length;
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── TOP HERO HEADER ─────────────────────────────────────── */}
       <section className="page-hero-banner">
@@ -167,7 +167,7 @@ export default function StaffOSPage() {
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
               <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-held)', fontSize: '10px' }}>ACTIONS AWAITING REVIEW</div>
-                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>{heldCount} Pending Review</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>{heldCount} Pending Review</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{highRiskCount} High Priority Alerts</div>
               </div>
               <a
@@ -204,8 +204,8 @@ export default function StaffOSPage() {
                   className={`card-elevated card-interactive ${isSelected ? 'card-selected' : ''}`}
                   style={{
                     padding: '18px',
-                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.08)',
-                    backgroundColor: isSelected ? '#161624' : '#101016',
+                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(15, 23, 42, 0.08)',
+                    backgroundColor: isSelected ? '#ffffff' : '#f4f1ee',
                     transition: 'all 0.2s ease'
                   }}
                 >
@@ -217,7 +217,7 @@ export default function StaffOSPage() {
                       <span className="pill pill-approved" style={{ fontSize: '8.5px', padding: '1px 6px' }}>CLEAR</span>
                     )}
                   </div>
-                  <div style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff', marginBottom: '4px' }}>{m.name}</div>
+                  <div style={{ fontSize: '13px', fontWeight: '700', color: '#0c0c0f', marginBottom: '4px' }}>{m.name}</div>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10px', lineHeight: 1.3 }}>
                     {m.stats}
                   </div>
@@ -227,7 +227,7 @@ export default function StaffOSPage() {
           </div>
 
           {/* Queue Controls Bar */}
-          <div className="flex-between flex-wrap gap-md mb-md" style={{ backgroundColor: '#13131a', padding: '12px 18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
+          <div className="flex-between flex-wrap gap-md mb-md" style={{ backgroundColor: '#ffffff', padding: '12px 18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
             <div className="flex gap-sm alignItems-center flex-wrap">
               <div style={{ position: 'relative', width: '260px', maxWidth: '100%' }}>
                 <Search size={14} style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-muted)' }} />
@@ -239,10 +239,10 @@ export default function StaffOSPage() {
                   style={{
                     width: '100%',
                     padding: '6px 10px 6px 30px',
-                    backgroundColor: '#1a1a24',
+                    backgroundColor: '#d8d4cd',
                     border: '1px solid var(--border-hairline)',
                     borderRadius: '6px',
-                    color: '#ffffff',
+                    color: '#0c0c0f',
                     fontSize: '12px',
                     outline: 'none'
                   }}
@@ -264,7 +264,7 @@ export default function StaffOSPage() {
                     style={{
                       padding: '4px 10px',
                       fontSize: '11px',
-                      backgroundColor: filterTab === f.id ? 'var(--accent-orange)' : '#191924',
+                      backgroundColor: filterTab === f.id ? 'var(--accent-orange)' : '#ffffff',
                       color: filterTab === f.id ? '#ffffff' : 'var(--text-secondary)',
                       borderRadius: '6px',
                       border: '1px solid var(--border-subtle)'
@@ -302,7 +302,7 @@ export default function StaffOSPage() {
             
             {/* ── LEFT: INTERACTIVE HIGH-DENSITY QUEUE TABLE ── */}
             <div className="card-dark" style={{ padding: '0', borderRadius: '12px', overflow: 'hidden', border: '1px solid var(--border-subtle)' }}>
-              <div className="flex-between" style={{ padding: '14px 18px', borderBottom: '1px solid var(--border-hairline)', backgroundColor: '#13131b' }}>
+              <div className="flex-between" style={{ padding: '14px 18px', borderBottom: '1px solid var(--border-hairline)', backgroundColor: '#ffffff' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>
                   ACTIVE INBOX ({filteredQueue.length} ITEMS)
                 </span>
@@ -312,7 +312,7 @@ export default function StaffOSPage() {
               <div style={{ overflowX: 'auto' }}>
                 <table className="queue-table" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                   <thead>
-                    <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
+                    <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
                       <th style={{ padding: '10px 14px' }}>STUDENT</th>
                       <th style={{ padding: '10px 14px' }}>UPDATE / REASON</th>
                       <th style={{ padding: '10px 14px' }}>URGENCY</th>
@@ -344,19 +344,19 @@ export default function StaffOSPage() {
                                   style={{ width: '32px', height: '32px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--border-subtle)' }}
                                 />
                               ) : (
-                                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#252533', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontSize: '10.5px', color: '#ffffff' }}>
+                                <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: '#d8d4cd', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '700', fontSize: '10.5px', color: '#0c0c0f' }}>
                                   {row.avatar}
                                 </div>
                               )}
                               <div>
-                                <div style={{ fontWeight: '700', color: '#ffffff' }}>{row.student}</div>
+                                <div style={{ fontWeight: '700', color: '#0c0c0f' }}>{row.student}</div>
                                 <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>{row.sitsId} · {row.course}</div>
                               </div>
                             </div>
                           </td>
 
                           <td style={{ padding: '12px 14px' }}>
-                            <div style={{ color: '#ffffff', fontWeight: '600' }}>{row.signal}</div>
+                            <div style={{ color: '#0c0c0f', fontWeight: '600' }}>{row.signal}</div>
                             <div className="mono-sm text-secondary" style={{ fontSize: '9.5px' }}>{row.evidence}</div>
                           </td>
 
@@ -400,7 +400,7 @@ export default function StaffOSPage() {
 
             {/* ── RIGHT: SELECTED STUDENT DOSSIER & REVIEW PANEL ── */}
             {selectedStudent && (
-              <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+              <div className="card-dark" style={{ padding: '24px', borderRadius: '12px', border: '1px solid var(--border-subtle)', backgroundColor: '#ffffff' }}>
                 <div className="flex-between mb-sm">
                   <div className="flex gap-sm alignItems-center">
                     {selectedStudent.photo ? (
@@ -455,7 +455,7 @@ export default function StaffOSPage() {
                 {dossierTab === 'overview' && (
                   <div className="flex flex-col gap-md">
                     {/* Key Attributes Grid */}
-                    <div className="grid-2 gap-sm" style={{ backgroundColor: '#0d0d12', padding: '12px', borderRadius: '8px' }}>
+                    <div className="grid-2 gap-sm" style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px' }}>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>STUDENT ID:</strong> {selectedStudent.sitsId}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>VISA / CAS:</strong> {selectedStudent.cas}</div>
                       <div className="mono-sm" style={{ fontSize: '10.5px' }}><strong>CURRENT GPA:</strong> {selectedStudent.gpa}</div>
@@ -465,7 +465,7 @@ export default function StaffOSPage() {
                     </div>
 
                     {/* What happened box */}
-                    <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
+                    <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
                       <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>WHAT HAPPENED</div>
                       <div style={{ fontSize: '12px', fontWeight: '700', marginTop: '2px' }}>{selectedStudent.signal}</div>
                       <p style={{ fontSize: '11.5px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.4 }}>
@@ -477,9 +477,9 @@ export default function StaffOSPage() {
                     </div>
 
                     {/* Pre-Drafted Action */}
-                    <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
+                    <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)' }}>
                       <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>RECOMMENDED ACTION (PRE-DRAFTED)</div>
-                      <p style={{ fontSize: '12px', color: '#ffffff', marginTop: '4px', lineHeight: 1.4 }}>
+                      <p style={{ fontSize: '12px', color: '#0c0c0f', marginTop: '4px', lineHeight: 1.4 }}>
                         "{selectedStudent.action}"
                       </p>
                       <div className="mono-sm text-muted mt-xs" style={{ fontSize: '9.5px' }}>
@@ -535,7 +535,7 @@ export default function StaffOSPage() {
                             flex: 1,
                             padding: '8px',
                             borderRadius: '6px',
-                            backgroundColor: interventionChannel === ch.id ? 'var(--accent-orange)' : '#191924',
+                            backgroundColor: interventionChannel === ch.id ? 'var(--accent-orange)' : '#ffffff',
                             color: interventionChannel === ch.id ? '#ffffff' : 'var(--text-secondary)',
                             border: '1px solid var(--border-subtle)',
                             fontSize: '11px',
@@ -559,11 +559,11 @@ export default function StaffOSPage() {
                       onChange={(e) => setInterventionNote(e.target.value)}
                       style={{
                         width: '100%',
-                        backgroundColor: '#0a0a0f',
-                        border: '1px solid #2a2a38',
+                        backgroundColor: '#f4f1ee',
+                        border: '1px solid #d8d4cd',
                         borderRadius: '8px',
                         padding: '10px',
-                        color: '#ffffff',
+                        color: '#0c0c0f',
                         fontSize: '11.5px',
                         fontFamily: 'inherit',
                         lineHeight: 1.5,
@@ -588,7 +588,7 @@ export default function StaffOSPage() {
                 {dossierTab === 'audit' && (
                   <div className="flex flex-col gap-xs">
                     <span className="mono-label" style={{ fontSize: '9.5px', color: 'var(--accent-cyan)' }}>ACTIVITY &amp; AUDIT TRAIL</span>
-                    <div className="mono-sm" style={{ backgroundColor: '#0a0a0f', padding: '12px', borderRadius: '8px', fontSize: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <div className="mono-sm" style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', fontSize: '10px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                       <div><strong>RECORD ID:</strong> rec_{selectedStudent.sitsId}</div>
                       <div><strong>ORIGINATING SOURCE:</strong> {selectedStudent.evidence}</div>
                       <div><strong>POLICY RULE:</strong> Requires Named Staff Approval</div>
@@ -627,7 +627,7 @@ export default function StaffOSPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.8)',
+          backgroundColor: 'rgba(12, 12, 15, 0.55)',
           backdropFilter: 'blur(8px)',
           display: 'flex',
           alignItems: 'center',
@@ -636,31 +636,31 @@ export default function StaffOSPage() {
           padding: '20px'
         }}>
           <div style={{
-            backgroundColor: '#13131a',
+            backgroundColor: '#ffffff',
             border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             maxWidth: '780px',
             width: '100%',
             padding: '28px',
-            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.9)'
+            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.55)'
           }}>
             <div className="flex-between mb-md">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>AUDIT TRAIL &amp; HISTORY</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>Activity Log Synced with Student Records</h3>
               </div>
-              <button onClick={() => setShowLedgerModal(false)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+              <button onClick={() => setShowLedgerModal(false)} style={{ background: 'none', border: 'none', color: '#0c0c0f', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
             </div>
 
             <p className="body-sm text-secondary mb-md">
               Every staff intervention approved in Compass is logged with full details, timestamped, and safely written back to your student record system.
             </p>
 
-            <div style={{ maxHeight: '320px', overflowY: 'auto', backgroundColor: '#0a0a0f', borderRadius: '10px', padding: '12px', border: '1px solid #222230', marginBottom: '20px' }}>
+            <div style={{ maxHeight: '320px', overflowY: 'auto', backgroundColor: '#f4f1ee', borderRadius: '10px', padding: '12px', border: '1px solid #d8d4cd', marginBottom: '20px' }}>
               <div className="mono-sm" style={{ fontSize: '10.5px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {allQueue.map((s, i) => (
-                  <div key={i} style={{ borderBottom: '1px solid #1a1a24', paddingBottom: '6px' }}>
-                    <span style={{ color: 'var(--accent-orange)' }}>{s.hash}</span> · <span style={{ color: '#ffffff' }}>{s.student}</span> ({s.sitsId}) ➔ <span style={{ color: 'var(--accent-emerald)' }}>{s.status}</span>
+                  <div key={i} style={{ borderBottom: '1px solid #d8d4cd', paddingBottom: '6px' }}>
+                    <span style={{ color: 'var(--accent-orange)' }}>{s.hash}</span> · <span style={{ color: '#0c0c0f' }}>{s.student}</span> ({s.sitsId}) ➔ <span style={{ color: 'var(--accent-emerald)' }}>{s.status}</span>
                     <div style={{ color: 'var(--text-muted)', fontSize: '9.5px' }}>Action: {s.action} · Reviewer: {s.owner}</div>
                   </div>
                 ))}

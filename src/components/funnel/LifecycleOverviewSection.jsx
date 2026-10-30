@@ -254,7 +254,7 @@ export default function LifecycleOverviewSection() {
 
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link 
-                  to="/journey" 
+                  to="/platform" 
                   className="btn-primary" 
                   style={{ 
                     padding: '0.75rem 1.4rem', 
@@ -264,7 +264,7 @@ export default function LifecycleOverviewSection() {
                     color: '#ffffff'
                   }}
                 >
-                  Explore 11-Stage Student Journey <ArrowRight size={14} />
+                  Explore Platform Architecture <ArrowRight size={14} />
                 </Link>
                 <Link 
                   to="/demo" 

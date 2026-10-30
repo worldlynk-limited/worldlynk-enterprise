@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSmoothScroll } from '../components/SmoothScroll';
 import {
   ShieldCheck,
   Lock,
@@ -25,14 +26,15 @@ const SECTIONS = [
 
 export default function PrivacyPage() {
   const [activeSec, setActiveSec] = useState('designation');
+  const { scrollTo: smoothScrollTo } = useSmoothScroll();
 
   const scrollTo = (id) => {
     setActiveSec(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    smoothScrollTo(id, { offset: -80 });
   };
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
@@ -117,17 +119,17 @@ export default function PrivacyPage() {
                 </p>
 
                 <div className="flex flex-col gap-sm">
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-cyan)' }}>
-                    <strong style={{ color: '#ffffff' }}>Tier 1 · Academic Identity:</strong> Student Identification Number (SITS ID), enrolled course, module code, and institutional email address.
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-cyan)' }}>
+                    <strong style={{ color: '#0c0c0f' }}>Tier 1 · Academic Identity:</strong> Student Identification Number (SITS ID), enrolled course, module code, and institutional email address.
                   </div>
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-orange)' }}>
-                    <strong style={{ color: '#ffffff' }}>Tier 2 · Telemetry &amp; Attendance:</strong> Sub-180ms dynamic QR scan timestamps, lecture hall Bluetooth beacon pings, and Moodle coursework access intervals.
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-orange)' }}>
+                    <strong style={{ color: '#0c0c0f' }}>Tier 2 · Telemetry &amp; Attendance:</strong> Sub-180ms dynamic QR scan timestamps, lecture hall Bluetooth beacon pings, and Moodle coursework access intervals.
                   </div>
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-emerald)' }}>
-                    <strong style={{ color: '#ffffff' }}>Tier 3 · Compliance &amp; Work Hours:</strong> UK Home Office CAS identifiers, weekly term-time employment rotas, and 20-hour legal margin ledgers.
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-emerald)' }}>
+                    <strong style={{ color: '#0c0c0f' }}>Tier 3 · Compliance &amp; Work Hours:</strong> UK Home Office CAS identifiers, weekly term-time employment rotas, and 20-hour legal margin ledgers.
                   </div>
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-purple)' }}>
-                    <strong style={{ color: '#ffffff' }}>Tier 4 · Accommodation &amp; Financials:</strong> Verified PBSA room vouchers, Stripe escrow holding contract IDs, and maintenance fund audit dates.
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '8px', borderLeft: '3px solid var(--accent-purple)' }}>
+                    <strong style={{ color: '#0c0c0f' }}>Tier 4 · Accommodation &amp; Financials:</strong> Verified PBSA room vouchers, Stripe escrow holding contract IDs, and maintenance fund audit dates.
                   </div>
                 </div>
               </section>
@@ -135,7 +137,7 @@ export default function PrivacyPage() {
               <section id="zero_training">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 03</span>
                 <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>3. Strict Zero Model Training Guarantee</h2>
-                <div style={{ backgroundColor: '#0d0d14', padding: '18px', borderRadius: '10px', border: '1px solid var(--status-pass-border)', borderLeft: '4px solid var(--status-pass)' }}>
+                <div style={{ backgroundColor: '#f4f1ee', padding: '18px', borderRadius: '10px', border: '1px solid var(--status-pass-border)', borderLeft: '4px solid var(--status-pass)' }}>
                   <div className="mono-label" style={{ color: 'var(--status-pass)', marginBottom: '4px' }}>CONTRACTUAL INDEMNIFICATION</div>
                   <p className="body-md text-secondary" style={{ lineHeight: 1.6 }}>
                     <strong>Zero-Training Mandate:</strong> WorldLynk never uses student personal data, transcripts, personal statements, chat queries, or attendance logs to train, fine-tune, or reinforce any public, foundational, or proprietary artificial intelligence models. Model inference agreements with enterprise providers contractually prohibit token persistence or retraining.
@@ -178,7 +180,7 @@ export default function PrivacyPage() {
               <section id="dpo_contact">
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>SECTION 08</span>
                 <h2 style={{ fontSize: '1.4rem', fontWeight: '800', margin: '4px 0 12px 0' }}>8. Data Protection Officer (DPO)</h2>
-                <div style={{ backgroundColor: '#0d0d14', padding: '16px', borderRadius: '8px', border: '1px solid #232332' }}>
+                <div style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                   <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--text-secondary)' }}>
                     <div><strong>OFFICER:</strong> Data Protection Officer, WorldLynk Inc.</div>
                     <div><strong>EMAIL:</strong> dpo@worldlynk.com</div>

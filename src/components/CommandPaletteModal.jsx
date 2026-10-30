@@ -9,11 +9,10 @@ const ITEMS = [
   { id: 'student', title: 'Student OS Mobile Super-App', category: 'Pages', route: '/student-os', icon: ArrowRight },
   { id: 'solutions', title: 'Solutions by Leader & Sector', category: 'Pages', route: '/solutions', icon: ArrowRight },
   { id: 'outcomes', title: 'Institutional ROI & Outcomes Scoreboard', category: 'Pages', route: '/outcomes', icon: ArrowRight },
-  { id: 'security', title: 'Security, FERPA & UK GDPR Model', category: 'Pages', route: '/security', icon: ArrowRight },
-  { id: 'how', title: 'How It Works: The Continuous Operating Loop', category: 'Pages', route: '/how-it-works', icon: ArrowRight },
+  { id: 'trust', title: 'Trust, Security & Governance Hub (SOC-2, HECVAT, DPIA)', category: 'Pages', route: '/trust', icon: Shield },
   { id: 'integrations', title: 'Connectors: SITS, Moodle, Stripe, Banner', category: 'Pages', route: '/integrations', icon: ArrowRight },
+  { id: 'contact', title: 'Contact Campus Desks & Support', category: 'Pages', route: '/contact', icon: ArrowRight },
   { id: 'demo', title: 'Schedule a Campus Demo Walkthrough', category: 'Pages', route: '/demo', icon: ArrowRight },
-  { id: 'trust', title: 'Trust & Procurement Hub (HECVAT, SOC-2)', category: 'Pages', route: '/trust', icon: Shield },
 
   // Mastra Agents
   { id: 'ag-sup', title: 'Supervisor Orchestrator (supervisor.ts)', category: 'Agents', route: '/platform', icon: Bot },

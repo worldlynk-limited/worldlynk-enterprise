@@ -120,7 +120,7 @@ export default function StudentOSPage() {
   };
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="page-hero-banner">
@@ -141,7 +141,7 @@ export default function StudentOSPage() {
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
               <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>SAMPLE STUDENT PROFILE</div>
-                <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Maya Chen</div>
+                <div style={{ fontSize: '1.25rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Maya Chen</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>MSc Data Science · Year 1</div>
                 <div className="flex gap-xs mt-sm">
                   <span className="pill pill-approved" style={{ fontSize: '9px' }}>CAS: E2948102A</span>
@@ -178,10 +178,10 @@ export default function StudentOSPage() {
                 width: '100%',
                 maxWidth: '400px',
                 height: '760px',
-                backgroundColor: '#0a0a0d',
+                backgroundColor: '#f4f1ee',
                 borderRadius: '44px',
                 border: '4px solid #2a2a35',
-                boxShadow: '0 25px 60px -15px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.08), inset 0 0 8px rgba(255,255,255,0.05)',
+                boxShadow: '0 25px 60px -15px rgba(15, 23, 42, 0.55), 0 0 0 1px rgba(15, 23, 42, 0.08), inset 0 0 8px rgba(15, 23, 42, 0.08)',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
@@ -200,16 +200,16 @@ export default function StudentOSPage() {
                   <div style={{
                     width: '110px',
                     height: '24px',
-                    backgroundColor: '#000000',
+                    backgroundColor: '#0c0c0f',
                     borderRadius: '20px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     padding: '0 8px',
-                    border: '1px solid #1a1a24'
+                    border: '1px solid #d8d4cd'
                   }}>
                     <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--status-pass)' }} />
-                    <span className="mono-sm" style={{ fontSize: '9px', color: 'rgba(255,255,255,0.8)' }}>WORK: 16/20h</span>
+                    <span className="mono-sm" style={{ fontSize: '9px', color: '#27272a' }}>WORK: 16/20h</span>
                     <div style={{ width: '10px', height: '10px', borderRadius: '50%', border: '2px solid #333' }} />
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export default function StudentOSPage() {
                   padding: '4px 24px 8px 24px',
                   fontSize: '11px',
                   fontWeight: '600',
-                  color: 'rgba(255,255,255,0.85)'
+                  color: '#27272a'
                 }}>
                   <span>09:41</span>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -235,7 +235,7 @@ export default function StudentOSPage() {
                 {/* Internal Phone Viewport Screen */}
                 <div style={{
                   flex: 1,
-                  backgroundColor: '#121217',
+                  backgroundColor: '#ffffff',
                   overflowY: 'auto',
                   padding: '16px',
                   display: 'flex',
@@ -247,7 +247,7 @@ export default function StudentOSPage() {
                   {activeTab === 'home' && (
                     <>
                       {/* Student Card */}
-                      <div className="card-dark" style={{ padding: '14px', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div className="card-dark" style={{ padding: '14px', borderRadius: '16px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
                         <div className="flex-between">
                           <div>
                             <div className="mono-label" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>ROYAL HOLLOWAY // STUDENT APP</div>
@@ -260,19 +260,19 @@ export default function StudentOSPage() {
 
                         {/* Dual Gauges */}
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '12px' }}>
-                          <div style={{ backgroundColor: '#1c1c24', padding: '10px', borderRadius: '12px' }}>
+                          <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>COURSE PROGRESS</div>
                             <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-cyan)' }}>68%</div>
-                            <div style={{ height: '4px', backgroundColor: '#2a2a38', borderRadius: '2px', marginTop: '4px' }}>
+                            <div style={{ height: '4px', backgroundColor: '#d8d4cd', borderRadius: '2px', marginTop: '4px' }}>
                               <div style={{ width: '68%', height: '100%', backgroundColor: 'var(--accent-cyan)', borderRadius: '2px' }} />
                             </div>
                             <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--text-muted)', marginTop: '4px' }}>On track for 1st Class</div>
                           </div>
 
-                          <div style={{ backgroundColor: '#1c1c24', padding: '10px', borderRadius: '12px' }}>
+                          <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>WEEKLY WORK LIMIT</div>
                             <div style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--accent-orange)' }}>16h / 20h</div>
-                            <div style={{ height: '4px', backgroundColor: '#2a2a38', borderRadius: '2px', marginTop: '4px' }}>
+                            <div style={{ height: '4px', backgroundColor: '#d8d4cd', borderRadius: '2px', marginTop: '4px' }}>
                               <div style={{ width: '80%', height: '100%', backgroundColor: 'var(--accent-orange)', borderRadius: '2px' }} />
                             </div>
                             <div className="mono-sm" style={{ fontSize: '8.5px', color: 'var(--status-pass)', marginTop: '4px' }}>4.0h buffer safe</div>
@@ -288,7 +288,7 @@ export default function StudentOSPage() {
                         </div>
                         <div className="flex flex-col gap-xs">
                           {SCHEDULE_ITEMS.map((item, idx) => (
-                            <div key={idx} style={{ backgroundColor: '#191922', padding: '10px 12px', borderRadius: '12px', borderLeft: item.type === 'Work' ? '3px solid var(--accent-orange)' : '3px solid var(--accent-cyan)' }}>
+                            <div key={idx} style={{ backgroundColor: '#f4f1ee', padding: '10px 12px', borderRadius: '12px', borderLeft: item.type === 'Work' ? '3px solid var(--accent-orange)' : '3px solid var(--accent-cyan)' }}>
                               <div className="flex-between">
                                 <span className="mono-sm" style={{ fontSize: '9.5px', color: 'var(--text-secondary)' }}>{item.time}</span>
                                 <span className="pill pill-approved" style={{ fontSize: '8px', padding: '1px 6px' }}>{item.type}</span>
@@ -304,7 +304,7 @@ export default function StudentOSPage() {
                       </div>
 
                       {/* Quick Nova Prompt */}
-                      <div style={{ backgroundColor: '#181822', padding: '12px', borderRadius: '14px', border: '1px dashed rgba(255,107,0,0.3)' }}>
+                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px dashed rgba(255,107,0,0.3)' }}>
                         <div className="flex gap-xs alignItems-center mb-xs">
                           <Bot size={13} color="var(--accent-orange)" />
                           <span className="mono-label" style={{ fontSize: '9.5px', color: 'var(--accent-orange)' }}>HELPFUL SUGGESTION</span>
@@ -323,14 +323,14 @@ export default function StudentOSPage() {
                         <span className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-cyan)' }}>ACADEMIC TIMETABLE</span>
                         <span className="pill pill-approved" style={{ fontSize: '8px' }}>Synced</span>
                       </div>
-                      <div style={{ backgroundColor: '#1b1b26', padding: '10px', borderRadius: '12px' }}>
+                      <div style={{ backgroundColor: '#f4f1ee', padding: '10px', borderRadius: '12px' }}>
                         <div className="flex-between mb-xs">
                           <span style={{ fontSize: '12px', fontWeight: '700' }}>Week 4 · Term 1</span>
                           <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-cyan)' }}>Oct 14 - Oct 18</span>
                         </div>
                         <div className="flex gap-xs" style={{ overflowX: 'auto', paddingBottom: '4px' }}>
                           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map((day, i) => (
-                            <div key={i} style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: '8px', backgroundColor: i === 1 ? 'var(--accent-orange)' : '#121217', color: i === 1 ? '#ffffff' : 'var(--text-secondary)' }}>
+                            <div key={i} style={{ flex: 1, textAlign: 'center', padding: '6px 4px', borderRadius: '8px', backgroundColor: i === 1 ? 'var(--accent-orange)' : '#ffffff', color: i === 1 ? '#ffffff' : 'var(--text-secondary)' }}>
                               <div style={{ fontSize: '9px' }}>{day}</div>
                               <div style={{ fontSize: '11px', fontWeight: '800' }}>{14 + i}</div>
                             </div>
@@ -339,13 +339,13 @@ export default function StudentOSPage() {
                       </div>
 
                       <div className="flex flex-col gap-xs">
-                        <div style={{ backgroundColor: '#181822', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
+                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
                           <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>09:00 - 11:00</span>
                           <div style={{ fontSize: '11px', fontWeight: '700' }}>CS-5100: Distributed Systems</div>
                           <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>EB-02 · QR Check-In Required</div>
                         </div>
 
-                        <div style={{ backgroundColor: '#181822', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
+                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-cyan)' }}>
                           <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>11:30 - 13:00</span>
                           <div style={{ fontSize: '11px', fontWeight: '700' }}>CS-5100 Lab Session (Group A)</div>
                           <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>Turing Lab 4 · Dr. Jenkins</div>
@@ -354,7 +354,7 @@ export default function StudentOSPage() {
                           </button>
                         </div>
 
-                        <div style={{ backgroundColor: '#181822', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
+                        <div style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', borderLeft: '3px solid var(--accent-orange)' }}>
                           <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-orange)' }}>14:30 - 18:30 (Work)</span>
                           <div style={{ fontSize: '11px', fontWeight: '700' }}>Campus Barista Shift</div>
                           <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-muted)' }}>Costa Coffee · Counted towards weekly 20h limit</div>
@@ -372,7 +372,7 @@ export default function StudentOSPage() {
                       </div>
 
                       {/* Active Lease Card */}
-                      <div style={{ backgroundColor: '#191924', padding: '12px', borderRadius: '14px', border: '1px solid rgba(16,185,129,0.3)' }}>
+                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(16,185,129,0.3)' }}>
                         <div className="flex-between mb-xs">
                           <span className="pill pill-approved" style={{ fontSize: '8px' }}>Confirmed Booking</span>
                           <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-emerald)' }}>Secure Payment</span>
@@ -388,8 +388,8 @@ export default function StudentOSPage() {
                       <div className="mono-label" style={{ fontSize: '9.5px', marginTop: '4px' }}>VERIFIED ALTERNATE HALLS</div>
                       <div className="flex flex-col gap-xs">
                         {HOUSING_LISTINGS.slice(1).map((h, i) => (
-                          <div key={i} style={{ backgroundColor: '#16161f', padding: '10px', borderRadius: '10px', display: 'flex', gap: '10px', alignItems: 'center' }}>
-                            <div style={{ width: '42px', height: '42px', borderRadius: '8px', backgroundColor: '#2a2a38', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <div key={i} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px', display: 'flex', gap: '10px', alignItems: 'center' }}>
+                            <div style={{ width: '42px', height: '42px', borderRadius: '8px', backgroundColor: '#d8d4cd', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                               <Building2 size={18} color="var(--accent-orange)" />
                             </div>
                             <div style={{ flex: 1 }}>
@@ -411,13 +411,13 @@ export default function StudentOSPage() {
                         <span className="pill pill-approved" style={{ fontSize: '8px' }}>Legal 20h Limit</span>
                       </div>
 
-                      <div style={{ backgroundColor: '#191924', padding: '12px', borderRadius: '14px', border: '1px solid rgba(255,107,0,0.3)' }}>
+                      <div style={{ backgroundColor: '#ffffff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(255,107,0,0.3)' }}>
                         <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)' }}>CURRENT TERM-TIME WEEK</div>
                         <div className="flex-between alignItems-center mt-xs">
                           <span style={{ fontSize: '1.4rem', fontWeight: '800', color: 'var(--accent-orange)' }}>16.0 hrs</span>
                           <span className="mono-sm" style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Max Legal: 20.0 hrs</span>
                         </div>
-                        <div style={{ height: '6px', backgroundColor: '#2a2a38', borderRadius: '3px', marginTop: '6px', overflow: 'hidden' }}>
+                        <div style={{ height: '6px', backgroundColor: '#d8d4cd', borderRadius: '3px', marginTop: '6px', overflow: 'hidden' }}>
                           <div style={{ width: '80%', height: '100%', backgroundColor: 'var(--accent-orange)' }} />
                         </div>
                         <div className="flex-between mt-xs mono-sm" style={{ fontSize: '8.5px', color: 'var(--status-pass)' }}>
@@ -429,7 +429,7 @@ export default function StudentOSPage() {
                       <div className="mono-label" style={{ fontSize: '9.5px', marginTop: '4px' }}>VERIFIED ON-CAMPUS VACANCIES</div>
                       <div className="flex flex-col gap-xs">
                         {VERIFIED_JOBS.map((j, i) => (
-                          <div key={i} style={{ backgroundColor: '#16161f', padding: '10px', borderRadius: '10px' }}>
+                          <div key={i} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px' }}>
                             <div className="flex-between">
                               <span style={{ fontSize: '11px', fontWeight: '700' }}>{j.title}</span>
                               <span className="mono-sm" style={{ fontSize: '9px', color: 'var(--accent-emerald)' }}>{j.wage}</span>
@@ -437,7 +437,7 @@ export default function StudentOSPage() {
                             <div className="mono-sm" style={{ fontSize: '9px', color: 'var(--text-secondary)', margin: '2px 0' }}>{j.employer} · {j.hours}</div>
                             <div className="flex gap-xs mt-xs">
                               {j.tags.map((t, ti) => (
-                                <span key={ti} className="pill" style={{ fontSize: '7.5px', padding: '1px 5px', backgroundColor: '#252533' }}>{t}</span>
+                                <span key={ti} className="pill" style={{ fontSize: '7.5px', padding: '1px 5px', backgroundColor: '#d8d4cd' }}>{t}</span>
                               ))}
                               <span className="mono-sm" style={{ fontSize: '8px', color: 'var(--accent-orange)', marginLeft: 'auto' }}>1-Click Apply</span>
                             </div>
@@ -456,7 +456,7 @@ export default function StudentOSPage() {
                       </div>
 
                       {/* Mystery Match / Lynk Up Card */}
-                      <div style={{ backgroundColor: '#191528', padding: '12px', borderRadius: '14px', border: '1px solid rgba(168,85,247,0.3)' }}>
+                      <div style={{ backgroundColor: '#f5f3ff', padding: '12px', borderRadius: '14px', border: '1px solid rgba(168,85,247,0.3)' }}>
                         <div className="flex-between mb-xs">
                           <span className="mono-label" style={{ fontSize: '8.5px', color: 'var(--accent-purple)' }}>MEET YOUR COHORT</span>
                           <span className="pill pill-active" style={{ fontSize: '8px' }}>3 Matches</span>
@@ -466,8 +466,8 @@ export default function StudentOSPage() {
                           3 students from your course arriving in London this week are matched for airport transit &amp; campus tours.
                         </p>
                         <div className="flex gap-xs">
-                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#2d1b4d', color: '#c084fc' }}>Arriving Sept 24</span>
-                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#2d1b4d', color: '#c084fc' }}>Chapter Halls</span>
+                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#c084fc' }}>Arriving Sept 24</span>
+                          <span className="pill" style={{ fontSize: '8px', backgroundColor: '#f3e8ff', color: '#c084fc' }}>Chapter Halls</span>
                           <span className="mono-sm" style={{ fontSize: '8px', color: 'var(--accent-purple)', marginLeft: 'auto', alignSelf: 'center', cursor: 'pointer' }}>Join Group ➔</span>
                         </div>
                       </div>
@@ -479,7 +479,7 @@ export default function StudentOSPage() {
                           { title: 'International Postgraduate Welcome Gala', loc: 'Founder\'s Great Hall · Oct 2', ticket: 'Pass #WL-9041', status: 'Entry Pass Ready' },
                           { title: 'London Tech Careers & Coffee Meetup', loc: 'Student Union Lounge · Oct 5', ticket: 'Free · 48 Attending', status: 'RSVP Confirmed' }
                         ].map((evt, ei) => (
-                          <div key={ei} style={{ backgroundColor: '#16161f', padding: '10px', borderRadius: '10px' }}>
+                          <div key={ei} style={{ backgroundColor: '#ffffff', padding: '10px', borderRadius: '10px' }}>
                             <div className="flex-between">
                               <span style={{ fontSize: '11px', fontWeight: '700' }}>{evt.title}</span>
                             </div>
@@ -512,8 +512,8 @@ export default function StudentOSPage() {
                             key={i}
                             style={{
                               alignSelf: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-                              backgroundColor: msg.sender === 'user' ? 'var(--accent-orange)' : '#1e1e28',
-                              color: '#ffffff',
+                              backgroundColor: msg.sender === 'user' ? 'var(--accent-orange)' : '#f4f1ee',
+                              color: '#0c0c0f',
                               padding: '8px 12px',
                               borderRadius: '12px',
                               maxWidth: '85%',
@@ -534,7 +534,7 @@ export default function StudentOSPage() {
                             onClick={() => setChatInput(chip)}
                             className="mono-sm"
                             style={{
-                              backgroundColor: '#252533',
+                              backgroundColor: '#d8d4cd',
                               color: 'var(--text-secondary)',
                               border: '1px solid #333344',
                               borderRadius: '12px',
@@ -558,11 +558,11 @@ export default function StudentOSPage() {
                           onChange={(e) => setChatInput(e.target.value)}
                           style={{
                             flex: 1,
-                            backgroundColor: '#191924',
+                            backgroundColor: '#ffffff',
                             border: '1px solid #2e2e40',
                             borderRadius: '16px',
                             padding: '6px 12px',
-                            color: '#ffffff',
+                            color: '#0c0c0f',
                             fontSize: '10.5px',
                             outline: 'none'
                           }}
@@ -578,7 +578,7 @@ export default function StudentOSPage() {
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#fff',
+                            color: '#0c0c0f',
                             cursor: 'pointer'
                           }}
                         >
@@ -593,8 +593,8 @@ export default function StudentOSPage() {
                 {/* Bottom App Dock Navigation */}
                 <div style={{
                   height: '62px',
-                  backgroundColor: '#0d0d12',
-                  borderTop: '1px solid #1f1f2a',
+                  backgroundColor: '#f4f1ee',
+                  borderTop: '1px solid #d8d4cd',
                   display: 'flex',
                   justifyContent: 'space-around',
                   alignItems: 'center',
@@ -637,7 +637,7 @@ export default function StudentOSPage() {
                 {/* Home Indicator Bar */}
                 <div style={{
                   height: '14px',
-                  backgroundColor: '#0d0d12',
+                  backgroundColor: '#f4f1ee',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -679,7 +679,7 @@ export default function StudentOSPage() {
                       style={{
                         padding: '4px 10px',
                         fontSize: '11px',
-                        backgroundColor: selectedFilterCategory === cat ? 'var(--accent-orange)' : '#191924',
+                        backgroundColor: selectedFilterCategory === cat ? 'var(--accent-orange)' : '#ffffff',
                         color: selectedFilterCategory === cat ? '#ffffff' : 'var(--text-secondary)',
                         border: '1px solid var(--border-subtle)',
                         borderRadius: '6px'
@@ -697,8 +697,8 @@ export default function StudentOSPage() {
                       key={item.id}
                       onClick={() => toggleCheck(item.id)}
                       style={{
-                        backgroundColor: item.done ? '#13131c' : '#191925',
-                        border: item.done ? '1px solid #232332' : '1px solid #323246',
+                        backgroundColor: item.done ? '#ffffff' : '#f4f1ee',
+                        border: item.done ? '1px solid #d8d4cd' : '1px solid #cec9c1',
                         borderRadius: '8px',
                         padding: '10px 14px',
                         display: 'flex',
@@ -713,11 +713,11 @@ export default function StudentOSPage() {
                         height: '20px',
                         borderRadius: '4px',
                         backgroundColor: item.done ? 'var(--accent-orange)' : 'transparent',
-                        border: item.done ? 'none' : '2px solid #555566',
+                        border: item.done ? 'none' : '2px solid #94a3b8',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        color: '#fff',
+                        color: '#0c0c0f',
                         flexShrink: 0
                       }}>
                         {item.done && <Check size={13} strokeWidth={3} />}
@@ -726,7 +726,7 @@ export default function StudentOSPage() {
                       <div style={{ flex: 1 }}>
                         <span style={{
                           fontSize: '12.5px',
-                          color: item.done ? 'rgba(255,255,255,0.7)' : '#ffffff',
+                          color: item.done ? '#71717a' : '#0c0c0f',
                           textDecoration: item.done ? 'line-through' : 'none'
                         }}>
                           {item.label}
@@ -735,7 +735,7 @@ export default function StudentOSPage() {
 
                       <span className="pill" style={{
                         fontSize: '8.5px',
-                        backgroundColor: item.tag === 'CRITICAL' ? 'rgba(239,68,68,0.15)' : 'rgba(255,255,255,0.06)',
+                        backgroundColor: item.tag === 'CRITICAL' ? 'rgba(239,68,68,0.15)' : '#f4f1ee',
                         color: item.tag === 'CRITICAL' ? '#ef4444' : 'var(--text-muted)'
                       }}>
                         {item.tag}
@@ -772,10 +772,10 @@ export default function StudentOSPage() {
                   </div>
 
                   <div style={{ backgroundColor: '#ffffff', padding: '8px', borderRadius: '10px', textAlign: 'center' }}>
-                    <div style={{ width: '100%', height: '110px', backgroundColor: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', borderRadius: '6px' }}>
-                      <QrCode size={90} color="#ffffff" />
+                    <div style={{ width: '100%', height: '110px', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0c0c0f', borderRadius: '6px' }}>
+                      <QrCode size={90} color="#0c0c0f" />
                     </div>
-                    <div className="mono-sm" style={{ color: '#000000', fontSize: '8px', fontWeight: '800', marginTop: '4px' }}>
+                    <div className="mono-sm" style={{ color: '#0c0c0f', fontSize: '8px', fontWeight: '800', marginTop: '4px' }}>
                       SCAN TO ENTER
                     </div>
                   </div>
@@ -791,7 +791,7 @@ export default function StudentOSPage() {
                 </p>
 
                 <div className="grid-2">
-                  <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #25D366' }}>
+                  <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #25D366' }}>
                     <div className="flex gap-xs alignItems-center mb-xs">
                       <MessageSquare size={14} color="#25D366" />
                       <span style={{ fontSize: '12px', fontWeight: '700' }}>WhatsApp Notifications</span>
@@ -801,7 +801,7 @@ export default function StudentOSPage() {
                     </p>
                   </div>
 
-                  <div style={{ backgroundColor: '#181822', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #0088cc' }}>
+                  <div style={{ backgroundColor: '#ffffff', padding: '14px', borderRadius: '12px', borderLeft: '3px solid #0088cc' }}>
                     <div className="flex gap-xs alignItems-center mb-xs">
                       <Send size={14} color="#0088cc" />
                       <span style={{ fontSize: '12px', fontWeight: '700' }}>Telegram Channel</span>
@@ -838,7 +838,7 @@ export default function StudentOSPage() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.8)',
+          backgroundColor: 'rgba(12, 12, 15, 0.55)',
           backdropFilter: 'blur(8px)',
           display: 'flex',
           alignItems: 'center',
@@ -847,23 +847,23 @@ export default function StudentOSPage() {
           padding: '20px'
         }}>
           <div style={{
-            backgroundColor: '#13131a',
+            backgroundColor: '#ffffff',
             border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             maxWidth: '600px',
             width: '100%',
             padding: '28px',
-            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.9)'
+            boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.55)'
           }}>
             <div className="flex-between mb-md">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>PRE-ARRIVAL SUMMARY</span>
                 <h3 className="headline-sm" style={{ marginTop: '2px' }}>Student Arrival Record</h3>
               </div>
-              <button onClick={() => setShowCertificateModal(false)} style={{ background: 'none', border: 'none', color: '#fff', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
+              <button onClick={() => setShowCertificateModal(false)} style={{ background: 'none', border: 'none', color: '#0c0c0f', fontSize: '1.2rem', cursor: 'pointer' }}>✕</button>
             </div>
 
-            <div style={{ backgroundColor: '#0a0a0f', padding: '16px', borderRadius: '10px', border: '1px solid #222230', marginBottom: '20px' }}>
+            <div style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '10px', border: '1px solid #d8d4cd', marginBottom: '20px' }}>
               <div className="mono-sm" style={{ fontSize: '11px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 <div><strong>STUDENT NAME:</strong> Maya Chen</div>
                 <div><strong>STUDENT ID:</strong> 0091-2847</div>

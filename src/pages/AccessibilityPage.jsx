@@ -41,7 +41,7 @@ const KEYBOARD_SHORTCUTS = [
 
 export default function AccessibilityPage() {
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
@@ -91,7 +91,7 @@ export default function AccessibilityPage() {
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12px' }}>
                 <thead>
-                  <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
+                  <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
                     <th style={{ padding: '16px 20px', width: '25%' }}>CRITERION</th>
                     <th style={{ padding: '16px 20px', width: '15%' }}>CONFORMANCE</th>
                     <th style={{ padding: '16px 20px', width: '20%' }}>LEVEL OF SUPPORT</th>
@@ -100,8 +100,8 @@ export default function AccessibilityPage() {
                 </thead>
                 <tbody>
                   {VPAT_CRITERIA.map((c, idx) => (
-                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#13131c' : '#101016' }}>
-                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#ffffff' }}>{c.rule}</td>
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#f4f1ee' }}>
+                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#0c0c0f' }}>{c.rule}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>{c.level}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--status-pass)', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <Check size={13} /> {c.support}
@@ -126,7 +126,7 @@ export default function AccessibilityPage() {
             {COMPATIBILITY.map((item, idx) => (
               <div key={idx} className="card-elevated" style={{ padding: '26px', borderRadius: '14px' }}>
                 <div className="flex-between mb-xs">
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#ffffff', margin: 0 }}>{item.tech}</h3>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0c0c0f', margin: 0 }}>{item.tech}</h3>
                   <span className="pill pill-approved">{item.rating}</span>
                 </div>
                 <div className="mono-sm text-secondary mb-sm" style={{ fontSize: '10.5px' }}>{item.version}</div>
@@ -146,7 +146,7 @@ export default function AccessibilityPage() {
           <div className="card-elevated mb-3xl" style={{ padding: '26px', borderRadius: '16px' }}>
             <div className="grid-2 gap-md">
               {KEYBOARD_SHORTCUTS.map((sc, idx) => (
-                <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '14px 18px', borderRadius: '10px', border: '1px solid #1f1f2e', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div key={idx} style={{ backgroundColor: '#f4f1ee', padding: '14px 18px', borderRadius: '10px', border: '1px solid #d8d4cd', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono-sm" style={{ color: 'var(--accent-orange)', fontWeight: '700', fontSize: '12px' }}>{sc.key}</span>
                   <span className="body-sm text-secondary" style={{ fontSize: '12px' }}>{sc.action}</span>
                 </div>

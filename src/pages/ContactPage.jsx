@@ -81,7 +81,7 @@ export default function ContactPage() {
   const selectedDept = DEPARTMENTS.find(d => d.id === selectedDeptId) || DEPARTMENTS[0];
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="section page-hero-banner" style={{ borderBottom: '1px solid var(--border-hairline)', paddingBottom: '3rem' }}>
@@ -127,13 +127,13 @@ export default function ContactPage() {
                     padding: '20px',
                     borderRadius: '14px',
                     border: isSelected ? '2px solid var(--accent-orange)' : '1px solid var(--border-subtle)',
-                    backgroundColor: isSelected ? '#161624' : '#111118'
+                    backgroundColor: isSelected ? '#ffffff' : '#ffffff'
                   }}
                 >
                   <div className="mono-label mb-xs" style={{ fontSize: '9px', color: isSelected ? 'var(--accent-orange)' : 'var(--text-muted)' }}>
                     {dept.lead}
                   </div>
-                  <h4 style={{ fontSize: '13.5px', fontWeight: '700', color: '#ffffff', marginBottom: '6px' }}>{dept.title}</h4>
+                  <h4 style={{ fontSize: '13.5px', fontWeight: '700', color: '#0c0c0f', marginBottom: '6px' }}>{dept.title}</h4>
                   <div className="mono-sm text-secondary" style={{ fontSize: '11px' }}>{dept.email}</div>
                 </div>
               );
@@ -211,7 +211,7 @@ export default function ContactPage() {
                       <label className="form-label">Approximate Student Cohort</label>
                       <select
                         className="form-input"
-                        style={{ backgroundColor: '#101016' }}
+                        style={{ backgroundColor: '#f4f1ee' }}
                         value={formData.cohortSize}
                         onChange={(e) => setFormData({ ...formData, cohortSize: e.target.value })}
                       >
@@ -256,9 +256,9 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-md">
                   {OFFICES.map((off, idx) => (
-                    <div key={idx} style={{ backgroundColor: '#0d0d14', padding: '16px', borderRadius: '12px', border: '1px solid #1a1a26' }}>
+                    <div key={idx} style={{ backgroundColor: '#f4f1ee', padding: '16px', borderRadius: '12px', border: '1px solid #1a1a26' }}>
                       <div className="flex-between mb-xs">
-                        <span style={{ fontSize: '13px', fontWeight: '700', color: '#ffffff' }}>{off.city}</span>
+                        <span style={{ fontSize: '13px', fontWeight: '700', color: '#0c0c0f' }}>{off.city}</span>
                         <span className="pill pill-approved" style={{ fontSize: '8.5px' }}>{off.type}</span>
                       </div>
                       <div className="mono-sm text-secondary" style={{ fontSize: '11px', lineHeight: 1.45 }}>

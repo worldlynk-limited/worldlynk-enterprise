@@ -92,7 +92,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               style={{
                 fontSize: '13.5px',
                 fontWeight: '500',
-                color: isActive('/platform') || isActive('/journey') || isActive('/how-it-works') || isActive('/integrations') ? '#ffffff' : '#9ca3af',
+                color: isActive('/platform') || isActive('/staff-os') || isActive('/student-os') || isActive('/integrations') ? '#ffffff' : '#9ca3af',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
@@ -126,29 +126,21 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 <div style={{ fontSize: '10px', padding: '4px 8px', color: '#686875', fontFamily: 'var(--font-mono)', letterSpacing: '0.08em' }}>
                   CAMPUS CAPABILITIES
                 </div>
-                <Link to="/journey" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none', backgroundColor: 'rgba(255, 255, 255, 0.02)' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Student Journey Funnel</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>11 stages: Prospect → Enrolment → Career</div>
-                </Link>
                 <Link to="/platform" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Platform Overview</div>
+                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Platform Architecture</div>
                   <div style={{ fontSize: '11px', color: '#9494a0' }}>4 core layers: Connect, Understand, Assist, Govern</div>
                 </Link>
-                <Link to="/platform#nova" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-cyan)' }}>Specialist AI Agents</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>24/7 student guidance &amp; automated staff drafts</div>
+                <Link to="/staff-os" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>Compass Staff OS</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Predictive triage, welfare casework &amp; 1-click approvals</div>
+                </Link>
+                <Link to="/student-os" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>Student Mobile Super-App</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>20h work tracker, verified PBSA housing &amp; dynamic QR</div>
                 </Link>
                 <Link to="/integrations" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
                   <div style={{ fontWeight: '500' }}>Integrations &amp; Connectors</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SITS, Banner, Moodle, Canvas, Workday</div>
-                </Link>
-                <Link to="/how-it-works" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>How It Works</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>5 steps from risk alert to staff sign-off</div>
-                </Link>
-                <Link to="/security" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Security &amp; Privacy</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>UK &amp; EU GDPR, FERPA, SOC-2 Type II</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SITS, Banner, Moodle, Canvas, Stripe</div>
                 </Link>
               </div>
             )}
@@ -231,7 +223,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
               style={{
                 fontSize: '13.5px',
                 fontWeight: '500',
-                color: isActive('/trust') || isActive('/security') || isActive('/responsible-ai') ? '#ffffff' : '#9ca3af',
+                color: isActive('/trust') || isActive('/privacy') || isActive('/accessibility') || isActive('/terms') ? '#ffffff' : '#9ca3af',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '4px',
@@ -240,7 +232,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
                 transition: 'color 0.15s ease'
               }}
             >
-              <span>Trust &amp; Security</span>
+              <span>Trust &amp; Governance</span>
               <ChevronDown size={13} color="#9494a0" />
             </Link>
 
@@ -266,77 +258,41 @@ export default function GlobalNavbar({ onOpenSearch }) {
                   INSTITUTIONAL ASSURANCE
                 </div>
                 <Link to="/trust" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: '#38bdf8' }}>Trust &amp; Procurement Hub</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SOC-2, HECVAT, DPA &amp; sub-processor register</div>
+                  <div style={{ fontWeight: '600', color: '#38bdf8' }}>Trust &amp; Security Hub</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>SOC-2, HECVAT, PII tokenization &amp; AI ethics</div>
                 </Link>
-                <Link to="/responsible-ai" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '600', color: 'var(--accent-orange)' }}>Responsible AI Framework</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Explainable risk index, bias checks &amp; DPIA</div>
+                <Link to="/privacy" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>UK GDPR Privacy Policy</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Data residency, DPA &amp; sub-processors</div>
                 </Link>
-                <Link to="/security" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  <div style={{ fontWeight: '500' }}>Security Architecture</div>
-                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Zero model training, UK AWS residency &amp; RBAC</div>
+                <Link to="/accessibility" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>Accessibility Statement</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>WCAG 2.1 AA compliance &amp; audited VPAT</div>
+                </Link>
+                <Link to="/terms" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
+                  <div style={{ fontWeight: '500' }}>Master Services Agreement</div>
+                  <div style={{ fontSize: '11px', color: '#9494a0' }}>Higher education enterprise terms &amp; SLAs</div>
                 </Link>
               </div>
             )}
           </div>
 
-          {/* Company Dropdown */}
-          <div
-            style={{ position: 'relative' }}
-            onMouseEnter={() => setCompanyDropdown(true)}
-            onMouseLeave={() => setCompanyDropdown(false)}
+          {/* Contact Direct Link */}
+          <Link
+            to="/contact"
+            style={{
+              fontSize: '13.5px',
+              fontWeight: '500',
+              color: isActive('/contact') ? '#ffffff' : '#9ca3af',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '18px 0',
+              textDecoration: 'none',
+              transition: 'color 0.15s ease'
+            }}
           >
-            <span
-              style={{
-                fontSize: '13.5px',
-                fontWeight: '500',
-                color: isActive('/founders') || isActive('/careers') || isActive('/contact') || isActive('/trust') ? '#ffffff' : '#9ca3af',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '4px',
-                padding: '18px 0',
-                cursor: 'pointer',
-                transition: 'color 0.15s ease'
-              }}
-            >
-              <span>Company</span>
-              <ChevronDown size={13} color="#9494a0" />
-            </span>
-
-            {companyDropdown && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '100%',
-                  right: 0,
-                  width: '210px',
-                  backgroundColor: '#13131a',
-                  border: '1px solid rgba(255, 255, 255, 0.1)',
-                  borderRadius: '10px',
-                  padding: '10px',
-                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '4px',
-                  zIndex: 1100
-                }}
-              >
-                <Link to="/founders" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  Mission &amp; Founders
-                </Link>
-                <Link to="/trust" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  Trust &amp; Security Hub
-                </Link>
-                <Link to="/careers" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  Careers
-                </Link>
-                <Link to="/contact" style={{ padding: '8px 10px', borderRadius: '6px', fontSize: '13px', color: '#ffffff', textDecoration: 'none' }}>
-                  Contact Team
-                </Link>
-              </div>
-            )}
-          </div>
+            <span>Contact</span>
+          </Link>
         </nav>
 
         {/* Action Controls */}
@@ -496,26 +452,7 @@ export default function GlobalNavbar({ onOpenSearch }) {
             
             {/* Direct Links */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>PLATFORM &amp; JOURNEY</div>
-              <Link
-                to="/journey"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  fontSize: '15px',
-                  fontWeight: '700',
-                  color: 'var(--wl-accent)',
-                  padding: '10px 12px',
-                  backgroundColor: 'rgba(255, 107, 0, 0.08)',
-                  borderRadius: '6px',
-                  border: '1px solid rgba(255, 107, 0, 0.25)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between'
-                }}
-              >
-                <span>Student Journey Funnel</span>
-                <span style={{ fontSize: '10px', backgroundColor: 'var(--wl-accent)', color: '#ffffff', padding: '2px 6px', borderRadius: '3px' }}>11 STAGES</span>
-              </Link>
+              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--accent-orange)' }}>PLATFORM ARCHITECTURE</div>
               <Link
                 to="/platform"
                 onClick={() => setMobileMenuOpen(false)}
@@ -596,18 +533,18 @@ export default function GlobalNavbar({ onOpenSearch }) {
 
             {/* Trust & Company */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--ink-secondary)' }}>TRUST &amp; COMPANY</div>
-              <Link to="/security" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Security &amp; Privacy
-              </Link>
+              <div className="mono-label" style={{ fontSize: '10px', color: 'var(--ink-secondary)' }}>TRUST &amp; GOVERNANCE</div>
               <Link to="/trust" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Trust &amp; Procurement
+                Trust &amp; Security Hub
               </Link>
-              <Link to="/founders" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Founders &amp; Mission
+              <Link to="/privacy" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
+                UK GDPR Privacy Policy
+              </Link>
+              <Link to="/accessibility" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
+                Accessibility Statement (VPAT)
               </Link>
               <Link to="/contact" onClick={() => setMobileMenuOpen(false)} style={{ fontSize: '13.5px', color: '#e4e4e7', padding: '4px 12px' }}>
-                Contact Team
+                Contact Campus Desks
               </Link>
             </div>
 

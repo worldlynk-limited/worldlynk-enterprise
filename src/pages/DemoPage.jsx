@@ -69,7 +69,7 @@ export default function DemoPage() {
   };
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="section" style={{ paddingTop: '80px', paddingBottom: '32px', borderBottom: '1px solid var(--border-hairline)' }}>
@@ -117,7 +117,7 @@ export default function DemoPage() {
               <div style={{
                 height: '4px',
                 borderRadius: '2px',
-                backgroundColor: step >= 1 ? 'var(--accent-orange)' : '#232332',
+                backgroundColor: step >= 1 ? 'var(--accent-orange)' : '#d8d4cd',
                 transition: 'all 0.3s ease'
               }} />
               <div className="mono-sm mt-xs" style={{ fontSize: '10px', color: step >= 1 ? 'var(--accent-orange)' : 'var(--text-muted)' }}>
@@ -129,7 +129,7 @@ export default function DemoPage() {
               <div style={{
                 height: '4px',
                 borderRadius: '2px',
-                backgroundColor: step === 2 ? 'var(--accent-orange)' : '#232332',
+                backgroundColor: step === 2 ? 'var(--accent-orange)' : '#d8d4cd',
                 transition: 'all 0.3s ease'
               }} />
               <div className="mono-sm mt-xs" style={{ fontSize: '10px', color: step === 2 ? 'var(--accent-orange)' : 'var(--text-muted)' }}>
@@ -138,7 +138,7 @@ export default function DemoPage() {
             </div>
           </div>
 
-          <div className="card-dark" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#13131c' }}>
+          <div className="card-dark" style={{ padding: '36px', borderRadius: '16px', border: '1px solid var(--border-subtle)', backgroundColor: '#ffffff' }}>
             
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '32px 0' }}>
@@ -189,9 +189,9 @@ export default function DemoPage() {
                           style={{
                             padding: '8px 14px',
                             borderRadius: '20px',
-                            border: isSelected ? '1px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.12)',
-                            backgroundColor: isSelected ? 'rgba(255, 107, 0, 0.12)' : 'rgba(255, 255, 255, 0.03)',
-                            color: isSelected ? '#ffffff' : '#9ca3af',
+                            border: isSelected ? '1px solid var(--accent-orange)' : '1px solid rgba(15, 23, 42, 0.08)',
+                            backgroundColor: isSelected ? 'rgba(255, 107, 0, 0.12)' : '#f4f1ee',
+                            color: isSelected ? '#9a3f00' : '#52525b',
                             fontSize: '12px',
                             fontWeight: isSelected ? '600' : '400',
                             cursor: 'pointer',
@@ -320,7 +320,7 @@ export default function DemoPage() {
                           padding: '12px 14px',
                           borderRadius: '8px',
                           cursor: 'pointer',
-                          backgroundColor: selectedTimeSlot === slot ? 'var(--accent-orange)' : '#101016',
+                          backgroundColor: selectedTimeSlot === slot ? 'var(--accent-orange)' : '#f4f1ee',
                           color: selectedTimeSlot === slot ? '#ffffff' : 'var(--text-secondary)',
                           border: '1px solid var(--border-subtle)',
                           fontSize: '12px',

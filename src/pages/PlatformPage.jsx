@@ -243,7 +243,7 @@ export default function PlatformPage() {
   const activeLayer = LAYERS.find(l => l.id === activeLayerId) || LAYERS[0];
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="page-hero-banner">
@@ -264,7 +264,7 @@ export default function PlatformPage() {
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
               <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '10px' }}>SYSTEM PERFORMANCE</div>
-                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Instant Live Sync</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Instant Live Sync</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>100% Reliable &amp; Fully Audited</div>
               </div>
               <div className="flex flex-col gap-xs">
@@ -278,8 +278,8 @@ export default function PlatformPage() {
                     <ExternalLink size={11} color="#38bdf8" />
                   </a>
                 </div>
-                <Link to="/how-it-works" className="btn-primary btn-sm" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                  <span>See How It Works</span>
+                <Link to="/demo" className="btn-primary btn-sm" style={{ fontSize: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                  <span>Request Technical Simulation</span>
                   <ArrowRight size={12} />
                 </Link>
               </div>
@@ -289,7 +289,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── 4-LAYER OPERATIONAL ARCHITECTURE TABS ───────────────── */}
-      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW THE PLATFORM WORKS</span>
@@ -312,15 +312,15 @@ export default function PlatformPage() {
                   className={`card-elevated card-interactive ${isSelected ? 'card-selected' : ''}`}
                   style={{
                     padding: '22px',
-                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(255, 255, 255, 0.08)',
-                    backgroundColor: isSelected ? '#161624' : '#101016'
+                    border: isSelected ? '2px solid var(--accent-orange)' : '1px solid rgba(15, 23, 42, 0.08)',
+                    backgroundColor: isSelected ? '#ffffff' : '#f4f1ee'
                   }}
                 >
                   <div className="flex-between mb-xs">
                     <span className="mono-label" style={{ color: isSelected ? 'var(--accent-orange)' : 'var(--text-muted)' }}>LAYER {layer.num}</span>
                     <span className="pill pill-approved" style={{ fontSize: '8.5px' }}>ONLINE</span>
                   </div>
-                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '6px 0', color: '#ffffff' }}>{layer.name.split('//')[0]}</h3>
+                  <h3 style={{ fontSize: '1.15rem', fontWeight: '800', margin: '6px 0', color: '#0c0c0f' }}>{layer.name.split('//')[0]}</h3>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginBottom: '8px' }}>{layer.tag}</div>
                   <div className="mono-sm" style={{ fontSize: '9.5px', color: 'var(--accent-cyan)' }}>{layer.benchmarks.split('·')[0]}</div>
                 </div>
@@ -329,15 +329,15 @@ export default function PlatformPage() {
           </div>
 
           {/* Detailed Layer Workbench */}
-          <div className="card-elevated" style={{ padding: '36px', backgroundColor: '#13131c' }}>
+          <div className="card-elevated" style={{ padding: '36px', backgroundColor: '#ffffff' }}>
             <div className="flex-between flex-wrap gap-md mb-lg">
               <div>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>{activeLayer.tag}</span>
                 <h3 className="headline-md" style={{ margin: '6px 0' }}>{activeLayer.name}</h3>
                 <p className="body-md text-secondary" style={{ maxWidth: '780px', lineHeight: 1.6 }}>{activeLayer.desc}</p>
               </div>
-              <div className="mono-sm text-secondary" style={{ backgroundColor: '#0d0d12', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-hairline)' }}>
-                <strong>SYSTEMS SUPPORTED:</strong> <span style={{ color: '#ffffff' }}>{activeLayer.tech}</span>
+              <div className="mono-sm text-secondary" style={{ backgroundColor: '#f4f1ee', padding: '12px 16px', borderRadius: '8px', border: '1px solid var(--border-hairline)' }}>
+                <strong>SYSTEMS SUPPORTED:</strong> <span style={{ color: '#0c0c0f' }}>{activeLayer.tech}</span>
               </div>
             </div>
 
@@ -347,27 +347,27 @@ export default function PlatformPage() {
                 <span className="mono-label" style={{ color: 'var(--text-muted)' }}>KEY CAPABILITIES</span>
                 <div className="flex flex-col gap-sm mt-sm">
                   {activeLayer.features.map((feat, idx) => (
-                    <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', backgroundColor: '#171724', padding: '14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.04)' }}>
+                    <div key={idx} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', backgroundColor: '#ffffff', padding: '14px', borderRadius: '10px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
                       <CheckCircle2 size={16} color="var(--accent-emerald)" style={{ flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.92)', lineHeight: 1.5 }}>{feat}</span>
+                      <span style={{ fontSize: '13px', color: '#27272a', lineHeight: 1.5 }}>{feat}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Technical Benchmarks & Topology Box */}
-              <div style={{ backgroundColor: '#0d0d14', padding: '24px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <div style={{ backgroundColor: '#f4f1ee', padding: '24px', borderRadius: '14px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-cyan)' }}>GUARANTEED STANDARDS &amp; SAFETY</span>
                 <div className="mono-sm mt-md" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--text-secondary)' }}>
-                  <div><strong>REAL-TIME PERFORMANCE:</strong> <span style={{ color: '#ffffff' }}>{activeLayer.benchmarks}</span></div>
+                  <div><strong>REAL-TIME PERFORMANCE:</strong> <span style={{ color: '#0c0c0f' }}>{activeLayer.benchmarks}</span></div>
                   <div><strong>ZERO LOST UPDATES:</strong> <span style={{ color: 'var(--accent-emerald)' }}>All student updates queued safely and delivered reliably</span></div>
                   <div><strong>ZERO SYSTEM DISRUPTION:</strong> <span style={{ color: 'var(--status-pass)' }}>No changes or alterations required on your existing campus databases</span></div>
-                  <div><strong>PRIVACY &amp; SECURITY:</strong> <span style={{ color: '#ffffff' }}>Strict institutional encryption compliant with UK GDPR and higher education standards</span></div>
+                  <div><strong>PRIVACY &amp; SECURITY:</strong> <span style={{ color: '#0c0c0f' }}>Strict institutional encryption compliant with UK GDPR and higher education standards</span></div>
                 </div>
 
                 <div style={{ marginTop: '24px', paddingTop: '18px', borderTop: '1px solid var(--border-hairline)' }}>
-                  <Link to="/how-it-works" className="btn-secondary btn-sm" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-                    <span>See How Common Issues Get Resolved</span>
+                  <Link to="/demo" className="btn-secondary btn-sm" style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                    <span>Schedule an Architectural Walkthrough</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -378,7 +378,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── UNIFIED STUDENT RECORD MOCKUP ───────────────── */}
-      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>UNIFIED STUDENT RECORD</span>
@@ -390,8 +390,8 @@ export default function PlatformPage() {
             </p>
           </div>
 
-          <div className="mockup-window mb-xl" style={{ border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '14px', overflow: 'hidden' }}>
-            <div className="mockup-chrome flex-between flex-wrap gap-sm" style={{ padding: '14px 20px', backgroundColor: '#13131c', borderBottom: '1px solid rgba(255, 255, 255, 0.08)' }}>
+          <div className="mockup-window mb-xl" style={{ border: '1px solid rgba(15, 23, 42, 0.08)', borderRadius: '14px', overflow: 'hidden' }}>
+            <div className="mockup-chrome flex-between flex-wrap gap-sm" style={{ padding: '14px 20px', backgroundColor: '#ffffff', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
               <div className="flex gap-sm alignItems-center">
                 <div className="mockup-dots">
                   <span className="mockup-dot mockup-dot-red" />
@@ -416,8 +416,8 @@ export default function PlatformPage() {
               </div>
             </div>
 
-            <div className="mockup-body" style={{ padding: '28px', backgroundColor: '#0d0d12' }}>
-              <div className="flex-between flex-wrap gap-md mb-lg" style={{ paddingBottom: '18px', borderBottom: '1px solid #1a1a24' }}>
+            <div className="mockup-body" style={{ padding: '28px', backgroundColor: '#f4f1ee' }}>
+              <div className="flex-between flex-wrap gap-md mb-lg" style={{ paddingBottom: '18px', borderBottom: '1px solid #d8d4cd' }}>
                 <div className="flex gap-md alignItems-center">
                   <img
                     src={student.photo}
@@ -445,28 +445,28 @@ export default function PlatformPage() {
 
               {/* 4 Connected Systems Grid */}
               <div className="grid-4 mb-xl">
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STUDENT RECORD (SITS)</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>ID: {student.sitsId}</div>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Tutor: {student.tutor}</div>
                   <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Official Record Synced</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>LEARNING PORTAL (MOODLE)</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>User: {student.moodleUser}</div>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.moodle.coursework}</div>
                   <div className="pill pill-active" style={{ marginTop: '8px', fontSize: '9px' }}>Coursework In Progress</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VERIFIED HOUSING</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>{student.details.stripe.residence.split('(')[0]}</div>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>Rent: {student.details.stripe.rent}</div>
                   <div className="pill pill-approved" style={{ marginTop: '8px', fontSize: '9px' }}>Deposit Protected</div>
                 </div>
 
-                <div className="card-dark" style={{ padding: '16px', border: '1px solid #232332', borderRadius: '10px' }}>
+                <div className="card-dark" style={{ padding: '16px', border: '1px solid #d8d4cd', borderRadius: '10px' }}>
                   <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>ATTENDANCE &amp; VISA</div>
                   <div style={{ fontSize: '13px', fontWeight: '700', marginTop: '4px' }}>CAS: {student.cas}</div>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px', marginTop: '4px' }}>{student.details.attendance.verification}</div>
@@ -475,8 +475,8 @@ export default function PlatformPage() {
               </div>
 
               {/* Friendly Tabbed Detail Inspector (No Raw JSON) */}
-              <div style={{ backgroundColor: '#13131c', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
-                <div className="flex-between mb-md flex-wrap gap-sm" style={{ borderBottom: '1px solid #1c1c28', paddingBottom: '12px' }}>
+              <div style={{ backgroundColor: '#ffffff', padding: '20px', borderRadius: '12px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
+                <div className="flex-between mb-md flex-wrap gap-sm" style={{ borderBottom: '1px solid #d8d4cd', paddingBottom: '12px' }}>
                   <div className="flex gap-xs" style={{ flexWrap: 'wrap' }}>
                     {[
                       { id: 'sits', label: 'Student Records (SITS)' },
@@ -499,17 +499,17 @@ export default function PlatformPage() {
 
                 {detailTab === 'sits' && (
                   <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>OFFICIAL ENROLMENT STATUS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.sits.status}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.sits.status}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.sits.enrolment}</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>ASSIGNED TUTOR</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.sits.tutor}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.sits.tutor}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Faculty of Computing</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>FEES &amp; SPONSORSHIP</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.sits.feeStatus}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>CAS: {student.cas}</div>
@@ -519,17 +519,17 @@ export default function PlatformPage() {
 
                 {detailTab === 'moodle' && (
                   <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>PORTAL ENGAGEMENT</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.moodle.status}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.moodle.status}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Last seen: {student.details.moodle.lastLogin}</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>COURSEWORK PROGRESS</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.moodle.coursework}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.moodle.coursework}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>On track for Term 1</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>ADVISOR RECOMMENDATION</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.moodle.alert}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Ready for tutor approval</div>
@@ -539,17 +539,17 @@ export default function PlatformPage() {
 
                 {detailTab === 'stripe' && (
                   <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>BOOKING STATUS</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>{student.details.stripe.status}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.stripe.escrow}</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>VERIFIED HALL OF RESIDENCE</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.stripe.residence}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.stripe.residence}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Rate: {student.details.stripe.rent}</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>FRAUD PROTECTION</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-cyan)' }}>100% Scam-Free Guarantee</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Verified partner property</div>
@@ -559,17 +559,17 @@ export default function PlatformPage() {
 
                 {detailTab === 'attendance' && (
                   <div className="grid-3 gap-md">
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>ATTENDANCE SUMMARY</div>
-                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#ffffff' }}>{student.details.attendance.status}</div>
+                      <div style={{ fontWeight: '700', marginTop: '4px', color: '#0c0c0f' }}>{student.details.attendance.status}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>{student.details.attendance.verification}</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>NEXT ACTION</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-orange)' }}>{student.details.attendance.action}</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Waiting for tutor sign-off</div>
                     </div>
-                    <div style={{ backgroundColor: '#0d0d14', padding: '12px', borderRadius: '8px', border: '1px solid #1c1c28' }}>
+                    <div style={{ backgroundColor: '#f4f1ee', padding: '12px', borderRadius: '8px', border: '1px solid #d8d4cd' }}>
                       <div className="mono-label" style={{ fontSize: '9px' }}>VISA SPONSOR STATUS</div>
                       <div style={{ fontWeight: '700', marginTop: '4px', color: 'var(--accent-emerald)' }}>Fully Compliant</div>
                       <div className="mono-sm text-secondary" style={{ marginTop: '2px' }}>Meets sponsor requirements</div>
@@ -583,7 +583,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── AGENT GRAPH // LIVING OPERATIONAL MAP ──────────────── */}
-      <section id="agent-graph" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+      <section id="agent-graph" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <div className="flex gap-xs alignItems-center mb-xs">
@@ -603,7 +603,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── DEDICATED NOVA AI INFRASTRUCTURE SPECIFICATION ─────── */}
-      <section id="nova" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+      <section id="nova" className="section section-spacious" style={{ scrollMarginTop: '80px', borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <div className="flex gap-xs alignItems-center mb-xs">
@@ -622,22 +622,22 @@ export default function PlatformPage() {
           <div className="grid-4 gap-md mb-xl">
             <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-orange)' }}>
               <div className="mono-label" style={{ color: 'var(--accent-orange)', fontSize: '9.5px' }}>SPECIALIZED ASSISTANTS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>30 Assistants</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>30 Assistants</div>
               <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Trained on campus workflows</div>
             </div>
             <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-cyan)' }}>
               <div className="mono-label" style={{ color: 'var(--accent-cyan)', fontSize: '9.5px' }}>STRUCTURED WORKFLOWS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>12 Workflows</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>12 Workflows</div>
               <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Consistent and reliable steps</div>
             </div>
             <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-emerald)' }}>
               <div className="mono-label" style={{ color: 'var(--accent-emerald)', fontSize: '9.5px' }}>VOICE PRACTICE</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Real-Time</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Real-Time</div>
               <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Natural spoken interview prep</div>
             </div>
             <div className="card-elevated" style={{ padding: '22px', borderLeft: '3px solid var(--accent-purple)' }}>
               <div className="mono-label" style={{ color: 'var(--accent-purple)', fontSize: '9.5px' }}>CHANNELS</div>
-              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>Every Channel</div>
+              <div style={{ fontSize: '1.8rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>Every Channel</div>
               <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Web · WhatsApp · Telegram · Mobile</div>
             </div>
           </div>
@@ -645,13 +645,13 @@ export default function PlatformPage() {
           {/* 4 Architectural Pillars of Nova */}
           <div className="grid-2 gap-lg mb-xl">
             {/* Card 1: Supervisor & Agent Topology */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
               <div className="flex gap-sm alignItems-center mb-sm">
                 <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(255,107,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-orange)' }}>
                   <Bot size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>Campus Coordinator &amp; Specialized Assistants</h3>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Campus Coordinator &amp; Specialized Assistants</h3>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Intelligent routing &amp; secure student verification</div>
                 </div>
               </div>
@@ -659,26 +659,26 @@ export default function PlatformPage() {
                 The campus coordinator understands student questions in natural language, verifies their student profile securely, and routes their request to the right specialized assistant.
               </p>
               <div className="flex flex-col gap-xs">
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '12px', color: 'rgba(255,255,255,0.92)' }}>
+                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
                   <strong style={{ color: 'var(--accent-orange)' }}>Admissions &amp; Academics:</strong> <span className="text-secondary">Course recommendations · Admissions briefs · Course deadlines</span>
                 </div>
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '12px', color: 'rgba(255,255,255,0.92)' }}>
+                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
                   <strong style={{ color: 'var(--accent-cyan)' }}>Careers &amp; Visa Rules:</strong> <span className="text-secondary">Job match · CV feedback · Visa 20h limit checker · Mock interview prep</span>
                 </div>
-                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '12px', color: 'rgba(255,255,255,0.92)' }}>
+                <div style={{ padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '12px', color: '#27272a' }}>
                   <strong style={{ color: 'var(--accent-emerald)' }}>Student Life &amp; Housing:</strong> <span className="text-secondary">Verified student housing · Campus food &amp; services · Daily planner · Event matching</span>
                 </div>
               </div>
             </div>
 
             {/* Card 2: 12 Deterministic DAG Workflows */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
               <div className="flex gap-sm alignItems-center mb-sm">
                 <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(56,189,248,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-cyan)' }}>
                   <GitBranch size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>12 Structured Campus Workflows</h3>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>12 Structured Campus Workflows</h3>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Reliable, predictable step-by-step processes</div>
                 </div>
               </div>
@@ -686,69 +686,69 @@ export default function PlatformPage() {
                 Important university policies follow clear, predictable rules. Critical workflows follow structured steps with complete audit logs and built-in checks so you get dependable results every time.
               </p>
               <div className="grid-2 gap-xs">
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>New student onboarding</span>
                 </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>Housing reservation matching</span>
                 </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>Visa work-cap check</span>
                 </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>CV analysis &amp; feedback</span>
                 </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>Targeted graduate CV coach</span>
                 </div>
-                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#0d0d12', border: '1px solid #1f1f2e', fontSize: '11.5px', color: 'rgba(255,255,255,0.88)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ padding: '10px', borderRadius: '8px', backgroundColor: '#f4f1ee', border: '1px solid #d8d4cd', fontSize: '11.5px', color: '#27272a', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <Check size={14} color="var(--accent-cyan)" /> <span>AI mock interview coaching</span>
                 </div>
               </div>
             </div>
 
             {/* Card 3: Nova Voice AI Engine */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
               <div className="flex gap-sm alignItems-center mb-sm">
                 <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(16,185,129,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-emerald)' }}>
                   <Mic size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>Real-Time Voice AI for Student Practice</h3>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Real-Time Voice AI for Student Practice</h3>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Instant spoken dialogue · Natural pronunciation practice</div>
                 </div>
               </div>
               <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
                 Fast, natural voice streaming allows students to practice job interviews, speak through visa questions, and get spoken coaching anytime on their mobile phone.
               </p>
-              <div style={{ backgroundColor: '#0a0a0f', padding: '14px', borderRadius: '10px', border: '1px solid #1c1c28' }}>
+              <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
                 <div className="mono-sm" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
-                  <div><strong>VOICE SPEED:</strong> <span style={{ color: '#ffffff' }}>Instant, conversational audio with zero awkward lag</span></div>
-                  <div><strong>ACCURACY:</strong> <span style={{ color: '#ffffff' }}>Accurate recognition across international accents</span></div>
+                  <div><strong>VOICE SPEED:</strong> <span style={{ color: '#0c0c0f' }}>Instant, conversational audio with zero awkward lag</span></div>
+                  <div><strong>ACCURACY:</strong> <span style={{ color: '#0c0c0f' }}>Accurate recognition across international accents</span></div>
                   <div><strong>FEEDBACK:</strong> <span style={{ color: 'var(--accent-emerald)' }}>Helpful coaching on clarity, pacing, and answers</span></div>
                 </div>
               </div>
             </div>
 
             {/* Card 4: Omni-Channel Bridges & Standard MCP */}
-            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#13131c' }}>
+            <div className="card-elevated" style={{ padding: '28px', backgroundColor: '#ffffff' }}>
               <div className="flex gap-sm alignItems-center mb-sm">
                 <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(192,132,252,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)' }}>
                   <Radio size={22} />
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#ffffff' }}>Multi-Channel Support (WhatsApp, Web &amp; Mobile)</h3>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: '800', margin: 0, color: '#0c0c0f' }}>Multi-Channel Support (WhatsApp, Web &amp; Mobile)</h3>
                   <div className="mono-sm text-secondary" style={{ fontSize: '10.5px' }}>Meets students on the channels they already use</div>
                 </div>
               </div>
               <p className="body-sm text-secondary mb-md" style={{ lineHeight: 1.6 }}>
                 WorldLynk reaches students where they spend their time. Safe verification using official university email ensures that only verified students receive assistance.
               </p>
-              <div style={{ backgroundColor: '#0a0a0f', padding: '14px', borderRadius: '10px', border: '1px solid #1c1c28' }}>
+              <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', border: '1px solid #d8d4cd' }}>
                 <div className="mono-sm" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '8px', color: 'var(--text-secondary)' }}>
-                  <div><strong>POPULAR CHANNELS:</strong> <span style={{ color: '#ffffff' }}>Official WhatsApp · Mobile Student App · Web Portal</span></div>
+                  <div><strong>POPULAR CHANNELS:</strong> <span style={{ color: '#0c0c0f' }}>Official WhatsApp · Mobile Student App · Web Portal</span></div>
                   <div><strong>STUDENT SECURITY:</strong> <span style={{ color: 'var(--accent-purple)' }}>Verified official university email login</span></div>
-                  <div><strong>DATA PRIVACY:</strong> <span style={{ color: '#ffffff' }}>Fully compliant with UK GDPR &amp; university data standards</span></div>
+                  <div><strong>DATA PRIVACY:</strong> <span style={{ color: '#0c0c0f' }}>Fully compliant with UK GDPR &amp; university data standards</span></div>
                 </div>
               </div>
             </div>
@@ -773,12 +773,12 @@ export default function PlatformPage() {
             {CONNECTORS.map((c, i) => {
               const ConnectorIcon = c.icon;
               return (
-                <div key={i} className="connector-tile card-interactive" style={{ backgroundColor: '#13131a', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '18px' }}>
+                <div key={i} className="connector-tile card-interactive" style={{ backgroundColor: '#ffffff', border: '1px solid rgba(15, 23, 42, 0.08)', borderRadius: '12px', padding: '18px' }}>
                   <div className="connector-icon" style={{ background: 'rgba(255,107,0,0.12)', color: 'var(--accent-orange)' }}>
                     <ConnectorIcon size={18} />
                   </div>
                   <div>
-                    <div className="connector-name" style={{ color: '#ffffff', fontWeight: '700' }}>{c.name}</div>
+                    <div className="connector-name" style={{ color: '#0c0c0f', fontWeight: '700' }}>{c.name}</div>
                     <div className="connector-desc text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>{c.category} · {c.type}</div>
                   </div>
                   <div style={{ marginLeft: 'auto', textAlign: 'right' }}>

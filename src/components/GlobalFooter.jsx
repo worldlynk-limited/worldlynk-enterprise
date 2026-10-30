@@ -33,11 +33,10 @@ export default function GlobalFooter() {
           <div className="wl-footer__col">
             <h3 className="wl-footer__col-title">Platform</h3>
             <ul className="wl-footer__list">
-              <li><Link to="/journey">Student Journey Funnel</Link></li>
+              <li><Link to="/platform">Platform Architecture</Link></li>
               <li><Link to="/platform#nova">Specialist AI Assistants</Link></li>
               <li><Link to="/staff-os">Compass Staff Portal</Link></li>
               <li><Link to="/student-os">Student Mobile App</Link></li>
-              <li><Link to="/how-it-works">Continuous Event Engine</Link></li>
               <li><Link to="/integrations">Integrations Directory</Link></li>
               <li><a href={STUDENT_PLATFORM_URL} target="_blank" rel="noopener noreferrer">Student App ↗</a></li>
               <li><a href={COMPASS_BACKEND_URL} target="_blank" rel="noopener noreferrer">Staff Console ↗</a></li>
@@ -62,20 +61,9 @@ export default function GlobalFooter() {
             <h3 className="wl-footer__col-title">Trust &amp; Governance</h3>
             <ul className="wl-footer__list">
               <li><Link to="/trust">Trust &amp; Procurement Hub</Link></li>
-              <li><Link to="/responsible-ai">Responsible AI &amp; DPIA</Link></li>
-              <li><Link to="/security">Security Architecture</Link></li>
               <li><Link to="/privacy">UK GDPR Privacy Policy</Link></li>
               <li><Link to="/accessibility">Accessibility Statement (VPAT)</Link></li>
               <li><Link to="/terms">Master Services Agreement</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 5: Company */}
-          <div className="wl-footer__col">
-            <h3 className="wl-footer__col-title">Company</h3>
-            <ul className="wl-footer__list">
-              <li><Link to="/founders">Founders &amp; Mission</Link></li>
-              <li><Link to="/careers">Careers &amp; Engineering</Link></li>
               <li><Link to="/contact">Contact Campus Desks</Link></li>
               <li><Link to="/demo">Book Institutional Demo</Link></li>
             </ul>
@@ -115,7 +103,7 @@ export default function GlobalFooter() {
           <div className="wl-footer__legal-links">
             <Link to="/privacy" className="wl-footer__legal-link">Privacy Policy</Link>
             <Link to="/terms" className="wl-footer__legal-link">Terms</Link>
-            <Link to="/security" className="wl-footer__legal-link">Security</Link>
+            <Link to="/trust" className="wl-footer__legal-link">Trust &amp; Security</Link>
             <Link to="/accessibility" className="wl-footer__legal-link">Accessibility</Link>
             <Link to="/contact" className="wl-footer__legal-link">Contact</Link>
           </div>

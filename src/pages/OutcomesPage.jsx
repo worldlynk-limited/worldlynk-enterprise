@@ -131,7 +131,7 @@ export default function OutcomesPage() {
   const adminHoursSaved = Math.round(cohortSize * 3.4);
 
   return (
-    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#ffffff' }}>
+    <div className="page-wrapper" style={{ minHeight: '100vh', backgroundColor: 'var(--wl-dark)', color: '#0c0c0f' }}>
       
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <section className="page-hero-banner">
@@ -152,7 +152,7 @@ export default function OutcomesPage() {
             <div className="flex flex-col gap-sm" style={{ minWidth: '240px' }}>
               <div className="card-elevated" style={{ padding: '20px' }}>
                 <div className="mono-label" style={{ color: 'var(--status-pass)', fontSize: '10px' }}>PROVEN SAVINGS</div>
-                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#ffffff' }}>£3.8M Avg. Protected</div>
+                <div style={{ fontSize: '1.45rem', fontWeight: '800', marginTop: '4px', color: '#0c0c0f' }}>£3.8M Avg. Protected</div>
                 <div className="mono-sm text-secondary" style={{ fontSize: '11px', marginTop: '2px' }}>Per 5,000 Students Monitored</div>
               </div>
               <Link to="/demo" className="btn-primary btn-sm" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
@@ -165,7 +165,7 @@ export default function OutcomesPage() {
       </section>
 
       {/* ── INTERACTIVE MULTI-VARIABLE RETENTION SIMULATOR ────────── */}
-      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.06)' }}>
+      <section className="section section-spacious" style={{ borderBottom: '1px solid rgba(15, 23, 42, 0.08)' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>INTERACTIVE SAVINGS ESTIMATOR</span>
@@ -177,14 +177,14 @@ export default function OutcomesPage() {
             </p>
           </div>
 
-          <div className="card-elevated mb-3xl" style={{ padding: '38px', backgroundColor: '#13131c' }}>
+          <div className="card-elevated mb-3xl" style={{ padding: '38px', backgroundColor: '#ffffff' }}>
             <div className="responsive-grid-split-equal" style={{ alignItems: 'center', gap: '2.5rem' }}>
               
               {/* Sliders Input Column */}
               <div className="flex flex-col gap-lg">
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Monitored International Cohort</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#0c0c0f', fontWeight: '600' }}>Monitored International Cohort</label>
                     <span className="mono-sm" style={{ color: 'var(--accent-orange)', fontWeight: '700' }}>{cohortSize.toLocaleString()} students</span>
                   </div>
                   <input
@@ -205,7 +205,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Average Annual Tuition Fee (£)</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#0c0c0f', fontWeight: '600' }}>Average Annual Tuition Fee (£)</label>
                     <span className="mono-sm" style={{ color: 'var(--accent-emerald)', fontWeight: '700' }}>£{tuitionFee.toLocaleString()}</span>
                   </div>
                   <input
@@ -226,7 +226,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>Baseline Dropout Rate</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#0c0c0f', fontWeight: '600' }}>Baseline Dropout Rate</label>
                     <span className="mono-sm" style={{ color: 'var(--status-fail)', fontWeight: '700' }}>{baselineDropoutPct}%</span>
                   </div>
                   <input
@@ -247,7 +247,7 @@ export default function OutcomesPage() {
 
                 <div className="form-group">
                   <div className="flex-between mb-xs">
-                    <label className="form-label" style={{ fontSize: '12.5px', color: '#ffffff', fontWeight: '600' }}>With WorldLynk Support</label>
+                    <label className="form-label" style={{ fontSize: '12.5px', color: '#0c0c0f', fontWeight: '600' }}>With WorldLynk Support</label>
                     <span className="mono-sm" style={{ color: 'var(--status-pass)', fontWeight: '700' }}>{mitigatedDropoutPct}%</span>
                   </div>
                   <input
@@ -268,7 +268,7 @@ export default function OutcomesPage() {
               </div>
 
               {/* Live Forecast Dashboard */}
-              <div style={{ backgroundColor: '#0d0d14', padding: '32px', borderRadius: '16px', border: '1px solid rgba(255, 255, 255, 0.08)' }}>
+              <div style={{ backgroundColor: '#f4f1ee', padding: '32px', borderRadius: '16px', border: '1px solid rgba(15, 23, 42, 0.08)' }}>
                 <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>ESTIMATED TUITION PROTECTED</span>
                 
                 <div style={{ fontSize: '3.2rem', fontWeight: '800', color: 'var(--accent-orange)', marginTop: '6px', lineHeight: 1.1 }}>
@@ -279,7 +279,7 @@ export default function OutcomesPage() {
                 </div>
 
                 <div className="grid-2 gap-md mt-lg">
-                  <div style={{ backgroundColor: '#14141e', padding: '16px', borderRadius: '12px', border: '1px solid #232332' }}>
+                  <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #d8d4cd' }}>
                     <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STUDENTS RETAINED</div>
                     <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--status-pass)', marginTop: '4px' }}>
                       {savedStudents} Students
@@ -287,7 +287,7 @@ export default function OutcomesPage() {
                     <div className="mono-sm text-secondary" style={{ fontSize: '9.5px', marginTop: '2px' }}>Staying enrolled and thriving</div>
                   </div>
 
-                  <div style={{ backgroundColor: '#14141e', padding: '16px', borderRadius: '12px', border: '1px solid #232332' }}>
+                  <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #d8d4cd' }}>
                     <div className="mono-sm text-muted" style={{ fontSize: '10px' }}>STAFF HOURS SAVED</div>
                     <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--accent-cyan)', marginTop: '4px' }}>
                       {adminHoursSaved.toLocaleString()} hrs
@@ -303,7 +303,7 @@ export default function OutcomesPage() {
                       <span>Current Losses ({baselineDropoutPct}% Dropout)</span>
                       <span style={{ color: 'var(--status-fail)', fontWeight: '600' }}>{baselineDropouts} students (£{((baselineDropouts * tuitionFee) / 1000000).toFixed(1)}M)</span>
                     </div>
-                    <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ height: '8px', backgroundColor: '#d8d4cd', borderRadius: '4px', overflow: 'hidden' }}>
                       <div style={{ width: '100%', height: '100%', backgroundColor: 'var(--status-fail)' }} />
                     </div>
                   </div>
@@ -313,7 +313,7 @@ export default function OutcomesPage() {
                       <span>WorldLynk Protected ({mitigatedDropoutPct}% Dropout)</span>
                       <span style={{ color: 'var(--status-pass)', fontWeight: '600' }}>{worldlynkDropouts} students (Saved {savedStudents})</span>
                     </div>
-                    <div style={{ height: '8px', backgroundColor: '#222230', borderRadius: '4px', overflow: 'hidden' }}>
+                    <div style={{ height: '8px', backgroundColor: '#d8d4cd', borderRadius: '4px', overflow: 'hidden' }}>
                       <div style={{ width: `${(mitigatedDropoutPct / baselineDropoutPct) * 100}%`, height: '100%', backgroundColor: 'var(--status-pass)' }} />
                     </div>
                   </div>
@@ -339,7 +339,7 @@ export default function OutcomesPage() {
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '12.5px' }}>
                 <thead>
-                  <tr style={{ backgroundColor: '#101016', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
+                  <tr style={{ backgroundColor: '#f4f1ee', borderBottom: '1px solid var(--border-hairline)', color: 'var(--text-muted)' }}>
                     <th style={{ padding: '16px 20px', width: '28%' }}>FEATURE / CRITERION</th>
                     <th style={{ padding: '16px 20px', width: '28%', color: 'var(--accent-orange)' }}>WORLDLYNK ENTERPRISE</th>
                     <th style={{ padding: '16px 20px', width: '22%' }}>LEGACY CAMPUS CRM</th>
@@ -348,8 +348,8 @@ export default function OutcomesPage() {
                 </thead>
                 <tbody>
                   {BENCHMARKS.map((b, idx) => (
-                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#13131c' : '#111118' }}>
-                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#ffffff' }}>{b.criterion}</td>
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-hairline)', backgroundColor: idx % 2 === 0 ? '#ffffff' : '#ffffff' }}>
+                      <td style={{ padding: '16px 20px', fontWeight: '700', color: '#0c0c0f' }}>{b.criterion}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--accent-orange)', fontWeight: '600' }}>✓ {b.worldlynk}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-secondary)' }}>{b.legacyCrm}</td>
                       <td style={{ padding: '16px 20px', color: 'var(--text-muted)' }}>{b.statusQuo}</td>
@@ -381,7 +381,7 @@ export default function OutcomesPage() {
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(19, 19, 28, 0.95) 0%, rgba(19, 19, 28, 0.3) 60%, transparent 100%)' }} />
                     <div style={{ position: 'absolute', bottom: '12px', left: '20px', right: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                       <span className="pill pill-approved" style={{ fontSize: '9px' }}>VERIFIED PARTNER</span>
-                      <span className="mono-sm" style={{ fontSize: '11px', color: '#ffffff', fontWeight: '700' }}>{cs.cohort}</span>
+                      <span className="mono-sm" style={{ fontSize: '11px', color: '#0c0c0f', fontWeight: '700' }}>{cs.cohort}</span>
                     </div>
                   </div>
                 )}
@@ -389,7 +389,7 @@ export default function OutcomesPage() {
                 <div style={{ padding: '28px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div className="flex-between mb-sm">
                     <div>
-                      <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#ffffff' }}>{cs.institution}</h3>
+                      <h3 style={{ fontSize: '1.3rem', fontWeight: '800', color: '#0c0c0f' }}>{cs.institution}</h3>
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <div style={{ fontSize: '1.6rem', fontWeight: '800', color: 'var(--accent-orange)' }}>{cs.metric}</div>
@@ -397,12 +397,12 @@ export default function OutcomesPage() {
                     </div>
                   </div>
 
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-fail)', margin: '14px 0' }}>
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-fail)', margin: '14px 0' }}>
                     <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-fail)' }}>THE CHALLENGE</div>
                     <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{cs.challenge}</p>
                   </div>
 
-                  <div style={{ backgroundColor: '#0d0d14', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)', marginBottom: '18px' }}>
+                  <div style={{ backgroundColor: '#f4f1ee', padding: '14px', borderRadius: '10px', borderLeft: '3px solid var(--status-pass)', marginBottom: '18px' }}>
                     <div className="mono-label" style={{ fontSize: '9px', color: 'var(--status-pass)' }}>THE DEPLOYMENT</div>
                     <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginTop: '4px', lineHeight: 1.5 }}>{cs.solution}</p>
                   </div>
@@ -411,7 +411,7 @@ export default function OutcomesPage() {
                     <div className="mono-label" style={{ fontSize: '9.5px', marginBottom: '8px' }}>KEY OUTCOMES MEASURED</div>
                     <div className="flex flex-col gap-xs">
                       {cs.results.map((r, ri) => (
-                        <div key={ri} className="flex gap-xs alignItems-center mono-sm" style={{ fontSize: '11.5px', color: '#ffffff' }}>
+                        <div key={ri} className="flex gap-xs alignItems-center mono-sm" style={{ fontSize: '11.5px', color: '#0c0c0f' }}>
                           <CheckCircle2 size={13} color="var(--accent-emerald)" style={{ flexShrink: 0 }} />
                           <span>{r}</span>
                         </div>

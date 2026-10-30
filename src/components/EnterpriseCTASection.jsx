@@ -77,7 +77,7 @@ export default function EnterpriseCTASection({
         </h2>
 
         {/* Description */}
-        <p className="body-lg" style={{ maxWidth: '680px', margin: '0 auto 2.25rem', lineHeight: 1.65, color: isLight ? '#52525b' : 'var(--text-secondary)' }}>
+        <p className="body-lg" style={{ maxWidth: '680px', margin: '0 auto 2.25rem', lineHeight: 1.65, color: isLight ? '#52525b' : '#cbd5e1' }}>
           {description}
         </p>
 
@@ -105,40 +105,40 @@ export default function EnterpriseCTASection({
               href={secondaryLink} 
               target="_blank" 
               rel="noreferrer" 
-              className="btn-secondary" 
+              className="btn-secondary cta-btn-secondary" 
               style={{ 
                 padding: '0.95rem 1.8rem', 
                 fontSize: '0.95rem', 
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '8px', 
-                border: isLight ? '1px solid #d4d0ca' : '1px solid rgba(255, 255, 255, 0.15)', 
-                background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+                border: isLight ? '1px solid #d4d0ca' : '1px solid rgba(255, 255, 255, 0.25)', 
+                background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.08)',
                 color: isLight ? '#0c0c0f' : '#ffffff',
                 boxShadow: isLight ? '0 2px 6px rgba(0, 0, 0, 0.04)' : 'none'
               }}
             >
-              <span>{secondaryText}</span>
-              <ExternalLink size={15} style={{ opacity: 0.8 }} />
+              <span style={{ color: isLight ? '#0c0c0f' : '#ffffff' }}>{secondaryText}</span>
+              <ExternalLink size={15} style={{ opacity: 0.85, color: isLight ? '#0c0c0f' : '#ffffff' }} />
             </a>
           ) : (
             <Link 
               to={secondaryLink} 
-              className="btn-secondary" 
+              className="btn-secondary cta-btn-secondary" 
               style={{ 
                 padding: '0.95rem 1.8rem', 
                 fontSize: '0.95rem', 
                 display: 'inline-flex', 
                 alignItems: 'center', 
                 gap: '8px', 
-                border: isLight ? '1px solid #d4d0ca' : '1px solid rgba(255, 255, 255, 0.15)', 
-                background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.04)',
+                border: isLight ? '1px solid #d4d0ca' : '1px solid rgba(255, 255, 255, 0.25)', 
+                background: isLight ? '#ffffff' : 'rgba(255, 255, 255, 0.08)',
                 color: isLight ? '#0c0c0f' : '#ffffff',
                 boxShadow: isLight ? '0 2px 6px rgba(0, 0, 0, 0.04)' : 'none'
               }}
             >
-              <span>{secondaryText}</span>
-              <ArrowRight size={15} />
+              <span style={{ color: isLight ? '#0c0c0f' : '#ffffff' }}>{secondaryText}</span>
+              <ArrowRight size={15} style={{ color: isLight ? '#0c0c0f' : '#ffffff' }} />
             </Link>
           )}
         </div>

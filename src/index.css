@@ -3919,6 +3919,30 @@ input[type="range"]::-moz-range-thumb {
   transform: translateY(-1px);
 }
 
+/* Explicit CTA Dark Button Overrides to prevent dark text on dark backgrounds */
+.page-wrapper .enterprise-cta-section .btn-secondary,
+.enterprise-cta-section .btn-secondary,
+.enterprise-cta-section .cta-btn-secondary,
+.page-wrapper .enterprise-cta-section .cta-btn-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+}
+.page-wrapper .enterprise-cta-section .btn-secondary *,
+.enterprise-cta-section .btn-secondary *,
+.enterprise-cta-section .cta-btn-secondary *,
+.page-wrapper .enterprise-cta-section .cta-btn-secondary * {
+  color: #ffffff !important;
+}
+.page-wrapper .enterprise-cta-section .btn-secondary:hover,
+.enterprise-cta-section .btn-secondary:hover,
+.enterprise-cta-section .cta-btn-secondary:hover,
+.page-wrapper .enterprise-cta-section .cta-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  color: #ffffff !important;
+}
+
 /* Tab Pills */
 .page-wrapper .tab-pill-premium {
   background: #ffffff;

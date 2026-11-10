@@ -122,7 +122,7 @@ export default function HomePage() {
        {/* <UnifiedIntelligenceGraph /> */}
 
       {/* SECTION: BUILT FOR YOUR WHOLE CAMPUS (LIVELY PHOTO SPOTLIGHT) */}
-      <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>
+      {/* <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>
         <div className="main-container">
           <div style={{ textAlign: 'center', maxWidth: '780px', margin: '0 auto 3.5rem' }}>
             <div className="mono-label" style={{ color: 'var(--wl-accent)', marginBottom: '0.75rem' }}>
@@ -138,7 +138,6 @@ export default function HomePage() {
 
           <div className="spotlight-card-grid">
             
-            {/* Card 1: University Leadership */}
             <div 
               style={{ 
                 backgroundColor: '#101118', 
@@ -207,7 +206,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 2: Faculty, Academic Tutors & Student Services */}
             <div 
               style={{ 
                 backgroundColor: '#101118', 
@@ -276,7 +274,6 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Card 3: Domestic & International Students */}
             <div 
               style={{ 
                 backgroundColor: '#101118', 
@@ -347,10 +344,10 @@ export default function HomePage() {
 
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CONTINUOUS LIFECYCLE HORIZONS OVERVIEW */}
-      <LifecycleOverviewSection />
+      {/* <LifecycleOverviewSection /> */}
 
       {/* AUTONOMOUS SPECIALIST AGENTS */}
       {/* <SpecialistAgentsSection /> */}

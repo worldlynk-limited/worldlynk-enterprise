@@ -431,7 +431,7 @@ export default function PlatformPage() {
       </section>
 
       {/* ── 4-LAYER OPERATIONAL ARCHITECTURE TABS ───────────────── */}
-      <section className="section" style={{ paddingTop: '20px', paddingBottom: '60px' }}>
+      {/* <section className="section" style={{ paddingTop: '20px', paddingBottom: '60px' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>HOW THE PLATFORM WORKS</span>
@@ -443,7 +443,6 @@ export default function PlatformPage() {
             </p>
           </div>
 
-          {/* Layer Selector Cards */}
           <div className="grid-4 gap-md mb-xl">
             {LAYERS.map((layer) => {
               const isSelected = activeLayerId === layer.id;
@@ -474,7 +473,6 @@ export default function PlatformPage() {
             })}
           </div>
 
-          {/* Detailed Layer Workbench */}
           <div className="card-elevated" style={{ padding: '36px', backgroundColor: '#ffffff', border: '1px solid #d8d4cd', borderRadius: '16px' }}>
             <div className="flex-between flex-wrap gap-md mb-lg">
               <div>
@@ -488,7 +486,6 @@ export default function PlatformPage() {
             </div>
 
             <div className="grid-2 gap-xl" style={{ alignItems: 'start' }}>
-              {/* Features List */}
               <div>
                 <span className="mono-label" style={{ color: '#475569' }}>KEY CAPABILITIES</span>
                 <div className="flex flex-col gap-sm mt-sm">
@@ -501,7 +498,6 @@ export default function PlatformPage() {
                 </div>
               </div>
 
-              {/* Technical Benchmarks & Topology Box */}
               <div style={{ backgroundColor: '#f8fafc', padding: '24px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
                 <span className="mono-label" style={{ color: '#0284c7' }}>GUARANTEED STANDARDS &amp; SAFETY</span>
                 <div className="mono-sm mt-md" style={{ fontSize: '11.5px', display: 'flex', flexDirection: 'column', gap: '12px', color: 'var(--text-secondary)' }}>
@@ -521,10 +517,10 @@ export default function PlatformPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── UNIFIED STUDENT RECORD MOCKUP ───────────────── */}
-      <section className="section" style={{ paddingTop: '20px', paddingBottom: '70px', borderBottom: '1px solid #d8d4cd' }}>
+      {/* <section className="section" style={{ paddingTop: '20px', paddingBottom: '70px', borderBottom: '1px solid #d8d4cd' }}>
         <div className="main-container">
           <div className="section-header-left mb-xl">
             <span className="mono-label" style={{ color: 'var(--accent-orange)' }}>UNIFIED STUDENT RECORD</span>
@@ -547,7 +543,6 @@ export default function PlatformPage() {
                 <span className="mono-sm text-muted">CONNECTED STUDENT RECORD // LIVE PROFILE</span>
               </div>
 
-              {/* Student Switcher */}
               <div className="flex gap-xs" style={{ flexWrap: 'wrap' }}>
                 {STUDENTS.map((s, idx) => (
                   <button
@@ -593,7 +588,6 @@ export default function PlatformPage() {
                 </div>
               </div>
 
-              {/* 4 Connected Cards Grid */}
               <div className="grid-4 gap-md mb-lg">
                 <div style={{ backgroundColor: '#ffffff', padding: '16px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
                   <div className="mono-sm text-muted" style={{ fontSize: '9.5px' }}>STUDENT RECORD (SITS)</div>
@@ -627,7 +621,7 @@ export default function PlatformPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── AGENT GRAPH SECTION ──────────────────────────────────── */}
       <section id="agent-graph" className="section section-spacious" style={{ borderBottom: '1px solid #d8d4cd' }}>

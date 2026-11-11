@@ -14,6 +14,9 @@ import SpecialistAgentsSection from '../components/funnel/SpecialistAgentsSectio
 import CampusMapAgentGraph from '../components/risely/CampusMapAgentGraph';
 import OneFrontDoorFunnel from '../components/risely/OneFrontDoorFunnel';
 import UnifiedIntelligenceGraph from '../components/risely/UnifiedIntelligenceGraph';
+import CampusDaySection from '../components/campus/CampusDaySection';
+import KnowledgeGraphSection from '../components/campus/KnowledgeGraphSection';
+import ShiftSimulationSection from '../components/campus/ShiftSimulationSection';
 import EnterpriseCTASection from '../components/EnterpriseCTASection';
 import HeroMockup3D from '../components/HeroMockup3D';
 import Hero3DBackground from '../components/Hero3DBackground';
@@ -112,14 +115,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* RISELY BLUEPRINT SECTION 1: THE AGENT GRAPH & FABRIC ARCHITECTURE */}
-      {/* <CampusMapAgentGraph /> */}
+      {/* SECTION 2: A DAY ON CAMPUS (MEET MAYA) */}
+      <CampusDaySection />
 
-      {/* RISELY BLUEPRINT SECTION 2: ONE FRONT DOOR & STUDENT OS SIMULATOR */}
-      <OneFrontDoorFunnel />
+      {/* SECTION 3: MAYA'S KNOWLEDGE GRAPH */}
+      <KnowledgeGraphSection />
 
-      {/* RISELY BLUEPRINT SECTION 3: UNIFIED INTELLIGENCE ACROSS CAMPUS */}
-       {/* <UnifiedIntelligenceGraph /> */}
+      {/* SECTION 4: TAKE THE 5PM SHIFT (HUMAN IN THE LOOP SIMULATOR) */}
+      <ShiftSimulationSection />
+
+      {/* RISELY BLUEPRINT: ONE FRONT DOOR */}
+      {/* <OneFrontDoorFunnel /> */}
 
       {/* SECTION: BUILT FOR YOUR WHOLE CAMPUS (LIVELY PHOTO SPOTLIGHT) */}
       {/* <section className="section" style={{ backgroundColor: '#0b0c10', borderBottom: '1px solid #1a1a24', position: 'relative' }}>

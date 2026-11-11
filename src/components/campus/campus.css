@@ -1,0 +1,935 @@
+/* ============================================================
+   CAMPUS & KNOWLEDGE & SHIFT SECTIONS STYLES
+   Exact recreation of the WorldLynk high-converting visual style
+   ============================================================ */
+
+/* ---------- Core Colors & Utilities ---------- */
+.wl-campus-section,
+.wl-shift-section {
+  background-color: var(--wl-light, #e8e4df);
+  color: var(--wl-dark, #0c0c0f);
+  padding: clamp(72px, 8vw, 110px) 0;
+  position: relative;
+  border-top: 1px solid rgba(12, 12, 15, 0.12);
+  border-bottom: 1px solid rgba(12, 12, 15, 0.12);
+}
+
+.wl-kg-section {
+  background-color: var(--wl-dark, #0c0c0f);
+  color: #ffffff;
+  padding: clamp(72px, 8vw, 110px) 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.wl-campus-wrap,
+.wl-kg-wrap,
+.wl-shift-wrap {
+  width: min(1208px, 100% - 40px);
+  margin-inline: auto;
+}
+
+.wl-hl-orange {
+  color: var(--wl-accent, #ff6b00);
+}
+
+/* ============================================================
+   01. CAMPUS DAY SECTION (CSS 3D ISOMETRIC DIORAMA)
+   ============================================================ */
+.wl-campus-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .wl-campus-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wl-campus-eyebrow {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wl-accent, #ff6b00);
+  margin-bottom: 14px;
+}
+
+.wl-campus-headline {
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+  color: #0c0c0f;
+}
+
+.wl-campus-lede {
+  font-size: clamp(15.5px, 1.25vw, 17.5px);
+  color: rgba(12, 12, 15, 0.72);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 58ch;
+}
+
+.wl-stops-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.wl-stop-btn {
+  border: 1px solid rgba(12, 12, 15, 0.14);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(12, 12, 15, 0.65);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wl-stop-btn:hover {
+  background: #ffffff;
+  color: #0c0c0f;
+}
+
+.wl-stop-btn.wl-stop-active {
+  background: #0c0c0f;
+  color: #ffffff;
+  border-color: #0c0c0f;
+}
+
+.wl-day-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(12, 12, 15, 0.08);
+  display: grid;
+  gap: 10px;
+  min-height: 220px;
+  align-content: start;
+  animation: wlFadeIn 0.35s ease both;
+}
+
+.wl-card-mono {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ea580c;
+  font-weight: 700;
+}
+
+.wl-card-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: #0c0c0f;
+}
+
+.wl-card-quote {
+  font-family: "Caveat", "Segoe Script", cursive;
+  font-size: 26px;
+  line-height: 1.15;
+  color: #0c0c0f;
+  margin: 4px 0;
+}
+
+.wl-card-desc {
+  font-size: 15px;
+  color: rgba(12, 12, 15, 0.8);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.wl-card-bts {
+  border-top: 1px dashed rgba(12, 12, 15, 0.15);
+  padding-top: 10px;
+  font-size: 13.5px;
+  color: rgba(12, 12, 15, 0.7);
+  line-height: 1.5;
+}
+
+.wl-card-bts b {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(12, 12, 15, 0.45);
+  display: block;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.wl-campus-fine,
+.wl-kg-fine,
+.wl-shift-fine {
+  font-size: 12.5px;
+  color: rgba(12, 12, 15, 0.55);
+  margin-top: 14px;
+}
+.wl-kg-fine {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Campus Diorama Visual Window */
+.wl-campus-box {
+  position: relative;
+  height: clamp(360px, 46vw, 540px);
+  perspective: 1700px;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(12, 12, 15, 0.14);
+  transition: background 1.5s ease;
+  user-select: none;
+}
+
+.wl-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  background: radial-gradient(1.5px 1.5px at 12% 18%, #fff, transparent),
+              radial-gradient(1.5px 1.5px at 28% 9%, #fff, transparent),
+              radial-gradient(1px 1px at 44% 22%, #fff, transparent),
+              radial-gradient(1.5px 1.5px at 61% 8%, #fff, transparent),
+              radial-gradient(1px 1px at 72% 26%, #fff, transparent),
+              radial-gradient(1.5px 1.5px at 90% 14%, #fff, transparent),
+              radial-gradient(1px 1px at 8% 34%, #fff, transparent);
+}
+
+.wl-campus-box.night .wl-stars {
+  opacity: 1;
+}
+
+.wl-sun {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: -25px;
+  border-radius: 50%;
+  opacity: 0.9;
+  transition: left 1.5s ease, top 1.5s ease, background-color 1.5s ease, box-shadow 1.5s ease;
+}
+
+.wl-ground {
+  --s: 0.76;
+  width: 560px;
+  height: 560px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -280px 0 0 -280px;
+  transform-style: preserve-3d;
+  transform: scale(var(--s)) rotateX(57deg) rotateZ(calc(-38deg + var(--rz, 0deg)));
+  border-radius: 36px;
+  background: radial-gradient(circle at 54% 46%, #efe9df 0 16%, transparent 17%), #cfd8c2;
+  box-shadow: 0 60px 90px rgba(12, 12, 15, 0.22);
+  transition: transform 0.5s ease-out, background-color 1.5s ease;
+}
+
+@media (max-width: 1100px) {
+  .wl-ground { --s: 0.68; }
+}
+@media (max-width: 560px) {
+  .wl-ground { --s: 0.52; }
+}
+
+.wl-path {
+  position: absolute;
+  background: #efe9df;
+  border-radius: 20px;
+}
+.wl-p1 { left: 40px; right: 40px; top: 232px; height: 26px; }
+.wl-p2 { top: 40px; bottom: 40px; left: 292px; width: 26px; }
+.wl-p3 { left: 120px; top: 330px; width: 240px; height: 20px; transform: rotate(28deg); }
+
+.wl-tree {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #8fbf7a, #4d8a48);
+  transform: translateZ(14px);
+  box-shadow: -8px 8px 0 rgba(12, 12, 15, 0.12);
+}
+
+.wl-beacon {
+  position: absolute;
+  left: 286px;
+  top: 226px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--wl-accent, #ff6b00);
+  transform: translateZ(2px);
+  animation: wlRing 2.4s ease-out infinite;
+}
+
+@keyframes wlRing {
+  to { box-shadow: 0 0 0 70px rgba(255, 107, 0, 0); }
+}
+
+/* 3D Isometric Buildings */
+.wl-bld {
+  position: absolute;
+  transform-style: preserve-3d;
+  --h: 80px;
+}
+.wl-bld i {
+  position: absolute;
+  display: block;
+  transition: background-color 0.5s;
+}
+.wl-bld .wl-rf {
+  inset: 0;
+  transform: translateZ(var(--h));
+  background: #fbfaf7;
+  border-radius: 4px;
+}
+.wl-bld .wl-s {
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: var(--h);
+  transform-origin: top;
+  transform: rotateX(90deg);
+  background: repeating-linear-gradient(90deg, rgba(12, 12, 15, 0.16) 0 8px, transparent 8px 20px) 6px 10px / 100% 12px repeat-y, #d6cfc4;
+}
+.wl-bld .wl-n {
+  left: 0;
+  bottom: 100%;
+  width: 100%;
+  height: var(--h);
+  transform-origin: bottom;
+  transform: rotateX(-90deg);
+  background: repeating-linear-gradient(90deg, rgba(12, 12, 15, 0.16) 0 8px, transparent 8px 20px) 6px 10px / 100% 12px repeat-y, #d6cfc4;
+}
+.wl-bld .wl-e {
+  left: 100%;
+  top: 0;
+  width: var(--h);
+  height: 100%;
+  transform-origin: left;
+  transform: rotateY(-90deg);
+  background: repeating-linear-gradient(0deg, rgba(12, 12, 15, 0.16) 0 8px, transparent 8px 20px) 10px 6px / 12px 100% repeat-x, #bfb7ab;
+}
+.wl-bld .wl-w {
+  right: 100%;
+  top: 0;
+  width: var(--h);
+  height: 100%;
+  transform-origin: right;
+  transform: rotateY(90deg);
+  background: repeating-linear-gradient(0deg, rgba(12, 12, 15, 0.16) 0 8px, transparent 8px 20px) 10px 6px / 12px 100% repeat-x, #bfb7ab;
+}
+
+.wl-bld.wl-bld-active .wl-rf {
+  background: var(--wl-accent, #ff6b00);
+}
+.wl-bld.wl-bld-active .wl-s,
+.wl-bld.wl-bld-active .wl-n {
+  background-color: #ffd9bd;
+}
+.wl-bld.wl-bld-active .wl-e,
+.wl-bld.wl-bld-active .wl-w {
+  background-color: #f5b98d;
+}
+
+.wl-maya-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 22px;
+  height: 22px;
+  margin: -11px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.35);
+  transition: transform 1.2s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.wl-campus-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.wl-c-label {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #ffffff;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(12, 12, 15, 0.18);
+  transition: background 0.3s, color 0.3s;
+}
+
+.wl-c-label.wl-label-active {
+  background: #0c0c0f;
+  color: #ffffff;
+}
+
+/* ============================================================
+   02. KNOWLEDGE GRAPH SECTION (3D CANVAS LIVING RECORD)
+   ============================================================ */
+.wl-kg-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .wl-kg-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wl-kg-eyebrow {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wl-accent, #ff6b00);
+  margin-bottom: 14px;
+}
+
+.wl-kg-headline {
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+.wl-kg-lede {
+  font-size: clamp(15.5px, 1.25vw, 17.5px);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.wl-kg-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.wl-filter-chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.wl-filter-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.wl-filter-chip.wl-chip-active {
+  background: #ffffff;
+  color: #0c0c0f;
+  border-color: #ffffff;
+  font-weight: 600;
+}
+
+.wl-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wl-kg-info {
+  background: #141418;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 20px;
+  min-height: 96px;
+}
+
+.wl-info-title {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.wl-info-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wl-info-desc {
+  font-size: 14.5px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 6px;
+  line-height: 1.45;
+}
+
+.wl-info-src {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.wl-kg-canvas-container {
+  position: relative;
+  aspect-ratio: 1.05;
+  width: 100%;
+  max-height: 600px;
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 45%, #1b1e2c, #0c0c0f 72%);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.wl-kg-canvas-container:active {
+  cursor: grabbing;
+}
+
+.wl-kg-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ============================================================
+   03. SHIFT SIMULATION SECTION (DR JENKINS AT 5PM)
+   ============================================================ */
+.wl-shift-header {
+  margin-bottom: 34px;
+}
+
+.wl-shift-eyebrow {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wl-accent, #ff6b00);
+  margin-bottom: 14px;
+}
+
+.wl-shift-headline {
+  font-size: clamp(28px, 3.8vw, 44px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+  color: #0c0c0f;
+}
+
+.wl-shift-lede {
+  font-size: clamp(15.5px, 1.25vw, 17.5px);
+  color: rgba(12, 12, 15, 0.72);
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+.wl-shift-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 300px;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .wl-shift-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wl-sh-list {
+  display: grid;
+  gap: 8px;
+}
+
+@media (max-width: 1000px) {
+  .wl-sh-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .wl-sh-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wl-sh-tab {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(12, 12, 15, 0.12);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: grid;
+  gap: 2px;
+  color: #0c0c0f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wl-sh-tab:hover {
+  background: #ffffff;
+}
+
+.wl-sh-tab.wl-sh-tab-active {
+  background: #ffffff;
+  border-color: var(--wl-accent, #ff6b00);
+  box-shadow: 0 10px 30px rgba(12, 12, 15, 0.08);
+}
+
+.wl-sh-tab.wl-sh-tab-done {
+  opacity: 0.65;
+}
+
+.wl-tab-name {
+  font-size: 15px;
+}
+
+.wl-check-mark {
+  color: #059669;
+}
+
+.wl-tab-task {
+  font-size: 12px;
+  color: rgba(12, 12, 15, 0.6);
+}
+
+.wl-sh-case {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: clamp(20px, 2.5vw, 28px);
+  box-shadow: 0 20px 60px rgba(12, 12, 15, 0.08);
+  display: grid;
+  gap: 14px;
+}
+
+.wl-case-mono {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(12, 12, 15, 0.5);
+  font-weight: 700;
+}
+
+.wl-case-title {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin: 0;
+  color: #0c0c0f;
+}
+
+.wl-sig-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wl-sig-pill {
+  font-size: 12.5px;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background: #f3f1ee;
+  border: 1px solid rgba(12, 12, 15, 0.1);
+  color: #0c0c0f;
+}
+
+.wl-sig-pill.wl-sig-warn {
+  background: #fff3ea;
+  border-color: rgba(255, 107, 0, 0.35);
+  color: #ea580c;
+  font-weight: 600;
+}
+
+.wl-sh-why {
+  font-size: 15px;
+  color: rgba(12, 12, 15, 0.78);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.wl-draft-label {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(12, 12, 15, 0.6);
+  margin-top: 4px;
+}
+
+.wl-sh-textarea {
+  width: 100%;
+  min-height: 110px;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #0c0c0f;
+  background: #fbfaf8;
+  border: 1px solid rgba(12, 12, 15, 0.15);
+  border-radius: 12px;
+  padding: 12px 14px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.wl-sh-textarea:focus {
+  outline: none;
+  border-color: var(--wl-accent, #ff6b00);
+  box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+}
+
+.wl-sh-act {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wl-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #ff6b00, #ea580c);
+  color: #ffffff;
+  border: 1px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(255, 107, 0, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.wl-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 107, 0, 0.55);
+}
+
+.wl-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.wl-btn-alt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 20px;
+  background: none;
+  border: 1px solid rgba(12, 12, 15, 0.2);
+  color: #0c0c0f;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.wl-btn-alt:hover:not(:disabled) {
+  background: rgba(12, 12, 15, 0.05);
+}
+
+.wl-ticks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 13.5px;
+}
+
+.wl-tick-item {
+  color: #059669;
+  font-weight: 600;
+  animation: wlFadeIn 0.3s ease both;
+}
+
+/* Phone simulation */
+.wl-sh-phone {
+  background: #f6f7f9;
+  color: #1e293b;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(12, 12, 15, 0.12);
+  font-size: 13.5px;
+}
+
+.wl-ph-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: #128c4b;
+  color: #ffffff;
+}
+
+.wl-ph-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  display: block;
+}
+
+.wl-ph-head b {
+  font-size: 14px;
+}
+
+.wl-ph-head small {
+  display: block;
+  opacity: 0.85;
+  font-size: 11px;
+}
+
+.wl-ph-msgs {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  min-height: 230px;
+  align-content: start;
+  background: #eef1f5;
+}
+
+.wl-ph-empty {
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+  padding: 40px 10px;
+}
+
+.wl-bubble {
+  max-width: 88%;
+  padding: 9px 13px;
+  border-radius: 14px 14px 14px 4px;
+  background: #ffffff;
+  color: #0c0c0f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  animation: wlFadeIn 0.35s ease both;
+  line-height: 1.45;
+}
+
+.wl-bubble-me {
+  justify-self: end;
+  border-radius: 14px 14px 4px 14px;
+  background: #128c4b;
+  color: #ffffff;
+}
+
+.wl-typing-dots {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #64748b;
+  animation: wlPulse 1s infinite alternate;
+}
+
+/* Completion summary */
+.wl-sh-done {
+  margin-top: 24px;
+  background: #0c0c0f;
+  color: #ffffff;
+  border-radius: 22px;
+  padding: clamp(24px, 3vw, 36px);
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+  animation: wlFadeIn 0.4s ease both;
+}
+
+.wl-done-mono {
+  font-family: var(--wl-font-mono, "Space Mono", monospace);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--wl-accent, #ff6b00);
+}
+
+.wl-done-big {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.wl-done-desc {
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 64ch;
+  line-height: 1.6;
+  font-size: 15.5px;
+  margin: 0;
+}
+
+.wl-done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.wl-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.wl-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+@keyframes wlFadeIn {
+  from {
+    opacity: 0.01;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wlPulse {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
